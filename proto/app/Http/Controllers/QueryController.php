@@ -11,7 +11,7 @@ class QueryController extends Controller
     public static function getResults($id)
     {
         //$change = DB::connection('mysqlrep')->update('update duell set Schiedsrichter = "Günther Jauch" where id = ?', [$id]);
-       $results = Spielplan::select('select * from duell where spiel_ID = ?', [$id]);
+       $results = DB::select('select * from duell where spiel_ID = ?', [$id]);
        
         //$foo =DB::connection('mysqlrep')->insert('insert into region (Name, Sportart) Values ("Köln-Bonn", 1)');
        // $satz = DB::connection('mysqlrep')->select('select * from satz where duell_ID = ? and Satz_Nr = 3',[$id]);
@@ -23,8 +23,8 @@ class QueryController extends Controller
     public static function getOrt($id)
     {
         //$ort = DB::select('select ort from spiel where ID = ?', [$id]);
-        $place = Spielplan::table(Spielplan::raw('spiel'))
-        ->where(Spielplan::raw('ID'), [$id])
+        $place = DB::table(DB::raw('spiel'))
+        ->where(DB::raw('ID'), [$id])
         ->first();
         return $place->Ort;
     }
@@ -32,23 +32,23 @@ class QueryController extends Controller
     public static function getHome($id)
     {
         //$home = DB::select('select m.name from spiel s,mannschaft m where s.Heim = m.Verein_ID and s.ID = ?', [$id]);
-        $home = Spielplan::table(Spielplan::raw('spiel s, mannschaft m'))
-        ->where(Spielplan::raw('s.Heim = m.Verein_ID and s.ID'), [$id])
+        $home = DB::table(DB::raw('spiel s, mannschaft m'))
+        ->where(DB::raw('s.Heim = m.Verein_ID and s.ID'), [$id])
         ->first();
         return $home->name;
     }
     public static function getAway($id)
     {
-        $away = Spielplan::table(Spielplan::raw('spiel s, mannschaft m'))
-        ->where(Spielplan::raw('s.Gast = m.Verein_ID and s.ID'), [$id])
+        $away = DB::table(DB::raw('spiel s, mannschaft m'))
+        ->where(DB::raw('s.Gast = m.Verein_ID and s.ID'), [$id])
         ->first();
         return $away->name;
     }
 
     public static function getTeams($liga)
     {
-        $teams = Spielplan::table(Spielplan::raw('mannschaft'))
-        ->where(Spielplan::raw('liga'), [$liga]);
+        $teams = DB::table(DB::raw('mannschaft'))
+        ->where(DB::raw('liga'), [$liga]);
         return $teams;
     }
 
@@ -63,12 +63,12 @@ class QueryController extends Controller
         ->where(DB::raw('dp.Spieler_Heim_1= s.ID and dp.Duell_ID =2'))
         ->pluck('Vorname');
         return $names;*/
-        $name =Spielplan::select('SELECT s.Vorname, s.Nachname FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID');
+        $name =DB::select('SELECT s.Vorname, s.Nachname FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID');
         return $name;
     }
     public static function getDuells($spielID)
     {
-        $duelle = Spielplan::table('duell')
+        $duelle = DB::table('duell')
         ->where('Spiel_ID', $spielID)
         ->pluck('ID');
 
@@ -84,8 +84,8 @@ class QueryController extends Controller
         $guest = $request-> tfAway;
         $guestID = $this->getTeamID($guest);
         #$id = $request -> match;
-        $set = Spielplan::table(('spiel'))
-        ->where(Spielplan::raw('ID'), [$id])
+        $set = DB::table(('spiel'))
+        ->where(DB::raw('ID'), [$id])
         ->update([  'Ort'=>$place,
                     'Heim'=>$homeID,
                     'Gast'=>$guestID]);
@@ -93,7 +93,7 @@ class QueryController extends Controller
 
     public function getTeamID($name)
     {
-        $team = Spielplan::table('mannschaft')
+        $team = DB::table('mannschaft')
         ->where('name',$name)
         ->first();
         return $team->ID;
