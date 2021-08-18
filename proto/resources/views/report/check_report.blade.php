@@ -6,15 +6,15 @@
     $guest =QueryController::getAway($match);
     $results = QueryController::getResults($match);
     $duelle = QueryController::getDuells($match);
-    $firstnameHome1 = QueryController::getNamesD($duelle[0]);
-    $lastnameHome1;
-    $firstnameHome2;
-    $lastnameHome2;
+    $playerNamesDouble1 = QueryController::getNamesDouble($duelle[0]);
+    $playerNamesSolo1 = QueryController::getNamesSolo($duelle[1]);
 
 
 
     $teams = QueryController::getTeams(1);
     $staffel = "Dummie";
+    $art1 = QueryController::getArt($duelle[0]);
+    $art2 = QueryController::getArt($duelle[1]);
 
 
 
@@ -28,9 +28,6 @@
   setcookie($cookie_name, $cookie_value);
 @endforeach
 </div>
-<script type ="text/javascript">
-var teamSugg = ["Trier","Maint"];
-</script>
 @section('page-content')
     <section >
       <h3 class ="font-bold  text-2xl">Spieleberichtsbogen</h3>
@@ -59,6 +56,7 @@ var teamSugg = ["Trier","Maint"];
       </div>
       <table class="table-fixed">
         <tr>
+          <th>Type</th>
           <th>Vorname</th>
           <th>Nachname</th>
           <th>Vorname</th>
@@ -78,15 +76,16 @@ var teamSugg = ["Trier","Maint"];
           <th class ="w-4">Gast</th>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname11">{{ $firstnameHome1[0]->Vorname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname11">{{ $firstnameHome1[0]->Nachname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname12"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-double border-r-2 border-black" id="nname12"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname13"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname13"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname14"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname14"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz11"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type1">{{ $art1 }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname11">{{ $playerNamesDouble1[0]->Vorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname11">{{ $playerNamesDouble1[0]->Nachname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname12">{{ $playerNamesDouble1[1]->Vorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-double border-r-2 border-black" id="nname12">{{ $playerNamesDouble1[1]->Nachname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname13">{{ $playerNamesDouble1[2]->Vorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname13">{{ $playerNamesDouble1[2]->Nachname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname14">{{ $playerNamesDouble1[3]->Vorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname14">{{ $playerNamesDouble1[3]->Nachname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz11">{{ $playerNamesDouble1[3]->Nachname }}</td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz12"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz13"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint11"></td>
@@ -97,12 +96,13 @@ var teamSugg = ["Trier","Maint"];
           <td contenteditable="true" class="bg-gray-100 text-black " id="point12"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname21"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname21"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type2">{{ $art2 }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname21">{{ $playerNamesSolo1[0]->Vorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname21">{{ $playerNamesSolo1[0]->Nachname }}</td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname22"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-double border-r-2 border-black" id="nname22"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname23"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname23"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname23">{{ $playerNamesSolo1[1]->Vorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname23">{{ $playerNamesSolo1[1]->Nachname }}</td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname24"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname24"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz21"></td>
@@ -116,6 +116,7 @@ var teamSugg = ["Trier","Maint"];
           <td contenteditable="true" class="bg-gray-100 text-black " id="point22"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type3"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname31"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname31"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname32"></td>
@@ -135,6 +136,7 @@ var teamSugg = ["Trier","Maint"];
           <td contenteditable="true" class="bg-gray-100 text-black " id="point32"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type4"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname41"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname41"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname42"></td>
@@ -154,6 +156,7 @@ var teamSugg = ["Trier","Maint"];
           <td contenteditable="true" class="bg-gray-100 text-black " id="point42"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type5"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname51"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname51"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname52"></td>
@@ -173,6 +176,7 @@ var teamSugg = ["Trier","Maint"];
           <td contenteditable="true" class="bg-gray-100 text-black " id="point52"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type6"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname61"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname61"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname62"></td>
@@ -192,6 +196,7 @@ var teamSugg = ["Trier","Maint"];
           <td contenteditable="true" class="bg-gray-100 text-black " id="point62"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type7"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname71"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname71"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname72"></td>
@@ -211,6 +216,7 @@ var teamSugg = ["Trier","Maint"];
           <td contenteditable="true" class="bg-gray-100 text-black " id="point72"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type8"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname81"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname81"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname82"></td>

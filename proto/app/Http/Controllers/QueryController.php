@@ -52,20 +52,30 @@ class QueryController extends Controller
         return $teams;
     }
 
-    public static function getNamesE($duellID)
+    public static function getArt($duellID)
     {
-        
+        $art = DB::table(DB::raw('art a, duell d'))
+        ->where(DB::raw('d.art = a.id and d.ID'), [$duellID])
+        ->first();
+        return $art->Name;
     }
-    public static function getNamesD($duellID)
+
+    public static function getNamesSolo($duellID)
+    {
+        $name =DB::select('SELECT s.Vorname, s.Nachname FROM einzel e LEFT JOIN spieler s ON e.spieler_Heim = s.ID or e.spieler_Gast = s.ID');
+        return $name;
+    }
+    public static function getNamesDouble($duellID)
     {
         //Names is an Arry full of Objects. To gather an Value, first get the index and than the Value
        /* $names = DB::table(DB::raw('duell du, doppel dp, spieler s'))
         ->where(DB::raw('dp.Spieler_Heim_1= s.ID and dp.Duell_ID =2'))
         ->pluck('Vorname');
         return $names;*/
-        $name =DB::select('SELECT s.Vorname, s.Nachname FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID');
+        $name =DB::select('SELECT s.Vorname, s.Nachname FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID  or d.spieler_Heim_2 = s.ID or d.spieler_Gast_1 = s.ID  or d.spieler_Gast_2 = s.ID');
         return $name;
     }
+    
     public static function getDuells($spielID)
     {
         $duelle = DB::table('duell')
@@ -73,6 +83,11 @@ class QueryController extends Controller
         ->pluck('ID');
 
         return $duelle;
+
+    }
+
+    public static function getType($spielID, $diellID)
+    {
 
     }
    
