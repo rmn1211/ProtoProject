@@ -13,7 +13,7 @@ class TypeaheadController extends Controller
         return view('check_report');
     }
  
-    public function autocompleteSearchLiga(Request $request)
+    public function autocompleteSearch(Request $request)
     {
           $query = $request->get('query');
           $filterResult = DB::table(DB::raw('liga'))
