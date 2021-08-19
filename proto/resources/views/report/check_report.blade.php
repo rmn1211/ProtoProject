@@ -8,18 +8,11 @@
     $duelle = QueryController::getDuells($match);
     $playerNamesDouble1 = QueryController::getNamesDouble($duelle[0]);
     $playerNamesSolo1 = QueryController::getNamesSolo($duelle[1]);
-
-
-
     $teams = QueryController::getTeams(1);
     $staffel = "Dummie";
     $art1 = QueryController::getArt($duelle[0]);
     $art2 = QueryController::getArt($duelle[1]);
-
-
-
     
-
 @endphp
 <div id="containerTeams" style="display:none">
 @foreach ($teams as $team)
@@ -37,6 +30,11 @@
       @csrf
 
       <div class="flex mb-4">
+
+      <div class="w-1/4 bg-green-400 h-12">
+          <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Staffel:</label>
+          <input type="text" id="tfStaffel" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value={{ $staffel }}>
+        </div>
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
           <input type="text" name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value={{ $home }}>
@@ -49,10 +47,29 @@
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Austragungsort:</label>
           <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value={{ $place }}>
         </div>
-        <div class="w-1/4 bg-green-400 h-12">
-          <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Staffel:</label>
-          <input type="text" id="tfStaffel" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value={{ $staffel }}>
-        </div>
+        
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript">
+        var route = "{{ url('autocomplete-search') }}";
+
+        $('#tfStaffel').typeahead({
+            source: function (query, process) {
+                return $.get(route, {
+                    query: query
+                }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
+
+
+
+
+
+
+
       </div>
       <table class="table-fixed">
         <tr>

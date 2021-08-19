@@ -23,11 +23,10 @@ Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::get('/overview', [PageController::class, 'overview'])->name('overview');
 Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
 Route::post('/overview/{id}',[QueryController::class, 'updateMatch']);
-    
+Route::get('/autocomplete-search', [TypeaheadController::class, 'autocompleteSearch']);
 
 #Route::post('/overview/{id}', 'QueryController@updateOrt');
 Route::get('/old', [PageController::class, 'old'])->name('old');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
