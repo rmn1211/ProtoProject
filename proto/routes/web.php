@@ -24,6 +24,7 @@ Route::get('/overview', [PageController::class, 'overview'])->name('overview');
 Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
 Route::post('/overview/{id}',[QueryController::class, 'updateMatch']);
 Route::get('/autocomplete-search', [TypeaheadController::class, 'autocompleteSearch']);
+Route::get('/check_report', [TypeaheadController::class, 'index']);
 
 #Route::post('/overview/{id}', 'QueryController@updateOrt');
 Route::get('/old', [PageController::class, 'old'])->name('old');

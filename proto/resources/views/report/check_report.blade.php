@@ -22,6 +22,14 @@
 @endforeach
 </div>
 @section('page-content')
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+    <style>
+        .container {
+            max-width: 600px;
+        }
+    </style>
+</head>
     <section >
       <h3 class ="font-bold  text-2xl">Spieleberichtsbogen</h3>
     </section>
@@ -33,7 +41,7 @@
 
       <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Staffel:</label>
-          <input type="text" id="tfStaffel" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value={{ $staffel }}>
+          <input type="text" id="tfStaffel" class="form-control" value={{ $staffel }}>
         </div>
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
