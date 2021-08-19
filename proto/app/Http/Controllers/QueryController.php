@@ -114,5 +114,19 @@ class QueryController extends Controller
         return $team->ID;
     }
 
-    
+    public function index()
+    {
+        return view('check_report');
+    }
+ 
+    public static function autocompleteSearch(Request $request)
+    {
+          $query = $request->get('query');
+          $filterResult = DB::table(DB::raw('liga'))
+          ->where(DB::raw('name', 'LIKE', '%'. $query. '%'))
+          ->get();
+          
+          
+          return response()->json($filterResult);
+    } 
 }
