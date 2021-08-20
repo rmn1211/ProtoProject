@@ -25,12 +25,12 @@
 </div>
 @section('page-content')
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
-    <style>
-        .container {
-            max-width: 600px;
-        }
-    </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+ 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <!-- Bootstrap Css -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
     <section >
       <h3 class ="font-bold  text-2xl">Spieleberichtsbogen</h3>
@@ -75,7 +75,19 @@
     </script>
 
 
-
+<div class="container">
+  <div class="row">
+     <h2>Search Here</h2>
+     <input type="text" name="search" id="search" placeholder="search here...." class="form-control">  
+  </div>
+</div>
+<script type="text/javascript">
+  $(function() {
+     $( "#search" ).autocomplete({
+       source: QueryController::search(),
+     });
+  });
+</script>
 
 
 

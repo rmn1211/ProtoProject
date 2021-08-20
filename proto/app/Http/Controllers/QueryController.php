@@ -156,4 +156,24 @@ return $duell;
           
           return response()->json($filterResult);
     } 
+
+public static function search(){
+    if (isset($_GET['term'])) {
+     
+        $query = "SELECT name FROM liga WHERE name LIKE '{$_GET['term']}%' LIMIT 25";
+         $result = mysqli_query( $query);
+      
+         if (mysqli_num_rows($result) > 0) {
+          while ($user = mysqli_fetch_array($result)) {
+           $res[] = $user['name'];
+          }
+         } else {
+           $res = array();
+         }
+         //return json res
+         echo json_encode($res);
+     }
+}
+
+    
 }
