@@ -149,9 +149,7 @@ return $duell;
     public static function autocompleteSearch(Request $request)
     {
           $query = $request->get('query');
-          $filterResult = DB::table(DB::raw('liga'))
-          ->where(DB::raw('name', 'LIKE', '%'. $query. '%'))
-          ->get();
+          $filterResult = DB::select('SELECT Name from liga where Name LIKE "%est%"');
           
           
           return response()->json($filterResult);
