@@ -86,11 +86,43 @@ class QueryController extends Controller
 
     }
 
+    public static function getSolo($id) #Gruesse an Jabba the Hutt
+    {
+        $duell = DB::select('SELECT 
+        a.name AS art,																										#Art
+        s1.Vorname AS heimVorname, s1.Nachname AS heimNachname,																					#Heimspieler
+        s2.Vorname AS gastVorname, s2.Nachname AS gastNachname,																					#Gastspieler
+        sa1.Punkte_Heim AS satz1Heim, sa1.Punkte_Gast AS satz1Gast, sa2.Punkte_Heim AS satz2Heim, sa2.Punkte_Gast AS satz2Gast, sa3.Punkte_Heim AS satz3Heim, sa3.Punkte_Gast AS satz3Gast,		#Satzergebnisse
+        sa1.Punkte_Heim + sa2.Punkte_Heim + sa3.Punkte_Heim AS "Heim Gesamt",										#Summe der Satzergebnisse Heim
+        sa1.Punkte_Gast + sa2.Punkte_Gast + sa3.Punkte_Gast AS "Gast Gesamt",										#Summe der Satzergebnisse Gast
+        d.heim_saetze AS "GewonneneSaetzeHeim", d.gast_saetze AS "GewonneneSaetzeGast",							#Angabe der jeweils gewonnenen Sätze
+        d.heim_spiele AS "GewonneneSpieleHeim", d.gast_spiele AS "GewonneneSpieleGast"						#Angabe der jeweils gewonnenen Spiele
+    FROM 
+        art a, spieler s1, spieler s2, duell d, einzel e, satz sa1, satz sa2, satz sa3 
+    WHERE 
+        d.id = 1 and a.id = d.art and e.spieler_heim = s1.id and e.spieler_gast = s2.id and sa1.Duell_ID = 1 and sa1.Satz_Nr=1 and sa2.Duell_ID = 1 and sa2.Satz_Nr=2 and sa3.Duell_ID = 1 and sa3.Satz_Nr=3;
+    ');
+return $duell;
+    }
+
+    public static function getDouble($id)
+    {
+    
+    }
+
     public static function getType($spielID, $diellID)
     {
 
     }
-   
+
+    public function getTeamID($name)
+    {
+        $team = DB::table('mannschaft')
+        ->where('name',$name)
+        ->first();
+        return $team->ID;
+    }
+ #-----------------------------------------------Update-functions--------------------------------  
     public function updateMatch($id,Request $request)
     {
         $place = $request->tfPlace;
@@ -106,13 +138,8 @@ class QueryController extends Controller
                     'Gast'=>$guestID]);
     }
 
-    public function getTeamID($name)
-    {
-        $team = DB::table('mannschaft')
-        ->where('name',$name)
-        ->first();
-        return $team->ID;
-    }
+#----------------------------------Suggestions-------------------------------------------------------------
+
 
     public function index()
     {

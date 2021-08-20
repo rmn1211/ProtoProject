@@ -12,6 +12,8 @@
     $staffel = "Dummie";
     $art1 = QueryController::getArt($duelle[0]);
     $art2 = QueryController::getArt($duelle[1]);
+#-----------------Neue herangehensweise-----------------------------
+    $soloduell = QueryController::getSolo(1);
     
 @endphp
 <div id="containerTeams" style="display:none">
@@ -90,9 +92,12 @@
           <th>Nachname</th>
           <th>Vorname</th>
           <th>Nachname</th>
-          <th class ="w-1/24">1. Satz</th>
-          <th class ="w-1/24">2. Satz</th>
-          <th class ="w-1/24">3. Satz</th>
+          <th class ="w-4">1. Satz</th>
+          <th class ="w-4">1. Satz</th>
+          <th class ="w-4">2. Satz</th>
+          <th class ="w-4">2. Satz</th>
+          <th class ="w-4">3. Satz</th>
+          <th class ="w-4">3. Satz</th>
           <th class ="w-4">Heim</th>
           <th class ="w-4">Gast</th>
           <th class ="w-4">Heim</th>
@@ -101,38 +106,44 @@
           <th class ="w-4">Gast</th>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type1">{{ $art1 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname11">{{ $playerNamesDouble1[0]->Vorname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname11">{{ $playerNamesDouble1[0]->Nachname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname12">{{ $playerNamesDouble1[1]->Vorname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-double border-r-2 border-black" id="nname12">{{ $playerNamesDouble1[1]->Nachname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname13">{{ $playerNamesDouble1[2]->Vorname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname13">{{ $playerNamesDouble1[2]->Nachname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname14">{{ $playerNamesDouble1[3]->Vorname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname14">{{ $playerNamesDouble1[3]->Nachname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz11">{{ $playerNamesDouble1[3]->Nachname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz12"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz13"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint11"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint12"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint11"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="setpoint12"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type1">{{ $soloduell[0]->art  }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname11">{{ $soloduell[0]->heimVorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname11">{{ $soloduell[0]->heimNachname}}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname12"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-double border-r-2 border-black" id="nname12"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname13">{{ $soloduell[0]->gastVorname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname13">{{ $soloduell[0]->gastNachname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname14"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname14"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim1">{{ $soloduell[0]->satz1Heim }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast1">{{ $soloduell[0]->satz1Gast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim1">{{ $soloduell[0]->satz2Heim }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast1">{{ $soloduell[0]->satz2Gast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim1">{{ $soloduell[0]->satz3Heim }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast1">{{ $soloduell[0]->satz3Gast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint11">{{ $soloduell[0]->GewonneneSaetzeHeim }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint12">{{ $soloduell[0]->GewonneneSaetzeGast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint11">{{ $soloduell[0]->GewonneneSpieleHeim }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="setpoint12">{{ $soloduell[0]->GewonneneSpieleGast }}</td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="point11"></td>
           <td contenteditable="true" class="bg-gray-100 text-black " id="point12"></td>
         </tr>
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type2">{{ $art2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname21">{{ $playerNamesSolo1[0]->Vorname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname21">{{ $playerNamesSolo1[0]->Nachname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="type2"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname21"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname21"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname22"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-double border-r-2 border-black" id="nname22"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname23">{{ $playerNamesSolo1[1]->Vorname }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname23">{{ $playerNamesSolo1[1]->Nachname }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname23"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname23"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname24"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname24"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz21"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz22"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz23"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim2"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast2"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim2"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast2"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim2"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast2"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint21"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint22"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint21"></td>
@@ -150,9 +161,12 @@
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname33"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname34"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname34"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz31"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz32"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz133"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim3"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast3"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim3"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast3"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim3"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast3"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint31"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint32"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint31"></td>
@@ -170,9 +184,12 @@
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname43"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname44"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname44"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz41"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz42"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz43"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim4"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast4"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim4"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast4"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim4"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast4"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint41"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint42"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint41"></td>
@@ -190,9 +207,12 @@
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname53"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname54"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname54"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz51"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz52"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz53"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim5"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast5"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim5"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast5"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim5"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast5"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint51"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint52"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint51"></td>
@@ -210,9 +230,12 @@
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname63"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname64"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname64"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz61"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz62"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz63"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim6"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast6"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim6"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast6"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim6"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast6"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint61"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint62"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint61"></td>
@@ -230,9 +253,12 @@
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname73"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname74"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname74"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz71"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz72"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz73"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim7"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast7"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim7"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast7"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim7"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast7"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint71"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint72"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint71"></td>
@@ -250,9 +276,12 @@
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname83"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="vname84"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="nname84"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz81"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz82"></td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz83"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz1heim8"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz1gast8"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz2heim8"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz2gast8"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="satz3heim8"></td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="satz3gast8"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="sumpoint81"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" id="sumpoint82"></td>
           <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" id="setpoint81"></td>
