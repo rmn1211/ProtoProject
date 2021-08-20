@@ -25,12 +25,7 @@
 </div>
 @section('page-content')
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
- 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <!-- Bootstrap Css -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
 </head>
     <section >
       <h3 class ="font-bold  text-2xl">Spieleberichtsbogen</h3>
@@ -41,9 +36,9 @@
 
       <div class="flex mb-4">
 
-      <div class="w-1/4 bg-green-400 h-12">
+      <div class="form-group">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Staffel:</label>
-          <input type="text" id="tfStaffel" name="tfStaffel" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value={{ $staffel }}>
+          <input type="text" id="tfStaffel" name="tfStaffel" class="form-control"value={{ $staffel }}>
         </div>
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
@@ -75,19 +70,6 @@
     </script>
 
 
-<div class="container">
-  <div class="row">
-     <h2>Search Here</h2>
-     <input type="text" name="search" id="search" placeholder="search here...." class="form-control typeahead">  
-  </div>
-</div>
-<script type="text/javascript">
-  $(function() {
-     $( "#search" ).autocomplete({
-       source: QueryController::search(),
-     });
-  });
-</script>
 
 
 
