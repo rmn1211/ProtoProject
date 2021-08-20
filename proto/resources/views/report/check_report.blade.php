@@ -78,7 +78,7 @@
 <div class="container">
   <div class="row">
      <h2>Search Here</h2>
-     <input type="text" name="search" id="search" placeholder="search here...." class="form-control">  
+     <input type="text" name="search" id="search" placeholder="search here...." class="form-control typeahead">  
   </div>
 </div>
 <script type="text/javascript">

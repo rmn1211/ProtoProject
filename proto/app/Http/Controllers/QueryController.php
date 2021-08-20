@@ -160,7 +160,7 @@ return $duell;
 public static function search(){
     if (isset($_GET['term'])) {
      
-        $query = "SELECT name FROM liga WHERE name LIKE '{$_GET['term']}%' LIMIT 25";
+        $query = DB::select('SELECT name FROM liga WHERE name LIKE '{$_GET['term']}%' LIMIT 25');
          $result = mysqli_query( $query);
       
          if (mysqli_num_rows($result) > 0) {
