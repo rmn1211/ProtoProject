@@ -47,8 +47,8 @@ class QueryController extends Controller
 
     public static function getTeams($liga)
     {
-        $teams = DB::table(DB::raw('mannschaft'))
-        ->where(DB::raw('liga'), [$liga]);
+        $teams = DB::select("SELECT * from mannschaft Where liga = '{$liga}' ");
+        
         return $teams;
     }
 
@@ -149,29 +149,27 @@ return $duell;
     public static function autocompleteSearch(Request $request)
     {
           $query = $request->get('query');
-          $filterResult = DB::select('SELECT Name from liga where Name LIKE "%est%"');
+          $filterResult = DB::select('SELECT Name from liga where Name LIKE "$query"');
           
           
           return response()->json($filterResult);
     } 
 
-public static function search(){
-    if (isset($_GET['term'])) {
-     
-        $query = DB::select('SELECT name FROM liga WHERE name LIKE '{$_GET['term']}%' LIMIT 25');
-         $result = mysqli_query( $query);
-      
-         if (mysqli_num_rows($result) > 0) {
-          while ($user = mysqli_fetch_array($result)) {
-           $res[] = $user['name'];
-          }
-         } else {
-           $res = array();
-         }
-         //return json res
-         echo json_encode($res);
-     }
-}
+    public static function alleLigen()
+    {
+        $ligen =DB::select('SELECT * from liga');
+        return $ligen;
+    }
+    public static function LigaID($name) // first
+    {
+        //$liga =DB::selec*t("SELECT * from liga where name Like '%$teilname%' ");
+        //return $liga;
 
+        $liga = DB::table('liga')
+        ->where('name',$name)
+        ->first();
+        return $liga;
+
+    }
     
 }

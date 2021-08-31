@@ -12,6 +12,9 @@
     $staffel = "Dummie";
     $art1 = QueryController::getArt($duelle[0]);
     $art2 = QueryController::getArt($duelle[1]);
+    $ligen = QueryController::alleLigen();
+    
+    
 #-----------------Neue herangehensweise-----------------------------
     $soloduell = QueryController::getSolo(1);
     
@@ -35,22 +38,72 @@
       @csrf
 
       <div class="flex mb-4">
+      
 
-      <div class="form-group">
+        <div class="form-group">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Staffel:</label>
-          <input type="text" id="tfStaffel" name="tfStaffel" class="form-control"value={{ $staffel }}>
+          <input type ="text" list = "Ligen" id="liga" name="liga" class="form-control"value="">
         </div>
+      
+
+<?php foreach($ligen as $liga){
+        echo $liga -> Name;
+        echo "\r\n"; }?>
+      <datalist id="Ligen">
+       
+        @foreach ($ligen as $liga)
+          $val = $liga ->Name 
+         <option value="{{$liga ->Name }}">{{$liga ->Name }}</option>
+         
+          @endforeach
+    
+      </datalist>
+     
+
+
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-          <input type="text" name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value={{ $home }}>
-        </div>
+          <input onmouseenter="checkLiga()"onchange="checkLiga()" onkeypress="checkLiga()" onpaste="checkLiga()" oninput="checkLiga()" type="text"  list ="Mannschaften" name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+        </div> <datalist id="Mannschaften"></datalist>
+
+        <script>
+          
+        function checkLiga() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+         // var element = document.getElementById('liga');
+          if(element.value.length>0){
+          //  @php $liga = QueryController::LigaID(element.value);
+          //  $mannschaften = QueryController::getTeams($liga ->ID); @endphp
+     
+var options = '';
+
+
+options += '<option value="test" />';
+options += '<option value="versuch" />';
+
+
+    
+  document.getElementById('Mannschaften').innerHTML = options;
+}
+
+
+
+}
+</script>
+
+
+
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-          <input type="text" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value={{ $guest }}>
+          <input type="text" list = "Mannschaften" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"
+          >
         </div>
+       
+        
+
+
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Austragungsort:</label>
-          <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value={{ $place }}>
+          <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $place }}">
         </div>
         
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -58,15 +111,18 @@
     <script type="text/javascript">
         var route = "{{ url('autocomplete-search') }}";
 
-        $('#tfStaffel').typeahead({
+        $('tfStaffel').typeahead({
             source: function (query, process) {
                 return $.get(route, {
                     query: query
                 }, function (data) {
-                    return process(data);
+                    return process(data );
+                   
                 });
             }
         });
+        
+       
     </script>
 
 
