@@ -172,4 +172,18 @@ return $duell;
 
     }
     
-}
+
+    public static function alleLigen2(Request $request){
+
+        $ligen = DB::table('liga')->select('ID','Name')->where('name', 'like', '%' .$search . '%')  ->get();
+        $search = $request->search;
+    
+          $response = array();
+          foreach($ligen as $liga){
+             $response[] = array("ID"=>$liga->ID,"Name"=>$liga->Name);
+          }
+    
+          return response()->json($response); 
+       } 
+    }
+    

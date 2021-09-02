@@ -29,6 +29,16 @@
 @section('page-content')
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+<!-- Meta -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta charset="utf-8">
+   <meta name="csrf-token" content="{{ csrf_token() }}">
+
+   
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
     <section >
       <h3 class ="font-bold  text-2xl">Spieleberichtsbogen</h3>
@@ -41,7 +51,7 @@
       
 
         <div class="form-group">
-          <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Staffel:</label>
+          <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" >Staffel:</label>
           <input type ="text" list = "Ligen" id="liga" name="liga" class="form-control"value="">
         </div>
       
@@ -59,6 +69,76 @@
     
       </datalist>
      
+      <div class="flex mb-4">
+   <input type="text" id='employee_search' onmouseenter= "test()" oninput="test()"  class="form-control"> </div>
+
+   <script type="text/javascript">
+
+// CSRF Token
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+$(document).ready(function(){
+ //alert("test222");
+  $( "#employee_search" ).autocomplete({ 
+   
+     source: function( request, response ) {
+        // Fetch data
+        $.ajax({
+          url:"{{route('alleLigen2')}}",
+          type: 'post',
+          dataType: "json",
+          data: {
+             _token: CSRF_TOKEN,
+             search: request.term
+          },
+          success: function( data ) {
+            
+            
+  
+               response(data);
+            }
+          
+        });
+     },
+     select: function (event, ui) {
+       // Set selection
+       $('employee_search').val(ui.item.Name); // display the selected text
+       
+       return false;
+     }
+  });
+
+});
+function test(){
+//alert("test");
+  $( "#employee_search" ).autocomplete({    
+
+     source: function( request, response ) {
+        // Fetch data
+        $.ajax({
+          url:"{{route('alleLigen2')}}",
+          type: 'post',
+          dataType: "json",
+          data: {
+             _token: CSRF_TOKEN,
+             search: request.term
+          },
+          success: function( data ) {
+            
+               response(data);
+            }
+          
+        });
+     },
+     select: function (event, ui) {
+       // Set selection
+       $('#employee_search').val(ui.item.Name); // display the selected text
+       
+       return false;
+     }
+  });
+
+}
+</script>
 
 
         <div class="w-1/4 bg-green-400 h-12">
@@ -69,10 +149,10 @@
         <script>
           
         function checkLiga() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-         // var element = document.getElementById('liga');
+          var element = document.getElementById('liga');
           if(element.value.length>0){
-          //  @php $liga = QueryController::LigaID(element.value);
-          //  $mannschaften = QueryController::getTeams($liga ->ID); @endphp
+          //   $liga = QueryController::LigaID();
+          //  $mannschaften = QueryController::getTeams($liga ->ID);
      
 var options = '';
 
