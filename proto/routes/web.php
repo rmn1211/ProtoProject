@@ -32,8 +32,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Queries
 #Route::get('/overview/{id}', [QueryController::class, 'getResults'])->name('report');
-
 Route::post('/alleLigen2', [QueryController::class, 'alleLigen2'])->name('alleLigen2');
 Route::get('/alleLigen2', [QueryController::class, 'alleLigen2']);
 
-//Route::get('/report/check_report', [QueryController::class, 'index']); 
+Route::post('/alleMannschaften', [QueryController::class, 'alleMannschaften'])->name('alleMannschaften');
+Route::get('/alleMannschaften', [QueryController::class, 'alleMannschaften']);

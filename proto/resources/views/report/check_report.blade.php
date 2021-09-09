@@ -1,5 +1,6 @@
 @extends('heafoo')
 @php
+   
     use App\Http\Controllers\QueryController;
     $place = QueryController::getOrt($match);
     $home = QueryController::getHome($match);
@@ -15,6 +16,7 @@
     $ligen = QueryController::alleLigen();
     
     
+    
 #-----------------Neue herangehensweise-----------------------------
     $soloduell = QueryController::getSolo(1);
     
@@ -28,16 +30,18 @@
 </div>
 @section('page-content')
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+
 <!-- Meta -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <meta charset="utf-8">
    <meta name="csrf-token" content="{{ csrf_token() }}">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ 
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-   
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
     <section >
@@ -52,65 +56,61 @@
 
         <div class="form-group">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" >Staffel:</label>
-          <input type ="text" list = "Ligen" id="liga" name="liga" class="form-control"value="">
+          <input type ="text"  oninput="test()" id="liga" name="liga" class="form-control"value="">
         </div>
       
 
-<?php foreach($ligen as $liga){
-        echo $liga -> Name;
-        echo "\r\n"; }?>
-      <datalist id="Ligen">
-       
-        @foreach ($ligen as $liga)
-          $val = $liga ->Name 
-         <option value="{{$liga ->Name }}">{{$liga ->Name }}</option>
-         
-          @endforeach
-    
-      </datalist>
+
      
-      <div class="flex mb-4">
-   <input type="text" id='employee_search' onmouseenter= "test()" oninput="test()"  class="form-control"> </div>
+     
 
    <script type="text/javascript">
 
 // CSRF Token
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 $(document).ready(function(){
- //alert("test222");
-  $( "#employee_search" ).autocomplete({ 
-   
-     source: function( request, response ) {
-        // Fetch data
-        $.ajax({
-          url:"{{route('alleLigen2')}}",
-          type: 'post',
-          dataType: "json",
-          data: {
-             _token: CSRF_TOKEN,
-             search: request.term
-          },
-          success: function( data ) {
-            
-            
-  
-               response(data);
-            }
-          
-        });
+  $( "#liga" ).autocomplete({    
+
+source: function( request, response ) {
+   // Fetch data
+   $.ajax({
+     url:"{{route('alleLigen2')}}",
+     type: 'post',
+     dataType: "json",
+     data: {
+        _token: CSRF_TOKEN,
+        search: request.term
      },
-     select: function (event, ui) {
-       // Set selection
-       $('employee_search').val(ui.item.Name); // display the selected text
-       
-       return false;
-     }
-  });
+     success: function( data ) {
+       response(data.map(function (value) {
+               return {
+                 'label': value.Name,
+                   'value': value.Name
+               };  
+           }));
+       }
+   });
+}
+,select: function (event, ui) {
+  // Set selection
+  event.preventDefault();
+  var label = ui.item.label;
+var value = ui.item.value;
+
+   $('#liga').val(ui.item.label);
+
+ // $("#employee_search").text(ui.item.label); // display the selected text
+  //$("#liga").text(ui.item.label);
+  return false;
+}
+
+});
 
 });
 function test(){
 //alert("test");
-  $( "#employee_search" ).autocomplete({    
+//$( "#employee_search" ).autocomplete( "enable" );
+  $( "#liga" ).autocomplete({    
 
      source: function( request, response ) {
         // Fetch data
@@ -123,49 +123,127 @@ function test(){
              search: request.term
           },
           success: function( data ) {
-            
-               response(data);
+            response(data.map(function (value) {
+                    return {
+                      'label': value.Name,
+                        'value': value.Name
+                    };  
+                }));
             }
-          
         });
-     },
-     select: function (event, ui) {
+     }
+     ,select: function (event, ui) {
        // Set selection
-       $('#employee_search').val(ui.item.Name); // display the selected text
-       
+       event.preventDefault();
+       var label = ui.item.label;
+    var value = ui.item.value;
+   
+        $('#liga').val(ui.item.label);
+   
+      // $("#employee_search").text(ui.item.label); // display the selected text
+       //$("#liga").text(ui.item.label);
        return false;
      }
-  });
+     
+ });
 
 }
+
 </script>
 
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-          <input onmouseenter="checkLiga()"onchange="checkLiga()" onkeypress="checkLiga()" onpaste="checkLiga()" oninput="checkLiga()" type="text"  list ="Mannschaften" name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
-        </div> <datalist id="Mannschaften"></datalist>
+          <input  oninput="MannschaftenH()" type="text"  name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+        </div> 
 
         <script>
           
-        function checkLiga() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-          var element = document.getElementById('liga');
-          if(element.value.length>0){
-          //   $liga = QueryController::LigaID();
-          //  $mannschaften = QueryController::getTeams($liga ->ID);
-     
-var options = '';
+        function MannschaftenH() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+         
+          if($("#liga").val().length >0){
+          $( "#tfHome" ).autocomplete({    
+            source: function( request, response ) {
+   // Fetch data
+   $.ajax({
+     url:"{{route('alleMannschaften')}}",
+     type: 'post',
+     dataType: "json",
+     data: {
+        _token: CSRF_TOKEN,
+        search: request.term,
+        liga : $("#liga").val()
+       
+     },
+     success: function( data ) {
+       response(data.map(function (value) {
+               return {
+                 'label': value.Name,
+                   'value': value.Name
+               };  
+           }));
+       }
+   });
+}
+,select: function (event, ui) {
+  // Set selection
+  event.preventDefault();
+  var label = ui.item.label;
+var value = ui.item.value;
 
+   $('#tfHome').val(ui.item.label);
 
-options += '<option value="test" />';
-options += '<option value="versuch" />';
-
-
-    
-  document.getElementById('Mannschaften').innerHTML = options;
+ // $("#employee_search").text(ui.item.label); // display the selected text
+  //$("#liga").text(ui.item.label);
+  return false;
 }
 
+});
+}
 
+}
+
+function MannschaftenG() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+         
+         if($("#liga").val().length >0){
+         $( "#tfAway" ).autocomplete({    
+           source: function( request, response ) {
+  // Fetch data
+  $.ajax({
+    url:"{{route('alleMannschaften')}}",
+    type: 'post',
+    dataType: "json",
+    data: {
+       _token: CSRF_TOKEN,
+       search: request.term,
+       liga : $("#liga").val()
+      
+    },
+    success: function( data ) {
+      response(data.map(function (value) {
+              return {
+                'label': value.Name,
+                  'value': value.Name
+              };  
+          }));
+      }
+  });
+}
+,select: function (event, ui) {
+ // Set selection
+ event.preventDefault();
+ var label = ui.item.label;
+var value = ui.item.value;
+
+  $('#tfAway').val(ui.item.label);
+
+// $("#employee_search").text(ui.item.label); // display the selected text
+ //$("#liga").text(ui.item.label);
+ return false;
+}
+
+});
+}
 
 }
 </script>
@@ -174,7 +252,7 @@ options += '<option value="versuch" />';
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-          <input type="text" list = "Mannschaften" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"
+          <input type="text" oninput="MannschaftenG()"  name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"
           >
         </div>
        
@@ -186,25 +264,6 @@ options += '<option value="versuch" />';
           <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $place }}">
         </div>
         
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript">
-        var route = "{{ url('autocomplete-search') }}";
-
-        $('tfStaffel').typeahead({
-            source: function (query, process) {
-                return $.get(route, {
-                    query: query
-                }, function (data) {
-                    return process(data );
-                   
-                });
-            }
-        });
-        
-       
-    </script>
-
 
 
 

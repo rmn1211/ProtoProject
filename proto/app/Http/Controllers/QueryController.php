@@ -173,17 +173,41 @@ return $duell;
     }
     
 
+   
     public static function alleLigen2(Request $request){
-
-        $ligen = DB::table('liga')->select('ID','Name')->where('name', 'like', '%' .$search . '%')  ->get();
         $search = $request->search;
-    
-          $response = array();
-          foreach($ligen as $liga){
-             $response[] = array("ID"=>$liga->ID,"Name"=>$liga->Name);
-          }
-    
-          return response()->json($response); 
-       } 
+            $ligen = DB::table('liga')->select('ID','Name')->where('name', 'like', '%' .$search . '%')  ->get();
+            
+        
+              $response = array();
+              foreach($ligen as $liga){
+                 $response[] = array("ID"=>$liga->ID,"Name"=>$liga->Name);
+              }
+        
+              return response()->json($response); 
+           } 
+        
+        
+           public static function alleMannschaften(Request $request){
+            
+           
+           $search = $request->search;
+           $liga = $request->liga;
+           $rliga = DB::table('liga')->select('ID')->where('name', '=', $liga)  ->first();
+           //DB::select("SELECT ID from liga where name = '$liga' ");
+           $test = $rliga ->ID;
+           $mannschaften = DB::table('mannschaft')->select('ID','Name')->where('liga', '=', $test  ) ->where('name', 'like', '%' .$search . '%')  ->get();
+           //DB::select("SELECT * from Mannschaften where liga == '$rliga' ");   
+           //
+           
+        
+             $response = array();
+             foreach($mannschaften as $mannschaft){
+                $response[] = array("ID"=>$mannschaft->ID,"Name"=>$mannschaft->Name);
+             }
+        
+             return response()->json($response); 
+          } 
+        
     }
     
