@@ -20,9 +20,10 @@ use App\Http\Controllers\QueryController;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/heafoo', [PageController::class, 'heafoo'])->name('heafoo');
 Route::get('/login', [PageController::class, 'login'])->name('login');
-Route::get('/overview', [PageController::class, 'overview'])->name('overview');
-Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
-Route::post('/overview/{id}',[QueryController::class, 'updateMatch']);
+Route::get('/overview', [PageController::class, 'overview'])->middleware('auth')->name('overview');
+Route::get('/overview/{id}', [PageController::class, 'report'])->middleware('auth')->name('report');
+Route::post('/overview/{id}',[QueryController::class, 'updateMatch'])->middleware('auth');
+//Route::post('/overview/{id}',[QueryController::class, 'updateSoloDuel'])->middleware('auth');
 Route::get('/autocomplete-search', [QueryController::class, 'autocompleteSearch']);
 
 #Route::post('/overview/{id}', 'QueryController@updateOrt');

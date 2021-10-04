@@ -62,25 +62,16 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-        'mysqlSP' => [
-            'driver'=> env('DB_CONNECTION_LOGIN'),
-            'host' => env('DB_HOST_LOGIN'),
-            'port' => env('DB_PORT_LOGIN'),
-            'database' => env('DB_DATABASE_LOGIN'),
-            'username' => env('DB_USERNAME_LOGIN'),
-            'password' => env('DB_PASSWORD_LOGIN'),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
+        'mysqlSP' => array(
+            'driver'    => 'mysql',
+            'host'      => '25.88.206.165',
+            'database'  => 'spielplan',
+            'username'  => 'dbulogin',
+            'password'  => 'password',
+            'charset'   => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-            
-        ],
+            'prefix'    => '',
+        ),
 
         'pgsql' => [
             'driver' => 'pgsql',
