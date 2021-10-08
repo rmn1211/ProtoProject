@@ -17,12 +17,12 @@
 </head>
 <style>
   
-  .alle{border:black;
+  .alle{
   background-color:white;
 color:black;}
 .selected {
     background-color: green;
-    color: #FFF;
+    color: white;
 }
   </style>
 <section >
@@ -43,19 +43,24 @@ color:black;}
         </tr>
 </thead><tbody >
         @foreach ($spiele as $match)
-        @php $test = "";
-if($match->status == 1)
-   $test = "offen";
+        @php $status = "";
+if($match->status == 0)
+   $status = "offen";
 
+if($match->status == 1)
+   $status = "bearbeitet";
+
+if($match->status == 2)
+   $status = "abgelehnt";
 
  @endphp
  
         <tr class ="border-solid border-b-2 border-black alle">
         <td hidden class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "id" id="id">{{ $match->ID  }}</td>
-          <td class="border-sold border-r-2 border-black" name = "spiel" id="spiel">{{ $match->Heim  }} vs {{ $match->Gast  }}</td>
-          <td class="border-sold border-r-2 border-black"  name = "termin" id="termin">{{ $match->Termin  }}</td>
-          <td class="border-sold border-r-2 border-black" name = "von" id="von">{{ $match->vorname  }} {{ $match->nachname  }}</td>
-          <td  class="border-sold border-r-2 border-black" name = "status" id="status">{{  $test  }}</td>
+          <td class="border-solid border-r-2 border-b-2 border-black" name = "spiel" id="spiel">{{ $match->Heim  }} vs {{ $match->Gast  }}</td>
+          <td class="border-solid border-r-2 border-b-2 border-black"  name = "termin" id="termin">{{ $match->Termin  }}</td>
+          <td class="border-solid border-r-2 border-b-2 border-black" name = "von" id="von">{{ $match->vorname  }} {{ $match->nachname  }}</td>
+          <td  class="border-solid border-r-2  border-b-2 border-black" name = "status" id="status">{{  $status  }}</td>
           
       </tr>
       @endforeach
@@ -88,9 +93,9 @@ function highlight_row() {
 
             var rowsNotSelected = table.getElementsByTagName('tr');
             for (var row = 0; row < rowsNotSelected.length; row++) {
-                rowsNotSelected[row].style.backgroundColor = "";
+                
                 rowsNotSelected[row].classList.remove('selected');
-                rowsNotSelected[row].classList.remove('alle');
+          
             }
             var rowSelected = table.getElementsByTagName('tr')[rowId];
             //rowSelected.style.backgroundColor = "green";
