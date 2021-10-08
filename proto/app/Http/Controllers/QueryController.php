@@ -161,9 +161,10 @@ return $duell;
     }
     private function getPlayerID($firstname, $lastname)
     {
+        echo console.log("Test");
         $player = DB::connection('mysqlSP')->table('spieler')
-        ->where('Vorname',$firstname)
-        ->where('Nachname',$lastname)
+        ->where('Vorname',"Willy")
+        ->where('Nachname',"Brandt")
         ->first();
         return $player ->ID;
     }
@@ -186,10 +187,10 @@ return $duell;
     public function updateSoloDuel($id, Request $request)
     {
         //IDs der Spieler werden benoetigt
-        $hPlayerFirst = $request->vname1;
-        $hPlayerLast = $request ->nname1;
-        $gPlayerFirst = $request ->vname2;
-        $gPlayerLast = $request ->nname2;
+        $hPlayerFirst = $request->soloVnameHeim1;
+        $hPlayerLast = $request ->soloNnameHeim1;
+        $gPlayerFirst = $request ->soloVnameGast1;
+        $gPlayerLast = $request ->soloVnameGastname2;
         $homeID = $this ->getPlayerID($hPlayerFirst, $hPlayerLast);
         $guestID = $this ->getPlayerID($gPlayerFirst, $gPlayerLast);
         //Update in EinzelTabelle
