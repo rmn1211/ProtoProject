@@ -161,7 +161,6 @@ return $duell;
     }
     private function getPlayerID($firstname, $lastname)
     {
-        echo console.log("Test");
         $player = DB::connection('mysqlSP')->table('spieler')
         ->where('Vorname',"Willy")
         ->where('Nachname',"Brandt")
@@ -199,25 +198,6 @@ return $duell;
         ->update([
             'Spieler_Heim'=>$homeID,
             'Spieler_Gast'=>$guestID]);
-    }
-
-    
-    public static function getSpiele(){
-        $spiele = DB::connection('mysqlSP')->select('SELECT  s.ID,
-        s.termin as "Termin"
-        ,m.name as "Heim",
-        m2.name as "Gast",
-        sp.id,
-        sp.vorname,
-        sp.nachname,
-        s.status
-         from spieler sp2,spiel s 
-         left join mannschaft m2 on m2.id = s.gast 
-         left join mannschaft m on m.id = s.heim 
-         left join spieler sp on sp.id = m.Kapitän_ID
-         where sp2.id = sp.id;');  
-        
-        return $spiele;
     }
 
 #----------------------------------Suggestions-------------------------------------------------------------
@@ -292,6 +272,4 @@ return $duell;
           } 
         
     }
-    
-
     
