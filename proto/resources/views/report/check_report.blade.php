@@ -2,24 +2,25 @@
 @php
    
     use App\Http\Controllers\QueryController;
-    $place = QueryController::getOrt($match);
-    $home = QueryController::getHome($match);
-    $away =QueryController::getAway($match);
-    $results = QueryController::getResults($match);
-    $duelle = QueryController::getDuells($match);
-    $playerNamesDouble1 = QueryController::getNamesDouble($duelle[0]);
-    $playerNamesSolo1 = QueryController::getNamesSolo($duelle[1]);
-    $teams = QueryController::getTeams(1);
+    $matchID = $_GET['selectedID'];
+    $place = QueryController::getOrt($matchID);
+    $homeTab = QueryController::getHome($matchID);
+    $home = $homeTab->name;
+    $homeID = $homeTab->ID;
+    $awayTab =QueryController::getAway($matchID);
+    $away = $awayTab->name;
+    $awayID = $awayTab->ID;
+    $results = QueryController::getResults($matchID);
+    $teams = QueryController::getTeams($matchID);
     $staffel = "Dummie";
-    $art1 = QueryController::getArt($duelle[0]);
-    $art2 = QueryController::getArt($duelle[1]);
     $ligen = QueryController::alleLigen();
+    $liga = QueryController::getLiga($matchID);
     
     
     
 #-----------------Neue Herangehensweise-----------------------------
-    $soloduell = QueryController::getSolo(1);
-    $doppelduell = QueryController::getDouble(1);
+    $soloduell = QueryController::getSolo($matchID);
+    $doppelduell = QueryController::getDouble($matchID);
     
 @endphp
 <div id="containerTeams" style="display:none">
@@ -55,9 +56,9 @@
       <div class="flex mb-4">
       
 
-        <div class="form-group">
+        <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" >Staffel:</label>
-          <input type ="text"  oninput="test()" id="liga" name="liga" class="form-control"value="">
+          <input type ="text"  oninput="test()" id="liga" name="liga" class="form-control"value="{{ $liga  }}">
         </div>
       
 

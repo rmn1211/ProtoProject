@@ -29,8 +29,6 @@ color:black;}
       <h3 class ="font-bold  text-2xl">Eingereichte Spielberichte</h3>
     </section>
     <section  class="mt-10 class=w-6/12">
-    <form class="flex flex-col mx-3 mb-6" method="POST" action="">  
-
       <table class="table-fixed"  id="table">
       <thead>
         <tr>
@@ -66,50 +64,50 @@ if($match->status == 2)
       @endforeach
 </tbody>
       </table>
-
-
       <br>
-      <br>
+      <br> 
       
-      <button class = "bg-green-500"type="" name="" value="Prüfen">Prüfen</button>
-     </form>
+     <!-- FORM besteht nur aus Hidden Inputfield, dass die ID enthält, da nur diese benötigt wird.
+    Vereinfacht austausch zwischen html - php - js -->
+    <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}">
+      <input type="" name="selectedID" id="selectedID" value="">
+      <input class = "bg-green-500"type="submit" value="Prüfen">
+    </form>
+    <script type="text/javascript">
+        highlight_row();
 
-     
-    </section>
-   <script  >
+        function highlight_row() {
+            var table = document.getElementById('table');
+            var cells = table.getElementsByTagName('td');
 
-highlight_row();
-function highlight_row() {
-    var table = document.getElementById('table');
-    var cells = table.getElementsByTagName('td');
+            for (var i = 0; i < cells.length; i++) {
+                // Take each cell
+                var cell = cells[i];
+                // do something on onclick event for cell
+                cell.onclick = function() {
+                    // Get the row id where the cell exists
+                    var rowId = this.parentNode.rowIndex;
 
-    for (var i = 0; i < cells.length; i++) {
-        // Take each cell
-        var cell = cells[i];
-        // do something on onclick event for cell
-        cell.onclick = function () {
-            // Get the row id where the cell exists
-            var rowId = this.parentNode.rowIndex;
+                    var rowsNotSelected = table.getElementsByTagName('tr');
+                    for (var row = 0; row < rowsNotSelected.length; row++) {
 
-            var rowsNotSelected = table.getElementsByTagName('tr');
-            for (var row = 0; row < rowsNotSelected.length; row++) {
-                
-                rowsNotSelected[row].classList.remove('selected');
-          
+                        rowsNotSelected[row].classList.remove('selected');
+
+                    }
+                    var rowSelected = table.getElementsByTagName('tr')[rowId];
+                    //rowSelected.style.backgroundColor = "green";
+                    rowSelected.className += " selected";
+
+                    //msg = 'The ID  is: ' + rowSelected.cells[0].innerHTML;
+                    var spielid = rowSelected.cells[0].innerHTML; // kann außerhalb der funktion verwendet werden, zb für prüfen
+                    document.idForm.selectedID.value = spielid;
+                    
+                    //alert(spielid);
+                    //msg += '\nThe cell value is: ' + this.innerHTML;
+                    // alert(msg);
+                }
             }
-            var rowSelected = table.getElementsByTagName('tr')[rowId];
-            //rowSelected.style.backgroundColor = "green";
-            rowSelected.className += " selected";
 
-            //msg = 'The ID  is: ' + rowSelected.cells[0].innerHTML;
-            var spielid = rowSelected.cells[0].innerHTML;   // kann außerhalb der funktion verwendet werden, zb für prüfen
-            alert(spielid);
-            //msg += '\nThe cell value is: ' + this.innerHTML;
-           // alert(msg);
         }
-    }
-
-}
-
-     </script>
+    </script>
 @endsection
