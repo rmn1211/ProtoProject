@@ -21,8 +21,17 @@
 #-----------------Neue Herangehensweise-----------------------------
     $soloduell = QueryController::getSolo($matchID);
     $doppelduell = QueryController::getDouble($matchID);
-    
+
+#-----------------Test fuer Vorschlaege------------------------------
+    $arten = QueryController::allTypes();  
 @endphp
+<!-- HTML Listen fuellen -->
+<datalist id="arten">
+  @foreach ($arten as $art)
+    <option value="{{ $art->Name }}">
+  @endforeach
+</datalist>
+<!-- HTML Listen fuellen ENDE-->
 <div id="containerTeams" style="display:none">
 @foreach ($teams as $team)
   $cookie_name = $team -> ID;
@@ -58,7 +67,7 @@
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" >Staffel:</label>
-          <input type ="text"  oninput="test()" id="liga" name="liga" class="form-control"value="{{ $liga  }}">
+          <input type ="text"  oninput="test()" id="liga" name="liga" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga  }}">
         </div>
       
 
@@ -156,7 +165,7 @@ function test(){
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-          <input  oninput="MannschaftenH()" type="text"  name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value ="{{ $home  }}">
+          <input  oninput="MannschaftenH()" type="text"  name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value ="{{ $home  }}">
         </div> 
 
         <script>
@@ -262,7 +271,7 @@ var value = ui.item.value;
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Austragungsort:</label>
-          <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $place }}">
+          <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $place }}">
         </div>
         
 
@@ -273,17 +282,26 @@ var value = ui.item.value;
       </div>
       <table class="table-fixed">
         <tr>
-          <th>Type</th>
+          <th></th>
+          <th colspan="3">Spieler: Heim</th>
+          <th colspan="3">Spieler: Gast</th>
+          <th class ="w-4" colspan="6">Sätze</th>
+          <th class ="w-4" colspan="2">Punkte</th>
+          <th class ="w-4" colspan="2">Spiele</th>
+          <th class ="w-4" colspan="2">SooS</th>
+          
+        </tr>
+        <tr>
+          <th >Art</th>
+          <th>ID(Test)</th>
           <th>Vorname</th>
           <th>Nachname</th>
+          <th>ID(Test)</th>
           <th>Vorname</th>
           <th>Nachname</th>
-           <th class ="w-4">1. Satz</th>
-          <th class ="w-4">1. Satz</th>
-          <th class ="w-4">2. Satz</th>
-          <th class ="w-4">2. Satz</th>
-          <th class ="w-4">3. Satz</th>
-          <th class ="w-4">3. Satz</th>
+          <th class ="w-4" colspan="2">1. Satz</th>
+          <th class ="w-4" colspan="2">2. Satz</th>
+          <th class ="w-4" colspan="2">3. Satz</th>
           <th class ="w-4">Heim</th>
           <th class ="w-4">Gast</th>
           <th class ="w-4">Heim</th>
@@ -292,85 +310,244 @@ var value = ui.item.value;
           <th class ="w-4">Gast</th>
         </tr>
         @if (count($soloduell)>=1)
-          
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloType1" id="soloType1">{{ $soloduell[0]->Duellart  }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameHeim1" id="soloVnameHeim1">{{ $soloduell[0]->Vorname_S1 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameHeim1" id="soloNnameHeim1">{{ $soloduell[0]->Nachname_S1}}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameGast1" id="soloVnameGast1">{{ $soloduell[0]->Vorname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameGast1" id="soloNnameGast1">{{ $soloduell[0]->Nachname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz1heim1" id="soloSatz1heim1">{{ $soloduell[0]->Satz_1_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz1gast1" id="soloSatz1gast1">{{ $soloduell[0]->Satz_1_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz2heim1" id="soloSatz2heim1">{{ $soloduell[0]->Satz_2_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz2gast1" id="soloSatz2gast1">{{ $soloduell[0]->Satz_2_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz3heim1" id="soloSatz3heim1">{{ $soloduell[0]->Satz_3_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz3gast1" id="soloSatz3gast1">{{ $soloduell[0]->Satz_3_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSumpointHeim1" id="soloSumpointGast1">{{ $soloduell[0]->Heim_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSumpointGast1" id="soloSumpointGast1">{{ $soloduell[0]->Gast_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSetpointHeim1" id="soloSetpoint1">{{ $soloduell[0]->Gewonnene_Sätze_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSetpointGast1" id="soloSetpointGast1">{{ $soloduell[0]->Gewonnene_Sätze_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloPointHeim1" id="soploPointGast1">{{ $soloduell[0]->Gewonnene_Spiele_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black " name ="soloPointGast1" id="soloPointGast1">{{ $soloduell[0]->Gewonnene_Spiele_Gast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type="text" list="arten" size="4" class="bg-gray-100 text-black" name = "soloType1" id="soloType1" value="{{ $soloduell[0]->Duellart  }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <select size="2" class="bg-gray-100 text-black" name = "soloIDHeim1" id="soloIDHeim1" value="{{ $soloduell[0]->ID_S1 }}"><option value="sss">asdsd</option><option value="sgss">SUZLON</option></select>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloduell[0]->Vorname_S1 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name ="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloduell[0]->Nachname_S1}}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="2" class="bg-gray-100 text-black" name = "soloIDGast1" id="soloIDGast1" value="{{ $soloduell[0]->ID_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameGast1" id="soloVnameGast1" value="{{ $soloduell[0]->Vorname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloNnameGast1" id="soloNnameGast1" value="{{ $soloduell[0]->Nachname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloduell[0]->Satz_1_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1gast1" id="soloSatz1gast1" value="{{ $soloduell[0]->Satz_1_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2heim1" id="soloSatz2heim1" value="{{ $soloduell[0]->Satz_2_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2gast1" id="soloSatz2gast1" value="{{ $soloduell[0]->Satz_2_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3heim1" id="soloSatz3heim1" value="{{ $soloduell[0]->Satz_3_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3gast1" id="soloSatz3gast1" value="{{ $soloduell[0]->Satz_3_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointHeim1" id="soloSumpointGast1" value="{{ $soloduell[0]->Heim_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointGast1" id="soloSumpointGast1" value="{{ $soloduell[0]->Gast_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointHeim1" id="soloSetpoint1" value ="{{ $soloduell[0]->Gewonnene_Sätze_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointGast1" id="soloSetpointGast1" value="{{ $soloduell[0]->Gewonnene_Sätze_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointHeim1" id="soloPointGast1" value="{{ $soloduell[0]->Gewonnene_Spiele_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black ">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointGast1" id="soloPointGast1" value="{{ $soloduell[0]->Gewonnene_Spiele_Gast }}"/>
+          </td>
         </tr>
         @if (count($soloduell)>=2)
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloType2" id="soloType2">{{ $soloduell[1]->Duellart  }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameHeim2" id="soloVnameHeim2">{{ $soloduell[1]->Vorname_S1 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameHeim2" id="soloNnameHeim2">{{ $soloduell[1]->Nachname_S1}}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameGast2" id="soloVnameGast2">{{ $soloduell[1]->Vorname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameGast2" id="soloNnameGast2">{{ $soloduell[1]->Nachname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz1heim2" id="soloSatz1heim2">{{ $soloduell[1]->Satz_1_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz1gast2" id="soloSatz1gast2">{{ $soloduell[1]->Satz_1_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz2heim2" id="soloSatz2heim2">{{ $soloduell[1]->Satz_2_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz2gast2" id="soloSatz2gast2">{{ $soloduell[1]->Satz_2_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz3heim2" id="soloSatz3heim2">{{ $soloduell[1]->Satz_3_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz3gast2" id="soloSatz3gast2">{{ $soloduell[1]->Satz_3_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSumpointHeim2" id="soloSumpointGast2">{{ $soloduell[1]->Heim_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSumpointGast2" id="soloSumpointGast2">{{ $soloduell[1]->Gast_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSetpointHeim2" id="soloSetpoint2">{{ $soloduell[1]->Gewonnene_Sätze_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSetpointGast2" id="soloSetpointGast2">{{ $soloduell[1]->Gewonnene_Sätze_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloPointHeim2" id="soploPointGast2">{{ $soloduell[1]->Gewonnene_Spiele_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black " name ="soloPointGast1" id="soloPointGast1">{{ $soloduell[1]->Gewonnene_Spiele_Gast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name = "soloType2" id="soloType2" value="{{ $soloduell[1]->Duellart  }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="2" class="bg-gray-100 text-black" name = "soloIDHeim2" id="soloIDHeim2" value="{{ $soloduell[1]->ID_S1 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloduell[1]->Vorname_S1 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name ="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloduell[1]->Nachname_S1}}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="2" class="bg-gray-100 text-black" name = "soloIDGast2" id="soloIDGast2" value="{{ $soloduell[1]->ID_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameGast2" id="soloVnameGast2" value="{{ $soloduell[1]->Vorname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloNnameGast2" id="soloNnameGast2" value="{{ $soloduell[1]->Nachname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloduell[1]->Satz_1_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloduell[1]->Satz_1_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloduell[1]->Satz_2_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloduell[1]->Satz_2_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloduell[1]->Satz_3_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloduell[1]->Satz_3_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointHeim2" id="soloSumpointGast2" value="{{ $soloduell[1]->Heim_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointGast2" id="soloSumpointGast2" value="{{ $soloduell[1]->Gast_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointHeim2" id="soloSetpoint2" value ="{{ $soloduell[1]->Gewonnene_Sätze_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointGast2" id="soloSetpointGast2" value="{{ $soloduell[1]->Gewonnene_Sätze_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointHeim2" id="soloPointGast2" value="{{ $soloduell[1]->Gewonnene_Spiele_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black ">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointGast2" id="soloPointGast2" value="{{ $soloduell[1]->Gewonnene_Spiele_Gast }}"/>
+          </td>
         </tr>
         @if (count($soloduell)>=3)
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloType3" id="soloType3">{{ $soloduell[2]->Duellart  }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameHeim3" id="soloVnameHeim3">{{ $soloduell[2]->Vorname_S1 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameHeim3" id="soloNnameHeim3">{{ $soloduell[2]->Nachname_S1}}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameGast3" id="soloVnameGast3">{{ $soloduell[2]->Vorname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameGast3" id="soloNnameGast3">{{ $soloduell[2]->Nachname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz1heim3" id="soloSatz1heim3">{{ $soloduell[2]->Satz_1_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz1gast3" id="soloSatz1gast3">{{ $soloduell[2]->Satz_1_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz2heim3" id="soloSatz2heim3">{{ $soloduell[2]->Satz_2_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz2gast3" id="soloSatz2gast3">{{ $soloduell[2]->Satz_2_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz3heim3" id="soloSatz3heim3">{{ $soloduell[2]->Satz_3_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz3gast3" id="soloSatz3gast3">{{ $soloduell[2]->Satz_3_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSumpointHeim3" id="soloSumpointGast3">{{ $soloduell[2]->Heim_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSumpointGast3" id="soloSumpointGast3">{{ $soloduell[2]->Gast_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSetpointHeim3" id="soloSetpoint3">{{ $soloduell[2]->Gewonnene_Sätze_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSetpointGast3" id="soloSetpointGast3">{{ $soloduell[2]->Gewonnene_Sätze_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloPointHeim3" id="soploPointGast3">{{ $soloduell[2]->Gewonnene_Spiele_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black " name ="soloPointGast1" id="soloPointGast1">{{ $soloduell[2]->Gewonnene_Spiele_Gast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name = "soloType3" id="soloType3" value="{{ $soloduell[2]->Duellart  }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="2" class="bg-gray-100 text-black" name = "soloIDHeim3" id="soloIDHeim3" value="{{ $soloduell[2]->ID_S1 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameHeim3" id="soloVnameHeim3" value="{{ $soloduell[2]->Vorname_S1 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name ="soloNnameHeim3" id="soloNnameHeim3" value="{{ $soloduell[2]->Nachname_S1}}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="2" class="bg-gray-100 text-black" name = "soloIDGast3" id="soloIDGast3" value="{{ $soloduell[2]->ID_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameGast3" id="soloVnameGast3" value="{{ $soloduell[2]->Vorname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloNnameGast3" id="soloNnameGast3" value="{{ $soloduell[2]->Nachname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1heim3" id="soloSatz1heim3" value="{{ $soloduell[2]->Satz_1_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1gast3" id="soloSatz1gast3" value="{{ $soloduell[2]->Satz_1_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2heim3" id="soloSatz2heim3" value="{{ $soloduell[2]->Satz_2_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2gast3" id="soloSatz2gast3" value="{{ $soloduell[2]->Satz_2_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3heim3" id="soloSatz3heim3" value="{{ $soloduell[2]->Satz_3_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3gast3" id="soloSatz3gast3" value="{{ $soloduell[2]->Satz_3_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointHeim3" id="soloSumpointGast3" value="{{ $soloduell[2]->Heim_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointGast3" id="soloSumpointGast3" value="{{ $soloduell[2]->Gast_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointHeim3" id="soloSetpoint3" value ="{{ $soloduell[2]->Gewonnene_Sätze_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointGast3" id="soloSetpointGast3" value="{{ $soloduell[2]->Gewonnene_Sätze_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointHeim3" id="soloPointGast3" value="{{ $soloduell[2]->Gewonnene_Spiele_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black ">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointGast3" id="soloPointGast3" value="{{ $soloduell[2]->Gewonnene_Spiele_Gast }}"/>
+          </td>
         </tr>
         @if (count($soloduell)>=4)
         <tr class ="border-solid border-b-2 border-black">
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloType2" id="soloType2">{{ $soloduell[3]->Duellart  }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameHeim2" id="soloVnameHeim2">{{ $soloduell[3]->Vorname_S1 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameHeim2" id="soloNnameHeim2">{{ $soloduell[3]->Nachname_S1}}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name = "soloVnameGast2" id="soloVnameGast2">{{ $soloduell[3]->Vorname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "soloNnameGast2" id="soloNnameGast2">{{ $soloduell[3]->Nachname_S2 }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz1heim2" id="soloSatz1heim2">{{ $soloduell[3]->Satz_1_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz1gast2" id="soloSatz1gast2">{{ $soloduell[3]->Satz_1_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz2heim2" id="soloSatz2heim2">{{ $soloduell[3]->Satz_2_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz2gast2" id="soloSatz2gast2">{{ $soloduell[3]->Satz_2_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSatz3heim2" id="soloSatz3heim2">{{ $soloduell[3]->Satz_3_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSatz3gast2" id="soloSatz3gast2">{{ $soloduell[3]->Satz_3_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSumpointHeim2" id="soloSumpointGast2">{{ $soloduell[3]->Heim_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSumpointGast2" id="soloSumpointGast2">{{ $soloduell[3]->Gast_Gesamt }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloSetpointHeim2" id="soloSetpoint2">{{ $soloduell[3]->Gewonnene_Sätze_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black" name ="soloSetpointGast2" id="soloSetpointGast2">{{ $soloduell[3]->Gewonnene_Sätze_Gast }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black" name ="soloPointHeim2" id="soploPointGast2">{{ $soloduell[3]->Gewonnene_Spiele_Heim }}</td>
-          <td contenteditable="true" class="bg-gray-100 text-black " name ="soloPointGast1" id="soloPointGast1">{{ $soloduell[3]->Gewonnene_Spiele_Gast }}</td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name = "soloType4" id="soloType4" value="{{ $soloduell[3]->Duellart  }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="2" class="bg-gray-100 text-black" name = "soloIDHeim4" id="soloIDHeim4" value="{{ $soloduell[3]->ID_S1 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameHeim4" id="soloVnameHeim4" value="{{ $soloduell[3]->Vorname_S1 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name ="soloNnameHeim4" id="soloNnameHeim4" value="{{ $soloduell[3]->Nachname_S1}}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="2" class="bg-gray-100 text-black" name = "soloIDGast4" id="soloIDGast4" value="{{ $soloduell[3]->ID_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloVnameGast4" id="soloVnameGast4" value="{{ $soloduell[3]->Vorname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="20" class="bg-gray-100 text-black" name = "soloNnameGast4" id="soloNnameGast4" value="{{ $soloduell[3]->Nachname_S2 }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1heim4" id="soloSatz1heim4" value="{{ $soloduell[3]->Satz_1_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz1gast4" id="soloSatz1gast4" value="{{ $soloduell[3]->Satz_1_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2heim4" id="soloSatz2heim4" value="{{ $soloduell[3]->Satz_2_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz2gast4" id="soloSatz2gast4" value="{{ $soloduell[3]->Satz_2_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3heim4" id="soloSatz3heim4" value="{{ $soloduell[3]->Satz_3_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSatz3gast4" id="soloSatz3gast4" value="{{ $soloduell[3]->Satz_3_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointHeim4" id="soloSumpointGast4" value="{{ $soloduell[3]->Heim_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSumpointGast4" id="soloSumpointGast4" value="{{ $soloduell[3]->Gast_Gesamt }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointHeim4" id="soloSetpoint4" value ="{{ $soloduell[3]->Gewonnene_Sätze_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-solid border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloSetpointGast4" id="soloSetpointGast4" value="{{ $soloduell[3]->Gewonnene_Sätze_Gast }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black border-dashed border-r-2 border-black">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointHeim4" id="soloPointGast4" value="{{ $soloduell[3]->Gewonnene_Spiele_Heim }}"/>
+          </td>
+          <td contenteditable="true" class="bg-gray-100 text-black ">
+            <input type = "text" size="4" class="bg-gray-100 text-black" name ="soloPointGast4" id="soloPointGast4" value="{{ $soloduell[3]->Gewonnene_Spiele_Gast }}"/>
+          </td>
         </tr>
         @endif
         @endif

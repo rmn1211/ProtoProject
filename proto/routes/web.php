@@ -23,7 +23,7 @@ Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::get('/overview', [PageController::class, 'overview'])->name('overview');
 Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
 Route::post('/overview/{id}',[QueryController::class, 'updateMatch']);
-Route::post('/overview/{id}',[QueryController::class, 'updateSoloDuel']);
+
 //Neue OverviewRouten: Erstmal nur Test
 Route::get('/overview/edit', [PageController::class, 'report'])->name('report');
 Route::post('/overview/edit',[QueryController::class, 'updateMatch']);

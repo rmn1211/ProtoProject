@@ -70,7 +70,7 @@ if($match->status == 2)
      <!-- FORM besteht nur aus Hidden Inputfield, dass die ID enthält, da nur diese benötigt wird.
     Vereinfacht austausch zwischen html - php - js -->
     <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}">
-      <input type="" name="selectedID" id="selectedID" value="">
+      <input type="hidden" name="selectedID" id="selectedID" value="">
       <input class = "bg-green-500"type="submit" value="Prüfen">
     </form>
     <script type="text/javascript">

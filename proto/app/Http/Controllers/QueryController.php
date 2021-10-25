@@ -203,27 +203,30 @@ class QueryController extends Controller
             ->update(['Ort' => $place,
                 'Heim' => $homeID,
                 'Gast' => $guestID]);
+        $this->updateSoloDuel($id, $request);
     }
 
     public function updateSoloDuel($id, Request $request)
     {
         //IDs der Spieler werden benoetigt
-        $hPlayerFirst = $request->soloVnameHeim1;
-        $hPlayerLast = $request->soloNnameHeim1;
-        $gPlayerFirst = $request->soloVnameGast1;
-        $gPlayerLast = $request->soloVnameGastname2;
-        $homeID = $this->getPlayerID($hPlayerFirst, $hPlayerLast);
-        $guestID = $this->getPlayerID($gPlayerFirst, $gPlayerLast);
+        $homePID = $request->soloIDHeim1;
+        $guestPID = $request->soloIDGast1;
         //Update in EinzelTabelle
-        $set = DB::connection('mysqlSP')->table(('einzel'))
-            ->where(DB::connection('mysqlSP')->raw('Duell_ID'), [$id])
-            ->update([
-                'Spieler_Heim' => $homeID,
-                'Spieler_Gast' => $guestID]);
+        $set = DB::connection('mysqlSP')->table('einzel')
+            ->where('Duell_ID',1)
+            ->update(['Spieler_Heim' => $homePID,
+                'Spieler_Gast' => $guestPID]);
     }
 
 #----------------------------------Suggestions-------------------------------------------------------------
 
+#Roman
+    public static function allTypes()
+    {
+        $result = DB::connection('mysqlSP')->select('SELECT Name from art');
+        return $result;
+    }
+#Roman-Ende
     public function index()
     {
         return view('check_report');
