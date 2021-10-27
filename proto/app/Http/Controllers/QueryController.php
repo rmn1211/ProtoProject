@@ -51,7 +51,7 @@ class QueryController extends Controller
         $liga = DB::connection('mysqlSP')->table(DB::raw('spiel s, liga l'))
         ->where(DB::connection('mysqlSP')->raw('s.liga = l.id and s.ID'), [$id])
         ->first();
-        return $liga->Name;
+        return $liga;
     }
     public static function getHome($id)
     {
@@ -184,46 +184,98 @@ class QueryController extends Controller
     private function getPlayerID($firstname, $lastname)
     {
         $player = DB::connection('mysqlSP')->table('spieler')
-            ->where('Vorname', $firstname)
-            ->where('Nachname', $lastname)
+            ->where([['Vorname','=', $firstname],['Nachname','=',$lastname]])
             ->first();
         return $player->ID;
     }
     #Eigetnliche Updatefunktionen
-    public function updateMatch($id, Request $request)
+    public function updateMatch(Request $request)
     {
-        $place = $request->tfPlace;
-        $home = $request->tfHome;
-        $homeID = $this->getTeamID($home);
-        $guest = $request->tfAway;
-        $guestID = $this->getTeamID($guest);
-        #$id = $request -> match;
-        $set = DB::connection('mysqlSP')->table(('spiel'))
+        $id = $request->matchID;
+        $state = $request->rbState;
+        if($state == "true")
+        {
+            $place = $request->tfPlace;
+            $home = $request->tfHome;
+            $homeID = $this->getTeamID($home);
+            $guest = $request->tfAway;
+            $guestID = $this->getTeamID($guest);
+            #$id = $request -> match;
+            $set = DB::connection('mysqlSP')->table(('spiel'))
+                ->where(DB::connection('mysqlSP')->raw('ID'), [$id])
+                ->update(['Ort' => $place,
+                    'Heim' => $homeID,
+                    'Gast' => $guestID]);
+            $this->updateSoloDuel($id, $request);
+        }
+        else
+        {
+            $this->setDeclined($id);
+        }
+    }
+
+    private function setDeclined($id)
+    {
+        $state = DB::connection('mysqlSP')->table(('spiel'))
             ->where(DB::connection('mysqlSP')->raw('ID'), [$id])
-            ->update(['Ort' => $place,
-                'Heim' => $homeID,
-                'Gast' => $guestID]);
-        $this->updateSoloDuel($id, $request);
+            ->update(['Status' => 2]);
+    }
+    private function setAccepted($id)
+    {
+        $state = DB::connection('mysqlSP')->table(('spiel'))
+            ->where(DB::connection('mysqlSP')->raw('ID'), [$id])
+            ->update(['Status' => 2]);
     }
 
     public function updateSoloDuel($id, Request $request)
     {
         //IDs der Spieler werden benoetigt
-        $homePID = $request->soloIDHeim1;
-        $guestPID = $request->soloIDGast1;
+        $homeFName1 = $request->soloVnameHeim1;
+        $homeLName1 = $request->soloNnameHeim1;
+        $guestFName1 = $request->soloVnameGast1;
+        $guestLName1 = $request->soloNnameGast1;
+        $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+        $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+        $satz1H1 = $request->soloSatz1heim1;
+        $satz1G1 = $request->soloSatz1gast1;
+        $satz2H1 = $request->soloSatz2heim1;
+        $satz2G1 = $request->soloSatz2gast1;
+        $satz3H1 = $request->soloSatz3heim1;
+        $satz3G1 = $request->soloSatz3gast1;
+
         //Update in EinzelTabelle
-        $set = DB::connection('mysqlSP')->table('einzel')
+        $setPlayer = DB::connection('mysqlSP')->table('einzel')
             ->where('Duell_ID',1)
-            ->update(['Spieler_Heim' => $homePID,
-                'Spieler_Gast' => $guestPID]);
+            ->update(['Spieler_Heim' => $homePID1,
+                'Spieler_Gast' => $guestPID1],
+                '');
+        $setSatz1= DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',1],['Satz_Nr','=',1]])
+            ->update(['Punkte_Heim'=>$satz1H1,
+                'Punkte_Gast'=>$satz1G1]);
+        $setSatz2= DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',1],['Satz_Nr','=',2]])
+            ->update(['Punkte_Heim'=>$satz2H1,
+                'Punkte_Gast'=>$satz2G1]);
+        $setSatz3= DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',1],['Satz_Nr','=',3]])
+            ->update(['Punkte_Heim'=>$satz3H1,
+                'Punkte_Gast'=>$satz3G1]);
     }
 
 #----------------------------------Suggestions-------------------------------------------------------------
 
 #Roman
+    #Rueckgabe aller Ligen einer Region die im Parameter bestimmt wird
+    public static function allLeagues($region)
+    {
+        $result = DB::connection('mysqlSP')->select('SELECT * from liga WHERE Region = ?', [$region]);
+        return $result;
+    }
+    #Rueckgabe aller Spieltypen fuer Vorschlagsliste
     public static function allTypes()
     {
-        $result = DB::connection('mysqlSP')->select('SELECT Name from art');
+        $result = DB::connection('mysqlSP')->select('SELECT * from art');
         return $result;
     }
 #Roman-Ende
