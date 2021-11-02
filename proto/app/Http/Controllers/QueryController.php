@@ -262,6 +262,7 @@ LEFT JOIN
                     'Heim' => $homeID,
                     'Gast' => $guestID]);
             $this->updateSoloDuel($id, $request);
+            $this->setAccepted($id);
         }
         else
         {
@@ -279,43 +280,153 @@ LEFT JOIN
     {
         $state = DB::connection('mysqlSP')->table(('spiel'))
             ->where(DB::connection('mysqlSP')->raw('ID'), [$id])
-            ->update(['Status' => 2]);
+            ->update(['Status' => 1]);
     }
 
     public function updateSoloDuel($id, Request $request)
     {
+        //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
+        $soloCount = $request->soloCount;
         //IDs der Spieler werden benoetigt
-        $homeFName1 = $request->soloVnameHeim1;
-        $homeLName1 = $request->soloNnameHeim1;
-        $guestFName1 = $request->soloVnameGast1;
-        $guestLName1 = $request->soloNnameGast1;
-        $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
-        $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
-        $satz1H1 = $request->soloSatz1heim1;
-        $satz1G1 = $request->soloSatz1gast1;
-        $satz2H1 = $request->soloSatz2heim1;
-        $satz2G1 = $request->soloSatz2gast1;
-        $satz3H1 = $request->soloSatz3heim1;
-        $satz3G1 = $request->soloSatz3gast1;
+        if($soloCount>=1)
+        {
+            $duellID1 = $request->duellID1;
+            $homeFName1 = $request->soloVnameHeim1;
+            $homeLName1 = $request->soloNnameHeim1;
+            $guestFName1 = $request->soloVnameGast1;
+            $guestLName1 = $request->soloNnameGast1;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $satz1H1 = $request->soloSatz1heim1;
+            $satz1G1 = $request->soloSatz1gast1;
+            $satz2H1 = $request->soloSatz2heim1;
+            $satz2G1 = $request->soloSatz2gast1;
+            $satz3H1 = $request->soloSatz3heim1;
+            $satz3G1 = $request->soloSatz3gast1;
 
-        //Update in EinzelTabelle
-        $setPlayer = DB::connection('mysqlSP')->table('einzel')
-            ->where('Duell_ID',1)
+        DB::connection('mysqlSP')->table('einzel')
+            ->where('Duell_ID',$duellID1)
             ->update(['Spieler_Heim' => $homePID1,
                 'Spieler_Gast' => $guestPID1],
                 '');
-        $setSatz1= DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',1],['Satz_Nr','=',1]])
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID1],['Satz_Nr','=',1]])
             ->update(['Punkte_Heim'=>$satz1H1,
                 'Punkte_Gast'=>$satz1G1]);
-        $setSatz2= DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',1],['Satz_Nr','=',2]])
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID1],['Satz_Nr','=',2]])
             ->update(['Punkte_Heim'=>$satz2H1,
                 'Punkte_Gast'=>$satz2G1]);
-        $setSatz3= DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',1],['Satz_Nr','=',3]])
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID1],['Satz_Nr','=',3]])
             ->update(['Punkte_Heim'=>$satz3H1,
                 'Punkte_Gast'=>$satz3G1]);
+        }
+        if($soloCount>=2)
+        {
+            $duellID2 = $request->duellID2;
+            $homeFName2 = $request->soloVnameHeim2;
+            $homeLName2 = $request->soloNnameHeim2;
+            $guestFName2 = $request->soloVnameGast2;
+            $guestLName2 = $request->soloNnameGast2;
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H2 = $request->soloSatz1heim2;
+            $satz1G2 = $request->soloSatz1gast2;
+            $satz2H2 = $request->soloSatz2heim2;
+            $satz2G2 = $request->soloSatz2gast2;
+            $satz3H2 = $request->soloSatz3heim2;
+            $satz3G2 = $request->soloSatz3gast2;
+
+            DB::connection('mysqlSP')->table('einzel')
+            ->where('Duell_ID',$duellID2)
+            ->update(['Spieler_Heim' => $homePID2,
+                'Spieler_Gast' => $guestPID2],
+                '');
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID2],['Satz_Nr','=',1]])
+            ->update(['Punkte_Heim'=>$satz1H2,
+                'Punkte_Gast'=>$satz1G2]);
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID2],['Satz_Nr','=',2]])
+            ->update(['Punkte_Heim'=>$satz2H2,
+                'Punkte_Gast'=>$satz2G2]);
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID2],['Satz_Nr','=',3]])
+            ->update(['Punkte_Heim'=>$satz3H2,
+                'Punkte_Gast'=>$satz3G2]);
+        }
+        if($soloCount>=3)
+        {
+            $duellID3 = $request->duellID3;
+            $homeFName3 = $request->soloVnameHeim3;
+            $homeLName3 = $request->soloNnameHeim3;
+            $guestFName3 = $request->soloVnameGast3;
+            $guestLName3 = $request->soloNnameGast3;
+            $homePID3 = $this->getPlayerID($homeFName3, $homeLName3);
+            $guestPID3 = $this->getPlayerID($guestFName3, $guestLName3);
+            $satz1H3 = $request->soloSatz1heim3;
+            $satz1G3 = $request->soloSatz1gast3;
+            $satz2H3 = $request->soloSatz2heim3;
+            $satz2G3 = $request->soloSatz2gast3;
+            $satz3H3 = $request->soloSatz3heim3;
+            $satz3G3 = $request->soloSatz3gast3;
+
+            DB::connection('mysqlSP')->table('einzel')
+            ->where('Duell_ID',$duellID3)
+            ->update(['Spieler_Heim' => $homePID3,
+                'Spieler_Gast' => $guestPID3],
+                '');
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID3],['Satz_Nr','=',1]])
+            ->update(['Punkte_Heim'=>$satz1H3,
+                'Punkte_Gast'=>$satz1G3]);
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID3],['Satz_Nr','=',2]])
+            ->update(['Punkte_Heim'=>$satz2H3,
+                'Punkte_Gast'=>$satz2G3]);
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID3],['Satz_Nr','=',3]])
+            ->update(['Punkte_Heim'=>$satz3H3,
+                'Punkte_Gast'=>$satz3G3]);
+        }
+        if($soloCount>=4)
+        {
+            $duellID4 = $request->duellID4;
+            $homeFName4 = $request->soloVnameHeim4;
+            $homeLName4 = $request->soloNnameHeim4;
+            $guestFName4 = $request->soloVnameGast4;
+            $guestLName4 = $request->soloNnameGast4;
+            $homePID4 = $this->getPlayerID($homeFName4, $homeLName4);
+            $guestPID4 = $this->getPlayerID($guestFName4, $guestLName4);
+            $satz1H4 = $request->soloSatz1heim4;
+            $satz1G4 = $request->soloSatz1gast4;
+            $satz2H4 = $request->soloSatz2heim4;
+            $satz2G4 = $request->soloSatz2gast4;
+            $satz3H4 = $request->soloSatz3heim4;
+            $satz3G4 = $request->soloSatz3gast4;
+
+            DB::connection('mysqlSP')->table('einzel')
+            ->where('Duell_ID',$duellID4)
+            ->update(['Spieler_Heim' => $homePID4,
+                'Spieler_Gast' => $guestPID4],
+                '');
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID4],['Satz_Nr','=',1]])
+            ->update(['Punkte_Heim'=>$satz1H4,
+                'Punkte_Gast'=>$satz1G4]);
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID4],['Satz_Nr','=',2]])
+            ->update(['Punkte_Heim'=>$satz2H4,
+                'Punkte_Gast'=>$satz2G4]);
+        DB::connection('mysqlSP')->table('satz')
+            ->where([['Duell_ID','=',$duellID4],['Satz_Nr','=',3]])
+            ->update(['Punkte_Heim'=>$satz3H4,
+                'Punkte_Gast'=>$satz3G4]);
+        }
+
+        //Update in EinzelTabelle
+        
     }
 
 #----------------------------------Suggestions-------------------------------------------------------------

@@ -57,7 +57,7 @@
     <section >
       <h3 class ="font-bold  text-2xl">Spieleberichtsbogen</h3>
     </section>
-    <section  class="mt-10 class=w-6/12">
+    <section  class="mt-10 ">
     <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{url('/overview')}}">
       @csrf
       <input type="hidden" id="matchID" name="matchID" value ="{{ $matchID }}">
@@ -267,30 +267,31 @@ var value = ui.item.value;
           <th class ="w-4 border-solid border-r-2"></th>
           <th style="text-align:center" class ="w-4 border-solid border-r-2" colspan="2">Spieler: Heim</th>
           <th style="text-align:center" class ="w-4 border-solid border-r-2" colspan="2">Spieler: Gast</th>
-          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="6">Sätze</th>
-          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="2">Erzielte Punkte</th>
-          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="2">Gewonnene Sätze</th>
-          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="2">Gewonnene Spiele</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="6">Satzergebnisse</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="2">Summe Spielpunkte</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="2">Summe Sätze</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2" class ="w-4" colspan="2">Punkte</th>
           
         </tr>
         <tr>
           <th class ="border-solid border-r-2">Art</th>
-          <th >Vorname</th>
-          <th  class ="border-solid border-r-2">Nachname</th>
-          <th>Vorname</th>
-          <th  class ="border-solid border-r-2">Nachname</th>
-          <th class ="w-4" colspan="2">1. Satz</th>
-          <th class ="w-4" colspan="2">2. Satz</th>
-          <th class ="w-4 border-solid border-r-2" colspan="2">3. Satz</th>
-          <th class ="w-4">Heim</th>
-          <th class ="w-4 border-solid border-r-2">Gast</th>
-          <th class ="w-4">Heim</th>
-          <th class ="w-4 border-solid border-r-2">Gast</th>
-          <th class ="w-4">Heim</th>
-          <th class ="w-4 border-solid border-r-2">Gast</th>
+          <th style="text-align:center">Vorname</th>
+          <th style="text-align:center" class ="border-solid border-r-2">Nachname</th>
+          <th style="text-align:center">Vorname</th>
+          <th style="text-align:center" class ="border-solid border-r-2">Nachname</th>
+          <th style="text-align:center" class ="w-4" colspan="2">1. Satz</th>
+          <th style="text-align:center" class ="w-4" colspan="2">2. Satz</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2" colspan="2">3. Satz</th>
+          <th style="text-align:center" class ="w-4">Heim</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2">Gast</th>
+          <th style="text-align:center" class ="w-4">Heim</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2">Gast</th>
+          <th style="text-align:center" class ="w-4">Heim</th>
+          <th style="text-align:center" class ="w-4 border-solid border-r-2">Gast</th>
         </tr>
         @if (count($soloduell)>=1)
         <tr class ="border-solid border-b-2 border-black">
+          <input type="hidden" id="duellID1" name="duellID1" value ="{{ $soloduell[0]->Duell_ID }}">
           <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
             <input type="text" list="arten" size="4" class="bg-gray-100 text-black" name = "soloType1" id="soloType1" value="{{ $soloduell[0]->Duellart  }}"/>
           </td>          
@@ -345,6 +346,7 @@ var value = ui.item.value;
         </tr>
         @if (count($soloduell)>=2)
         <tr class ="border-solid border-b-2 border-black">
+          <input type="hidden" id="duellID2" name="duellID2" value ="{{ $soloduell[1]->Duell_ID }}">
           <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
             <input type = "text" size="4" class="bg-gray-100 text-black" name = "soloType2" id="soloType2" value="{{ $soloduell[1]->Duellart  }}"/>
           </td>
@@ -399,6 +401,7 @@ var value = ui.item.value;
         </tr>
         @if (count($soloduell)>=3)
         <tr class ="border-solid border-b-2 border-black">
+          <input type="hidden" id="duellID3" name="duellID3" value ="{{ $soloduell[2]->Duell_ID }}">
           <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
             <input type = "text" size="4" class="bg-gray-100 text-black" name = "soloType3" id="soloType3" value="{{ $soloduell[2]->Duellart  }}"/>
           </td>
@@ -453,6 +456,7 @@ var value = ui.item.value;
         </tr>
         @if (count($soloduell)>=4)
         <tr class ="border-solid border-b-2 border-black">
+          <input type="hidden" id="duellID4" name="duellID4" value ="{{ $soloduell[3]->Duell_ID }}">
           <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
             <input type = "text" size="4" class="bg-gray-100 text-black" name = "soloType4" id="soloType4" value="{{ $soloduell[3]->Duellart  }}"/>
           </td>
@@ -598,7 +602,7 @@ var value = ui.item.value;
       </div>
       <br>
       <div>
-        <input class="m-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border-green-700 rounded disabled:opacity-50" type="submit" id="submitBTN" name="submit" value="Absenden" disabled>
+        <button class="m-2 bg-green-500 disabled:opacity-90 hover:bg-green-700 text-white font-bold py-2 px-4 border-green-700 rounded" type="submit" id="submitBTN" name="submit" disabled>Absenden</button>
       </div>
     </div>
      </form>

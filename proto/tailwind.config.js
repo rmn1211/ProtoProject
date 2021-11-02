@@ -1,17 +1,15 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
-    './public/**/*.html',
-   './src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
   variants: {
-    extend: {
-      opacity: ['disabled'],
-    },
+    cursor: ['disabled'],
+    pointerEvents: ['disabled'],
+    backgroundColor: ['responsive', 'hover', 'focus', 'active', 'disabled'],
+    textColor: ['responsive', 'hover', 'focus', 'active', 'disabled'],
+    extend: {},
   },
   plugins: [],
 }
