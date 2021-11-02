@@ -1,4 +1,4 @@
-<?php
+*<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
@@ -23,6 +23,9 @@ Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::get('/overview', [PageController::class, 'overview'])->name('overview');
 Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
 Route::post('/overview',[QueryController::class, 'updateMatch']);
+Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
+Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
+Route::get('/spieler_overview', [PageController::class, 'spieler_overview'])->name('spieler_overview');
 
 //Neue OverviewRouten: Erstmal nur Test
 Route::get('/overview/edit', [PageController::class, 'report'])->name('report');

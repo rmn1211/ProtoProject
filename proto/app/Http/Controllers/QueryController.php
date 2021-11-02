@@ -22,10 +22,65 @@ class QueryController extends Controller
          left join mannschaft m2 on m2.id = s.gast
          left join mannschaft m on m.id = s.heim
          left join spieler sp on sp.id = m.Kapitän_ID
-         where sp2.id = sp.id;');
+         where sp2.id = sp.id and s.status !=1;');
 
         return $spiele;
     }
+
+    public static function getSpieleOk() // nur spiele mit status =1
+    {
+        $spiele = DB::connection('mysqlSP')->select('SELECT  s.ID,
+        s.termin as "Termin"
+        ,m.name as "Heim",
+        m2.name as "Gast",
+        sp.id,
+        sp.vorname,
+        sp.nachname,
+        s.status
+         from spieler sp2,spiel s
+         left join mannschaft m2 on m2.id = s.gast
+         left join mannschaft m on m.id = s.heim
+         left join spieler sp on sp.id = m.Kapitän_ID
+         where sp2.id = sp.id and s.status =1;');
+
+        return $spiele;
+    }
+    public static function getAlleSpieler() 
+    {
+        $spieler = DB::connection('mysqlSP')->select('SELECT *
+         from spieler sp;');
+
+        return $spieler;
+    }
+
+    public static function getAlleMannschaften() // nur spiele mit status =1
+    {
+        $mannschaften = DB::connection('mysqlSP')->select('select m.name as "Mannschaft",
+        sp.vorname,
+        sp.nachname,
+        v.Name as "Verein",
+        l.name as "Liga"
+        from mannschaft m,spieler sp, verein v, liga l
+        where m.Kapitän_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID;');
+
+        return $mannschaften;
+    }
+    public static function getAlleSpieler(){
+    $spieler = DB::connection('mysqlSP')->select('SELECT s.id, s.Vorname, s.nachname, group_concat(m.name) as "Mannschaften"
+FROM 
+    spieler_mannschaft sm
+LEFT JOIN
+    spieler s ON s.ID = sm.Spieler_ID
+ LEFT JOIN
+    mannschaft m on m.id = sm.Mannschaft_ID
+    group by s.id;
+    ');
+
+        return $spieler;
+    }
+
+  
+
     //SELECT QUERIES FROM DUELL
     public static function getResults($id)
     {

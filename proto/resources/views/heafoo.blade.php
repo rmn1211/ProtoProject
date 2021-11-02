@@ -19,12 +19,13 @@
             <h1 class="text-xl font-black">BSWeb</h1>
             <nav class="-mx-2">
                 <a href="/"class="{{ request()->is('/') ? 'active' : '' }}" class="text-lg mx-2 text-white hover:text-gray-900 transition">Home</a>
-                <a href="" class="text-lg mx-2 text-white hover:text-gray-900 transition">Spielersuche</a>
-                <a href="" class="text-lg mx-2 text-white hover:text-gray-900 transition">Mannschaften</a>
+                <a href="spieler_overview"class="{{ request()->is('spieler_overview') ? 'active' : '' }}" class="text-lg mx-2 text-white hover:text-gray-900 transition">Spielersuche</a>
+          <a href="teams_overview"class="{{ request()->is('teams_overview') ? 'active' : '' }}" class="text-lg mx-2 text-white hover:text-gray-900 transition">Mannschaften</a>
                 <a href="login"class="{{ request()->is('login') ? 'active' : '' }}" class="text-lg mx-2 text-white hover:text-gray-900 transition">Login</a>
                 <a href="overview"class="{{ request()->is('overview') ? 'active' : '' }}" class="text-lg mx-2 text-white hover:text-gray-900 transition">Spieleberichte prüfen</a>
-
-            </nav>
+                 <a href="match_ok"class="{{ request()->is('match_ok') ? 'active' : '' }}" class="text-lg mx-2 text-white hover:text-gray-900 transition">Spieleberichte ansehen</a>
+                
+                 </nav>
         </div>
     </header>
     <main>

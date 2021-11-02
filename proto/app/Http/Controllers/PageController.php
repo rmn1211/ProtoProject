@@ -33,4 +33,19 @@ class PageController extends Controller
     {
         return view('welcome');
     }
+    
+     public function match_ok()
+    {
+        return view('report.match_ok');
+    }
+
+    public function teams_overview()
+    {
+        return view('report.teams_overview');
+    }
+    public function spieler_overview()
+    {
+        return view('report.spieler_overview');
+    }
+    
 }
