@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class PageController extends Controller
 {
-    
+
     public function home()
     {
         return view('main.home');
@@ -33,19 +31,19 @@ class PageController extends Controller
     {
         return view('welcome');
     }
-    
-     public function match_ok()
+
+    public function match_ok()
     {
         return view('report.match_ok');
     }
 
     public function teams_overview()
     {
-        return view('report.teams_overview');
+        return view('overviews.teams_overview');
     }
-    public function spieler_overview()
+    public function player_overview()
     {
-        return view('report.spieler_overview');
+        return view('overviews.player_overview');
     }
-    
+
 }

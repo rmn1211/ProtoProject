@@ -6,7 +6,7 @@
     
     
 
-    $spieler = QueryController::getAlleSpieler();
+    $mannschaften = QueryController::getAlleMannschaften();
    
     
 @endphp
@@ -26,36 +26,33 @@ color:black;}
 }
   </style>
 <section >
-      <h3 class ="font-bold  text-2xl">Spiele</h3>
+      <h3 class ="font-bold  text-2xl">Mannschaften</h3>
     </section>
     <section  class="mt-10 class=w-6/12">
 <!--
-TODO : suchleiste um liga , manschaft festzulegen , ändert sich dann auch die tabelle?
+TODO : suchleiste um liga festzulegen , ändert sich dann auch die tabelle?
 -->> 
 
       <table class="table-fixed"  id="table">
       <thead>
         <tr>
         <th hidden>ID </th>
-          <th>Vorname</th>
-          <th>Nachname</th>
-          <th>Geschlecht</th>
-          <th>Mannschaften</th>
+          <th>Name</th>
+          <th>Kapitän</th>
+          <th>Verein von</th>
+          <th>Liga</th>
           
         </tr>
 </thead><tbody >
-        @foreach ($spieler as $player)
-      
-   
-    
-
+        @foreach ($mannschaften as $mannschaft)
+       
  
         <tr class ="border-solid border-b-2 border-black alle">
-        <td hidden class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "id" id="id">{{ $player->ID  }}</td>
-        <td class="border-solid border-r-2 border-b-2 border-black"  name = "vorname" id="vorname">{{ $player->Vorname  }}</td>
-          <td class="border-solid border-r-2 border-b-2 border-black" name = "nachname" id="nachname"> {{ $player->Nachname  }}</td>
-          <td class="border-solid border-r-2 border-b-2 border-black" name = "geschlecht" id="gesclecht">{{ $player->Geschlecht  }}</td>
-          <td  class="border-solid border-r-2  border-b-2 border-black" name = "Liga" id="Liga">{{  $player->Mannschaften  }}</td>
+        <td hidden class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "id" id="id">{{ $mannschaft->ID  }}</td>
+        <td class="border-solid border-r-2 border-b-2 border-black"  name = "mannschaft" id="mannschaft">{{ $mannschaft->Mannschaft  }}</td>
+          <td class="border-solid border-r-2 border-b-2 border-black" name = "kapitän" id="kapitän">{{ $mannschaft->vorname  }}  {{ $mannschaft->nachname  }}</td>
+          <td class="border-solid border-r-2 border-b-2 border-black" name = "Verein" id="Verein">{{ $mannschaft->Verein  }} </td>
+          <td  class="border-solid border-r-2  border-b-2 border-black" name = "Liga" id="Liga">{{  $mannschaft->Liga  }}</td>
           
       </tr>
       @endforeach

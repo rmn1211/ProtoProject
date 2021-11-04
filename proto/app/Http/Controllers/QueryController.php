@@ -10,77 +10,83 @@ class QueryController extends Controller
     //QUERIES TO SELECT MATCH
     public static function getSpiele()
     {
-        $spiele = DB::connection('mysqlSP')->select('SELECT  s.ID,
-        s.termin as "Termin"
-        ,m.name as "Heim",
-        m2.name as "Gast",
-        sp.id,
-        sp.vorname,
-        sp.nachname,
-        s.status
-         from spieler sp2,spiel s
-         left join mannschaft m2 on m2.id = s.gast
-         left join mannschaft m on m.id = s.heim
-         left join spieler sp on sp.id = m.Kapitän_ID
-         where sp2.id = sp.id and s.status !=1;');
+        $spiele = DB::connection('mysqlSP')->select('SELECT
+            s.ID,
+            s.termin as "Termin",
+            m.name as "Heim",
+            m2.name as "Gast",
+            sp.id,
+            sp.vorname,
+            sp.nachname,
+            s.status
+        FROM
+            spieler sp2,spiel s
+            LEFT JOIN mannschaft m2 on m2.id = s.gast
+            LEFT JOIN mannschaft m on m.id = s.heim
+            LEFT JOIN spieler sp on sp.id = m.Kapitän_ID
+        WHERE
+            sp2.id = sp.id and s.status !=1;');
 
         return $spiele;
     }
 
     public static function getSpieleOk() // nur spiele mit status =1
+
     {
-        $spiele = DB::connection('mysqlSP')->select('SELECT  s.ID,
-        s.termin as "Termin"
-        ,m.name as "Heim",
-        m2.name as "Gast",
-        sp.id,
-        sp.vorname,
-        sp.nachname,
-        s.status
-         from spieler sp2,spiel s
-         left join mannschaft m2 on m2.id = s.gast
-         left join mannschaft m on m.id = s.heim
-         left join spieler sp on sp.id = m.Kapitän_ID
-         where sp2.id = sp.id and s.status =1;');
+        $spiele = DB::connection('mysqlSP')->select('SELECT
+            s.ID,
+            s.termin as "Termin"
+            ,m.name as "Heim",
+            m2.name as "Gast",
+            sp.id,
+            sp.vorname,
+            sp.nachname,
+            s.status
+         FROM
+            spieler sp2,spiel s
+            LEFT JOIN mannschaft m2 on m2.id = s.gast
+            LEFT JOIN mannschaft m on m.id = s.heim
+            LEFT JOIN spieler sp on sp.id = m.Kapitän_ID
+         WHERE
+            sp2.id = sp.id and s.status =1;');
 
         return $spiele;
     }
-    public static function getAlleSpieler() 
-    {
-        $spieler = DB::connection('mysqlSP')->select('SELECT *
-         from spieler sp;');
-
-        return $spieler;
-    }
-
     public static function getAlleMannschaften() // nur spiele mit status =1
+
     {
-        $mannschaften = DB::connection('mysqlSP')->select('select m.name as "Mannschaft",
-        sp.vorname,
-        sp.nachname,
-        v.Name as "Verein",
-        l.name as "Liga"
-        from mannschaft m,spieler sp, verein v, liga l
-        where m.Kapitän_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID;');
+        $mannschaften = DB::connection('mysqlSP')->select('SELECT
+            m.id as "ID",
+            m.name as "Mannschaft",
+            sp.vorname,
+            sp.nachname,
+            v.Name as "Verein",
+            l.name as "Liga"
+        FROM
+            mannschaft m,spieler sp, verein v, liga l
+        WHERE
+            m.Kapitän_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID;');
 
         return $mannschaften;
     }
-    public static function getAlleSpieler(){
-    $spieler = DB::connection('mysqlSP')->select('SELECT s.id, s.Vorname, s.nachname, group_concat(m.name) as "Mannschaften"
-FROM 
-    spieler_mannschaft sm
-LEFT JOIN
-    spieler s ON s.ID = sm.Spieler_ID
- LEFT JOIN
-    mannschaft m on m.id = sm.Mannschaft_ID
-    group by s.id;
-    ');
+    public static function getAlleSpieler()
+    {
+        $spieler = DB::connection('mysqlSP')->select('SELECT
+            s.id as "ID",
+            s.Vorname as "Vorname",
+            s.Nachname as "Nachname",
+            s.Geschlecht as "Geschlecht",
+            group_concat(m.name) as "Mannschaften"
+        FROM
+            spieler_mannschaft sm
+        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
+        LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
+        GROUP BY s.id
+        ORDER BY m.name ASC,
+            s.Nachname ASC;');
 
         return $spieler;
     }
-
-  
-
     //SELECT QUERIES FROM DUELL
     public static function getResults($id)
     {
@@ -104,8 +110,8 @@ LEFT JOIN
     public static function getLiga($id)
     {
         $liga = DB::connection('mysqlSP')->table(DB::raw('spiel s, liga l'))
-        ->where(DB::connection('mysqlSP')->raw('s.liga = l.id and s.ID'), [$id])
-        ->first();
+            ->where(DB::connection('mysqlSP')->raw('s.liga = l.id and s.ID'), [$id])
+            ->first();
         return $liga;
     }
     public static function getHome($id)
@@ -239,7 +245,7 @@ LEFT JOIN
     private function getPlayerID($firstname, $lastname)
     {
         $player = DB::connection('mysqlSP')->table('spieler')
-            ->where([['Vorname','=', $firstname],['Nachname','=',$lastname]])
+            ->where([['Vorname', '=', $firstname], ['Nachname', '=', $lastname]])
             ->first();
         return $player->ID;
     }
@@ -248,8 +254,7 @@ LEFT JOIN
     {
         $id = $request->matchID;
         $state = $request->rbState;
-        if($state == "true")
-        {
+        if ($state == "true") {
             $place = $request->tfPlace;
             $home = $request->tfHome;
             $homeID = $this->getTeamID($home);
@@ -263,9 +268,7 @@ LEFT JOIN
                     'Gast' => $guestID]);
             $this->updateSoloDuel($id, $request);
             $this->setAccepted($id);
-        }
-        else
-        {
+        } else {
             $this->setDeclined($id);
         }
     }
@@ -288,8 +291,7 @@ LEFT JOIN
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
         $soloCount = $request->soloCount;
         //IDs der Spieler werden benoetigt
-        if($soloCount>=1)
-        {
+        if ($soloCount >= 1) {
             $duellID1 = $request->duellID1;
             $homeFName1 = $request->soloVnameHeim1;
             $homeLName1 = $request->soloNnameHeim1;
@@ -304,26 +306,25 @@ LEFT JOIN
             $satz3H1 = $request->soloSatz3heim1;
             $satz3G1 = $request->soloSatz3gast1;
 
-        DB::connection('mysqlSP')->table('einzel')
-            ->where('Duell_ID',$duellID1)
-            ->update(['Spieler_Heim' => $homePID1,
-                'Spieler_Gast' => $guestPID1],
-                '');
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID1],['Satz_Nr','=',1]])
-            ->update(['Punkte_Heim'=>$satz1H1,
-                'Punkte_Gast'=>$satz1G1]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID1],['Satz_Nr','=',2]])
-            ->update(['Punkte_Heim'=>$satz2H1,
-                'Punkte_Gast'=>$satz2G1]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID1],['Satz_Nr','=',3]])
-            ->update(['Punkte_Heim'=>$satz3H1,
-                'Punkte_Gast'=>$satz3G1]);
+            DB::connection('mysqlSP')->table('einzel')
+                ->where('Duell_ID', $duellID1)
+                ->update(['Spieler_Heim' => $homePID1,
+                    'Spieler_Gast' => $guestPID1],
+                    '');
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H1,
+                    'Punkte_Gast' => $satz1G1]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H1,
+                    'Punkte_Gast' => $satz2G1]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H1,
+                    'Punkte_Gast' => $satz3G1]);
         }
-        if($soloCount>=2)
-        {
+        if ($soloCount >= 2) {
             $duellID2 = $request->duellID2;
             $homeFName2 = $request->soloVnameHeim2;
             $homeLName2 = $request->soloNnameHeim2;
@@ -339,25 +340,24 @@ LEFT JOIN
             $satz3G2 = $request->soloSatz3gast2;
 
             DB::connection('mysqlSP')->table('einzel')
-            ->where('Duell_ID',$duellID2)
-            ->update(['Spieler_Heim' => $homePID2,
-                'Spieler_Gast' => $guestPID2],
-                '');
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID2],['Satz_Nr','=',1]])
-            ->update(['Punkte_Heim'=>$satz1H2,
-                'Punkte_Gast'=>$satz1G2]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID2],['Satz_Nr','=',2]])
-            ->update(['Punkte_Heim'=>$satz2H2,
-                'Punkte_Gast'=>$satz2G2]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID2],['Satz_Nr','=',3]])
-            ->update(['Punkte_Heim'=>$satz3H2,
-                'Punkte_Gast'=>$satz3G2]);
+                ->where('Duell_ID', $duellID2)
+                ->update(['Spieler_Heim' => $homePID2,
+                    'Spieler_Gast' => $guestPID2],
+                    '');
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H2,
+                    'Punkte_Gast' => $satz1G2]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H2,
+                    'Punkte_Gast' => $satz2G2]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H2,
+                    'Punkte_Gast' => $satz3G2]);
         }
-        if($soloCount>=3)
-        {
+        if ($soloCount >= 3) {
             $duellID3 = $request->duellID3;
             $homeFName3 = $request->soloVnameHeim3;
             $homeLName3 = $request->soloNnameHeim3;
@@ -373,25 +373,24 @@ LEFT JOIN
             $satz3G3 = $request->soloSatz3gast3;
 
             DB::connection('mysqlSP')->table('einzel')
-            ->where('Duell_ID',$duellID3)
-            ->update(['Spieler_Heim' => $homePID3,
-                'Spieler_Gast' => $guestPID3],
-                '');
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID3],['Satz_Nr','=',1]])
-            ->update(['Punkte_Heim'=>$satz1H3,
-                'Punkte_Gast'=>$satz1G3]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID3],['Satz_Nr','=',2]])
-            ->update(['Punkte_Heim'=>$satz2H3,
-                'Punkte_Gast'=>$satz2G3]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID3],['Satz_Nr','=',3]])
-            ->update(['Punkte_Heim'=>$satz3H3,
-                'Punkte_Gast'=>$satz3G3]);
+                ->where('Duell_ID', $duellID3)
+                ->update(['Spieler_Heim' => $homePID3,
+                    'Spieler_Gast' => $guestPID3],
+                    '');
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID3], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H3,
+                    'Punkte_Gast' => $satz1G3]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID3], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H3,
+                    'Punkte_Gast' => $satz2G3]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID3], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H3,
+                    'Punkte_Gast' => $satz3G3]);
         }
-        if($soloCount>=4)
-        {
+        if ($soloCount >= 4) {
             $duellID4 = $request->duellID4;
             $homeFName4 = $request->soloVnameHeim4;
             $homeLName4 = $request->soloNnameHeim4;
@@ -407,26 +406,26 @@ LEFT JOIN
             $satz3G4 = $request->soloSatz3gast4;
 
             DB::connection('mysqlSP')->table('einzel')
-            ->where('Duell_ID',$duellID4)
-            ->update(['Spieler_Heim' => $homePID4,
-                'Spieler_Gast' => $guestPID4],
-                '');
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID4],['Satz_Nr','=',1]])
-            ->update(['Punkte_Heim'=>$satz1H4,
-                'Punkte_Gast'=>$satz1G4]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID4],['Satz_Nr','=',2]])
-            ->update(['Punkte_Heim'=>$satz2H4,
-                'Punkte_Gast'=>$satz2G4]);
-        DB::connection('mysqlSP')->table('satz')
-            ->where([['Duell_ID','=',$duellID4],['Satz_Nr','=',3]])
-            ->update(['Punkte_Heim'=>$satz3H4,
-                'Punkte_Gast'=>$satz3G4]);
+                ->where('Duell_ID', $duellID4)
+                ->update(['Spieler_Heim' => $homePID4,
+                    'Spieler_Gast' => $guestPID4],
+                    '');
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID4], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H4,
+                    'Punkte_Gast' => $satz1G4]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID4], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H4,
+                    'Punkte_Gast' => $satz2G4]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID4], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H4,
+                    'Punkte_Gast' => $satz3G4]);
         }
 
         //Update in EinzelTabelle
-        
+
     }
 
 #----------------------------------Suggestions-------------------------------------------------------------

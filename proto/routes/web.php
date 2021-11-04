@@ -1,9 +1,8 @@
-*<?php
+<?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\QueryController;
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,23 +13,22 @@ use App\Http\Controllers\QueryController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
+ */
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/heafoo', [PageController::class, 'heafoo'])->name('heafoo');
 Route::get('/login', [PageController::class, 'login'])->name('login');
 Route::get('/overview', [PageController::class, 'overview'])->name('overview');
 Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
-Route::post('/overview',[QueryController::class, 'updateMatch']);
+Route::post('/overview', [QueryController::class, 'updateMatch']);
 Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
 Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
-Route::get('/spieler_overview', [PageController::class, 'spieler_overview'])->name('spieler_overview');
+Route::get('/player_overview', [PageController::class, 'player_overview'])->name('player_overview');
 
 //Neue OverviewRouten: Erstmal nur Test
 Route::get('/overview/edit', [PageController::class, 'report'])->name('report');
-Route::post('/overview/edit',[QueryController::class, 'updateMatch']);
-Route::post('/overview/edit',[QueryController::class, 'updateSoloDuel']);
+Route::post('/overview/edit', [QueryController::class, 'updateMatch']);
+Route::post('/overview/edit', [QueryController::class, 'updateSoloDuel']);
 //ENDE TestRouten
 Route::get('/autocomplete-search', [QueryController::class, 'autocompleteSearch']);
 
