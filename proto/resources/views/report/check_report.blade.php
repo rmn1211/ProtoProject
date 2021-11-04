@@ -5,10 +5,10 @@ use App\Http\Controllers\QueryController;
 $matchID = $_GET['selectedID'];
 $place = QueryController::getOrt($matchID);
 $homeTab = QueryController::getHome($matchID);
-$home = $homeTab->name;
+$home = $homeTab->Name;
 $homeID = $homeTab->ID;
 $awayTab = QueryController::getAway($matchID);
-$away = $awayTab->name;
+$away = $awayTab->Name;
 $awayID = $awayTab->ID;
 $results = QueryController::getResults($matchID);
 $teams = QueryController::getTeams($matchID);
@@ -32,7 +32,7 @@ $arten = QueryController::allTypes();
 <div id="containerTeams" style="display:none">
     @foreach ($teams as $team)
         $cookie_name = $team -> ID;
-        $cookie_val = $team -> name;
+        $cookie_val = $team -> Name;
         setcookie($cookie_name, $cookie_value);
     @endforeach
 </div>

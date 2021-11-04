@@ -23,7 +23,7 @@ class QueryController extends Controller
             spieler sp2,spiel s
             LEFT JOIN mannschaft m2 on m2.id = s.gast
             LEFT JOIN mannschaft m on m.id = s.heim
-            LEFT JOIN spieler sp on sp.id = m.Kapitän_ID
+            LEFT JOIN spieler sp on sp.id = m.Kapitaen_ID
         WHERE
             sp2.id = sp.id and s.status !=1;');
 
@@ -46,7 +46,7 @@ class QueryController extends Controller
             spieler sp2,spiel s
             LEFT JOIN mannschaft m2 on m2.id = s.gast
             LEFT JOIN mannschaft m on m.id = s.heim
-            LEFT JOIN spieler sp on sp.id = m.Kapitän_ID
+            LEFT JOIN spieler sp on sp.id = m.Kapitaen_ID
          WHERE
             sp2.id = sp.id and s.status =1;');
 
@@ -65,7 +65,7 @@ class QueryController extends Controller
         FROM
             mannschaft m,spieler sp, verein v, liga l
         WHERE
-            m.Kapitän_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID;');
+            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID;');
 
         return $mannschaften;
     }
@@ -81,9 +81,7 @@ class QueryController extends Controller
             spieler_mannschaft sm
         LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
         LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
-        GROUP BY s.id
-        ORDER BY m.name ASC,
-            s.Nachname ASC;');
+        GROUP BY s.id');
 
         return $spieler;
     }
