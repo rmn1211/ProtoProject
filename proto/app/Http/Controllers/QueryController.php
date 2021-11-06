@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class QueryController extends Controller
 {
-    //QUERIES TO SELECT MATCH
+    //_____________________________________________QUERIES TO SELECT MATCH____________________________________________
     public static function getSpiele()
     {
         $spiele = DB::connection('mysqlSP')->select('SELECT
@@ -86,25 +86,6 @@ class QueryController extends Controller
         return $spieler;
     }
     //SELECT QUERIES FROM DUELL
-    public static function getResults($id)
-    {
-        //$change = DB::connection('mysqlrep')->update('update duell set Schiedsrichter = "Günther Jauch" where id = ?', [$id]);
-        $results = DB::connection('mysqlSP')->select('select * from duell where spiel_ID = ?', [$id]);
-
-        //$foo =DB::connection('mysqlrep')->insert('insert into region (Name, Sportart) Values ("Köln-Bonn", 1)');
-        // $satz = DB::connection('mysqlrep')->select('select * from satz where duell_ID = ? and Satz_Nr = 3',[$id]);
-        //$region = DB::connection('mysqlrep')->select('select * from region');
-        return $results;
-    }
-
-    public static function getOrt($id)
-    {
-        //$ort = DB::select('select ort from spiel where ID = ?', [$id]);
-        $place = DB::connection('mysqlSP')->table(DB::raw('spiel'))
-            ->where(DB::raw('ID'), [$id])
-            ->first();
-        return $place->Ort;
-    }
     public static function getLiga($id)
     {
         $liga = DB::connection('mysqlSP')->table(DB::raw('spiel s, liga l'))
@@ -112,20 +93,22 @@ class QueryController extends Controller
             ->first();
         return $liga;
     }
-    public static function getHome($id)
+    //Ersetzt jegliche Abfragen auf Spiel
+    public static function getSingleMatch($id)
     {
-        //$home = DB::select('select m.name from spiel s,mannschaft m where s.Heim = m.Verein_ID and s.ID = ?', [$id]);
-        $home = DB::connection('mysqlSP')->table(DB::raw('spiel s, mannschaft m'))
-            ->where(DB::connection('mysqlSP')->raw('s.Heim = m.Verein_ID and s.ID'), [$id])
-            ->first();
-        return $home;
-    }
-    public static function getAway($id)
-    {
-        $away = DB::connection('mysqlSP')->table(DB::raw('spiel s, mannschaft m'))
-            ->where(DB::connection('mysqlSP')->raw('s.Gast = m.Verein_ID and s.ID'), [$id])
-            ->first();
-        return $away;
+        $match = DB::connection('mysqlSP')->select("SELECT
+            mH.ID as HeimID,
+            mH.Name as Heim,
+            mG.ID as GastID,
+            mG.Name as Gast,
+            s.Schiedsrichter as Schiedsrichter,
+            s.Ort as Spielort
+        FROM
+            spiel s
+        LEFT JOIN mannschaft mH ON s.Heim = mH.ID
+        LEFT JOIN mannschaft mG ON s.Gast = mG.ID
+        WHERE s.ID = ?", [$id]);
+        return $match[0];
     }
 
     public static function getTeams($liga)
@@ -145,7 +128,12 @@ class QueryController extends Controller
 
     public static function getNamesSolo($duellID)
     {
-        $name = DB::connection('mysqlSP')->select('SELECT s.Vorname, s.Nachname FROM einzel e LEFT JOIN spieler s ON e.spieler_Heim = s.ID or e.spieler_Gast = s.ID');
+        $name = DB::connection('mysqlSP')->select('SELECT
+            s.Vorname,
+            s.Nachname
+        FROM
+            einzel e
+            LEFT JOIN spieler s ON e.spieler_Heim = s.ID or e.spieler_Gast = s.ID');
         return $name;
     }
     public static function getNamesDouble($duellID)
@@ -155,7 +143,10 @@ class QueryController extends Controller
         ->where(DB::raw('dp.Spieler_Heim_1= s.ID and dp.Duell_ID =2'))
         ->pluck('Vorname');
         return $names;*/
-        $name = DB::connection('mysqlSP')->select('SELECT s.Vorname, s.Nachname FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID  or d.spieler_Heim_2 = s.ID or d.spieler_Gast_1 = s.ID  or d.spieler_Gast_2 = s.ID');
+        $name = DB::connection('mysqlSP')->select('SELECT
+            s.Vorname,
+            s.Nachname
+        FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID  or d.spieler_Heim_2 = s.ID or d.spieler_Gast_1 = s.ID  or d.spieler_Gast_2 = s.ID');
         return $name;
     }
 
