@@ -23,6 +23,8 @@ Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
 Route::post('/overview', [QueryController::class, 'updateMatch']);
 Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
 Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
+
+
 Route::get('/player_overview', [PageController::class, 'player_overview'])->name('player_overview');
 //TESTAREA
 Route::get('/', [PageController::class, 'test'])->name('test');
@@ -30,6 +32,8 @@ Route::get('/', [PageController::class, 'test'])->name('test');
 Route::get('/overview/edit', [PageController::class, 'report'])->name('report');
 Route::post('/overview/edit', [QueryController::class, 'updateMatch']);
 Route::post('/overview/edit', [QueryController::class, 'updateSoloDuel']);
+Route::get('/overviews/player_table', [PageController::class, 'player_table'])->name('player_table');
+Route::get('/overviews/teams_table', [PageController::class, 'teams_table'])->name('teams_table');
 //ENDE TestRouten
 Route::get('/autocomplete-search', [QueryController::class, 'autocompleteSearch']);
 

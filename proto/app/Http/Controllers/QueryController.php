@@ -52,7 +52,7 @@ class QueryController extends Controller
 
         return $spiele;
     }
-    public static function getAlleMannschaften() // nur spiele mit status =1
+    public static function getAlleMannschaften() 
 
     {
         $mannschaften = DB::connection('mysqlSP')->select('SELECT
@@ -65,10 +65,29 @@ class QueryController extends Controller
         FROM
             mannschaft m,spieler sp, verein v, liga l
         WHERE
-            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID;');
+            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID Order by l.name ASC;');
 
         return $mannschaften;
     }
+     public static function getMannschaften($liga) 
+
+    {
+        $mannschaften = DB::connection('mysqlSP')->select('SELECT
+            m.id as "ID",
+            m.name as "Mannschaft",
+            sp.vorname,
+            sp.nachname,
+            v.Name as "Verein",
+            l.name as "Liga"
+        FROM
+            mannschaft m,spieler sp, verein v, liga l
+        WHERE
+            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID and  l.id =?', [$liga]
+            );
+
+        return $mannschaften;
+    }
+
     public static function getAlleSpieler()
     {
         $spieler = DB::connection('mysqlSP')->select('SELECT
@@ -85,6 +104,25 @@ class QueryController extends Controller
 
         return $spieler;
     }
+     public static function getSpieler($teamid)
+    {
+        $spieler = DB::connection('mysqlSP')->select('SELECT
+            s.id as "ID",
+            s.Vorname as "Vorname",
+            s.Nachname as "Nachname",
+            s.Geschlecht as "Geschlecht",
+            group_concat(m.name) as "Mannschaften"
+        FROM
+            spieler_mannschaft sm
+        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
+        LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
+        Where m.id=?
+        GROUP BY s.id', [$teamid]);
+
+        return $spieler;
+    }
+
+
     //SELECT QUERIES FROM DUELL
     public static function getLiga($id)
     {

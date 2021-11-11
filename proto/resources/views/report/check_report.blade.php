@@ -281,7 +281,7 @@ $arten = QueryController::allTypes();
                                 </td>
                             </tr>
                             @if (count($soloduell) >= 2)
-                                <tr class="border-solid border-b-2 border-black flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                                     <input type="hidden" id="duellID2" name="duellID2" value="{{ $soloduell[1]->Duell_ID }}">
                                     <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
                                         <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloType2" id="soloType2" value="{{ $soloduell[1]->Duellart }}" />
