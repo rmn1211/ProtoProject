@@ -121,7 +121,12 @@ color:black;}
         });
 
         function Mannschaft() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-            if ($("#liga").val().length > 0) {
+         if( !$('#team').val() ) {
+        document.getElementById("selectedID").value = "";
+        document.getElementById("idForm").submit(); 
+        }
+
+        if ($("#liga").val().length > 0) {
                 $("#team").autocomplete({
                     source: function(request, response) {
                         // Fetch data

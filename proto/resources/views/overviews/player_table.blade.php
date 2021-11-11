@@ -3,9 +3,12 @@
    
     use App\Http\Controllers\QueryController;
     if(isset($_GET['selectedID'])) {
-    $teamID = $_GET['selectedID'];
+    if($_GET['selectedID']==""){
+    $spieler = QueryController::getAlleSpieler();
+    }
+    else{$teamID = $_GET['selectedID'];
     
-    $spieler = QueryController::getSpieler($teamID);
+    $spieler = QueryController::getSpieler($teamID);}
   
 
 }else{

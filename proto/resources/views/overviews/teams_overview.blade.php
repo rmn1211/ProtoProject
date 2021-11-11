@@ -44,7 +44,7 @@ color:black;}
 
      <div class="w-1/4 bg-green-400 h-12 ">
         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3 ">Liga:</label>
-        <input type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+        <input  oninput="check()" type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
      </div>
       <form class="" name ="idForm" id="idForm" method="GET"  target="teams_table" action = "{{ url('/overviews/teams_table') }}">
      <input type="hidden" name="selectedID" id="selectedID" value="">
@@ -110,6 +110,14 @@ color:black;}
                 }
             });
         });
+
+        function check() {
+        if( !$('#liga').val() ) {
+        document.getElementById("selectedID").value = "";
+        document.getElementById("idForm").submit(); 
+        }
+
+        }
     </script>
 @endsection
 </body>

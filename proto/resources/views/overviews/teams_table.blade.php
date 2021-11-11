@@ -3,10 +3,13 @@
    
     use App\Http\Controllers\QueryController;
     if(isset($_GET['selectedID'])) {
+    if($_GET['selectedID']==""){$mannschaften = QueryController::getAlleMannschaften();
+    }
+    else{
     $ligaID = $_GET['selectedID'];
     
     $mannschaften = QueryController::getMannschaften($ligaID);
-  
+  }
 
 }else{
     
