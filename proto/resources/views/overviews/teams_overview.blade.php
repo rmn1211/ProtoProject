@@ -3,10 +3,10 @@
    
     use App\Http\Controllers\QueryController;
     
-    
+
     
 
-    $mannschaften = QueryController::getAlleMannschaften();
+   
    
     
 @endphp
@@ -14,6 +14,16 @@
 <head>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+        <!-- Meta -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <style>
   
@@ -25,83 +35,81 @@ color:black;}
     color: white;
 }
   </style>
+  <body>
 <section >
       <h3 class ="font-bold  text-2xl">Mannschaften</h3>
     </section>
-    <section  class="mt-10 class=w-6/12">
-<!--
-TODO : suchleiste um liga festzulegen , ändert sich dann auch die tabelle?
--->> 
+    <section  class="mt-10 class=w-6/12 ">
 
-      <table class="table-fixed"  id="table">
-      <thead>
-        <tr>
-        <th hidden>ID </th>
-          <th>Name</th>
-          <th>Kapitän</th>
-          <th>Verein von</th>
-          <th>Liga</th>
-          
-        </tr>
-</thead><tbody >
-        @foreach ($mannschaften as $mannschaft)
-       
- 
-        <tr class ="border-solid border-b-2 border-black alle">
-        <td hidden class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "id" id="id">{{ $mannschaft->ID  }}</td>
-        <td class="border-solid border-r-2 border-b-2 border-black"  name = "mannschaft" id="mannschaft">{{ $mannschaft->Mannschaft  }}</td>
-          <td class="border-solid border-r-2 border-b-2 border-black" name = "kapitän" id="kapitän">{{ $mannschaft->vorname  }}  {{ $mannschaft->nachname  }}</td>
-          <td class="border-solid border-r-2 border-b-2 border-black" name = "Verein" id="Verein">{{ $mannschaft->Verein  }} </td>
-          <td  class="border-solid border-r-2  border-b-2 border-black" name = "Liga" id="Liga">{{  $mannschaft->Liga  }}</td>
-          
-      </tr>
-      @endforeach
-</tbody>
-      </table>
-      <br>
+
+     <div class="w-1/4 bg-green-400 h-12 ">
+        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3 ">Liga:</label>
+        <input type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+     </div>
+      <form class="" name ="idForm" id="idForm" method="GET"  target="teams_table" action = "{{ url('/overviews/teams_table') }}">
+     <input type="hidden" name="selectedID" id="selectedID" value="">
+     </form
+        
+    </br> </br> </br> </br>
+   
+       <iframe name="teams_table" id="teams_table"src="{{ url('/overviews/teams_table') }}" class=""width="100%" height="100%" >
+</iframe> 
       <br> 
       
      <!-- FORM besteht nur aus Hidden Inputfield, dass die ID enthält, da nur diese benötigt wird.
-    Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht>
-    <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}">
+    Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht
+    <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}"
       <input type="hidden" name="selectedID" id="selectedID" value="">
       <input class = "bg-green-500"type="submit" value="Detail">
-    </form>
+    </form> -->
     <script type="text/javascript">
-        highlight_row();
+       
 
-        function highlight_row() {
-            var table = document.getElementById('table');
-            var cells = table.getElementsByTagName('td');
 
-            for (var i = 0; i < cells.length; i++) {
-                // Take each cell
-                var cell = cells[i];
-                // do something on onclick event for cell
-                cell.onclick = function() {
-                    // Get the row id where the cell exists
-                    var rowId = this.parentNode.rowIndex;
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
 
-                    var rowsNotSelected = table.getElementsByTagName('tr');
-                    for (var row = 0; row < rowsNotSelected.length; row++) {
-
-                        rowsNotSelected[row].classList.remove('selected');
-
-                    }
-                    var rowSelected = table.getElementsByTagName('tr')[rowId];
-                    //rowSelected.style.backgroundColor = "green";
-                    rowSelected.className += " selected";
-
-                    //msg = 'The ID  is: ' + rowSelected.cells[0].innerHTML;
-                    var spielid = rowSelected.cells[0].innerHTML; // kann außerhalb der funktion verwendet werden, zb für prüfen
-                    document.idForm.selectedID.value = spielid;
+         $(document).ready(function() {
+            $("#liga").autocomplete({
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('alleLigen2') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Name,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#liga').val(ui.item.label);
+                    $('#selectedID').val(ui.item.value);
+                   
+                    document.getElementById("idForm").submit(); 
+                  // $selectedLiga = document. getElementById('ligaid').value;
                     
-                    //alert(spielid);
-                    //msg += '\nThe cell value is: ' + this.innerHTML;
-                    // alert(msg);
+                  
+                  //  $mannschaften = QueryController::getMannschaften($selectetLiga);
+                   
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
                 }
-            }
-
-        }
+            });
+        });
     </script>
 @endsection
+</body>

@@ -41,9 +41,21 @@ class PageController extends Controller
     {
         return view('overviews.teams_overview');
     }
+
+    public function teams_table()
+    {
+        return view('overviews.teams_table');
+    }
+
+
     public function player_overview()
     {
         return view('overviews.player_overview');
+    }
+
+     public function player_table()
+    {
+        return view('overviews.player_table');
     }
 
 }

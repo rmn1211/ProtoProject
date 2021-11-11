@@ -61,7 +61,7 @@ $arten = QueryController::allTypes();
 
                     <div class="w-1/4 bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input type="text" oninput="hello()" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
+                        <input type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
                     </div>
 
                     <div class="w-1/4 bg-green-400 h-12">
@@ -182,22 +182,22 @@ $arten = QueryController::allTypes();
                                     <input type="text" size="20" class="bg-gray-100 text-right p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloduell[1]->Nachname_S2 }}" />
                                 </td>
                                 <td class="bg-gray-100 text-black border-dashed border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" onchange="changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloduell[1]->Satz_1_Heim }}" />
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloduell[1]->Satz_1_Heim }}" />
                                 </td>
                                 <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-right p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange="changeSetSumS(2)" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloduell[1]->Satz_1_Gast }}" />
+                                    <input type="text" size="4" class="bg-gray-100 text-right p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloduell[1]->Satz_1_Gast }}" />
                                 </td>
                                 <td class="bg-gray-100 text-black border-dashed border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" onchange="changeSetSumS(2)" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloduell[1]->Satz_2_Heim }}" />
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloduell[1]->Satz_2_Heim }}" />
                                 </td>
                                 <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-right p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange="changeSetSumS(2)" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloduell[1]->Satz_2_Gast }}" />
+                                    <input type="text" size="4" class="bg-gray-100 text-right p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloduell[1]->Satz_2_Gast }}" />
                                 </td>
                                 <td class="bg-gray-100 text-black border-dashed border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" onchange="changeSetSumS(2)" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloduell[1]->Satz_3_Heim }}" />
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloduell[1]->Satz_3_Heim }}" />
                                 </td>
                                 <td class="bg-gray-100 text-black border-solid border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-right p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange="changeSetSumS(2)" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloduell[1]->Satz_3_Gast }}" />
+                                    <input type="text" size="4" class="bg-gray-100 text-right p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloduell[1]->Satz_3_Gast }}" />
                                 </td>
                                 </td>
                                 <td class="bg-gray-100 text-black border-dashed border-r-2 border-black">
@@ -332,28 +332,6 @@ $arten = QueryController::allTypes();
                             @endif
                         @endif
                     @endif
-                    <tr>
-                        <td colspan="11" class="invisible">
-                        </td>
-                        <td class="bg-gray-100 text-black ">
-                            <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="sumSetHomeSolo" id="sumSetHomeSolo" />
-                        </td>
-                        <td class="bg-gray-100 text-black ">
-                            <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="sumSetGuestSolo" id="sumSetHomeSolo" />
-                        </td>
-                        <td class="bg-gray-100 text-black ">
-                            <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="sumSetHomeSolo" id="sumSetHomeSolo" />
-                        </td>
-                        <td class="bg-gray-100 text-black ">
-                            <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="sumSetHomeSolo" id="sumSetHomeSolo" />
-                        </td>
-                        <td class="bg-gray-100 text-black ">
-                            <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="sumSetHomeSolo" id="sumSetHomeSolo" />
-                        </td>
-                        <td class="bg-gray-100 text-black ">
-                            <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" name="sumSetHomeSolo" id="sumSetHomeSolo" />
-                        </td>
-                    </tr>
                 </table>
                 <table class="table-fixed">
                     <tr>
