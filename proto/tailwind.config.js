@@ -1,6 +1,6 @@
 module.exports = {
   purge: [],
-  darkMode: true, // or 'media' or 'class'
+  //darkMode: true, // or 'media' or 'class'
   theme: {
     extend: {},
   },
@@ -9,7 +9,9 @@ module.exports = {
     pointerEvents: ['disabled'],
     backgroundColor: ['responsive', 'hover', 'focus', 'active', 'disabled'],
     textColor: ['responsive', 'hover', 'focus', 'active', 'disabled'],
-    extend: {},
+    extend: {
+      backgroundColor: ['active'],
+    },
   },
   plugins: [],
 }

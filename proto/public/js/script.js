@@ -157,10 +157,6 @@ function validateInputs()
 
     return true;
 }
-function hello()
-{
-    console.log("Hanlo");
-}
 
 function changeSetSumS(row)
 {
@@ -176,77 +172,126 @@ function changeSetSumS(row)
     var guestSum = 0;
     var homeWin = 0;
     var guestWin = 0;
+    var sumSetHome = 0;
+    var sumSetGuest = 0;
+    var sumWonSetHome = 0;
+    var sumWonSetGuest = 0;
+    var sumWonMatchHome = 0;
+    var sumWonMatchGuest = 0;
 
-    if (row >= 1)
+
+
+    home1 = parseInt(document.getElementById("soloSatz1heim" + row).value.trim());
+    home2 = parseInt(document.getElementById("soloSatz2heim" + row).value.trim());
+    home3 = parseInt(document.getElementById("soloSatz3heim" + row).value.trim());
+    guest1 = parseInt(document.getElementById("soloSatz1gast" + row).value.trim());
+    guest2 = parseInt(document.getElementById("soloSatz2gast" + row).value.trim());
+    guest3 = parseInt(document.getElementById("soloSatz3gast" + row).value.trim());
+    if (home1 > guest1)
     {
-        home1 = parseInt(document.getElementById("soloSatz1heim1").value.trim());
-        home2 = parseInt(document.getElementById("soloSatz2heim1").value.trim());
-        home3 = parseInt(document.getElementById("soloSatz3heim1").value.trim());
-        guest1 = parseInt(document.getElementById("soloSatz1gast1").value.trim());
-        guest2 = parseInt(document.getElementById("soloSatz2gast1").value.trim());
-        guest3 = parseInt(document.getElementById("soloSatz3gast1").value.trim());
-        homeSum = home1 + home2 + home3;
-        guestSum = guest1 + guest2 + guest3;
-        homeGes = homeSum;
-        guestGes = guestSum;
-        document.getElementById("soloSetpointHeim1").value = homeSum;
-        document.getElementById("soloSetpointGast1").value = guestSum;
-        document.getElementById("soloSumpointHeim1").value = homeGes;
-        document.getElementById("soloSumpointGast1").value = guestGes;
-        if (homeSum > guestSum)
-        {
-            document.getElementById("soloPointHeim1").value = "2";
-            document.getElementById("soloPointGast1").value = "0";
-        } else if (homeSum < guestSum)
-        {
-            document.getElementById("soloPointHeim1").value = "0";
-            document.getElementById("soloPointGast1").value = "2";
+        homeWin++;
+    }
+    else if (home1 < guest1)
+    {
+        guestWin++;
+    }
+    if (home2 > guest2)
+    {
+        homeWin++;
+    }
+    else if (home2 < guest2)
+    {
+        guestWin++;
+    }
+    if (home3 > guest3)
+    {
+        homeWin++;
+    }
+    else if (home3 < guest3)
+    {
+        guestWin++;
+    }
+    homeSum = home1 + home2 + home3;
+    guestSum = guest1 + guest2 + guest3;
+    homeGes = homeSum;
+    guestGes = guestSum;
+    document.getElementById("soloSetpointHeim" + row).value = homeWin;
+    document.getElementById("soloSetpointGast" + row).value = guestWin;
+    document.getElementById("soloWonSetHeim" + row).value = homeGes;
+    document.getElementById("soloWonSetGast" + row).value = guestGes;
 
-        } else
+    if (homeWin > guestWin)
+    {
+        document.getElementById("soloWonMatchHeim" + row).value = 1;
+        document.getElementById("soloWonMatchGast" + row).value = 0;
+    }
+    else if (homeWin < guestWin)
+    {
+        document.getElementById("soloWonMatchHeim" + row).value = 0;
+        document.getElementById("soloWonMatchGast" + row).value = 1;
+    }
+    else
+    {
+        document.getElementById("soloWonMatchHeim" + row).value = 0;
+        document.getElementById("soloWonMatchGast" + row).value = 0;
+    }
+    for (i = 1; i <= 4; i++) //Momentaner max-Wert bei Solospielen muss bei Aenderungen angepsst werden
+    {
+        try
         {
-            document.getElementById("soloPointHeim1").value = "1";
-            document.getElementById("soloPointGast1").value = "1";
-
+            var soloSetPointHeim = parseInt(document.getElementById("soloSetpointHeim" + i).value.trim());
+            var soloSetPointGast = parseInt(document.getElementById("soloSetpointGast" + i).value.trim());
+            var soloWonSetHeim = parseInt(document.getElementById("soloWonSetHeim" + i).value.trim());
+            var soloWonSetGast = parseInt(document.getElementById("soloWonSetGast" + i).value.trim());
+            var soloWonMatchHeim = parseInt(document.getElementById("soloWonMatchHeim" + i).value.trim());
+            var soloWonMatchGast = parseInt(document.getElementById("soloWonMatchGast" + i).value.trim());
+        }
+        catch (e)
+        {
+            console.log("Row " + i + " missing: Values set to 0.")
+            var soloSetPointHeim = 0;
+            var soloSetPointGast = 0;
+            var soloWonSetHeim = 0;
+            var soloWonSetGast = 0;
+            var soloWonMatchHeim = 0;
+            var soloWonMatchGast = 0;
         }
 
-
-        home1 = parseInt(document.getElementById("soloSatz1heim2").value.trim());
-        home2 = parseInt(document.getElementById("soloSatz2heim2").value.trim());
-        home3 = parseInt(document.getElementById("soloSatz3heim2").value.trim());
-        guest1 = parseInt(document.getElementById("soloSatz1gast2").value.trim());
-        guest2 = parseInt(document.getElementById("soloSatz2gast2").value.trim());
-        guest3 = parseInt(document.getElementById("soloSatz3gast2").value.trim());
-        homeSum = home1 + home2 + home3;
-        guestSum = guest1 + guest2 + guest3;
-        homeGes += homeSum;
-        guestGes += guestSum;
-        document.getElementById("soloSetpointHeim2").value = homeSum;
-        document.getElementById("soloSetpointGast2").value = guestSum;
-        document.getElementById("soloSumpointHeim2").value = homeGes;
-        document.getElementById("soloSumpointGast2").value = guestGes;
-        if (homeSum > guestSum)
-        {
-            document.getElementById("soloPointHeim2").value = "2";
-            document.getElementById("soloPointGast2").value = "0";
-        } else if (homeSum < guestSum)
-        {
-            document.getElementById("soloPointHeim2").value = "0";
-            document.getElementById("soloPointGast2").value = "2";
-
-        } else
-        {
-            document.getElementById("soloPointHeim2").value = "1";
-            document.getElementById("soloPointGast2").value = "1";
-
-        }
-    }
-    else if (row == 3)
-    {
+        sumSetHome += soloSetPointHeim;
+        sumSetGuest += soloSetPointGast;
+        sumWonSetHome += soloWonSetHeim;
+        sumWonSetGuest += soloWonSetGast;
+        sumWonMatchHome += soloWonMatchHeim;
+        sumWonMatchGuest += soloWonMatchGast;
 
     }
-    else if (row == 4)
-    {
 
-    }
+    document.getElementById("sumSetHomeSolo").value = sumSetHome;
+    document.getElementById("sumSetGuestSolo").value = sumSetGuest;
+    document.getElementById("sumWonSetHomeSolo").value = sumWonSetHome;
+    document.getElementById("sumWonSetGuestSolo").value = sumWonSetGuest;
+    document.getElementById("sumWonMatchHomeSolo").value = sumWonMatchHome;
+    document.getElementById("sumWonMatchGuestSolo").value = sumWonMatchGuest;
+
+
+}
+
+function markInput(elem)
+{
+    elem.style.backgroundColor = "#a9dfbf";
+}
+function tabClick()
+{
+    var keyEvent = document.dispatchEvent(new KeyboardEvent("keydown", {
+        key: "Tab",
+        keyCode: 9,
+        code: "Tab", // put everything you need in this object.
+        which: 9,
+        shiftKey: false, // you don't need to include values
+        ctrlKey: false,  // if you aren't going to use them.
+        metaKey: false
+    }));
+    console.log(keyEvent.key);
+
 }
 
