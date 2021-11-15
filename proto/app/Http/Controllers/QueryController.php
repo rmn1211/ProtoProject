@@ -534,5 +534,35 @@ class QueryController extends Controller
 
         return response()->json($response);
     }
+     public static function regionLigen(Request $request)
+    {
 
+        $search = $request->search;
+        $region = $request->region;
+        $rregion = DB::connection('mysqlSP')->table('region')->select('ID')->where('name', '=', $region)->first();
+        //DB::select("SELECT ID from liga where name = '$liga' ");
+        $test = $rregion->ID;
+        $ligen = DB::connection('mysqlSP')->table('liga')->select('ID', 'Name')->where('region', '=', $test)->where('name', 'like', '%' . $search . '%')->get();
+        //DB::select("SELECT * from Mannschaften where liga == '$rliga' ");
+        //
+
+        $response = array();
+        foreach ($ligen as $liga) {
+            $response[] = array("ID" => $liga->ID, "Name" => $liga->Name);
+        }
+
+        return response()->json($response);
+    }
+     public static function alleRegionen(Request $request)
+    {
+        $search = $request->search;
+        $regionen = DB::connection('mysqlSP')->table('region')->select('ID', 'Name')->where('name', 'like', '%' . $search . '%')->get();
+
+        $response = array();
+        foreach ($regionen as $region) {
+            $response[] = array("ID" => $region->ID, "Name" => $region->Name);
+        }
+
+        return response()->json($response);
+    }
 }

@@ -37,7 +37,7 @@ color:black;}
   </style>
   <body>
 <section >
-      <h3 class ="font-bold  text-2xl">Mannschaften</h3>
+      <h3 class ="font-bold  text-2xl">Spieler</h3>
     </section>
     <section  class="mt-10 class=w-6/12 ">
     <div class="w-full flex flex-row flex-no-wrap my-5 ">

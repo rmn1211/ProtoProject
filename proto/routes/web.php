@@ -46,6 +46,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 #Route::get('/overview/{id}', [QueryController::class, 'getResults'])->name('report');
 Route::post('/alleLigen2', [QueryController::class, 'alleLigen2'])->name('alleLigen2');
 Route::get('/alleLigen2', [QueryController::class, 'alleLigen2']);
+Route::post('/alleRegionen', [QueryController::class, 'alleRegionen'])->name('alleRegionen');
+Route::get('/alleRegionen', [QueryController::class, 'alleRegionen']);
+Route::post('/regionLigen', [QueryController::class, 'regionLigen'])->name('regionLigen');
+Route::get('/regionLigen', [QueryController::class, 'regionLigen']);
 
 Route::post('/alleMannschaften', [QueryController::class, 'alleMannschaften'])->name('alleMannschaften');
 Route::get('/alleMannschaften', [QueryController::class, 'alleMannschaften']);
