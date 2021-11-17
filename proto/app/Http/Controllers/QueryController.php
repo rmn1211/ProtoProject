@@ -514,6 +514,23 @@ class QueryController extends Controller
 
         return response()->json($response);
     }
+    public static function mannschaften(Request $request)
+    {
+
+        $search = $request->search;
+  
+      
+        $mannschaften = DB::connection('mysqlSP')->table('mannschaft')->select('ID', 'Name')->where('name', 'like', '%' . $search . '%')->get();
+        //DB::select("SELECT * from Mannschaften where liga == '$rliga' ");
+        //
+
+        $response = array();
+        foreach ($mannschaften as $mannschaft) {
+            $response[] = array("ID" => $mannschaft->ID, "Name" => $mannschaft->Name);
+        }
+
+        return response()->json($response);
+    }
 
     public static function alleMannschaften(Request $request)
     {

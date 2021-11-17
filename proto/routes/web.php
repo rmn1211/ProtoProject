@@ -50,6 +50,8 @@ Route::post('/alleRegionen', [QueryController::class, 'alleRegionen'])->name('al
 Route::get('/alleRegionen', [QueryController::class, 'alleRegionen']);
 Route::post('/regionLigen', [QueryController::class, 'regionLigen'])->name('regionLigen');
 Route::get('/regionLigen', [QueryController::class, 'regionLigen']);
+Route::post('/mannschaften', [QueryController::class, 'mannschaften'])->name('mannschaften');
+Route::get('/mannschaften', [QueryController::class, 'mannschaften']);
 
 Route::post('/alleMannschaften', [QueryController::class, 'alleMannschaften'])->name('alleMannschaften');
 Route::get('/alleMannschaften', [QueryController::class, 'alleMannschaften']);

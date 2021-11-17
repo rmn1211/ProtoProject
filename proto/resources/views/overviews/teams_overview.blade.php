@@ -104,6 +104,9 @@ color:black;}
                     var label = ui.item.label;
                     var value = ui.item.value;
                     $('#region').val(ui.item.label);
+                     document.getElementById("selectedID").value = "";
+                      document.getElementById("liga").value = "";
+                       document.getElementById("idForm").submit(); 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
                     return false;
