@@ -88,6 +88,25 @@ class QueryController extends Controller
         return $mannschaften;
     }
 
+    public static function getRegionMannschaften($region) 
+
+    {
+        $mannschaften = DB::connection('mysqlSP')->select('SELECT
+            m.id as "ID",
+            m.name as "Mannschaft",
+            sp.vorname,
+            sp.nachname,
+            v.Name as "Verein",
+            l.name as "Liga"
+        FROM
+            mannschaft m,spieler sp, verein v, liga l
+        WHERE
+            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID and  l.region =?', [$region]
+            );
+
+        return $mannschaften;
+    }
+
     public static function getAlleSpieler()
     {
         $spieler = DB::connection('mysqlSP')->select('SELECT
@@ -122,6 +141,43 @@ class QueryController extends Controller
         return $spieler;
     }
 
+
+    public static function getRegionSpieler($regionid)
+    {
+        $spieler = DB::connection('mysqlSP')->select('SELECT
+            s.id as "ID",
+            s.Vorname as "Vorname",
+            s.Nachname as "Nachname",
+            s.Geschlecht as "Geschlecht",
+            group_concat(m.name) as "Mannschaften"
+        FROM
+            spieler_mannschaft sm
+        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
+        LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
+        Left join liga l on l.id = m.liga
+        Where l.region=?
+        
+        GROUP BY s.id', [$regionid]);
+
+        return $spieler;
+    }
+    public static function getLigaSpieler($ligaid)
+    {
+        $spieler = DB::connection('mysqlSP')->select('SELECT
+            s.id as "ID",
+            s.Vorname as "Vorname",
+            s.Nachname as "Nachname",
+            s.Geschlecht as "Geschlecht",
+            group_concat(m.name) as "Mannschaften"
+        FROM
+            spieler_mannschaft sm
+        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
+        LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
+        Where m.liga=?
+        GROUP BY s.id', [$ligaid]);
+
+        return $spieler;
+    }
 
     //SELECT QUERIES FROM DUELL
     public static function getLiga($id)
@@ -551,6 +607,8 @@ class QueryController extends Controller
 
         return response()->json($response);
     }
+
+
      public static function regionLigen(Request $request)
     {
 
@@ -582,4 +640,41 @@ class QueryController extends Controller
 
         return response()->json($response);
     }
+
+    
+    public static function regionMannschaften(Request $request )
+    {
+     $region = $request->region;
+     $search = $request->search;
+
+        $allemannschaften = DB::connection('mysqlSP')->select('SELECT
+            m.id as "ID",
+            m.name as "Name",
+            
+            l.name as "Liga"
+        FROM
+            mannschaft m, verein v, liga l
+        WHERE
+             m.Verein_ID = v.ID and m.liga = l.ID and  l.region =? ', [$region]
+            
+            );
+           
+
+           
+          
+        $response = array();
+        foreach ($allemannschaften as $mannschaft) {
+        
+       if (stristr($mannschaft->Name, $search) !== false) {
+            $response[] = array("ID" => $mannschaft->ID, "Name" => $mannschaft->Name);}
+        }
+
+        return response()->json($response);
+    }
+
+
+
+
+
+
 }
