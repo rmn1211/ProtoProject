@@ -27,6 +27,10 @@ class PageController extends Controller
     {
         return view('report.check_report', ['match' => $id]);
     }
+     public function view($id)
+    {
+        return view('overviews.see_report', ['match' => $id]);
+    }
     public function old()
     {
         return view('welcome');

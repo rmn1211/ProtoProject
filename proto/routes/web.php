@@ -23,7 +23,7 @@ Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
 Route::post('/overview', [QueryController::class, 'updateMatch']);
 Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
 Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
-
+Route::get('/match_ok/{id}', [PageController::class, 'view'])->name('view');
 
 Route::get('/player_overview', [PageController::class, 'player_overview'])->name('player_overview');
 //TESTAREA
@@ -56,3 +56,7 @@ Route::post('/regionMannschaften', [QueryController::class, 'regionMannschaften'
 Route::get('/regionMannschaften', [QueryController::class, 'regionMannschaften']);
 Route::post('/alleMannschaften', [QueryController::class, 'alleMannschaften'])->name('alleMannschaften');
 Route::get('/alleMannschaften', [QueryController::class, 'alleMannschaften']);
+Route::post('/getSpielerVname', [QueryController::class, 'getSpielerVname'])->name('getSpielerVname');
+Route::get('/getSpielerVname', [QueryController::class, 'getSpielerVname']);
+Route::post('/getSpielerNname', [QueryController::class, 'getSpielerNname'])->name('getSpielerNname');
+Route::get('/getSpielerNname', [QueryController::class, 'getSpielerNname']);

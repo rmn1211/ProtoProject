@@ -3,18 +3,13 @@
    
     use App\Http\Controllers\QueryController;
     $matchID = $_GET['selectedID'];
-    $place = QueryController::getOrt($matchID);
-    $homeTab = QueryController::getHome($matchID);
-    $home = $homeTab->name;
-    $homeID = $homeTab->ID;
-    $awayTab =QueryController::getAway($matchID);
-    $away = $awayTab->name;
-    $awayID = $awayTab->ID;
-    $results = QueryController::getResults($matchID);
-    $teams = QueryController::getTeams($matchID);
-    $staffel = "Dummie";
-    $ligen = QueryController::alleLigen();
-    $liga = QueryController::getLiga($matchID);
+  $match = QueryController::getSingleMatch($matchID);
+$homeID = $match->HeimID;
+$awayID = $match->GastID;
+$teams = QueryController::getTeams($matchID);
+$ligen = QueryController::alleLigen();
+$liga = QueryController::getLiga($matchID);
+
     
     
     
@@ -78,7 +73,7 @@
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-          <label  name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value ="{{ $home  }}">
+          <label  name="tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value ="{{  $match->Heim  }}">
         </div> 
 
         <script>
@@ -166,7 +161,7 @@ var value = ui.item.value;
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-          <label   name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value ="{{ $away  }}">
+          <label   name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value ="{{  $match->Gast  }}">
         </div>
        
         
@@ -174,7 +169,7 @@ var value = ui.item.value;
 
         <div class="w-1/4 bg-green-400 h-12">
           <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Austragungsort:</label>
-          <label name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $place }}">
+          <label name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{  $match->Spielort }}">
         </div>
         
 

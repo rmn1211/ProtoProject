@@ -674,6 +674,60 @@ class QueryController extends Controller
 
 
 
+      public static function getSpielerNname(Request $request )
+    { $team = $request->team;
+
+     $search = $request->search;
+
+
+        $spieler = DB::connection('mysqlSP')->select('SELECT
+            s.id as "ID",
+            s.Vorname as "Vorname",
+            s.Nachname as "Nachname",
+            s.Geschlecht as "Geschlecht"
+        FROM
+            spieler_mannschaft sm
+        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
+        LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
+        Where m.id=?
+        GROUP BY s.id', [$team]);
+
+         $response = array();
+        foreach ($spieler as $player) {
+        
+       if (stristr($player->Nachname, $search) !== false) {
+            $response[] = array("ID" => $player->ID, "Nname" => $player->Nachname);}
+        
+            }
+        return response()->json($response);
+    }
+    public static function getSpielerVname(Request $request )
+    { $team = $request->team;
+
+     $search = $request->search;
+
+
+        $spieler = DB::connection('mysqlSP')->select('SELECT
+            s.id as "ID",
+            s.Vorname as "Vorname",
+            s.Nachname as "Nachname",
+            s.Geschlecht as "Geschlecht"
+        FROM
+            spieler_mannschaft sm
+        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
+        LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
+        Where m.id=?
+        GROUP BY s.id', [$team]);
+
+         $response = array();
+        foreach ($spieler as $player) {
+        
+       if (stristr($player->Vorname, $search) !== false) {
+            $response[] = array("ID" => $player->ID, "Vname" => $player->Vorname);}
+        }
+
+        return response()->json($response);
+    }
 
 
 
