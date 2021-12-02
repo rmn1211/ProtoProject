@@ -187,6 +187,13 @@ class QueryController extends Controller
             ->first();
         return $liga;
     }
+
+     public static function getRegion($id)
+    {
+        $region = DB::connection('mysqlSP')->select("SELECT
+       r.name, r.ID from region r, liga l where l.region = r.id and l.ID ", [$id]);
+        return $region[0];
+    }
     //Ersetzt jegliche Abfragen auf Spiel
     public static function getSingleMatch($id)
     {
@@ -204,6 +211,7 @@ class QueryController extends Controller
         WHERE s.ID = ?", [$id]);
         return $match[0];
     }
+
 
     public static function getTeams($liga)
     {
@@ -577,8 +585,7 @@ class QueryController extends Controller
   
       
         $mannschaften = DB::connection('mysqlSP')->table('mannschaft')->select('ID', 'Name')->where('name', 'like', '%' . $search . '%')->get();
-        //DB::select("SELECT * from Mannschaften where liga == '$rliga' ");
-        //
+      
 
         $response = array();
         foreach ($mannschaften as $mannschaft) {

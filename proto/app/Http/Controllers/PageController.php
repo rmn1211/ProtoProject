@@ -56,6 +56,10 @@ class PageController extends Controller
     {
         return view('overviews.player_overview');
     }
+     public function upload()
+    {
+        return view('report.upload');
+    }
 
      public function player_table()
     {

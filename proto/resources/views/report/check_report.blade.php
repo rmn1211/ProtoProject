@@ -9,6 +9,7 @@ $awayID = $match->GastID;
 $teams = QueryController::getTeams($matchID);
 $ligen = QueryController::alleLigen();
 $liga = QueryController::getLiga($matchID);
+$region = QueryController::getRegion($liga-> ID);
 
 #-----------------Neue Herangehensweise-----------------------------
 $soloduell = QueryController::getSolo($matchID);
@@ -38,7 +39,7 @@ $arten = QueryController::allTypes();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
@@ -82,18 +83,26 @@ $arten = QueryController::allTypes();
                 <input type="hidden" id="soloCount" name="soloCount" value="{{ count($soloduell) }}">
                 <input type="hidden" id="doubleCount" name="doubleCount" value="{{ count($doppelduell) }}">
                 <div class="flex mb-4">
+                 <div class="w-1/full bg-green-400 h-12">
+                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
+                       <input  onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()"type="text" id="region" name="region" onChange="markInput(this)" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $region->name }}">
+
+                       </div>
+
                     <div class="w-1/full bg-green-400 h-12">
+
+
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input type="text" oninput="hello()"onfocus="javascript:$(this).autocomplete('search');" id="liga" onChange="markInput(this)" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
+                        <input type="text"      onfocus="javascript:$(this).autocomplete('search');" id="liga" onChange="markInput(this)" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
                     </div>
 
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" onChange="markInput(this)" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Heim }}">
+                        <input onload="MannschaftenH();"onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" onChange="markInput(this)" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Heim }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" onChange="markInput(this)" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Gast }}">
+                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" onChange="markInput(this)" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Gast }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Schiedsrichter:</label>
@@ -104,6 +113,7 @@ $arten = QueryController::allTypes();
                         <input type="text" name="tfPlace" id="tfPlace" onChange="markInput(this)" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Spielort }}">
                     </div>
                 </div>
+                 <input type="hidden" name="regionID" id="regionID" value="{{ $region->ID }}">
                  <input type="hidden" name="HeimID" id="HeimID" value="{{$homeID}}">
                   <input type="hidden" name="GastID" id="GastID" value="{{$awayID}}">
                 <table class="w-full flex flex-row flex-wrap rounded-lg my-5">
@@ -587,13 +597,16 @@ $arten = QueryController::allTypes();
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
       
         
-        $(document).ready(function() {
-            $("#liga").autocomplete({
-            minLength: 0,
+         $(document).ready(function() {
+         alleLigen();
+         $("#region").autocomplete({
+         minLength: 0,
+         minChars: 0,
+         
                 source: function(request, response) {
                     // Fetch data
                     $.ajax({
-                        url: "{{ route('alleLigen2') }}",
+                        url: "{{ route('alleRegionen') }}",
                         type: 'post',
                         dataType: "json",
                         data: {
@@ -604,7 +617,71 @@ $arten = QueryController::allTypes();
                             response(data.map(function(value) {
                                 return {
                                     'label': value.Name,
-                                    'value': value.Name
+                                    'value': value.ID
+
+                                    };
+                            }));
+                        }
+                    });
+                },
+              // focus:function() {if (this.value == ""){
+          //  $(this).autocomplete("search");}}
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#region').val(ui.item.label);
+                     $('#regionID').val(ui.item.value);
+                    
+                     ligaregion();
+                      document.getElementById("liga").value = "";
+                      
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+         });
+         function regioncheck(){
+         if( !$('#region').val() ) {
+       
+        alleLigen();
+        document.getElementById("liga").value = "";
+           document.getElementById("regionID").value = "";
+        
+
+         }}
+        function check() {
+         if( !$('#liga').val() ) {
+        
+        
+         return false;
+        }
+
+        
+        
+        }
+        function alleLigen(){
+         $("#liga").autocomplete({
+              minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('alleLigen2') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data:{ 
+                            _token: CSRF_TOKEN,
+                            search: request.term
+                           
+                       } ,
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Name,
+                                    'value': value.ID
                                 };
                             }));
                         }
@@ -616,12 +693,54 @@ $arten = QueryController::allTypes();
                     var label = ui.item.label;
                     var value = ui.item.value;
                     $('#liga').val(ui.item.label);
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
+                   
+                  
                     return false;
                 }
-            });
-        });
+             });
+
+
+        }
+
+        function ligaregion(){
+        
+        $("#liga").autocomplete({
+        minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('regionLigen') }}",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+                                region: $("#region").val()
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#liga').val(ui.item.label);
+                   
+                  
+                    return false;
+                }
+                 });
+        }
+       
 
         
 
@@ -664,6 +783,82 @@ $arten = QueryController::allTypes();
                     }
                 });
             }
+            else if($("#region").val().length > 0){
+                $("#tfHome").autocomplete({
+          minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('regionMannschaften') }}", 
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+                                region: $("#regionID").val()
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfHome').val(ui.item.label);
+                          $('#HeimID').val(ui.item.value);
+                     
+                        return false;
+                    }
+                });
+            }
+            else{
+             $("#tfHome").autocomplete({
+          minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('mannschaften') }}",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+                               
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfHome').val(ui.item.label);
+                          $('#HeimID').val(ui.item.value);
+                     
+                        return false;
+                    }
+                });
+
+
+            }
         }
 
         function MannschaftenG() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
@@ -705,6 +900,84 @@ $arten = QueryController::allTypes();
                         return false;
                     }
                 });
+            }
+
+            
+            else if($("#region").val().length > 0){
+                $("#tfAway").autocomplete({
+          minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('regionMannschaften') }}", 
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+                                region: $("#regionID").val()
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfAway').val(ui.item.label);
+                          $('#GastID').val(ui.item.value);
+                     
+                        return false;
+                    }
+                });
+            }
+            else{
+             $("#tfAway").autocomplete({
+          minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('mannschaften') }}",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+                               
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfAway').val(ui.item.label);
+                          $('#GastID').val(ui.item.value);
+                     
+                        return false;
+                    }
+                });
+
+
             }
         }
           function NnameH(elem) { 

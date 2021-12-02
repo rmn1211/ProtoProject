@@ -25,10 +25,10 @@ color:black;}
     color: white;
 }
   </style>
-<section >
-      <h3 class ="font-bold  text-2xl">Eingereichte Spielberichte</h3>
+<section   class="ml-12">
+      <h3 class ="font-bold  text-2xl"> Spielberichte</h3>
     </section>
-    <section  class="mt-10 class=w-6/12">
+    <section  class=" ml-12 mt-10 w-6/12">
       <table class="table-fixed"  id="table">
       <thead>
         <tr>
@@ -53,12 +53,12 @@ if($match->status == 2)
 
  @endphp
  
-        <tr class ="border-solid border-b-2 border-black alle">
+        <tr class ="cursor-default border-solid border-b-2 border-black alle">
         <td hidden class="bg-gray-100 text-black border-solid border-r-2 border-black" name = "id" id="id">{{ $match->ID  }}</td>
-          <td class="border-solid border-r-2 border-b-2 border-black" name = "spiel" id="spiel">{{ $match->Heim  }} vs {{ $match->Gast  }}</td>
-          <td class="border-solid border-r-2 border-b-2 border-black"  name = "termin" id="termin">{{ $match->Termin  }}</td>
-          <td class="border-solid border-r-2 border-b-2 border-black" name = "von" id="von">{{ $match->vorname  }} {{ $match->nachname  }}</td>
-        //  <td  class="border-solid border-r-2  border-b-2 border-black" name = "status" id="status">{{  $status  }}</td>
+          <td class="px-8 border-solid border-r-2 border-b-2 border-black" name = "spiel" id="spiel">{{ $match->Heim  }} vs {{ $match->Gast  }}</td>
+          <td class="px-8 border-solid border-r-2 border-b-2 border-black"  name = "termin" id="termin">{{ $match->Termin  }}</td>
+          <td class="px-8 border-solid border-r-2 border-b-2 border-black" name = "von" id="von">{{ $match->vorname  }} {{ $match->nachname  }}</td>
+         <td  class="px-8 border-solid border-r-2 border-b-2 border-black" name = "status" id="status">{{  $status  }}</td>
           
       </tr>
       @endforeach
@@ -71,7 +71,7 @@ if($match->status == 2)
     Vereinfacht austausch zwischen html - php - js    TODO detailansicht see_report-->
     <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/match_ok/view') }}">
       <input type="hidden" name="selectedID" id="selectedID" value="">
-      <input class = "bg-green-500"type="submit" value="ansehen">
+      <input class="bg-green-500 disabled:opacity-90 hover:bg-green-700 text-white font-bold py-2 px-4 border-green-700 rounded"  type="submit" value="ansehen">
     </form>
     <script type="text/javascript">
         highlight_row();

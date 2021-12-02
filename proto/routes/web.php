@@ -24,7 +24,7 @@ Route::post('/overview', [QueryController::class, 'updateMatch']);
 Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
 Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
 Route::get('/match_ok/{id}', [PageController::class, 'view'])->name('view');
-
+Route::get('/upload', [PageController::class, 'upload'])->name('upload');
 Route::get('/player_overview', [PageController::class, 'player_overview'])->name('player_overview');
 //TESTAREA
 Route::get('/', [PageController::class, 'test'])->name('test');
