@@ -13,7 +13,7 @@ use App\Http\Controllers\QueryController;
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
@@ -39,16 +39,21 @@ use App\Http\Controllers\QueryController;
         </section>
         <section class="mt-10 class=w-6/12 ">
 
-
-            <div class="w-1/4 bg-green-400 h-12 ">
-                <label class="block text-gray-900 text-sm font-bold mb-2 ml-3 ">Liga:</label>
-                <input oninput="check()" type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+            <div class="w-full flex flex-row flex-no-wrap my-5 ">
+                <div class="w-1/4 bg-green-400 h-12 ">
+                    <label class="block text-gray-900 text-sm font-bold mb-2 ml-3 ">Region:</label>
+                    <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="w-1/4 bg-green-400 h-12 ">
+                    <label class="block text-gray-900 text-sm font-bold mb-2 ml-3 ">Liga:</label>
+                    <input onfocus="javascript:$(this).autocomplete('search');" oninput="check()" type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                </div>
             </div>
+            <datalist id="region"></datalist>
             <form class="" name="idForm" id="idForm" method="GET" target="teams_table" action="{{ url('/overviews/teams_table') }}">
                 <input type="hidden" name="selectedID" id="selectedID" value="">
-            </form>
-
-            <br> <br> <br> <br>
+                <input type="hidden" name="regionID" id="regionID" value="">
+            </form </br> </br> </br> </br>
 
             <iframe name="teams_table" id="teams_table" src="{{ url('/overviews/teams_table') }}" class="" width="100%" height="100%">
             </iframe>
@@ -64,7 +69,78 @@ use App\Http\Controllers\QueryController;
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
 
                 $(document).ready(function() {
+                    alleLigen();
+                    $("#region").autocomplete({
+                        minLength: 0,
+                        minChars: 0,
+
+                        source: function(request, response) {
+                            // Fetch data
+                            $.ajax({
+                                url: "{{ route('alleRegionen') }}",
+                                type: 'post',
+                                dataType: "json",
+                                data: {
+                                    _token: CSRF_TOKEN,
+                                    search: request.term
+                                },
+                                success: function(data) {
+                                    response(data.map(function(value) {
+                                        return {
+                                            'label': value.Name,
+                                            'value': value.ID
+
+                                        };
+                                    }));
+                                }
+                            });
+                        },
+                        // focus:function() {if (this.value == ""){
+                        //  $(this).autocomplete("search");}}
+                        select: function(event, ui) {
+                            // Set selection
+                            event.preventDefault();
+                            var label = ui.item.label;
+                            var value = ui.item.value;
+                            $('#region').val(ui.item.label);
+                            $('#regionID').val(ui.item.value);
+                            document.getElementById("selectedID").value = "";
+                            ligaregion();
+                            document.getElementById("liga").value = "";
+                            document.getElementById("idForm").submit();
+                            // $("#employee_search").text(ui.item.label); // display the selected text
+                            //$("#liga").text(ui.item.label);
+                            return false;
+                        }
+                    });
+
+                });
+
+                function regioncheck() {
+                    if (!$('#region').val()) {
+                        document.getElementById("selectedID").value = "";
+                        alleLigen();
+                        document.getElementById("liga").value = "";
+                        document.getElementById("regionID").value = "";
+                        document.getElementById("idForm").submit();
+
+                    }
+                }
+
+                function check() {
+                    if (!$('#liga').val()) {
+                        document.getElementById("selectedID").value = "";
+                        document.getElementById("idForm").submit();
+                        return false;
+                    }
+
+
+
+                }
+
+                function alleLigen() {
                     $("#liga").autocomplete({
+                        minLength: 0,
                         source: function(request, response) {
                             // Fetch data
                             $.ajax({
@@ -74,6 +150,7 @@ use App\Http\Controllers\QueryController;
                                 data: {
                                     _token: CSRF_TOKEN,
                                     search: request.term
+
                                 },
                                 success: function(data) {
                                     response(data.map(function(value) {
@@ -94,24 +171,53 @@ use App\Http\Controllers\QueryController;
                             $('#selectedID').val(ui.item.value);
 
                             document.getElementById("idForm").submit();
-                            // $selectedLiga = document. getElementById('ligaid').value;
 
-
-                            //  $mannschaften = QueryController::getMannschaften($selectetLiga);
-
-                            // $("#employee_search").text(ui.item.label); // display the selected text
-                            //$("#liga").text(ui.item.label);
                             return false;
                         }
                     });
-                });
 
-                function check() {
-                    if (!$('#liga').val()) {
-                        document.getElementById("selectedID").value = "";
-                        document.getElementById("idForm").submit();
-                    }
 
+                }
+
+                function ligaregion() {
+
+                    $("#liga").autocomplete({
+                        minLength: 0,
+                        source: function(request, response) {
+                            // Fetch data
+                            $.ajax({
+                                url: "{{ route('regionLigen') }}",
+                                type: 'post',
+                                dataType: "json",
+                                data: {
+                                    _token: CSRF_TOKEN,
+                                    search: request.term,
+                                    region: $("#region").val()
+
+                                },
+                                success: function(data) {
+                                    response(data.map(function(value) {
+                                        return {
+                                            'label': value.Name,
+                                            'value': value.ID
+                                        };
+                                    }));
+                                }
+                            });
+                        },
+                        select: function(event, ui) {
+                            // Set selection
+                            event.preventDefault();
+                            var label = ui.item.label;
+                            var value = ui.item.value;
+                            $('#liga').val(ui.item.label);
+                            $('#selectedID').val(ui.item.value);
+
+                            document.getElementById("idForm").submit();
+
+                            return false;
+                        }
+                    });
                 }
             </script>
         @endsection

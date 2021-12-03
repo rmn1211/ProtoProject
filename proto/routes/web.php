@@ -23,7 +23,8 @@ Route::get('/overview/{id}', [PageController::class, 'report'])->name('report');
 Route::post('/overview', [QueryController::class, 'updateMatch']);
 Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
 Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
-
+Route::get('/match_ok/{id}', [PageController::class, 'view'])->name('view');
+Route::get('/upload', [PageController::class, 'upload'])->name('upload');
 Route::get('/player_overview', [PageController::class, 'player_overview'])->name('player_overview');
 
 //Neue OverviewRouten: Erstmal nur Test
@@ -44,6 +45,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 #Route::get('/overview/{id}', [QueryController::class, 'getResults'])->name('report');
 Route::post('/alleLigen2', [QueryController::class, 'alleLigen2'])->name('alleLigen2');
 Route::get('/alleLigen2', [QueryController::class, 'alleLigen2']);
-
+Route::post('/alleRegionen', [QueryController::class, 'alleRegionen'])->name('alleRegionen');
+Route::get('/alleRegionen', [QueryController::class, 'alleRegionen']);
+Route::post('/regionLigen', [QueryController::class, 'regionLigen'])->name('regionLigen');
+Route::get('/regionLigen', [QueryController::class, 'regionLigen']);
+Route::post('/mannschaften', [QueryController::class, 'mannschaften'])->name('mannschaften');
+Route::get('/mannschaften', [QueryController::class, 'mannschaften']);
+Route::post('/regionMannschaften', [QueryController::class, 'regionMannschaften'])->name('regionMannschaften');
+Route::get('/regionMannschaften', [QueryController::class, 'regionMannschaften']);
 Route::post('/alleMannschaften', [QueryController::class, 'alleMannschaften'])->name('alleMannschaften');
 Route::get('/alleMannschaften', [QueryController::class, 'alleMannschaften']);
+Route::post('/getSpielerVname', [QueryController::class, 'getSpielerVname'])->name('getSpielerVname');
+Route::get('/getSpielerVname', [QueryController::class, 'getSpielerVname']);
+Route::post('/getSpielerNname', [QueryController::class, 'getSpielerNname'])->name('getSpielerNname');
+Route::get('/getSpielerNname', [QueryController::class, 'getSpielerNname']);

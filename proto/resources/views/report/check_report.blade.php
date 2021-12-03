@@ -9,6 +9,7 @@ $awayID = $match->GastID;
 $teams = QueryController::getTeams($matchID);
 $ligen = QueryController::alleLigen();
 $liga = QueryController::getLiga($matchID);
+$region = QueryController::getRegion($liga->ID);
 
 #-----------------Neue Herangehensweise-----------------------------
 $soloduell = QueryController::getSolo($matchID);
@@ -38,7 +39,7 @@ $arten = QueryController::allTypes();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
@@ -83,17 +84,25 @@ $arten = QueryController::allTypes();
                 <input type="hidden" id="doubleCount" name="doubleCount" value="{{ count($doppelduell) }}">
                 <div class="flex mb-4">
                     <div class="w-1/full bg-green-400 h-12">
+                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" onChange="markInput(this)" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $region->name }}">
+
+                    </div>
+
+                    <div class="w-1/full bg-green-400 h-12">
+
+
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input type="text" oninput="hello()" id="liga" onChange="markInput(this)" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
+                        <input type="text" onfocus="javascript:$(this).autocomplete('search');" id="liga" onChange="markInput(this)" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
                     </div>
 
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-                        <input oninput="MannschaftenH()" type="text" onChange="markInput(this)" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Heim }}">
+                        <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" onChange="markInput(this)" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Heim }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-                        <input type="text" oninput="MannschaftenG()" onChange="markInput(this)" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Gast }}">
+                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" onChange="markInput(this)" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Gast }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Schiedsrichter:</label>
@@ -104,6 +113,9 @@ $arten = QueryController::allTypes();
                         <input type="text" name="tfPlace" id="tfPlace" onChange="markInput(this)" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Spielort }}">
                     </div>
                 </div>
+                <input type="hidden" name="regionID" id="regionID" value="{{ $region->ID }}">
+                <input type="hidden" name="HeimID" id="HeimID" value="{{ $homeID }}">
+                <input type="hidden" name="GastID" id="GastID" value="{{ $awayID }}">
                 <table class="w-full flex flex-row flex-wrap rounded-lg my-5">
                     <thead>
                         <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
@@ -232,16 +244,16 @@ $arten = QueryController::allTypes();
                                     <input type="text" list="arten" size="4" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType1" id="soloType1" value="{{ $soloduell[0]->Duellart }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloduell[0]->Vorname_S1 }}" />
+                                    <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloduell[0]->Vorname_S1 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloduell[0]->Nachname_S1 }}" />
+                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloduell[0]->Nachname_S1 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloduell[0]->Vorname_S2 }}" />
+                                    <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloduell[0]->Vorname_S2 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloduell[0]->Nachname_S2 }}" />
+                                    <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloduell[0]->Nachname_S2 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                     <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloduell[0]->Satz_1_Heim }}" />
@@ -287,16 +299,16 @@ $arten = QueryController::allTypes();
                                         <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloType2" id="soloType2" value="{{ $soloduell[1]->Duellart }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloduell[1]->Vorname_S1 }}" />
+                                        <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloduell[1]->Vorname_S1 }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloduell[1]->Nachname_S1 }}" />
+                                        <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloduell[1]->Nachname_S1 }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloduell[1]->Vorname_S2 }}" />
+                                        <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloduell[1]->Vorname_S2 }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloduell[1]->Nachname_S2 }}" />
+                                        <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloduell[1]->Nachname_S2 }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                         <input type="text" size="4" class="bg-gray-100 sm:text-right  text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloduell[1]->Satz_1_Heim }}" />
@@ -342,16 +354,16 @@ $arten = QueryController::allTypes();
                                             <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType3" id="soloType3" value="{{ $soloduell[2]->Duellart }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim3" id="soloVnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S1 }}" />
+                                            <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim3" id="soloVnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S1 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                            <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim3" id="soloNnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Nachname_S1 }}" />
+                                            <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim3" id="soloNnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Nachname_S1 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast3" id="soloVnameGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S2 }}" />
+                                            <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast3" id="soloVnameGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S2 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                            <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast3" id="soloNnameGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Nachname_S2 }}" />
+                                            <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast3" id="soloNnameGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Nachname_S2 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                             <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1heim3" id="soloSatz1heim3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_1_Heim }}" />
@@ -397,16 +409,16 @@ $arten = QueryController::allTypes();
                                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloType4" id="soloType4" value="{{ $soloduell[3]->Duellart }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim4" id="soloVnameHeim4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S1 }}" />
+                                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim4" id="soloVnameHeim4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S1 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                                <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim4" id="soloNnameHeim4" onChange="markInput(this)" value="{{ $soloduell[3]->Nachname_S1 }}" />
+                                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim4" id="soloNnameHeim4" onChange="markInput(this)" value="{{ $soloduell[3]->Nachname_S1 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast4" id="soloVnameGast4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S2 }}" />
+                                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast4" id="soloVnameGast4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S2 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                                <input type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast4" id="soloNnameGast4" onChange="markInput(this)" value="{{ $soloduell[3]->Nachname_S2 }}" />
+                                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast4" id="soloNnameGast4" onChange="markInput(this)" value="{{ $soloduell[3]->Nachname_S2 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1heim4" id="soloSatz1heim4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_1_Heim }}" />
@@ -583,12 +595,18 @@ $arten = QueryController::allTypes();
     <script type="text/javascript">
         // CSRF Token
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+
         $(document).ready(function() {
-            $("#liga").autocomplete({
+            alleLigen();
+            $("#region").autocomplete({
+                minLength: 0,
+                minChars: 0,
+
                 source: function(request, response) {
                     // Fetch data
                     $.ajax({
-                        url: "{{ route('alleLigen2') }}",
+                        url: "{{ route('alleRegionen') }}",
                         type: 'post',
                         dataType: "json",
                         data: {
@@ -599,29 +617,59 @@ $arten = QueryController::allTypes();
                             response(data.map(function(value) {
                                 return {
                                     'label': value.Name,
-                                    'value': value.Name
+                                    'value': value.ID
+
                                 };
                             }));
                         }
                     });
                 },
+                // focus:function() {if (this.value == ""){
+                //  $(this).autocomplete("search");}}
                 select: function(event, ui) {
                     // Set selection
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $('#liga').val(ui.item.label);
+                    $('#region').val(ui.item.label);
+                    $('#regionID').val(ui.item.value);
+
+                    ligaregion();
+                    document.getElementById("liga").value = "";
+
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
                     return false;
                 }
             });
+
         });
 
-        function test() {
-            //alert("test");
-            //$( "#employee_search" ).autocomplete( "enable" );
+        function regioncheck() {
+            if (!$('#region').val()) {
+
+                alleLigen();
+                document.getElementById("liga").value = "";
+                document.getElementById("regionID").value = "";
+
+
+            }
+        }
+
+        function check() {
+            if (!$('#liga').val()) {
+
+
+                return false;
+            }
+
+
+
+        }
+
+        function alleLigen() {
             $("#liga").autocomplete({
+                minLength: 0,
                 source: function(request, response) {
                     // Fetch data
                     $.ajax({
@@ -631,12 +679,13 @@ $arten = QueryController::allTypes();
                         data: {
                             _token: CSRF_TOKEN,
                             search: request.term
+
                         },
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
                                     'label': value.Name,
-                                    'value': value.Name
+                                    'value': value.ID
                                 };
                             }));
                         }
@@ -647,20 +696,62 @@ $arten = QueryController::allTypes();
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-
                     $('#liga').val(ui.item.label);
 
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
+
                     return false;
                 }
+            });
 
+
+        }
+
+        function ligaregion() {
+
+            $("#liga").autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('regionLigen') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            region: $("#region").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Name,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#liga').val(ui.item.label);
+
+
+                    return false;
+                }
             });
         }
+
+
+
 
         function MannschaftenH() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
             if ($("#liga").val().length > 0) {
                 $("#tfHome").autocomplete({
+                    minLength: 0,
                     source: function(request, response) {
                         // Fetch data
                         $.ajax({
@@ -677,7 +768,7 @@ $arten = QueryController::allTypes();
                                 response(data.map(function(value) {
                                     return {
                                         'label': value.Name,
-                                        'value': value.Name
+                                        'value': value.ID
                                     };
                                 }));
                             }
@@ -689,11 +780,86 @@ $arten = QueryController::allTypes();
                         var label = ui.item.label;
                         var value = ui.item.value;
                         $('#tfHome').val(ui.item.label);
+                        $('#HeimID').val(ui.item.value);
                         // $("#employee_search").text(ui.item.label); // display the selected text
                         //$("#liga").text(ui.item.label);
                         return false;
                     }
                 });
+            } else if ($("#region").val().length > 0) {
+                $("#tfHome").autocomplete({
+                    minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('regionMannschaften') }}",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+                                region: $("#regionID").val()
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfHome').val(ui.item.label);
+                        $('#HeimID').val(ui.item.value);
+
+                        return false;
+                    }
+                });
+            } else {
+                $("#tfHome").autocomplete({
+                    minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('mannschaften') }}",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfHome').val(ui.item.label);
+                        $('#HeimID').val(ui.item.value);
+
+                        return false;
+                    }
+                });
+
+
             }
         }
 
@@ -701,6 +867,7 @@ $arten = QueryController::allTypes();
 
             if ($("#liga").val().length > 0) {
                 $("#tfAway").autocomplete({
+                    minLength: 0,
                     source: function(request, response) {
                         // Fetch data
                         $.ajax({
@@ -717,7 +884,7 @@ $arten = QueryController::allTypes();
                                 response(data.map(function(value) {
                                     return {
                                         'label': value.Name,
-                                        'value': value.Name
+                                        'value': value.ID
                                     };
                                 }));
                             }
@@ -729,12 +896,476 @@ $arten = QueryController::allTypes();
                         var label = ui.item.label;
                         var value = ui.item.value;
                         $('#tfAway').val(ui.item.label);
+                        $('#GastID').val(ui.item.value);
                         // $("#employee_search").text(ui.item.label); // display the selected text
                         //$("#liga").text(ui.item.label);
                         return false;
                     }
                 });
+            } else if ($("#region").val().length > 0) {
+                $("#tfAway").autocomplete({
+                    minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('regionMannschaften') }}",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+                                region: $("#regionID").val()
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfAway').val(ui.item.label);
+                        $('#GastID').val(ui.item.value);
+
+                        return false;
+                    }
+                });
+            } else {
+                $("#tfAway").autocomplete({
+                    minLength: 0,
+                    source: function(request, response) {
+                        // Fetch data
+                        $.ajax({
+                            url: "{{ route('mannschaften') }}",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                _token: CSRF_TOKEN,
+                                search: request.term,
+
+
+                            },
+                            success: function(data) {
+                                response(data.map(function(value) {
+                                    return {
+                                        'label': value.Name,
+                                        'value': value.ID
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    select: function(event, ui) {
+                        // Set selection
+                        event.preventDefault();
+                        var label = ui.item.label;
+                        var value = ui.item.value;
+                        $('#tfAway').val(ui.item.label);
+                        $('#GastID').val(ui.item.value);
+
+                        return false;
+                    }
+                });
+
+
             }
+        }
+
+        function NnameH(elem) {
+            var id = document.getElementById(elem);
+
+            $(id).autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerNname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#HeimID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Nname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $(id).val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function VnameH(elem) { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+            var id = document.getElementById(elem);
+
+            $(id).autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerVname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#HeimID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Vname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $(id).val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function NnameG(elem) {
+            var id = document.getElementById(elem);
+
+            $(id).autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerNname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#GastID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Nname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $(id).val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function VnameG(elem) {
+            var id = document.getElementById(elem);
+            $(id).autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerVname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#GastID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Vname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $(id).val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function NH1() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+
+
+            $("#soloNnameHeim1").autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerNname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#HeimID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Nname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#soloNnameHeim1').val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function NH2() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+
+
+            $("#soloNnameHeim2").autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerNname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#HeimID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Nname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#soloNnameHeim2').val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function VH1() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+
+
+            $("#soloVnameHeim1").autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerVname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#HeimID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Vname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#soloVnameHeim1').val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function NG1() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+
+
+            $("#soloNnameGast1").autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerNname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#GastID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Nname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#soloNnameGast1').val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+        function VG1() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+
+
+            $("#soloVnameGast1").autocomplete({
+                minLength: 0,
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "{{ route('getSpielerVname') }}",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: request.term,
+                            team: $("#GastID").val()
+
+                        },
+                        success: function(data) {
+                            response(data.map(function(value) {
+                                return {
+                                    'label': value.Vname,
+                                    'value': value.ID
+                                };
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui) {
+                    // Set selection
+                    event.preventDefault();
+                    var label = ui.item.label;
+                    var value = ui.item.value;
+                    $('#soloVnameGast1').val(ui.item.label);
+
+                    // $("#employee_search").text(ui.item.label); // display the selected text
+                    //$("#liga").text(ui.item.label);
+                    return false;
+                }
+            });
+
+        }
+
+
+
+
+        function alleNamen() {
+            VH1();
+            NH1();
+            VG1();
+            NG1();
+
+            NH2();
         }
     </script>
 @endsection

@@ -2,20 +2,30 @@
 @php
    
     use App\Http\Controllers\QueryController;
-    if(isset($_GET['selectedID'])) {
-    if($_GET['selectedID']==""){$mannschaften = QueryController::getAlleMannschaften();
-    }
-    else{
-    $ligaID = $_GET['selectedID'];
-    
-    $mannschaften = QueryController::getMannschaften($ligaID);
-  }
+      if(isset($_GET['regionID'])) {
+        if(isset($_GET['selectedID'])) {
+         
+            if($_GET['selectedID']==""){
+                if($_GET['regionID']==""){
 
-}else{
-    
-    
-   
-    $mannschaften = QueryController::getAlleMannschaften();}
+                    $mannschaften = QueryController::getAlleMannschaften();
+                    }
+                else{
+                    $regionID = $_GET['regionID'];
+                    $mannschaften = QueryController::getRegionMannschaften($regionID);
+                }
+            }
+            else{
+                $ligaID = $_GET['selectedID'];
+                $mannschaften = QueryController::getMannschaften($ligaID);
+            }
+        }
+
+        }
+      
+    else{
+        $mannschaften = QueryController::getAlleMannschaften();
+    }
     
     
    
