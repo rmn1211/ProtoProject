@@ -24,10 +24,8 @@ Route::post('/overview', [QueryController::class, 'updateMatch']);
 Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
 Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
 
-
 Route::get('/player_overview', [PageController::class, 'player_overview'])->name('player_overview');
-//TESTAREA
-Route::get('/', [PageController::class, 'test'])->name('test');
+
 //Neue OverviewRouten: Erstmal nur Test
 Route::get('/overview/edit', [PageController::class, 'report'])->name('report');
 Route::post('/overview/edit', [QueryController::class, 'updateMatch']);
