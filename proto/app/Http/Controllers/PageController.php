@@ -27,7 +27,7 @@ class PageController extends Controller
     {
         return view('report.check_report', ['match' => $id]);
     }
-     public function view($id)
+    public function view($id)
     {
         return view('overviews.see_report', ['match' => $id]);
     }
@@ -51,17 +51,16 @@ class PageController extends Controller
         return view('overviews.teams_table');
     }
 
-
     public function player_overview()
     {
         return view('overviews.player_overview');
     }
-     public function upload()
+    public function upload()
     {
         return view('report.upload');
     }
 
-     public function player_table()
+    public function player_table()
     {
         return view('overviews.player_table');
     }
