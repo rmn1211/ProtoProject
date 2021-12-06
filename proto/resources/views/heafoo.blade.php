@@ -15,18 +15,19 @@
 </head>
 
 <body class="background-main min-h-screen top-0 left-0 right-0">
-    <header class="relative">
+    <header class="block">
         <hgroup class="bg-green-500 u-50">
             <div class="container mx-auto flex justify-between p-4">
                 <h1 class="text-xs md:text-sm lg:text-xl font-black" tabindex="-1">BSWeb</h1>
                 <nav class="text-xs md:text-sm lg:text-xl ">
-                    <a href="/" class="{{ request()->is('/') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Home</a>
-                    <a href="player_overview" class="{{ request()->is('player_overview') ? 'active' : '' }} mx-2  hover:text-gray-500 transition duration-400" tabindex="-1">Spielersuche</a>
-                    <a href="teams_overview" class="{{ request()->is('teams_overview') ? 'active' : '' }} mx-2  hover:text-gray-500 transition duration-400" tabindex="-1">Mannschaften</a>
-                    <a href="login" class="{{ request()->is('login') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Login</a>
-                      <a href="upload" class="{{ request()->is('upload') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spielebericht hochladen</a>
-                    <a href="overview" class="{{ request()->is('overview') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spieleberichte prüfen</a>
-                    <a href="match_ok" class="{{ request()->is('match_ok') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spieleberichte ansehen</a>
+                    <a href="../" class="{{ request()->is('/') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Home</a>
+                    <a href="../player_overview" class="{{ request()->is('player_overview') ? 'active' : '' }} mx-2  hover:text-gray-500 transition duration-400" tabindex="-1">Spielersuche</a>
+                    <a href="../teams_overview" class="{{ request()->is('teams_overview') ? 'active' : '' }} mx-2  hover:text-gray-500 transition duration-400" tabindex="-1">Mannschaften</a>
+                    <a href="../upload" class="{{ request()->is('upload') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spielebericht hochladen</a>
+                    <a href="../overview" class="{{ request()->is('overview') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spieleberichte prüfen</a>
+                    <a href="../match_ok" class="{{ request()->is('match_ok') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spieleberichte ansehen</a>
+                    <a href="../login" class="{{ request()->is('login') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Login</a>
+
                 </nav>
             </div>
         </hgroup>
