@@ -248,7 +248,7 @@ function changeSetSumS(row)
         }
         catch (e)
         {
-            console.log("Row " + i + " missing: Values set to 0.")
+            console.log("Solo: Row " + i + " missing: Values set to 0.")
             var soloSetPointHeim = 0;
             var soloSetPointGast = 0;
             var soloWonSetHeim = 0;
@@ -274,6 +274,122 @@ function changeSetSumS(row)
     document.getElementById("sumWonMatchGuestSolo").value = sumWonMatchGuest;
 
 
+}
+
+function changeSetSumD(row)
+{
+    var homeGes = 0;
+    var guestGes = 0;
+    var home1 = 0;
+    var home2 = 0;
+    var home3 = 0;
+    var guest1 = 0;
+    var guest2 = 0;
+    var guest3 = 0;
+    var homeSum = 0;
+    var guestSum = 0;
+    var homeWin = 0;
+    var guestWin = 0;
+    var sumSetHome = 0;
+    var sumSetGuest = 0;
+    var sumWonSetHome = 0;
+    var sumWonSetGuest = 0;
+    var sumWonMatchHome = 0;
+    var sumWonMatchGuest = 0;
+
+
+
+    home1 = parseInt(document.getElementById("dualSatz1heim" + row).value.trim());
+    home2 = parseInt(document.getElementById("dualSatz2heim" + row).value.trim());
+    home3 = parseInt(document.getElementById("dualSatz3heim" + row).value.trim());
+    guest1 = parseInt(document.getElementById("dualSatz1gast" + row).value.trim());
+    guest2 = parseInt(document.getElementById("dualSatz2gast" + row).value.trim());
+    guest3 = parseInt(document.getElementById("dualSatz3gast" + row).value.trim());
+    if (home1 > guest1)
+    {
+        homeWin++;
+    }
+    else if (home1 < guest1)
+    {
+        guestWin++;
+    }
+    if (home2 > guest2)
+    {
+        homeWin++;
+    }
+    else if (home2 < guest2)
+    {
+        guestWin++;
+    }
+    if (home3 > guest3)
+    {
+        homeWin++;
+    }
+    else if (home3 < guest3)
+    {
+        guestWin++;
+    }
+    homeSum = home1 + home2 + home3;
+    guestSum = guest1 + guest2 + guest3;
+    homeGes = homeSum;
+    guestGes = guestSum;
+    document.getElementById("dualSetpointHeim" + row).value = homeWin;
+    document.getElementById("dualSetpointGast" + row).value = guestWin;
+    document.getElementById("dualWonSetHeim" + row).value = homeGes;
+    document.getElementById("dualWonSetGast" + row).value = guestGes;
+
+    if (homeWin > guestWin)
+    {
+        document.getElementById("dualWonMatchHeim" + row).value = 1;
+        document.getElementById("dualWonMatchGast" + row).value = 0;
+    }
+    else if (homeWin < guestWin)
+    {
+        document.getElementById("dualWonMatchHeim" + row).value = 0;
+        document.getElementById("dualWonMatchGast" + row).value = 1;
+    }
+    else
+    {
+        document.getElementById("dualWonMatchHeim" + row).value = 0;
+        document.getElementById("dualWonMatchGast" + row).value = 0;
+    }
+    for (i = 1; i <= 2; i++) //Momentaner max-Wert bei dualspielen muss bei Aenderungen angepsst werden
+    {
+        try
+        {
+            var dualSetPointHeim = parseInt(document.getElementById("dualSetpointHeim" + i).value.trim());
+            var dualSetPointGast = parseInt(document.getElementById("dualSetpointGast" + i).value.trim());
+            var dualWonSetHeim = parseInt(document.getElementById("dualWonSetHeim" + i).value.trim());
+            var dualWonSetGast = parseInt(document.getElementById("dualWonSetGast" + i).value.trim());
+            var dualWonMatchHeim = parseInt(document.getElementById("dualWonMatchHeim" + i).value.trim());
+            var dualWonMatchGast = parseInt(document.getElementById("dualWonMatchGast" + i).value.trim());
+        }
+        catch (e)
+        {
+            console.log("Double: Row " + i + " not initialized: Values set to 0.")
+            var dualSetPointHeim = 0;
+            var dualSetPointGast = 0;
+            var dualWonSetHeim = 0;
+            var dualWonSetGast = 0;
+            var dualWonMatchHeim = 0;
+            var dualWonMatchGast = 0;
+        }
+
+        sumSetHome += dualSetPointHeim;
+        sumSetGuest += dualSetPointGast;
+        sumWonSetHome += dualWonSetHeim;
+        sumWonSetGuest += dualWonSetGast;
+        sumWonMatchHome += dualWonMatchHeim;
+        sumWonMatchGuest += dualWonMatchGast;
+
+    }
+
+    document.getElementById("sumSetHomeDual").value = sumSetHome;
+    document.getElementById("sumSetGuestDual").value = sumSetGuest;
+    document.getElementById("sumWonSetHomeDual").value = sumWonSetHome;
+    document.getElementById("sumWonSetGuestDual").value = sumWonSetGuest;
+    document.getElementById("sumWonMatchHomeDual").value = sumWonMatchHome;
+    document.getElementById("sumWonMatchGuestDual").value = sumWonMatchGuest;
 }
 
 function markInput(elem)
