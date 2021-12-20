@@ -64,5 +64,8 @@ class PageController extends Controller
     {
         return view('overviews.player_table');
     }
-
+    public function make()
+    {
+        return view('report.make_report');
+    }
 }

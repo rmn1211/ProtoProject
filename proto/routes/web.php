@@ -37,8 +37,9 @@ Route::get('/match_ok', [PageController::class, 'match_ok'])->name('match_ok');
 Route::get('/teams_overview', [PageController::class, 'teams_overview'])->name('teams_overview');
 Route::get('/match_ok/{id}', [PageController::class, 'view'])->name('view');
 Route::get('/upload', [PageController::class, 'upload'])->name('upload');
+Route::post('/upload', [QueryController::class, 'insertMatch']);
 Route::get('/player_overview', [PageController::class, 'player_overview'])->name('player_overview');
-
+Route::get('/make_report', [PageController::class, 'make'])->name('make');
 //Neue OverviewRouten: Erstmal nur Test
 Route::get('/overview/edit', [PageController::class, 'report'])->name('report');
 Route::post('/overview/edit', [QueryController::class, 'updateMatch']);
@@ -71,8 +72,12 @@ Route::post('/getSpielerVname', [QueryController::class, 'getSpielerVname'])->na
 Route::get('/getSpielerVname', [QueryController::class, 'getSpielerVname']);
 Route::post('/getSpielerNname', [QueryController::class, 'getSpielerNname'])->name('getSpielerNname');
 Route::get('/getSpielerNname', [QueryController::class, 'getSpielerNname']);
-
-  
+Route::post('/saison', [QueryController::class, 'saison'])->name('saison');
+Route::get('/saison', [QueryController::class, 'saison']);
+  Route::post('/runde', [QueryController::class, 'runde'])->name('runde');
+Route::get('/runde', [QueryController::class, 'runde']);
+  Route::post('/tag', [QueryController::class, 'tag'])->name('tag');
+Route::get('/tag', [QueryController::class, 'tag']);
 Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
 
 Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
