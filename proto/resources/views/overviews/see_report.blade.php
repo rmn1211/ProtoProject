@@ -374,49 +374,49 @@ $arten = QueryController::allTypes();
                                             <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType3" id="soloType3" value="{{ $soloduell[2]->Duellart }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim3" id="soloVnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S1 }}" />
+                                            <input readonly type="text" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim3" id="soloVnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S1 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                            <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim3" id="soloNnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Nachname_S1 }}" />
+                                            <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full  focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim3" id="soloNnameHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Nachname_S1 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast3" id="soloVnameGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S2 }}" />
+                                            <input readonly type="text" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast3" id="soloVnameGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Vorname_S2 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input readonly type="text" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast3" id="soloNnameGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Nachname_S2 }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1heim3" id="soloSatz1heim3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_1_Heim }}" />
+                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1heim3" id="soloSatz1heim3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_1_Heim }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1gast3" id="soloSatz1gast3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_1_Gast }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz2heim3" id="soloSatz2heim3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_2_Heim }}" />
+                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz2heim3" id="soloSatz2heim3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_2_Heim }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz2gast3" id="soloSatz2gast3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_2_Gast }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz3heim3" id="soloSatz3heim3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_3_Heim }}" />
+                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz3heim3" id="soloSatz3heim3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_3_Heim }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz3gast3" id="soloSatz3gast3" onchange="markInput(this); changeSetSumS(3)" value="{{ $soloduell[2]->Satz_3_Gast }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim3" id="soloSetpointHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Gewonnene_Sätze_Heim }}" />
+                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim3" id="soloSetpointHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Gewonnene_Sätze_Heim }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointGast3" id="soloSetpointGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Gewonnene_Sätze_Gast }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetHeim3" id="soloWonSetHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Heim_Gesamt }}" />
+                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetHeim3" id="soloWonSetHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Heim_Gesamt }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetGast3" id="soloWonSetGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Gast_Gesamt }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchHeim3" id="soloWonMatchHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Gewonnene_Spiele_Heim }}" />
+                                            <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchHeim3" id="soloWonMatchHeim3" onChange="markInput(this)" value="{{ $soloduell[2]->Gewonnene_Spiele_Heim }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black">
                                             <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchGast3" id="soloWonMatchGast3" onChange="markInput(this)" value="{{ $soloduell[2]->Gewonnene_Spiele_Gast }}" />
@@ -426,52 +426,52 @@ $arten = QueryController::allTypes();
                                         <tr class="border-solid border-b-2 border-black flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                                             <input readonly type="hidden" id="duellID4" name="duellID4" value="{{ $soloduell[3]->Duell_ID }}">
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloType4" id="soloType4" value="{{ $soloduell[3]->Duellart }}" />
+                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType4" id="soloType4" value="{{ $soloduell[3]->Duellart }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim4" id="soloVnameHeim4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S1 }}" />
+                                                <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim4" id="soloVnameHeim4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S1 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim4" id="soloNnameHeim4" onChange="markInput(this)" value="{{ $soloduell[3]->Nachname_S1 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast4" id="soloVnameGast4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S2 }}" />
+                                                <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast4" id="soloVnameGast4" onChange="markInput(this)" value="{{ $soloduell[3]->Vorname_S2 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input readonly type="text"  size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast4" id="soloNnameGast4" onChange="markInput(this)" value="{{ $soloduell[3]->Nachname_S2 }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1heim4" id="soloSatz1heim4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_1_Heim }}" />
+                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1heim4" id="soloSatz1heim4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_1_Heim }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz1gast4" id="soloSatz1gast4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_1_Gast }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz2heim4" id="soloSatz2heim4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_2_Heim }}" />
+                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz2heim4" id="soloSatz2heim4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_2_Heim }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz2gast4" id="soloSatz2gast4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_2_Gast }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz3heim4" id="soloSatz3heim4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_3_Heim }}" />
+                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz3heim4" id="soloSatz3heim4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_3_Heim }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloSatz3gast4" id="soloSatz3gast4" onchange="markInput(this); changeSetSumS(4)" value="{{ $soloduell[3]->Satz_3_Gast }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim4" id="soloSetpointHeim4" value="{{ $soloduell[3]->Gewonnene_Sätze_Heim }}" />
+                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim4" id="soloSetpointHeim4" value="{{ $soloduell[3]->Gewonnene_Sätze_Heim }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointGast4" id="soloSetpointGast4" value="{{ $soloduell[3]->Gewonnene_Sätze_Gast }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetHeim4" id="soloWonSetHeim4" value="{{ $soloduell[3]->Heim_Gesamt }}" />
+                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetHeim4" id="soloWonSetHeim4" value="{{ $soloduell[3]->Heim_Gesamt }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetGast4" id="soloWonSetGast4" value="{{ $soloduell[3]->Gast_Gesamt }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchHeim4" id="soloWonMatchHeim4" value="{{ $soloduell[3]->Gewonnene_Spiele_Heim }}" />
+                                                <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchHeim4" id="soloWonMatchHeim4" value="{{ $soloduell[3]->Gewonnene_Spiele_Heim }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black">
                                                 <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchGast4" id="soloWonMatchGast4" value="{{ $soloduell[3]->Gewonnene_Spiele_Gast }}" />

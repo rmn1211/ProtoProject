@@ -764,10 +764,7 @@ $arten = QueryController::allTypes();
     <script type="text/javascript">
         // CSRF Token
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        
-
         $(document).ready(function() {
-          
             alleLigen();
             saison();
             runde();
@@ -826,12 +823,10 @@ $arten = QueryController::allTypes();
                     return false;
                 }
             });
-
         });
 
         function regioncheck() {
             if (!$('#region').val()) {
-
                 alleLigen();
                  document.getElementById("saison").disabled = true;
                  document.getElementById("tag").disabled = true;
@@ -849,8 +844,6 @@ $arten = QueryController::allTypes();
                  document.getElementById("HeimID").value = "";
                   document.getElementById("tfAway").value = "";
                    document.getElementById("GastID").value = "";
-
-
             }
         }
 
@@ -871,9 +864,6 @@ $arten = QueryController::allTypes();
                     document.getElementById("tag").disabled = true;
                     document.getElementById("runde").disabled = true;
             }
-
-
-
         }
 
         function alleLigen() {
@@ -911,12 +901,9 @@ $arten = QueryController::allTypes();
                     return false;
                 }
             });
-
-
         }
 
         function ligaregion() {
-
             $("#liga").autocomplete({
                 minLength: 0,
                 source: function(request, response) {
