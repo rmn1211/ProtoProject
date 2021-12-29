@@ -23,9 +23,9 @@
                     <a href="../" class="{{ request()->is('/') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Home</a>
                     <a href="../player_overview" class="{{ request()->is('player_overview') ? 'active' : '' }} mx-2  hover:text-gray-500 transition duration-400" tabindex="-1">Spielersuche</a>
                     <a href="../teams_overview" class="{{ request()->is('teams_overview') ? 'active' : '' }} mx-2  hover:text-gray-500 transition duration-400" tabindex="-1">Mannschaften</a>
-                    <a href="../upload" class="{{ request()->is('upload') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spielebericht hochladen</a>
-                    <a href="../overview" class="{{ request()->is('overview') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spieleberichte prüfen</a>
-                    <a href="../match_ok" class="{{ request()->is('match_ok') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spieleberichte ansehen</a>
+                    <a href="../upload" class="{{ request()->is('upload') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spielbericht hochladen</a>
+                    <a href="../overview" class="{{ request()->is('overview') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spielberichte prüfen</a>
+                    <a href="../match_ok" class="{{ request()->is('match_ok') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Spielberichte ansehen</a>
                     <a href="../login" class="{{ request()->is('login') ? 'active' : '' }} mx-2 hover:text-gray-500 transition duration-400" tabindex="-1">Login</a>
 
                 </nav>
