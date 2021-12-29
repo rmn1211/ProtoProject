@@ -708,7 +708,7 @@
                     </div>
                 </div>
             </form>
-            <button class='fixed bottom-0 right-2 my-2 float-right px-3 py-3 rounded bg-green-500 active:bg-green-700 text-white text-sm opacity-70 hover:opacity-100 font-bold lg:hidden'>TAB</button>
+         
         </div>
     </section>
    <script type="text/javascript">
