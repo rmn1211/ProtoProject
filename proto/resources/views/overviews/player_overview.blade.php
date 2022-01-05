@@ -42,14 +42,14 @@ color:black;}
     </section>
     <section  class="mt-10 class=w-6/12 ">
     <div class="w-full flex flex-row flex-no-wrap my-5 "> <div class="w-1/4 bg-green-400 h-12 ">
-        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3 ">Region:</label>
-        <input  type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()"id="region" name="region" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3  ">Region:</label>
+        <input  type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()"id="region" name="region" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3">
      </div>
 
       <div class="w-1/4 bg-green-400 h-12">
      
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Liga:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="Liga()" onfocusin="Liga()"type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="Liga()" onfocusin="Liga()"type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full border-gray-700 border-r-2 focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
                     </div>
 
                     <div class="w-1/4 bg-green-400 h-12">

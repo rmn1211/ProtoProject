@@ -90,7 +90,7 @@ $arten = QueryController::allTypes();
                 <div class="flex mb-4">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
-                        <input readonly  type="text" id="region" name="region" onChange="markInput(this)" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $region->name }}">
+                        <input readonly  type="text" id="region" name="region" onChange="markInput(this)" class="bg-gray-100 text-gray-900 w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $region->name }}">
 
                     </div>
 
@@ -98,33 +98,33 @@ $arten = QueryController::allTypes();
 
 
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input readonly  type="text" id="liga" onChange="markInput(this)" name="liga" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
+                        <input readonly  type="text" id="liga" onChange="markInput(this)" name="liga" class="bg-gray-100 text-gray-900 w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $liga->Name }}">
                     </div>
                         <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" >Saison:</label>
-                        <input readonly type="text"   name=" saison" id="saison" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $saison[0]->Name }}" >
+                        <input readonly type="text"   name=" saison" id="saison" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2  w-full focus:outline-none border-b-full  border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $saison[0]->Name }}" >
                     </div>
                       <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" >Runde:</label>
-                        <input readonly  type="text" name=" runde" id="runde" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $runde[0]->Bezeichnung }}"  >
+                        <input readonly  type="text" name=" runde" id="runde" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700   border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $runde[0]->Bezeichnung }}"  >
                     </div>
                       <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" >Spieltag:</label>
-                        <input readonly type="text"  name=" tag" id="tag" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $tag[0]->Tag }}" >
+                        <input readonly type="text"  name=" tag" id="tag" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $tag[0]->Tag }}" >
                     </div>
 
 
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-                        <input readonly type="text" onChange="markInput(this)" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Heim }}">
+                        <input readonly type="text" onChange="markInput(this)" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Heim }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-                        <input readonly   type="text" onChange="markInput(this)" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Gast }}">
+                        <input readonly   type="text" onChange="markInput(this)" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outlie-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Gast }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Schiedsrichter:</label>
-                        <input readonly type="text" name="tfPlace" id="tfPlace" onChange="markInput(this)" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Schiedsrichter }}">
+                        <input readonly type="text" name="tfPlace" id="tfPlace" onChange="markInput(this)" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $match->Schiedsrichter }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Austragungsort:</label>

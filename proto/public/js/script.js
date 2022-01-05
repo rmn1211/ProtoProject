@@ -2,6 +2,8 @@ function activateSubmit()
 {
     var btSubmit = document.getElementById("submitBTN");
     btSubmit.disabled = false;
+btSubmit.classList.remove('opacity-70');
+btSubmit.classList.add('opacity-100');
 }
 
 function validateInputs()
