@@ -429,27 +429,27 @@ function changeSetSumS(row)
     guest1 = parseInt(document.getElementById("soloSatz1gast" + row).value.trim());
     guest2 = parseInt(document.getElementById("soloSatz2gast" + row).value.trim());
     guest3 = parseInt(document.getElementById("soloSatz3gast" + row).value.trim());
-    if (home1 > guest1)
+    if (homeWins(home1, guest1))
     {
         homeWin++;
     }
-    else if (home1 < guest1)
+    else if (guestWins(home1, guest1))
     {
         guestWin++;
     }
-    if (home2 > guest2)
+    if (homeWins(home2, guest2))
     {
         homeWin++;
     }
-    else if (home2 < guest2)
+    else if (guestWins(home2, guest2))
     {
         guestWin++;
     }
-    if (home3 > guest3)
+    if (homeWins(home3, guest3))
     {
         homeWin++;
     }
-    else if (home3 < guest3)
+    else if (guestWins(home3, guest3))
     {
         guestWin++;
     }
@@ -547,27 +547,27 @@ function changeSetSumD(row)
     guest1 = parseInt(document.getElementById("dualSatz1gast" + row).value.trim());
     guest2 = parseInt(document.getElementById("dualSatz2gast" + row).value.trim());
     guest3 = parseInt(document.getElementById("dualSatz3gast" + row).value.trim());
-    if (home1 > guest1)
+    if (homeWins(home1, guest1))
     {
         homeWin++;
     }
-    else if (home1 < guest1)
+    else if (guestWins(home1, guest1))
     {
         guestWin++;
     }
-    if (home2 > guest2)
+    if (homeWins(home2, guest2))
     {
         homeWin++;
     }
-    else if (home2 < guest2)
+    else if (guestWins(home2, guest2))
     {
         guestWin++;
     }
-    if (home3 > guest3)
+    if (homeWins(home3, guest3))
     {
         homeWin++;
     }
-    else if (home3 < guest3)
+    else if (guestWins(home3, guest3))
     {
         guestWin++;
     }
@@ -651,4 +651,29 @@ function tabClick()
     }));
     console.log(keyEvent.key);
 
+}
+//Pruefen ob Siegbedingungen fuer Satz erreicht wurden
+function homeWins(setHome, setGuest)
+{
+    if ((setHome - setGuest) >= 2 && setHome >= 21)
+    {
+        return true;
+    }
+    if (setHome == 30)
+    {
+        return true;
+    }
+    return false;
+}
+function guestWins(setHome, setGuest)
+{
+    if ((setGuest - setHome) >= 2 && setGuest >= 21)
+    {
+        return true;
+    }
+    if (setGuest == 30)
+    {
+        return true;
+    }
+    return false;
 }
