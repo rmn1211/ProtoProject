@@ -54,7 +54,7 @@
                     <button type="submit" class="btn btn-success bg-green-500 disabled:opacity-90 hover:bg-green-700 text-white font-bold py-2 px-4 mx-8 border-green-700 rounded">Bild hochladen</button>
 
               
-
+                    <!-- warten auf Antwort,  Bericht mit A ausfüllen  -->
      
 
           

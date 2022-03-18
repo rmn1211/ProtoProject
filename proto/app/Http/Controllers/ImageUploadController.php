@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
   
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Http;
   
 
 class ImageUploadController extends Controller
@@ -24,14 +24,7 @@ class ImageUploadController extends Controller
 
      */
 
-    public function imageUpload()
-
-    {
-
-        return view('imageUpload');
-
-    }
-
+   
     
 
     /**
@@ -59,11 +52,14 @@ class ImageUploadController extends Controller
         $imageName = time().'.'.$request->image->extension();  
 
      
-$request->image->storeAs('images', $imageName);
+//$request->image->storeAs('images', $imageName);// storage/app/images/file.png  aktueller ort
 
-  
+  //$request->image-> neue request nur mit image
+  $response = Http::attach(     
+    'attachment', file_get_contents($request->image)
+)->post('http://deineApi');
+  //nächste Blade
 
-// storage/app/images/file.png
 
   
 
@@ -71,11 +67,13 @@ $request->image->storeAs('images', $imageName);
 
     
 
-        return back()
+        return view('report.controll_handwriting');
 
-            ->with('success','You have successfully upload image.')
+        //back()
 
-            ->with('image',$imageName); 
+          //  ->with('success','You have successfully upload image.')
+
+            //->with('image',$imageName); 
 
     }
 
