@@ -28,14 +28,14 @@ class ImageUploadController extends Controller
         //$request->image-> neue request nur mit image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $request = Http::attach(
+            $response = Http::attach(
                 'file', file_get_contents($image), $imageName)
-                ->post('http://192.168.1.168:8000/upload/1');
+                ->post('[API-PATH]');
         }
         //nächste Blade
 
         /* Store $imageName name in DATABASE from HERE */
-        return view('report.controll_handwriting');
+        return view('report.control_handwriting');
         //back()
         //  ->with('success','You have successfully upload image.')
         //->with('image',$imageName);

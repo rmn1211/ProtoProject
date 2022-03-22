@@ -4,14 +4,6 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\QueryController;
 use Illuminate\Support\Facades\Route;
 
-  
-
-use App\Http\Controllers\ImageUploadController;
-
-  
-
-  
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +14,6 @@ use App\Http\Controllers\ImageUploadController;
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-   
-
-
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/heafoo', [PageController::class, 'heafoo'])->name('heafoo');
@@ -51,7 +39,7 @@ Route::get('/autocomplete-search', [QueryController::class, 'autocompleteSearch'
 
 #Route::post('/overview/{id}', 'QueryController@updateOrt');
 Route::get('/old', [PageController::class, 'old'])->name('old');
-Auth::routes();
+#Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Queries
@@ -74,11 +62,9 @@ Route::post('/getSpielerNname', [QueryController::class, 'getSpielerNname'])->na
 Route::get('/getSpielerNname', [QueryController::class, 'getSpielerNname']);
 Route::post('/saison', [QueryController::class, 'saison'])->name('saison');
 Route::get('/saison', [QueryController::class, 'saison']);
-  Route::post('/runde', [QueryController::class, 'runde'])->name('runde');
+Route::post('/runde', [QueryController::class, 'runde'])->name('runde');
 Route::get('/runde', [QueryController::class, 'runde']);
-  Route::post('/tag', [QueryController::class, 'tag'])->name('tag');
+Route::post('/tag', [QueryController::class, 'tag'])->name('tag');
 Route::get('/tag', [QueryController::class, 'tag']);
-Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
-
-Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
-
+#Route::get('image-upload', [ImageUploadController::class, 'imageUpload'])->name('image.upload');
+Route::post('/imageUploadPost', 'App\Http\Controllers\ImageUploadController@imageUploadPost')->name('imageUploadPost');

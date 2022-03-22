@@ -68,4 +68,8 @@ class PageController extends Controller
     {
         return view('report.make_report');
     }
+    public function controlReport()
+    {
+        return view('report.control_handwriting');
+    }
 }
