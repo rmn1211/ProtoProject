@@ -319,7 +319,7 @@ class QueryController extends Controller
 
         return $duell;
     }
-    public static function getTag($id) #Gruesse an Jabba the Hutt
+    public static function getTag($id)
 
     {
         $tag = DB::connection('mysqlSP')->select('select t.ID,t.Tag as "Tag" from spiel s, spieltag t where  s.ID =?  and s.spieltag=t.id
@@ -327,7 +327,7 @@ class QueryController extends Controller
         
         return $tag;
     }
-     public static function getRunde($id) #Gruesse an Jabba the Hutt
+     public static function getRunde($id) 
 
     {
         $runde = DB::connection('mysqlSP')->select('select r.ID,r.Bezeichnung from runde r, spieltag t where t.ID =1 and t.Tag=r.id
@@ -335,7 +335,7 @@ class QueryController extends Controller
         
         return $runde;
     }
-     public static function getSaison($id) #Gruesse an Jabba the Hutt
+     public static function getSaison($id)
 
     {
         $saison = DB::connection('mysqlSP')->select('select s.ID,s.Name from runde r, saison s where r.ID =1 and r.Saison=s.id
@@ -346,11 +346,30 @@ class QueryController extends Controller
 
     
 
-    public static function getType($spielID, $diellID)
+    public static function getType($spielID, $duellID)
     {
 
     }
- 
+
+    // -------------------für control_handwriting um Namen aus ID zu bekommen
+     public static function getMannschaftName($id)
+
+    {
+        $team = DB::connection('mysqlSP')->select('select m.Name from  mannschaft m where m.ID =?
+       ', [$id]);
+        
+        return $team;
+    }
+     public static function getSpielerName($id)
+
+    {
+        $player = DB::connection('mysqlSP')->select('select s.Vorname, s.Nachname from  spieler s where s.ID =?
+       ', [$id]);
+        
+        return $player;
+    }
+
+
     //   ----------------------------Insert----------------------------
     public function insertMatch(Request $request)
     {

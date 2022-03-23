@@ -68,8 +68,8 @@ class PageController extends Controller
     {
         return view('report.make_report');
     }
-    public function controlReport()
+    public function controlReport($json)
     {
-        return view('report.control_handwriting');
+        return view('report.control_handwriting', $json);
     }
 }
