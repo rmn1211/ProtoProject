@@ -94,6 +94,244 @@
                         <input type="text" name="tfPlace" id="tfPlace"  class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
                     </div>
                 </div>
+
+
+                    <h1>Doppel</h1>
+                <table class="w-full flex flex-row flex-wrap rounded-lg my-5">
+                    <thead>
+                        <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 align-middle text-center">Art</th>
+                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
+                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Heim</th>
+                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Gast</th>
+                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Gast</th>
+                            <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="6" colspan="6">Satzergebnisse</th>
+                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
+                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Sätze</th>
+                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid align-middle text-center" rowspan="2" colspan="2">Punkte</th>
+                        </tr>
+                       
+                            <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                                <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Heim</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Gast</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Gast</th>
+                                <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
+
+                            </tr>
+                       
+                    </thead>
+                    <thead>
+                        <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                            <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
+                            <th class="text-center h-8 sm:h-auto">Vorname</th>
+                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                            <th class="text-center h-8 sm:h-auto">Vorname</th>
+                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                            <th class="text-center h-8 sm:h-auto">Vorname</th>
+                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                            <th class="text-center h-8 sm:h-auto">Vorname</th>
+                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
+                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
+                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
+                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                            <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
+                        </tr>
+                       
+                            <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                                <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
+                            </tr>
+                       
+                    </thead>
+                    <tbody class="flex-1 sm:flex-none">
+                      
+                            <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                <input type="hidden" id="doppelDuellID1" name="doppelDuellID1" >
+                                <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
+                                    <input type="text" list="arten" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text"onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text"onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(1)" name="dualSatz2heim1" id="dualSatz2heim1" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim1" id="dualSetpointHeim1"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast1" id="dualSetpointGast1" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim1" id="dualWonSetHeim1" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast1" id="dualWonSetGast1"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim1" id="dualWonMatchHeim1" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast1" id="dualWonMatchGast1"  />
+                                </td>
+                            </tr>
+                          
+                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                    <input type="hidden" id="doppelDuellID2" name="doppelDuellID2" >
+                                    <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
+                                        <input type="text" list="arten" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType2" id="dualType2" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text"  onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim2" id="dualSetpointHeim2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast2" id="dualSetpointGast2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim2" id="dualWonSetHeim2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast2" id="dualWonSetGast2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim2" id="dualWonMatchHeim2"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast2" id="dualWonMatchGast2"  />
+                                    </td>
+                                </tr>
+                           
+                  
+                        <tr class="border-black wrap sm:table-row mb-2 sm:mb-0">
+                            <td colspan="15" class="invisible">
+                            </td>
+                            <td class="bg-gray-100 h-8 text-black">
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-black border-dashed border-r-2 focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumSetHomeDual" id="sumSetHomeDual" />
+                            </td>
+                            <td class="bg-gray-100 h-8 text-black">
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-solid border-r-2 border-black focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumSetGuestDual" id="sumSetGuestDual" />
+                            </td>
+                            <td class="bg-gray-100 h-8 text-black">
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-black border-dashed border-r-2 focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonSetHomeDual" id="sumWonSetHomeDual" />
+                            </td>
+                            <td class="bg-gray-100 h-8 text-black">
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-solid border-r-2 border-black focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonSetGuestDual" id="sumWonSetGuestDual" />
+                            </td>
+                            <td class="bg-gray-100 h-8 text-black">
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-black border-dashed border-r-2 focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonMatchHomeDual" id="sumWonMatchHomeDual" />
+                            </td>
+                            <td class="bg-gray-100 h-8 text-black">
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonMatchGuestDual" id="sumWonMatchGuestDual" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
                 <h1 class="pt-5">Einzel</h1>
 
                 <input type="hidden" name="regionID" id="regionID" >
@@ -467,240 +705,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <h1>Doppel</h1>
-                <table class="w-full flex flex-row flex-wrap rounded-lg my-5">
-                    <thead>
-                        <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 align-middle text-center">Art</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Heim</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Gast</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Gast</th>
-                            <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid align-middle text-center" rowspan="2" colspan="2">Punkte</th>
-                        </tr>
-                       
-                            <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                                <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
-                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
-                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Heim</th>
-                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Gast</th>
-                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Gast</th>
-                                <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
-                            </tr>
-                       
-                    </thead>
-                    <thead>
-                        <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
-                        </tr>
-                       
-                            <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                                <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
-                                <th class="text-center h-8 sm:h-auto">Vorname</th>
-                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                                <th class="text-center h-8 sm:h-auto">Vorname</th>
-                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                                <th class="text-center h-8 sm:h-auto">Vorname</th>
-                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                                <th class="text-center h-8 sm:h-auto">Vorname</th>
-                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
-                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
-                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
-                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                                <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
-                            </tr>
-                       
-                    </thead>
-                    <tbody class="flex-1 sm:flex-none">
-                      
-                            <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                                <input type="hidden" id="doppelDuellID1" name="doppelDuellID1" >
-                                <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
-                                    <input type="text" list="arten" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text"onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text"onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(1)" name="dualSatz2heim1" id="dualSatz2heim1" />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim1" id="dualSetpointHeim1"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast1" id="dualSetpointGast1" />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim1" id="dualWonSetHeim1" />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast1" id="dualWonSetGast1"  />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim1" id="dualWonMatchHeim1" />
-                                </td>
-                                <td class="bg-gray-100 h-8 text-black">
-                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast1" id="dualWonMatchGast1"  />
-                                </td>
-                            </tr>
-                          
-                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                                    <input type="hidden" id="doppelDuellID2" name="doppelDuellID2" >
-                                    <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
-                                        <input type="text" list="arten" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType2" id="dualType2" />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text"  onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim2" id="dualSetpointHeim2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast2" id="dualSetpointGast2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim2" id="dualWonSetHeim2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast2" id="dualWonSetGast2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim2" id="dualWonMatchHeim2"  />
-                                    </td>
-                                    <td class="bg-gray-100 h-8 text-black">
-                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast2" id="dualWonMatchGast2"  />
-                                    </td>
-                                </tr>
-                           
-                  
-                        <tr class="border-black wrap sm:table-row mb-2 sm:mb-0">
-                            <td colspan="15" class="invisible">
-                            </td>
-                            <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-black border-dashed border-r-2 focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumSetHomeDual" id="sumSetHomeDual" />
-                            </td>
-                            <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-solid border-r-2 border-black focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumSetGuestDual" id="sumSetGuestDual" />
-                            </td>
-                            <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-black border-dashed border-r-2 focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonSetHomeDual" id="sumWonSetHomeDual" />
-                            </td>
-                            <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-solid border-r-2 border-black focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonSetGuestDual" id="sumWonSetGuestDual" />
-                            </td>
-                            <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full border-black border-dashed border-r-2 focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonMatchHomeDual" id="sumWonMatchHomeDual" />
-                            </td>
-                            <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="sumWonMatchGuestDual" id="sumWonMatchGuestDual" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            
                 <div class="mt-3 flex place-content-end">
                    
                     <div>

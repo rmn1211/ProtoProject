@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class QueryController extends Controller
 {
     //_____________________________________________QUERIES TO SELECT MATCH____________________________________________
-    public static function getSpiele()
+    public static function getSpiele()     //unsicher
     {
         $spiele = DB::connection('mysqlSP')->select('SELECT
             s.ID,
@@ -213,7 +213,7 @@ class QueryController extends Controller
     }
 
 
-    public static function getTeams($liga)
+    public static function getTeams($liga)  // unsicher   darunter die auch bis getsolo
     {
         $teams = DB::connection('mysqlSP')->select("SELECT * from mannschaft Where liga = '{$liga}' ");
 
@@ -319,7 +319,7 @@ class QueryController extends Controller
 
         return $duell;
     }
-    public static function getTag($id)
+    public static function getTag($id) 
 
     {
         $tag = DB::connection('mysqlSP')->select('select t.ID,t.Tag as "Tag" from spiel s, spieltag t where  s.ID =?  and s.spieltag=t.id
@@ -327,7 +327,7 @@ class QueryController extends Controller
         
         return $tag;
     }
-     public static function getRunde($id) 
+     public static function getRunde($id)  // unsicher, existiert aber ID=1 statt ?
 
     {
         $runde = DB::connection('mysqlSP')->select('select r.ID,r.Bezeichnung from runde r, spieltag t where t.ID =1 and t.Tag=r.id
@@ -335,7 +335,7 @@ class QueryController extends Controller
         
         return $runde;
     }
-     public static function getSaison($id)
+     public static function getSaison($id)  // unsicher, existiert aber ID=1 statt ?
 
     {
         $saison = DB::connection('mysqlSP')->select('select s.ID,s.Name from runde r, saison s where r.ID =1 and r.Saison=s.id
@@ -346,7 +346,7 @@ class QueryController extends Controller
 
     
 
-    public static function getType($spielID, $duellID)
+    public static function getType($spielID, $duellID) // unsicher
     {
 
     }
