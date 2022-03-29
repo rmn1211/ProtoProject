@@ -33,6 +33,29 @@ $dualSatz_2_gast2;
 $dualSatz_3_heim2;
 $dualSatz_3_gast2;
 
+$dualHeim_name_13;
+$dualHeim_name_23;
+$dualGast_name_13;
+$dualGast_name_23;
+$dualSatz_1_heim3;
+$dualSatz_1_gast3;
+$dualSatz_2_heim3;
+$dualSatz_2_gast3;
+$dualSatz_3_heim3;
+$dualSatz_3_gast3;
+
+$dualHeim_name_14;
+$dualHeim_name_24;
+$dualGast_name_14;
+$dualGast_name_24;
+$dualSatz_1_heim4;
+$dualSatz_1_gast4;
+$dualSatz_2_heim4;
+$dualSatz_2_gast4;
+$dualSatz_3_heim4;
+$dualSatz_3_gast4;
+
+
 $soloHeim_name_1;
 $soloGast_name_1;
 $soloSatz_1_heim1;
@@ -159,6 +182,92 @@ if (isset( $json['Doppel_2'] ) {
         }
         if (isset( $json['Doppel_2']['Satz_3']['Punkte_Gast'] ) {
             $dualSatz_3_gast2 = $json['Doppel_2']['Satz_3']['Punkte_Gast'];
+        }
+    }
+}
+
+if (isset( $json['Doppel_3'] ) {
+    if (isset( $json['Doppel_3']['Heim_1'] ) {
+        $dualHeim_13 = $json['Doppel_3']['Heim_1'] ;
+        $dualHeim_name_13 = QueryController::getSpielerName($dualHeim_13);
+    }
+    if (isset( $json['Doppel_3']['Heim_2'] ) {
+        $dualHeim_23 = $json['Doppel_3']['Heim_2'] ;
+        $dualHeim_name_23 = QueryController::getSpielerName($dualHeim_23);
+    }
+    if (isset( $json['Doppel_3']['Gast_1'] ) {
+        $dualGast_13 = $json['Doppel_3']['Gast_1'] ;
+        $dualGast_name_13 = QueryController::getSpielerName($dualGast_13);
+    }
+    if (isset( $json['Doppel_3']['Gast_2'] ) {
+        $dualGast_23 = $json['Doppel_3']['Gast_2'] ;
+        $dualGast_name_23 = QueryController::getSpielerName($dualGast_23);
+    }
+    if (isset( $json['Doppel_3']['Satz_1'] ) {
+        if (isset( $json['Doppel_3']['Satz_1']['Punkte_Heim'] ) {
+            $dualSatz_1_heim3 = $json['Doppel_3']['Satz_1']['Punkte_Heim'] ;
+        }
+        if (isset( $json['Doppel_3']['Satz_1']['Punkte_Gast'] ) {
+            $dualSatz_1_gast3 = $json['Doppel_3']['Satz_1']['Punkte_Gast'];
+        }
+    }
+    if (isset( $json['Doppel_3']['Satz_2'] ) {    
+        if (isset( $json['Doppel_3']['Satz_2']['Punkte_Heim'] ) {
+            $dualSatz_2_heim3 = $json['Doppel_3']['Satz_2']['Punkte_Heim'] ;
+        }
+        if (isset( $json['Doppel_3']['Satz_2']['Punkte_Gast'] ) {
+            $dualSatz_2_gast3 = $json['Doppel_3']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset( $json['Doppel_3']['Satz_3'] ) {
+        if (isset( $json['Doppel_3']['Satz_3']['Punkte_Heim'] ) {
+            $dualSatz_3_heim3 = $json['Doppel_3']['Satz_3']['Punkte_Heim'] ;
+        }
+        if (isset( $json['Doppel_3']['Satz_3']['Punkte_Gast'] ) {
+            $dualSatz_3_gast3 = $json['Doppel_3']['Satz_3']['Punkte_Gast'];
+        }
+    }
+}
+
+if (isset( $json['Doppel_4'] ) {
+    if (isset( $json['Doppel_4']['Heim_1'] ) {
+        $dualHeim_14 = $json['Doppel_4']['Heim_1'] ;
+        $dualHeim_name_14 = QueryController::getSpielerName($dualHeim_14);
+    }
+    if (isset( $json['Doppel_4']['Heim_2'] ) {
+        $dualHeim_24 = $json['Doppel_4']['Heim_2'] ;
+        $dualHeim_name_24 = QueryController::getSpielerName($dualHeim_24);
+    }
+    if (isset( $json['Doppel_4']['Gast_1'] ) {
+        $dualGast_14 = $json['Doppel_4']['Gast_1'] ;
+        $dualGast_name_14 = QueryController::getSpielerName($dualGast_14);
+    }
+    if (isset( $json['Doppel_4']['Gast_2'] ) {
+        $dualGast_24 = $json['Doppel_4']['Gast_2'] ;
+        $dualGast_name_24 = QueryController::getSpielerName($dualGast_24);
+    }
+    if (isset( $json['Doppel_4']['Satz_1'] ) {
+        if (isset( $json['Doppel_4']['Satz_1']['Punkte_Heim'] ) {
+            $dualSatz_1_heim4 = $json['Doppel_4']['Satz_1']['Punkte_Heim'] ;
+        }
+        if (isset( $json['Doppel_4']['Satz_1']['Punkte_Gast'] ) {
+            $dualSatz_1_gast4 = $json['Doppel_4']['Satz_1']['Punkte_Gast'];
+        }
+    }
+    if (isset( $json['Doppel_4']['Satz_2'] ) {    
+        if (isset( $json['Doppel_4']['Satz_2']['Punkte_Heim'] ) {
+            $dualSatz_2_heim4 = $json['Doppel_4']['Satz_2']['Punkte_Heim'] ;
+        }
+        if (isset( $json['Doppel_4']['Satz_2']['Punkte_Gast'] ) {
+            $dualSatz_2_gast4 = $json['Doppel_4']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset( $json['Doppel_4']['Satz_3'] ) {
+        if (isset( $json['Doppel_4']['Satz_3']['Punkte_Heim'] ) {
+            $dualSatz_3_heim4 = $json['Doppel_4']['Satz_3']['Punkte_Heim'] ;
+        }
+        if (isset( $json['Doppel_4']['Satz_3']['Punkte_Gast'] ) {
+            $dualSatz_3_gast4 = $json['Doppel_4']['Satz_3']['Punkte_Gast'];
         }
     }
 }
@@ -438,6 +547,30 @@ if (isset( $json['Einzel_1'] ) {
                                 <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
 
                             </tr>
+                              <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                                <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Heim</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Gast</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Gast</th>
+                                <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
+
+                            </tr>
+                              <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                                <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Heim</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Gast</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Gast</th>
+                                <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
+                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
+
+                            </tr>
                        
                     </thead>
                     <thead>
@@ -482,7 +615,46 @@ if (isset( $json['Einzel_1'] ) {
                                 <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
                                 <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
                             </tr>
-                       
+                             <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                                <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
+                            </tr>
+                        <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                                <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="text-center h-8 sm:h-auto">Vorname</th>
+                                <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
+                                <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
+                                <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
+                                <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
+                            </tr>
                     </thead>
                     <tbody class="flex-1 sm:flex-none">
                       
@@ -619,7 +791,139 @@ if (isset( $json['Einzel_1'] ) {
                                         <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast2" id="dualWonMatchGast2"  />
                                     </td>
                                 </tr>
-                           
+
+                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                <input type="hidden" id="doppelDuellID3" name="doppelDuellID3" >
+                                <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
+                                    <input type="text" list="arten" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType3" id="dualType3"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value ="{{ $dualHeim_name_13[0]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13"value ="{{ $dualHeim_name_13[1]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text"onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value ="{{ $dualHeim_name_23[0]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim23" value ="{{ $dualHeim_name_21[1]}}  " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13"   value ="{{ $dualGast_name_13[0]}}  "/>
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text"onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13"  value ="{{ $dualGast_name_13[1]}}" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23"  value ="{{ $dualGast_name_23[0]}}  "   />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23"  value ="{{ $dualGast_name_23[1]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value = " {{ $dualSatz_1_heim3 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3"  value = " {{ $dualSatz_1_gast3 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(3)" name="dualSatz2heim33" id="dualSatz2heim3"   value = " {{ $dualSatz_2_heim3 }} "/>
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3"   value = " {{ $dualSatz_2_gast3 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3"   value = " {{ $dualSatz_3_heim3 }} "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3"  value = " {{ $dualSatz_3_gast3 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim3" id="dualSetpointHeim3"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast3" id="dualSetpointGast3" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim3" id="dualWonSetHeim3" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast3" id="dualWonSetGast3"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim3" id="dualWonMatchHeim3" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast3" id="dualWonMatchGast3"  />
+                                </td>
+                            </tr>
+                             <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                <input type="hidden" id="doppelDuellID4" name="doppelDuellID4" >
+                                <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
+                                    <input type="text" list="arten" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" value ="{{ $dualHeim_name_14[0]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14"value ="{{ $dualHeim_name_14[1]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text"onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" value ="{{ $dualHeim_name_24[0]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" value ="{{ $dualHeim_name_24[1]}}  " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14"   value ="{{ $dualGast_name_14[0]}}  "/>
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text"onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14"  value ="{{ $dualGast_name_14[1]}}" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24"  value ="{{ $dualGast_name_24[0]}}  "   />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24"  value ="{{ $dualGast_name_24[1]}}  "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value = " {{ $dualSatz_1_heim4 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4"  value = " {{ $dualSatz_1_gast4 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(4)" name="dualSatz2heim33" id="dualSatz2heim4"   value = " {{ $dualSatz_2_heim4 }} "/>
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4"   value = " {{ $dualSatz_2_gast4 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4"   value = " {{ $dualSatz_3_heim4}} "  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4"  value = " {{ $dualSatz_3_gast4 }} " />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim4" id="dualSetpointHeim4"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast4" id="dualSetpointGast4" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim4" id="dualWonSetHeim4" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast4" id="dualWonSetGast4"  />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim4" id="dualWonMatchHeim4" />
+                                </td>
+                                <td class="bg-gray-100 h-8 text-black">
+                                    <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast4" id="dualWonMatchGast4"  />
+                                </td>
+                            </tr>
                   
                         <tr class="border-black wrap sm:table-row mb-2 sm:mb-0">
                             <td colspan="15" class="invisible">
@@ -678,7 +982,7 @@ if (isset( $json['Einzel_1'] ) {
                                 <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
 
                             </tr>
-                            
+                            <!--
                                 <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                                     <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
                                     <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" colspan="2">Spieler: Heim</th>
@@ -699,7 +1003,7 @@ if (isset( $json['Einzel_1'] ) {
                                         <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
                                         <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
 
-                                    </tr>
+                                    </tr> -->
                                
                           
                       
@@ -738,7 +1042,7 @@ if (isset( $json['Einzel_1'] ) {
                                 <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
                                 <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
                             </tr>
-                          
+                          <!--
                                 <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                                     <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
                                     <th class="text-center h-8 sm:h-auto">Vorname</th>
@@ -771,7 +1075,7 @@ if (isset( $json['Einzel_1'] ) {
                                         <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
                                         <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
                                         <th class="w-full border-b-2 border-green-500 sm:w-4 h-8 sm:h-auto text-center">Gast</th>
-                                    </tr>
+                                    </tr> -->
                            
                     </thead>
                     <tbody class="flex-1 sm:flex-none">
@@ -886,7 +1190,7 @@ if (isset( $json['Einzel_1'] ) {
                                         <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="soloWonMatchGast2" id="soloWonMatchGast2"  />
                                     </td>
                                 </tr>
-                              
+                              <!--
                                     <tr class="border-solid border-b-2 border-black flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                                         <input type="hidden" id="duellID3" name="duellID3" >
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
@@ -995,7 +1299,7 @@ if (isset( $json['Einzel_1'] ) {
                                             <td class="bg-gray-100 h-8 text-black">
                                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchGast4" id="soloWonMatchGast4"  />
                                             </td>
-                                        </tr>
+                                        </tr> -->
                         
                         <tr class="border-black wrap sm:table-row mb-2 sm:mb-0">
                             <td colspan="11" class="invisible">

@@ -304,7 +304,140 @@
                                         <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast2" id="dualWonMatchGast2"  />
                                     </td>
                                 </tr>
-                           
+                            <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                        <input type="hidden" id="doppelDuellID3" name="doppelDuellID3" value="{{ $doppelduell[2]->Duell_ID }}">
+                                    <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
+                                        <input type="text" list="arten" size="4" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType3" id="dualType3" value="{{ $doppelduell[2]->Duellart }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $doppelduell[2]->Vorname_S1_H }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text"  onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $doppelduell[2]->Nachname_S1_H }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $doppelduell[2]->Vorname_S2_H }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $doppelduell[2]->Nachname_S2_H }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" value="{{ $doppelduell[2]->Vorname_S1_G }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" value="{{ $doppelduell[2]->Nachname_S1_G }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" value="{{ $doppelduell[2]->Vorname_S2_G }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" value="{{ $doppelduell[2]->Nachname_S2_G }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value="{{ $doppelduell[2]->Satz_1_Heim }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value="{{ $doppelduell[2]->Satz_1_Gast }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" value="{{ $doppelduell[2]->Satz_2_Heim }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value="{{ $doppelduell[2]->Satz_2_Gast }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" value="{{ $doppelduell[2]->Satz_3_Heim }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" value="{{ $doppelduell[2]->Satz_3_Gast }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim3" id="dualSetpointHeim3" value="{{ $doppelduell[2]->Gewonnene_Sätze_Heim }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast3" id="dualSetpointGast3" value="{{ $doppelduell[2]->Gewonnene_Sätze_Gast }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim3" id="dualWonSetHeim3" value="{{ $doppelduell[2]->Heim_Gesamt }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast3" id="dualWonSetGast3" value="{{ $doppelduell[2]->Gast_Gesamt }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim3" id="dualWonMatchHeim3" value="{{ $doppelduell[2]->Gewonnene_Spiele_Heim }}" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast3" id="dualWonMatchGast3" value="{{ $doppelduell[2]->Gewonnene_Spiele_Gast }}" />
+                                    </td>
+                                </tr>
+
+                                     
+                                    <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                        <input type="hidden" id="doppelDuellID4" name="doppelDuellID4">
+                                    <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
+                                        <input type="text" list="arten" size="4" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text"  onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"  size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim4" id="dualSetpointHeim4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast4" id="dualSetpointGast4" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim4" id="dualWonSetHeim4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast4" id="dualWonSetGast4"  />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim4" id="dualWonMatchHeim4" />
+                                    </td>
+                                    <td class="bg-gray-100 h-8 text-black">
+                                        <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast4" id="dualWonMatchGast4" />
+                                    </td>
+                                </tr>
                   
                         <tr class="border-black wrap sm:table-row mb-2 sm:mb-0">
                             <td colspan="15" class="invisible">
@@ -570,7 +703,7 @@
                                         <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="soloWonMatchGast2" id="soloWonMatchGast2"  />
                                     </td>
                                 </tr>
-                              
+                              <!--
                                     <tr class="border-solid border-b-2 border-black flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                                         <input type="hidden" id="duellID3" name="duellID3" >
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
@@ -680,7 +813,7 @@
                                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchGast4" id="soloWonMatchGast4"  />
                                             </td>
                                         </tr>
-                        
+                         -->
                         <tr class="border-black wrap sm:table-row mb-2 sm:mb-0">
                             <td colspan="11" class="invisible">
                             </td>
