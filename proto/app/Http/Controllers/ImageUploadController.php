@@ -23,14 +23,14 @@ class ImageUploadController extends Controller
         /*$request->validate([
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);*/
-        $imageName = time() . '.' . $request->image->extension();
+        $imageName = "time()" . '.' . $request->image->extension();
         //$request->image->storeAs('images', $imageName);// storage/app/images/file.png  aktueller ort
         //$request->image-> neue request nur mit image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $response = Http::attach(
                 'file', file_get_contents($image), $imageName)
-                ->post('[API-PATH]');
+                ->post('192.168.1.168:8000/upload/1');
         }
         //nächste Blade
 
