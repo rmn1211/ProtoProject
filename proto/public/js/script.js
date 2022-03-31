@@ -203,6 +203,65 @@ function validateInputs()
             alert("Fehlender Eintrag in Zeile 2 der Doppel");
         }
     }
+     if (doubleCount >= 3)
+    {
+        var dualType3 = document.getElementById("dualType3").value.trim();
+        var hVName1_3 = document.getElementById("dualVnameHeim13").value.trim();
+        var hNName1_3 = document.getElementById("dualNnameHeim13").value.trim();
+        var hVName2_3 = document.getElementById("dualVnameHeim23").value.trim();
+        var hNName2_3 = document.getElementById("dualNnameHeim23").value.trim();
+        var gVName1_3 = document.getElementById("dualVnameGast13").value.trim();
+        var gNName1_3 = document.getElementById("dualNnameGast13").value.trim();
+        var gVName2_3 = document.getElementById("dualVnameGast23").value.trim();
+        var gNName2_3 = document.getElementById("dualNnameGast23").value.trim();
+        var hSatz1_3 = document.getElementById("dualSatz1heim3").value.trim();
+        var gSatz1_3 = document.getElementById("dualSatz1gast3").value.trim();
+        var hSatz2_3 = document.getElementById("dualSatz2heim3").value.trim();
+        var gSatz2_3 = document.getElementById("dualSatz2gast3").value.trim();
+        var hSatz3_3 = document.getElementById("dualSatz3heim3").value.trim();
+        var gSatz3_3 = document.getElementById("dualSatz3gast3").value.trim();
+        var hWonSets3 = document.getElementById("dualWonSetHeim3").value.trim();
+        var gWonSets3 = document.getElementById("dualWonSetGast3").value.trim();
+        var hWonGames3 = document.getElementById("dualWonMatchHeim3").value.trim();
+        var gWonGames3 = document.getElementById("dualWonMatchGast3").value.trim();
+        if (dualType3 == "" || hVName1_3 == "" || hNName1_3 == "" ||  hVName2_3 == "" || hNName2_3 == "" || gVName1_3 == "" ||gNName1_3 == "" ||gVName2_3 == "" ||gNName2_3 == "" ||
+            hSatz1_3 == "" || gSatz1_3 == "" || hSatz2_3 == "" || gSatz2_3 == "" || hSatz3_3 == "" || gSatz3_3 == "" ||
+            hWonSets3 == "" || gWonSets3 == "" || hWonGames3 == "" || gWonGames3 == "")
+        {
+            complete = false;
+            alert("Fehlender Eintrag in Zeile 3 der Doppel");
+        }
+    }
+ if (doubleCount >= 4)
+    {
+        var dualType4 = document.getElementById("dualType4").value.trim();
+        var hVName1_4 = document.getElementById("dualVnameHeim14").value.trim();
+        var hNName1_4 = document.getElementById("dualNnameHeim14").value.trim();
+        var hVName2_4 = document.getElementById("dualVnameHeim24").value.trim();
+        var hNName2_4 = document.getElementById("dualNnameHeim24").value.trim();
+        var gVName1_4 = document.getElementById("dualVnameGast14").value.trim();
+        var gNName1_4 = document.getElementById("dualNnameGast14").value.trim();
+        var gVName2_4 = document.getElementById("dualVnameGast24").value.trim();
+        var gNName2_4 = document.getElementById("dualNnameGast24").value.trim();
+        var hSatz1_4 = document.getElementById("dualSatz1heim4").value.trim();
+        var gSatz1_4 = document.getElementById("dualSatz1gast4").value.trim();
+        var hSatz2_4 = document.getElementById("dualSatz2heim4").value.trim();
+        var gSatz2_4 = document.getElementById("dualSatz2gast4").value.trim();
+        var hSatz3_4 = document.getElementById("dualSatz3heim4").value.trim();
+        var gSatz3_4= document.getElementById("dualSatz3gast4").value.trim();
+        var hWonSets4 = document.getElementById("dualWonSetHeim4").value.trim();
+        var gWonSets4 = document.getElementById("dualWonSetGast4").value.trim();
+        var hWonGames4 = document.getElementById("dualWonMatchHeim4").value.trim();
+        var gWonGames4 = document.getElementById("dualWonMatchGast4").value.trim();
+        if (dualType4 == "" || hVName1_4 == "" || hNName1_4 == "" ||  hVName2_4 == "" || hNName2_4 == "" || gVName1_4 == "" ||gNName1_4 == "" ||gVName2_4 == "" ||gNName2_4 == "" ||
+            hSatz1_4 == "" || gSatz1_4 == "" || hSatz2_4 == "" || gSatz2_4 == "" || hSatz3_4 == "" || gSatz3_4 == "" ||
+            hWonSets4 == "" || gWonSets4 == "" || hWonGames4 == "" || gWonGames4 == "")
+        {
+            complete = false;
+            alert("Fehlender Eintrag in Zeile 4 der Doppel");
+        }
+    }
+
     if (complete == false)
     {
         return false;
@@ -367,7 +426,7 @@ complete=false;  alert("mindestestn ein Spiel eintragen");
            document.getElementById("doubleCount").value=1;
         }
    
- var dualType1 = document.getElementById("dualType1").value.trim();
+ var dualType2 = document.getElementById("dualType2").value.trim();
         var hVName1_2 = document.getElementById("dualVnameHeim12").value.trim();
         var hNName1_2 = document.getElementById("dualNnameHeim12").value.trim();
         var hVName2_2 = document.getElementById("dualVnameHeim22").value.trim();
@@ -391,6 +450,58 @@ complete=false;  alert("mindestestn ein Spiel eintragen");
             hWonSets2 != "" && gWonSets2 != "" && hWonGames2 != "" && gWonGames2 != "")
         {
           document.getElementById("doubleCount").value=2;
+        }
+
+        var dualType3 = document.getElementById("dualType3").value.trim();
+        var hVName1_3 = document.getElementById("dualVnameHeim13").value.trim();
+        var hNName1_3 = document.getElementById("dualNnameHeim13").value.trim();
+        var hVName2_3 = document.getElementById("dualVnameHeim23").value.trim();
+        var hNName2_3 = document.getElementById("dualNnameHeim23").value.trim();
+        var gVName1_3 = document.getElementById("dualVnameGast13").value.trim();
+        var gNName1_3 = document.getElementById("dualNnameGast13").value.trim();
+        var gVName2_3 = document.getElementById("dualVnameGast23").value.trim();
+        var gNName2_3 = document.getElementById("dualNnameGast23").value.trim();
+        var hSatz1_3 = document.getElementById("dualSatz1heim3").value.trim();
+        var gSatz1_3 = document.getElementById("dualSatz1gast3").value.trim();
+        var hSatz2_3 = document.getElementById("dualSatz2heim3").value.trim();
+        var gSatz2_3 = document.getElementById("dualSatz2gast3").value.trim();
+        var hSatz3_3 = document.getElementById("dualSatz3heim3").value.trim();
+        var gSatz3_3 = document.getElementById("dualSatz3gast3").value.trim();
+        var hWonSets3 = document.getElementById("dualWonSetHeim3").value.trim();
+        var gWonSets3 = document.getElementById("dualWonSetGast3").value.trim();
+        var hWonGames3 = document.getElementById("dualWonMatchHeim3").value.trim();
+        var gWonGames3 = document.getElementById("dualWonMatchGast3").value.trim();
+        if (dualType3 != "" && hVName1_3 != "" && hNName1_3 != "" &&  hVName2_3 != "" && hNName2_3 != "" && gVName1_3 != "" && gNName1_3 != "" && gVName2_3 != "" && gNName2_3 != "" &&
+            hSatz1_3 != "" && gSatz1_3 != "" && hSatz2_3 != "" && gSatz2_3 != "" || hSatz3_3 != "" && gSatz3_3 != "" &&
+            hWonSets3 != "" &&| gWonSets3 != "" && hWonGames3 != "" && gWonGames3 != "")
+        {
+            document.getElementById("doubleCount").value=3;
+        }
+
+        var dualType4 = document.getElementById("dualType4").value.trim();
+        var hVName1_4 = document.getElementById("dualVnameHeim14").value.trim();
+        var hNName1_4 = document.getElementById("dualNnameHeim14").value.trim();
+        var hVName2_4 = document.getElementById("dualVnameHeim24").value.trim();
+        var hNName2_4 = document.getElementById("dualNnameHeim24").value.trim();
+        var gVName1_4 = document.getElementById("dualVnameGast14").value.trim();
+        var gNName1_4 = document.getElementById("dualNnameGast14").value.trim();
+        var gVName2_4 = document.getElementById("dualVnameGast24").value.trim();
+        var gNName2_4 = document.getElementById("dualNnameGast24").value.trim();
+        var hSatz1_4 = document.getElementById("dualSatz1heim4").value.trim();
+        var gSatz1_4 = document.getElementById("dualSatz1gast4").value.trim();
+        var hSatz2_4 = document.getElementById("dualSatz2heim4").value.trim();
+        var gSatz2_4 = document.getElementById("dualSatz2gast4").value.trim();
+        var hSatz3_4 = document.getElementById("dualSatz3heim4").value.trim();
+        var gSatz3_4 = document.getElementById("dualSatz3gast4").value.trim();
+        var hWonSets4 = document.getElementById("dualWonSetHeim4").value.trim();
+        var gWonSets4 = document.getElementById("dualWonSetGast4").value.trim();
+        var hWonGames4 = document.getElementById("dualWonMatchHeim4").value.trim();
+        var gWonGames4 = document.getElementById("dualWonMatchGast4").value.trim();
+        if (dualType4 != "" && hVName1_4 != "" && hNName1_4 != "" &&  hVName2_4 != "" && hNName2_4 != "" && gVName1_4 != "" && gNName1_4 != "" && gVName2_4 != "" && gNName2_4 != "" &&
+            hSatz1_4 != "" && gSatz1_4 != "" && hSatz2_4 != "" && gSatz2_4 != "" || hSatz3_4 != "" && gSatz3_4 != "" &&
+            hWonSets4 != "" &&| gWonSets4 != "" && hWonGames4 != "" && gWonGames4 != "")
+        {
+            document.getElementById("doubleCount").value=4;
         }
     
     if (complete == false)
@@ -429,27 +540,27 @@ function changeSetSumS(row)
     guest1 = parseInt(document.getElementById("soloSatz1gast" + row).value.trim());
     guest2 = parseInt(document.getElementById("soloSatz2gast" + row).value.trim());
     guest3 = parseInt(document.getElementById("soloSatz3gast" + row).value.trim());
-    if (homeWins(home1, guest1))
+    if (home1 > guest1)
     {
         homeWin++;
     }
-    else if (guestWins(home1, guest1))
+    else if (home1 < guest1)
     {
         guestWin++;
     }
-    if (homeWins(home2, guest2))
+    if (home2 > guest2)
     {
         homeWin++;
     }
-    else if (guestWins(home2, guest2))
+    else if (home2 < guest2)
     {
         guestWin++;
     }
-    if (homeWins(home3, guest3))
+    if (home3 > guest3)
     {
         homeWin++;
     }
-    else if (guestWins(home3, guest3))
+    else if (home3 < guest3)
     {
         guestWin++;
     }
@@ -547,27 +658,27 @@ function changeSetSumD(row)
     guest1 = parseInt(document.getElementById("dualSatz1gast" + row).value.trim());
     guest2 = parseInt(document.getElementById("dualSatz2gast" + row).value.trim());
     guest3 = parseInt(document.getElementById("dualSatz3gast" + row).value.trim());
-    if (homeWins(home1, guest1))
+    if (home1 > guest1)
     {
         homeWin++;
     }
-    else if (guestWins(home1, guest1))
+    else if (home1 < guest1)
     {
         guestWin++;
     }
-    if (homeWins(home2, guest2))
+    if (home2 > guest2)
     {
         homeWin++;
     }
-    else if (guestWins(home2, guest2))
+    else if (home2 < guest2)
     {
         guestWin++;
     }
-    if (homeWins(home3, guest3))
+    if (home3 > guest3)
     {
         homeWin++;
     }
-    else if (guestWins(home3, guest3))
+    else if (home3 < guest3)
     {
         guestWin++;
     }
@@ -651,29 +762,4 @@ function tabClick()
     }));
     console.log(keyEvent.key);
 
-}
-//Pruefen ob Siegbedingungen fuer Satz erreicht wurden
-function homeWins(setHome, setGuest)
-{
-    if ((setHome - setGuest) >= 2 && setHome >= 21)
-    {
-        return true;
-    }
-    if (setHome == 30)
-    {
-        return true;
-    }
-    return false;
-}
-function guestWins(setHome, setGuest)
-{
-    if ((setGuest - setHome) >= 2 && setGuest >= 21)
-    {
-        return true;
-    }
-    if (setGuest == 30)
-    {
-        return true;
-    }
-    return false;
 }
