@@ -35,9 +35,7 @@ class ImageUploadController extends Controller
         //nächste Blade
 
         /* Store $imageName name in DATABASE from HERE */
-        return view('report.control_handwriting', ['response' => $response]);
-        //back()
-        //  ->with('success','You have successfully upload image.')
+        return response()->view('report.control_handwriting', compact('response')); //  ->with('success','You have successfully upload image.')
         //->with('image',$imageName);
     }
 }

@@ -2,8 +2,8 @@ function activateSubmit()
 {
     var btSubmit = document.getElementById("submitBTN");
     btSubmit.disabled = false;
-btSubmit.classList.remove('opacity-70');
-btSubmit.classList.add('opacity-100');
+    btSubmit.classList.remove('opacity-70');
+    btSubmit.classList.add('opacity-100');
 }
 
 function validateInputs()
@@ -89,14 +89,15 @@ function validateInputs()
         var gWonSets2 = document.getElementById("soloWonSetGast2").value.trim();
         var hWonGames2 = document.getElementById("soloWonMatchHeim2").value.trim();
         var gWonGames2 = document.getElementById("soloWonMatchGast2").value.trim();
-        if (type2 == "" || hVName2 == "" || hNName2 == "" || gVName2 == "" ||gNName2 == "" || hSatz1_2 == "" ||
+        if (type2 == "" || hVName2 == "" || hNName2 == "" || gVName2 == "" || gNName2 == "" || hSatz1_2 == "" ||
             gSatz1_2 == "" || hSatz2_2 == "" || gSatz2_2 == "" || hSatz3_2 == "" || gSatz3_2 == "" ||
             hWonSets2 == "" || gWonSets2 == "" || hWonGames2 == "" || gWonGames2 == "")
         {
             complete = false;
             alert("Fehlender Eintrag in Zeile 2");
         }
-    } if (soloCount >= 3) {
+    } if (soloCount >= 3)
+    {
         var type3 = document.getElementById("soloType3").value.trim();
         var hVName3 = document.getElementById("soloVnameHeim3").value.trim();
         var hNName3 = document.getElementById("soloNnameHeim3").value.trim();
@@ -112,7 +113,7 @@ function validateInputs()
         var gWonSets3 = document.getElementById("soloWonSetGast3").value.trim();
         var hWonGames3 = document.getElementById("soloWonMatchHeim3").value.trim();
         var gWonGames3 = document.getElementById("soloWonMatchGast3").value.trim();
-        if (type3 == "" || hVName3 == "" || hNName3 == "" || gVName3 == "" ||gNName3 == "" || hSatz1_3 == "" ||
+        if (type3 == "" || hVName3 == "" || hNName3 == "" || gVName3 == "" || gNName3 == "" || hSatz1_3 == "" ||
             gSatz1_3 == "" || hSatz2_3 == "" || gSatz2_3 == "" || hSatz3_3 == "" || gSatz3_3 == "" ||
             hWonSets3 == "" || gWonSets3 == "" || hWonGames3 == "" || gWonGames3 == "")
         {
@@ -137,7 +138,7 @@ function validateInputs()
         var gWonSets4 = document.getElementById("soloWonSetGast4").value.trim();
         var hWonGames4 = document.getElementById("soloWonMatchHeim4").value.trim();
         var gWonGames4 = document.getElementById("soloWonMatchGast4").value.trim();
-        if (type4 == "" || hVName4 == "" || hNName4 == "" || gVName4 == "" ||gNName4 == "" || hSatz1_4 == "" ||
+        if (type4 == "" || hVName4 == "" || hNName4 == "" || gVName4 == "" || gNName4 == "" || hSatz1_4 == "" ||
             gSatz1_4 == "" || hSatz2_4 == "" || gSatz2_4 == "" || hSatz3_4 == "" || gSatz3_4 == "" ||
             hWonSets4 == "" || gWonSets4 == "" || hWonGames4 == "" || gWonGames4 == "")
         {
@@ -166,7 +167,7 @@ function validateInputs()
         var gWonSets1 = document.getElementById("dualWonSetGast1").value.trim();
         var hWonGames1 = document.getElementById("dualWonMatchHeim1").value.trim();
         var gWonGames1 = document.getElementById("dualWonMatchGast1").value.trim();
-        if (dualType1 == "" || hVName1_1 == "" || hNName1_1 == "" ||  hVName2_1 == "" || hNName2_1 == "" || gVName1_1 == "" ||gNName1_1 == "" ||gVName2_1 == "" ||gNName2_1 == "" ||
+        if (dualType1 == "" || hVName1_1 == "" || hNName1_1 == "" || hVName2_1 == "" || hNName2_1 == "" || gVName1_1 == "" || gNName1_1 == "" || gVName2_1 == "" || gNName2_1 == "" ||
             hSatz1_1 == "" || gSatz1_1 == "" || hSatz2_1 == "" || gSatz2_1 == "" || hSatz3_1 == "" || gSatz3_1 == "" ||
             hWonSets1 == "" || gWonSets1 == "" || hWonGames1 == "" || gWonGames1 == "")
         {
@@ -176,7 +177,7 @@ function validateInputs()
     }
     if (doubleCount >= 2)
     {
- var dualType1 = document.getElementById("dualType1").value.trim();
+        var dualType1 = document.getElementById("dualType1").value.trim();
         var hVName1_2 = document.getElementById("dualVnameHeim12").value.trim();
         var hNName1_2 = document.getElementById("dualNnameHeim12").value.trim();
         var hVName2_2 = document.getElementById("dualVnameHeim22").value.trim();
@@ -195,7 +196,7 @@ function validateInputs()
         var gWonSets2 = document.getElementById("dualWonSetGast2").value.trim();
         var hWonGames2 = document.getElementById("dualWonMatchHeim2").value.trim();
         var gWonGames2 = document.getElementById("dualWonMatchGast2").value.trim();
-        if (dualType2 == "" || hVName1_2 == "" || hNName1_2 == "" || hVName2_2 == "" || hNName2_2 == "" || gVName1_2 == "" || gNName1_2 == "" ||gVName2_2 == "" || gNName2_2 == "" ||
+        if (dualType2 == "" || hVName1_2 == "" || hNName1_2 == "" || hVName2_2 == "" || hNName2_2 == "" || gVName1_2 == "" || gNName1_2 == "" || gVName2_2 == "" || gNName2_2 == "" ||
             hSatz1_2 == "" || gSatz1_2 == "" || hSatz2_2 == "" || gSatz2_1 == "" || hSatz3_2 == "" || gSatz3_2 == "" ||
             hWonSets2 == "" || gWonSets2 == "" || hWonGames2 == "" || gWonGames2 == "")
         {
@@ -203,7 +204,7 @@ function validateInputs()
             alert("Fehlender Eintrag in Zeile 2 der Doppel");
         }
     }
-     if (doubleCount >= 3)
+    if (doubleCount >= 3)
     {
         var dualType3 = document.getElementById("dualType3").value.trim();
         var hVName1_3 = document.getElementById("dualVnameHeim13").value.trim();
@@ -224,7 +225,7 @@ function validateInputs()
         var gWonSets3 = document.getElementById("dualWonSetGast3").value.trim();
         var hWonGames3 = document.getElementById("dualWonMatchHeim3").value.trim();
         var gWonGames3 = document.getElementById("dualWonMatchGast3").value.trim();
-        if (dualType3 == "" || hVName1_3 == "" || hNName1_3 == "" ||  hVName2_3 == "" || hNName2_3 == "" || gVName1_3 == "" ||gNName1_3 == "" ||gVName2_3 == "" ||gNName2_3 == "" ||
+        if (dualType3 == "" || hVName1_3 == "" || hNName1_3 == "" || hVName2_3 == "" || hNName2_3 == "" || gVName1_3 == "" || gNName1_3 == "" || gVName2_3 == "" || gNName2_3 == "" ||
             hSatz1_3 == "" || gSatz1_3 == "" || hSatz2_3 == "" || gSatz2_3 == "" || hSatz3_3 == "" || gSatz3_3 == "" ||
             hWonSets3 == "" || gWonSets3 == "" || hWonGames3 == "" || gWonGames3 == "")
         {
@@ -232,7 +233,7 @@ function validateInputs()
             alert("Fehlender Eintrag in Zeile 3 der Doppel");
         }
     }
- if (doubleCount >= 4)
+    if (doubleCount >= 4)
     {
         var dualType4 = document.getElementById("dualType4").value.trim();
         var hVName1_4 = document.getElementById("dualVnameHeim14").value.trim();
@@ -248,12 +249,12 @@ function validateInputs()
         var hSatz2_4 = document.getElementById("dualSatz2heim4").value.trim();
         var gSatz2_4 = document.getElementById("dualSatz2gast4").value.trim();
         var hSatz3_4 = document.getElementById("dualSatz3heim4").value.trim();
-        var gSatz3_4= document.getElementById("dualSatz3gast4").value.trim();
+        var gSatz3_4 = document.getElementById("dualSatz3gast4").value.trim();
         var hWonSets4 = document.getElementById("dualWonSetHeim4").value.trim();
         var gWonSets4 = document.getElementById("dualWonSetGast4").value.trim();
         var hWonGames4 = document.getElementById("dualWonMatchHeim4").value.trim();
         var gWonGames4 = document.getElementById("dualWonMatchGast4").value.trim();
-        if (dualType4 == "" || hVName1_4 == "" || hNName1_4 == "" ||  hVName2_4 == "" || hNName2_4 == "" || gVName1_4 == "" ||gNName1_4 == "" ||gVName2_4 == "" ||gNName2_4 == "" ||
+        if (dualType4 == "" || hVName1_4 == "" || hNName1_4 == "" || hVName2_4 == "" || hNName2_4 == "" || gVName1_4 == "" || gNName1_4 == "" || gVName2_4 == "" || gNName2_4 == "" ||
             hSatz1_4 == "" || gSatz1_4 == "" || hSatz2_4 == "" || gSatz2_4 == "" || hSatz3_4 == "" || gSatz3_4 == "" ||
             hWonSets4 == "" || gWonSets4 == "" || hWonGames4 == "" || gWonGames4 == "")
         {
@@ -283,7 +284,7 @@ function validateInputsUpload()
     var place = document.getElementById("tfPlace");
     //Wird Bericht abgelehtn, findet keine Pruefung statt, da nichts geupdated wird.
     //Dies wird im QueryController beruecksichtigt
-    
+
     //Oberste Reihen Pruefen
     if (league.value.trim() == "")
     {
@@ -306,204 +307,205 @@ function validateInputsUpload()
         complete = false;
         alert("Spielstätte fehlt");
     }
-   
-        var type1 = document.getElementById("soloType1").value.trim();
-        var hVName1 = document.getElementById("soloVnameHeim1").value.trim();
-        var hNName1 = document.getElementById("soloNnameHeim1").value.trim();
-        var gVName1 = document.getElementById("soloVnameGast1").value.trim();
-        var gNName1 = document.getElementById("soloNnameGast1").value.trim();
-        var hSatz1_1 = document.getElementById("soloSatz1heim1").value.trim();
-        var gSatz1_1 = document.getElementById("soloSatz1gast1").value.trim();
-        var hSatz2_1 = document.getElementById("soloSatz2heim1").value.trim();
-        var gSatz2_1 = document.getElementById("soloSatz2gast1").value.trim();
-        var hSatz3_1 = document.getElementById("soloSatz3heim1").value.trim();
-        var gSatz3_1 = document.getElementById("soloSatz3gast1").value.trim();
-        var hWonSets1 = document.getElementById("soloWonSetHeim1").value.trim();
-        var gWonSets1 = document.getElementById("soloWonSetGast1").value.trim();
-        var hWonGames1 = document.getElementById("soloWonMatchHeim1").value.trim();
-        var gWonGames1 = document.getElementById("soloWonMatchGast1").value.trim();
-        if (type1 != "" && hVName1 != "" && hNName1 != "" && gVName1 != "" && gNName1 != "" && hSatz1_1 != "" &&
-            gSatz1_1 != "" && hSatz2_1 != "" && gSatz2_1 != "" && hSatz3_1 != "" && gSatz3_1 != "" &&
-            hWonSets1 != "" && gWonSets1 != "" && hWonGames1 != "" && gWonGames1 != "")
-        {
-          document.getElementById("soloCount").value=1;
-        }
-else{
-complete=false;  alert("mindestestn ein Spiel eintragen");
-}
 
-    
-    
-        var type2 = document.getElementById("soloType2").value.trim();
-        var hVName2 = document.getElementById("soloVnameHeim2").value.trim();
-        var hNName2 = document.getElementById("soloNnameHeim2").value.trim();
-        var gVName2 = document.getElementById("soloVnameGast2").value.trim();
-        var gNName2 = document.getElementById("soloNnameGast2").value.trim();
-        var hSatz1_2 = document.getElementById("soloSatz1heim2").value.trim();
-        var gSatz1_2 = document.getElementById("soloSatz1gast2").value.trim();
-        var hSatz2_2 = document.getElementById("soloSatz2heim2").value.trim();
-        var gSatz2_2 = document.getElementById("soloSatz2gast2").value.trim();
-        var hSatz3_2 = document.getElementById("soloSatz3heim2").value.trim();
-        var gSatz3_2 = document.getElementById("soloSatz3gast2").value.trim();
-        var hWonSets2 = document.getElementById("soloWonSetHeim2").value.trim();
-        var gWonSets2 = document.getElementById("soloWonSetGast2").value.trim();
-        var hWonGames2 = document.getElementById("soloWonMatchHeim2").value.trim();
-        var gWonGames2 = document.getElementById("soloWonMatchGast2").value.trim();
-        if (type2 != "" && hVName2 != "" && hNName2 != "" && gVName2 != "" &&gNName2 != "" && hSatz1_2 != "" &&
-            gSatz1_2 != "" && hSatz2_2 != "" && gSatz2_2 != "" && hSatz3_2 != "" && gSatz3_2 != "" &&
-            hWonSets2 != "" && gWonSets2 != "" && hWonGames2 != "" && gWonGames2 != "")
-        {
-            document.getElementById("soloCount").value=2;
-        }
-  
-        var type3 = document.getElementById("soloType3").value.trim();
-        var hVName3 = document.getElementById("soloVnameHeim3").value.trim();
-        var hNName3 = document.getElementById("soloNnameHeim3").value.trim();
-        var gVName3 = document.getElementById("soloVnameGast3").value.trim();
-        var gNName3 = document.getElementById("soloNnameGast3").value.trim();
-        var hSatz1_3 = document.getElementById("soloSatz1heim3").value.trim();
-        var gSatz1_3 = document.getElementById("soloSatz1gast3").value.trim();
-        var hSatz2_3 = document.getElementById("soloSatz2heim3").value.trim();
-        var gSatz2_3 = document.getElementById("soloSatz2gast3").value.trim();
-        var hSatz3_3 = document.getElementById("soloSatz3heim3").value.trim();
-        var gSatz3_3 = document.getElementById("soloSatz3gast3").value.trim();
-        var hWonSets3 = document.getElementById("soloWonSetHeim3").value.trim();
-        var gWonSets3 = document.getElementById("soloWonSetGast3").value.trim();
-        var hWonGames3 = document.getElementById("soloWonMatchHeim3").value.trim();
-        var gWonGames3 = document.getElementById("soloWonMatchGast3").value.trim();
-        if (type3 != "" && hVName3 != "" && hNName3 != "" && gVName3 != "" &&gNName3 != "" && hSatz1_3 != "" &&
-            gSatz1_3 != "" && hSatz2_3 != "" && gSatz2_3 != "" && hSatz3_3 != "" && gSatz3_3 != "" &&
-            hWonSets3 != "" && gWonSets3 != "" && hWonGames3 != "" && gWonGames3 != "")
-        {
-            document.getElementById("soloCount").value=3;
-        }
-  
-        var type4 = document.getElementById("soloType4").value.trim();
-        var hVName4 = document.getElementById("soloVnameHeim4").value.trim();
-        var hNName4 = document.getElementById("soloNnameHeim4").value.trim();
-        var gVName4 = document.getElementById("soloVnameGast4").value.trim();
-        var gNName4 = document.getElementById("soloNnameGast4").value.trim();
-        var hSatz1_4 = document.getElementById("soloSatz1heim4").value.trim();
-        var gSatz1_4 = document.getElementById("soloSatz1gast4").value.trim();
-        var hSatz2_4 = document.getElementById("soloSatz2heim4").value.trim();
-        var gSatz2_4 = document.getElementById("soloSatz2gast4").value.trim();
-        var hSatz3_4 = document.getElementById("soloSatz3heim4").value.trim();
-        var gSatz3_4 = document.getElementById("soloSatz3gast4").value.trim();
-        var hWonSets4 = document.getElementById("soloWonSetHeim4").value.trim();
-        var gWonSets4 = document.getElementById("soloWonSetGast4").value.trim();
-        var hWonGames4 = document.getElementById("soloWonMatchHeim4").value.trim();
-        var gWonGames4 = document.getElementById("soloWonMatchGast4").value.trim();
-        if (type4 != "" && hVName4 != "" && hNName4 != "" && gVName4 != "" &&gNName4 != "" && hSatz1_4 != "" &&
-            gSatz1_4 != "" && hSatz2_4 != "" && gSatz2_4 != "" && hSatz3_4 != "" && gSatz3_4 != "" &&
-            hWonSets4 != "" && gWonSets4 != "" && hWonGames4 != "" && gWonGames4 != "")
-        {
-          document.getElementById("soloCount").value=4;
-        }
-   
-        var dualType1 = document.getElementById("dualType1").value.trim();
-        var hVName1_1 = document.getElementById("dualVnameHeim11").value.trim();
-        var hNName1_1 = document.getElementById("dualNnameHeim11").value.trim();
-        var hVName2_1 = document.getElementById("dualVnameHeim21").value.trim();
-        var hNName2_1 = document.getElementById("dualNnameHeim21").value.trim();
-        var gVName1_1 = document.getElementById("dualVnameGast11").value.trim();
-        var gNName1_1 = document.getElementById("dualNnameGast11").value.trim();
-        var gVName2_1 = document.getElementById("dualVnameGast21").value.trim();
-        var gNName2_1 = document.getElementById("dualNnameGast21").value.trim();
-        var hSatz1_1 = document.getElementById("dualSatz1heim1").value.trim();
-        var gSatz1_1 = document.getElementById("dualSatz1gast1").value.trim();
-        var hSatz2_1 = document.getElementById("dualSatz2heim1").value.trim();
-        var gSatz2_1 = document.getElementById("dualSatz2gast1").value.trim();
-        var hSatz3_1 = document.getElementById("dualSatz3heim1").value.trim();
-        var gSatz3_1 = document.getElementById("dualSatz3gast1").value.trim();
-        var hWonSets1 = document.getElementById("dualWonSetHeim1").value.trim();
-        var gWonSets1 = document.getElementById("dualWonSetGast1").value.trim();
-        var hWonGames1 = document.getElementById("dualWonMatchHeim1").value.trim();
-        var gWonGames1 = document.getElementById("dualWonMatchGast1").value.trim();
-        if (dualType1 != "" && hVName1_1 != "" && hNName1_1 != "" &&  hVName2_1 != "" && hNName2_1 != "" && gVName1_1 != "" &&gNName1_1 != "" &&gVName2_1 != "" &&gNName2_1 != "" &&
-            hSatz1_1 != "" && gSatz1_1 != "" && hSatz2_1 != "" && gSatz2_1 != "" && hSatz3_1 != "" && gSatz3_1 != "" &&
-            hWonSets1 != "" && gWonSets1 != "" && hWonGames1 != "" && gWonGames1 != "")
-        {
-           document.getElementById("doubleCount").value=1;
-        }
-   
- var dualType2 = document.getElementById("dualType2").value.trim();
-        var hVName1_2 = document.getElementById("dualVnameHeim12").value.trim();
-        var hNName1_2 = document.getElementById("dualNnameHeim12").value.trim();
-        var hVName2_2 = document.getElementById("dualVnameHeim22").value.trim();
-        var hNName2_2 = document.getElementById("dualNnameHeim22").value.trim();
-        var gVName1_2 = document.getElementById("dualVnameGast12").value.trim();
-        var gNName1_2 = document.getElementById("dualNnameGast12").value.trim();
-        var gVName2_2 = document.getElementById("dualVnameGast22").value.trim();
-        var gNName2_2 = document.getElementById("dualNnameGast22").value.trim();
-        var hSatz1_2 = document.getElementById("dualSatz1heim2").value.trim();
-        var gSatz1_2 = document.getElementById("dualSatz1gast2").value.trim();
-        var hSatz2_2 = document.getElementById("dualSatz2heim2").value.trim();
-        var gSatz2_2 = document.getElementById("dualSatz2gast2").value.trim();
-        var hSatz3_2 = document.getElementById("dualSatz3heim2").value.trim();
-        var gSatz3_2 = document.getElementById("dualSatz3gast2").value.trim();
-        var hWonSets2 = document.getElementById("dualWonSetHeim2").value.trim();
-        var gWonSets2 = document.getElementById("dualWonSetGast2").value.trim();
-        var hWonGames2 = document.getElementById("dualWonMatchHeim2").value.trim();
-        var gWonGames2 = document.getElementById("dualWonMatchGast2").value.trim();
-        if (dualType2 != "" && hVName1_2 != "" && hNName1_2 != "" && hVName2_2 != "" && hNName2_2 != "" && gVName1_2 != "" && gNName1_2 != "" &&gVName2_2 != "" && gNName2_2 != "" &&
-            hSatz1_2 != "" && gSatz1_2 != "" && hSatz2_2 != "" && gSatz2_1 != "" && hSatz3_2 != "" && gSatz3_2 != "" &&
-            hWonSets2 != "" && gWonSets2 != "" && hWonGames2 != "" && gWonGames2 != "")
-        {
-          document.getElementById("doubleCount").value=2;
-        }
+    var type1 = document.getElementById("soloType1").value.trim();
+    var hVName1 = document.getElementById("soloVnameHeim1").value.trim();
+    var hNName1 = document.getElementById("soloNnameHeim1").value.trim();
+    var gVName1 = document.getElementById("soloVnameGast1").value.trim();
+    var gNName1 = document.getElementById("soloNnameGast1").value.trim();
+    var hSatz1_1 = document.getElementById("soloSatz1heim1").value.trim();
+    var gSatz1_1 = document.getElementById("soloSatz1gast1").value.trim();
+    var hSatz2_1 = document.getElementById("soloSatz2heim1").value.trim();
+    var gSatz2_1 = document.getElementById("soloSatz2gast1").value.trim();
+    var hSatz3_1 = document.getElementById("soloSatz3heim1").value.trim();
+    var gSatz3_1 = document.getElementById("soloSatz3gast1").value.trim();
+    var hWonSets1 = document.getElementById("soloWonSetHeim1").value.trim();
+    var gWonSets1 = document.getElementById("soloWonSetGast1").value.trim();
+    var hWonGames1 = document.getElementById("soloWonMatchHeim1").value.trim();
+    var gWonGames1 = document.getElementById("soloWonMatchGast1").value.trim();
+    if (type1 != "" && hVName1 != "" && hNName1 != "" && gVName1 != "" && gNName1 != "" && hSatz1_1 != "" &&
+        gSatz1_1 != "" && hSatz2_1 != "" && gSatz2_1 != "" && hSatz3_1 != "" && gSatz3_1 != "" &&
+        hWonSets1 != "" && gWonSets1 != "" && hWonGames1 != "" && gWonGames1 != "")
+    {
+        document.getElementById("soloCount").value = 1;
+    }
+    else
+    {
+        complete = false; alert("mindestestn ein Spiel eintragen");
+    }
 
-        var dualType3 = document.getElementById("dualType3").value.trim();
-        var hVName1_3 = document.getElementById("dualVnameHeim13").value.trim();
-        var hNName1_3 = document.getElementById("dualNnameHeim13").value.trim();
-        var hVName2_3 = document.getElementById("dualVnameHeim23").value.trim();
-        var hNName2_3 = document.getElementById("dualNnameHeim23").value.trim();
-        var gVName1_3 = document.getElementById("dualVnameGast13").value.trim();
-        var gNName1_3 = document.getElementById("dualNnameGast13").value.trim();
-        var gVName2_3 = document.getElementById("dualVnameGast23").value.trim();
-        var gNName2_3 = document.getElementById("dualNnameGast23").value.trim();
-        var hSatz1_3 = document.getElementById("dualSatz1heim3").value.trim();
-        var gSatz1_3 = document.getElementById("dualSatz1gast3").value.trim();
-        var hSatz2_3 = document.getElementById("dualSatz2heim3").value.trim();
-        var gSatz2_3 = document.getElementById("dualSatz2gast3").value.trim();
-        var hSatz3_3 = document.getElementById("dualSatz3heim3").value.trim();
-        var gSatz3_3 = document.getElementById("dualSatz3gast3").value.trim();
-        var hWonSets3 = document.getElementById("dualWonSetHeim3").value.trim();
-        var gWonSets3 = document.getElementById("dualWonSetGast3").value.trim();
-        var hWonGames3 = document.getElementById("dualWonMatchHeim3").value.trim();
-        var gWonGames3 = document.getElementById("dualWonMatchGast3").value.trim();
-        if (dualType3 != "" && hVName1_3 != "" && hNName1_3 != "" &&  hVName2_3 != "" && hNName2_3 != "" && gVName1_3 != "" && gNName1_3 != "" && gVName2_3 != "" && gNName2_3 != "" &&
-            hSatz1_3 != "" && gSatz1_3 != "" && hSatz2_3 != "" && gSatz2_3 != "" || hSatz3_3 != "" && gSatz3_3 != "" &&
-            hWonSets3 != "" &&| gWonSets3 != "" && hWonGames3 != "" && gWonGames3 != "")
-        {
-            document.getElementById("doubleCount").value=3;
-        }
 
-        var dualType4 = document.getElementById("dualType4").value.trim();
-        var hVName1_4 = document.getElementById("dualVnameHeim14").value.trim();
-        var hNName1_4 = document.getElementById("dualNnameHeim14").value.trim();
-        var hVName2_4 = document.getElementById("dualVnameHeim24").value.trim();
-        var hNName2_4 = document.getElementById("dualNnameHeim24").value.trim();
-        var gVName1_4 = document.getElementById("dualVnameGast14").value.trim();
-        var gNName1_4 = document.getElementById("dualNnameGast14").value.trim();
-        var gVName2_4 = document.getElementById("dualVnameGast24").value.trim();
-        var gNName2_4 = document.getElementById("dualNnameGast24").value.trim();
-        var hSatz1_4 = document.getElementById("dualSatz1heim4").value.trim();
-        var gSatz1_4 = document.getElementById("dualSatz1gast4").value.trim();
-        var hSatz2_4 = document.getElementById("dualSatz2heim4").value.trim();
-        var gSatz2_4 = document.getElementById("dualSatz2gast4").value.trim();
-        var hSatz3_4 = document.getElementById("dualSatz3heim4").value.trim();
-        var gSatz3_4 = document.getElementById("dualSatz3gast4").value.trim();
-        var hWonSets4 = document.getElementById("dualWonSetHeim4").value.trim();
-        var gWonSets4 = document.getElementById("dualWonSetGast4").value.trim();
-        var hWonGames4 = document.getElementById("dualWonMatchHeim4").value.trim();
-        var gWonGames4 = document.getElementById("dualWonMatchGast4").value.trim();
-        if (dualType4 != "" && hVName1_4 != "" && hNName1_4 != "" &&  hVName2_4 != "" && hNName2_4 != "" && gVName1_4 != "" && gNName1_4 != "" && gVName2_4 != "" && gNName2_4 != "" &&
-            hSatz1_4 != "" && gSatz1_4 != "" && hSatz2_4 != "" && gSatz2_4 != "" || hSatz3_4 != "" && gSatz3_4 != "" &&
-            hWonSets4 != "" &&| gWonSets4 != "" && hWonGames4 != "" && gWonGames4 != "")
-        {
-            document.getElementById("doubleCount").value=4;
-        }
-    
+
+    var type2 = document.getElementById("soloType2").value.trim();
+    var hVName2 = document.getElementById("soloVnameHeim2").value.trim();
+    var hNName2 = document.getElementById("soloNnameHeim2").value.trim();
+    var gVName2 = document.getElementById("soloVnameGast2").value.trim();
+    var gNName2 = document.getElementById("soloNnameGast2").value.trim();
+    var hSatz1_2 = document.getElementById("soloSatz1heim2").value.trim();
+    var gSatz1_2 = document.getElementById("soloSatz1gast2").value.trim();
+    var hSatz2_2 = document.getElementById("soloSatz2heim2").value.trim();
+    var gSatz2_2 = document.getElementById("soloSatz2gast2").value.trim();
+    var hSatz3_2 = document.getElementById("soloSatz3heim2").value.trim();
+    var gSatz3_2 = document.getElementById("soloSatz3gast2").value.trim();
+    var hWonSets2 = document.getElementById("soloWonSetHeim2").value.trim();
+    var gWonSets2 = document.getElementById("soloWonSetGast2").value.trim();
+    var hWonGames2 = document.getElementById("soloWonMatchHeim2").value.trim();
+    var gWonGames2 = document.getElementById("soloWonMatchGast2").value.trim();
+    if (type2 != "" && hVName2 != "" && hNName2 != "" && gVName2 != "" && gNName2 != "" && hSatz1_2 != "" &&
+        gSatz1_2 != "" && hSatz2_2 != "" && gSatz2_2 != "" && hSatz3_2 != "" && gSatz3_2 != "" &&
+        hWonSets2 != "" && gWonSets2 != "" && hWonGames2 != "" && gWonGames2 != "")
+    {
+        document.getElementById("soloCount").value = 2;
+    }
+
+    var type3 = document.getElementById("soloType3").value.trim();
+    var hVName3 = document.getElementById("soloVnameHeim3").value.trim();
+    var hNName3 = document.getElementById("soloNnameHeim3").value.trim();
+    var gVName3 = document.getElementById("soloVnameGast3").value.trim();
+    var gNName3 = document.getElementById("soloNnameGast3").value.trim();
+    var hSatz1_3 = document.getElementById("soloSatz1heim3").value.trim();
+    var gSatz1_3 = document.getElementById("soloSatz1gast3").value.trim();
+    var hSatz2_3 = document.getElementById("soloSatz2heim3").value.trim();
+    var gSatz2_3 = document.getElementById("soloSatz2gast3").value.trim();
+    var hSatz3_3 = document.getElementById("soloSatz3heim3").value.trim();
+    var gSatz3_3 = document.getElementById("soloSatz3gast3").value.trim();
+    var hWonSets3 = document.getElementById("soloWonSetHeim3").value.trim();
+    var gWonSets3 = document.getElementById("soloWonSetGast3").value.trim();
+    var hWonGames3 = document.getElementById("soloWonMatchHeim3").value.trim();
+    var gWonGames3 = document.getElementById("soloWonMatchGast3").value.trim();
+    if (type3 != "" && hVName3 != "" && hNName3 != "" && gVName3 != "" && gNName3 != "" && hSatz1_3 != "" &&
+        gSatz1_3 != "" && hSatz2_3 != "" && gSatz2_3 != "" && hSatz3_3 != "" && gSatz3_3 != "" &&
+        hWonSets3 != "" && gWonSets3 != "" && hWonGames3 != "" && gWonGames3 != "")
+    {
+        document.getElementById("soloCount").value = 3;
+    }
+
+    var type4 = document.getElementById("soloType4").value.trim();
+    var hVName4 = document.getElementById("soloVnameHeim4").value.trim();
+    var hNName4 = document.getElementById("soloNnameHeim4").value.trim();
+    var gVName4 = document.getElementById("soloVnameGast4").value.trim();
+    var gNName4 = document.getElementById("soloNnameGast4").value.trim();
+    var hSatz1_4 = document.getElementById("soloSatz1heim4").value.trim();
+    var gSatz1_4 = document.getElementById("soloSatz1gast4").value.trim();
+    var hSatz2_4 = document.getElementById("soloSatz2heim4").value.trim();
+    var gSatz2_4 = document.getElementById("soloSatz2gast4").value.trim();
+    var hSatz3_4 = document.getElementById("soloSatz3heim4").value.trim();
+    var gSatz3_4 = document.getElementById("soloSatz3gast4").value.trim();
+    var hWonSets4 = document.getElementById("soloWonSetHeim4").value.trim();
+    var gWonSets4 = document.getElementById("soloWonSetGast4").value.trim();
+    var hWonGames4 = document.getElementById("soloWonMatchHeim4").value.trim();
+    var gWonGames4 = document.getElementById("soloWonMatchGast4").value.trim();
+    if (type4 != "" && hVName4 != "" && hNName4 != "" && gVName4 != "" && gNName4 != "" && hSatz1_4 != "" &&
+        gSatz1_4 != "" && hSatz2_4 != "" && gSatz2_4 != "" && hSatz3_4 != "" && gSatz3_4 != "" &&
+        hWonSets4 != "" && gWonSets4 != "" && hWonGames4 != "" && gWonGames4 != "")
+    {
+        document.getElementById("soloCount").value = 4;
+    }
+
+    var dualType1 = document.getElementById("dualType1").value.trim();
+    var hVName1_1 = document.getElementById("dualVnameHeim11").value.trim();
+    var hNName1_1 = document.getElementById("dualNnameHeim11").value.trim();
+    var hVName2_1 = document.getElementById("dualVnameHeim21").value.trim();
+    var hNName2_1 = document.getElementById("dualNnameHeim21").value.trim();
+    var gVName1_1 = document.getElementById("dualVnameGast11").value.trim();
+    var gNName1_1 = document.getElementById("dualNnameGast11").value.trim();
+    var gVName2_1 = document.getElementById("dualVnameGast21").value.trim();
+    var gNName2_1 = document.getElementById("dualNnameGast21").value.trim();
+    var hSatz1_1 = document.getElementById("dualSatz1heim1").value.trim();
+    var gSatz1_1 = document.getElementById("dualSatz1gast1").value.trim();
+    var hSatz2_1 = document.getElementById("dualSatz2heim1").value.trim();
+    var gSatz2_1 = document.getElementById("dualSatz2gast1").value.trim();
+    var hSatz3_1 = document.getElementById("dualSatz3heim1").value.trim();
+    var gSatz3_1 = document.getElementById("dualSatz3gast1").value.trim();
+    var hWonSets1 = document.getElementById("dualWonSetHeim1").value.trim();
+    var gWonSets1 = document.getElementById("dualWonSetGast1").value.trim();
+    var hWonGames1 = document.getElementById("dualWonMatchHeim1").value.trim();
+    var gWonGames1 = document.getElementById("dualWonMatchGast1").value.trim();
+    if (dualType1 != "" && hVName1_1 != "" && hNName1_1 != "" && hVName2_1 != "" && hNName2_1 != "" && gVName1_1 != "" && gNName1_1 != "" && gVName2_1 != "" && gNName2_1 != "" &&
+        hSatz1_1 != "" && gSatz1_1 != "" && hSatz2_1 != "" && gSatz2_1 != "" && hSatz3_1 != "" && gSatz3_1 != "" &&
+        hWonSets1 != "" && gWonSets1 != "" && hWonGames1 != "" && gWonGames1 != "")
+    {
+        document.getElementById("doubleCount").value = 1;
+    }
+
+    var dualType2 = document.getElementById("dualType2").value.trim();
+    var hVName1_2 = document.getElementById("dualVnameHeim12").value.trim();
+    var hNName1_2 = document.getElementById("dualNnameHeim12").value.trim();
+    var hVName2_2 = document.getElementById("dualVnameHeim22").value.trim();
+    var hNName2_2 = document.getElementById("dualNnameHeim22").value.trim();
+    var gVName1_2 = document.getElementById("dualVnameGast12").value.trim();
+    var gNName1_2 = document.getElementById("dualNnameGast12").value.trim();
+    var gVName2_2 = document.getElementById("dualVnameGast22").value.trim();
+    var gNName2_2 = document.getElementById("dualNnameGast22").value.trim();
+    var hSatz1_2 = document.getElementById("dualSatz1heim2").value.trim();
+    var gSatz1_2 = document.getElementById("dualSatz1gast2").value.trim();
+    var hSatz2_2 = document.getElementById("dualSatz2heim2").value.trim();
+    var gSatz2_2 = document.getElementById("dualSatz2gast2").value.trim();
+    var hSatz3_2 = document.getElementById("dualSatz3heim2").value.trim();
+    var gSatz3_2 = document.getElementById("dualSatz3gast2").value.trim();
+    var hWonSets2 = document.getElementById("dualWonSetHeim2").value.trim();
+    var gWonSets2 = document.getElementById("dualWonSetGast2").value.trim();
+    var hWonGames2 = document.getElementById("dualWonMatchHeim2").value.trim();
+    var gWonGames2 = document.getElementById("dualWonMatchGast2").value.trim();
+    if (dualType2 != "" && hVName1_2 != "" && hNName1_2 != "" && hVName2_2 != "" && hNName2_2 != "" && gVName1_2 != "" && gNName1_2 != "" && gVName2_2 != "" && gNName2_2 != "" &&
+        hSatz1_2 != "" && gSatz1_2 != "" && hSatz2_2 != "" && gSatz2_1 != "" && hSatz3_2 != "" && gSatz3_2 != "" &&
+        hWonSets2 != "" && gWonSets2 != "" && hWonGames2 != "" && gWonGames2 != "")
+    {
+        document.getElementById("doubleCount").value = 2;
+    }
+
+    var dualType3 = document.getElementById("dualType3").value.trim();
+    var hVName1_3 = document.getElementById("dualVnameHeim13").value.trim();
+    var hNName1_3 = document.getElementById("dualNnameHeim13").value.trim();
+    var hVName2_3 = document.getElementById("dualVnameHeim23").value.trim();
+    var hNName2_3 = document.getElementById("dualNnameHeim23").value.trim();
+    var gVName1_3 = document.getElementById("dualVnameGast13").value.trim();
+    var gNName1_3 = document.getElementById("dualNnameGast13").value.trim();
+    var gVName2_3 = document.getElementById("dualVnameGast23").value.trim();
+    var gNName2_3 = document.getElementById("dualNnameGast23").value.trim();
+    var hSatz1_3 = document.getElementById("dualSatz1heim3").value.trim();
+    var gSatz1_3 = document.getElementById("dualSatz1gast3").value.trim();
+    var hSatz2_3 = document.getElementById("dualSatz2heim3").value.trim();
+    var gSatz2_3 = document.getElementById("dualSatz2gast3").value.trim();
+    var hSatz3_3 = document.getElementById("dualSatz3heim3").value.trim();
+    var gSatz3_3 = document.getElementById("dualSatz3gast3").value.trim();
+    var hWonSets3 = document.getElementById("dualWonSetHeim3").value.trim();
+    var gWonSets3 = document.getElementById("dualWonSetGast3").value.trim();
+    var hWonGames3 = document.getElementById("dualWonMatchHeim3").value.trim();
+    var gWonGames3 = document.getElementById("dualWonMatchGast3").value.trim();
+    if (dualType3 != "" && hVName1_3 != "" && hNName1_3 != "" && hVName2_3 != "" && hNName2_3 != "" && gVName1_3 != "" && gNName1_3 != "" && gVName2_3 != "" && gNName2_3 != "" &&
+        hSatz1_3 != "" && gSatz1_3 != "" && hSatz2_3 != "" && gSatz2_3 != "" || hSatz3_3 != "" && gSatz3_3 != "" &&
+        hWonSets3 != "" && gWonSets3 != "" && hWonGames3 != "" && gWonGames3 != "")
+    {
+        document.getElementById("doubleCount").value = 3;
+    }
+
+    var dualType4 = document.getElementById("dualType4").value.trim();
+    var hVName1_4 = document.getElementById("dualVnameHeim14").value.trim();
+    var hNName1_4 = document.getElementById("dualNnameHeim14").value.trim();
+    var hVName2_4 = document.getElementById("dualVnameHeim24").value.trim();
+    var hNName2_4 = document.getElementById("dualNnameHeim24").value.trim();
+    var gVName1_4 = document.getElementById("dualVnameGast14").value.trim();
+    var gNName1_4 = document.getElementById("dualNnameGast14").value.trim();
+    var gVName2_4 = document.getElementById("dualVnameGast24").value.trim();
+    var gNName2_4 = document.getElementById("dualNnameGast24").value.trim();
+    var hSatz1_4 = document.getElementById("dualSatz1heim4").value.trim();
+    var gSatz1_4 = document.getElementById("dualSatz1gast4").value.trim();
+    var hSatz2_4 = document.getElementById("dualSatz2heim4").value.trim();
+    var gSatz2_4 = document.getElementById("dualSatz2gast4").value.trim();
+    var hSatz3_4 = document.getElementById("dualSatz3heim4").value.trim();
+    var gSatz3_4 = document.getElementById("dualSatz3gast4").value.trim();
+    var hWonSets4 = document.getElementById("dualWonSetHeim4").value.trim();
+    var gWonSets4 = document.getElementById("dualWonSetGast4").value.trim();
+    var hWonGames4 = document.getElementById("dualWonMatchHeim4").value.trim();
+    var gWonGames4 = document.getElementById("dualWonMatchGast4").value.trim();
+    if (dualType4 != "" && hVName1_4 != "" && hNName1_4 != "" && hVName2_4 != "" && hNName2_4 != "" && gVName1_4 != "" && gNName1_4 != "" && gVName2_4 != "" && gNName2_4 != "" &&
+        hSatz1_4 != "" && gSatz1_4 != "" && hSatz2_4 != "" && gSatz2_4 != "" || hSatz3_4 != "" && gSatz3_4 != "" &&
+        hWonSets4 != "" && gWonSets4 != "" && hWonGames4 != "" && gWonGames4 != "")
+    {
+        document.getElementById("doubleCount").value = 4;
+    }
+
     if (complete == false)
     {
         return false;
