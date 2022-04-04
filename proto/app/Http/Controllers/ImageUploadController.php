@@ -33,9 +33,11 @@ class ImageUploadController extends Controller
                 ->post('192.168.1.168:8000/upload/1');
         }
         //nächste Blade
-
+        $json = json_encode($response, true);
+        error_log($response['Heimmannschaft']);
+        error_log(gettype($response));
         /* Store $imageName name in DATABASE from HERE */
-        return response()->view('report.control_handwriting', compact('response')); //  ->with('success','You have successfully upload image.')
+        return response()->view('report.control_handwriting', ['response' => $response]); //  ->with('success','You have successfully upload image.')
         //->with('image',$imageName);
     }
 }
