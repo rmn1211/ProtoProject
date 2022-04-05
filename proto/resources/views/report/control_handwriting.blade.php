@@ -90,330 +90,330 @@ $soloSatz_2_heim4 = '';
 $soloSatz_3_heim4 = '';
 $soloSatz_3_gast4 = '';
 
-if (isset($json['Heimmannschaft'])) {
-    $HeimID = $json['Heimmannschaft'];
+if (isset($response['Heimmannschaft'])) {
+    $HeimID =  $response['Heimmannschaft'];
     $Heim = QueryController::getMannschaftName($HeimID);
 }
-if (isset($json['Gastmannschaft'])) {
-    $GastID = $json['Gastmannschaft'];
+if (isset($response['Gastmannschaft'])) {
+    $GastID = $response['Gastmannschaft'];
     $Gast = QueryController::getMannschaftName($GastID);
 }
-if (isset($json['Doppel_1'])) {
-    if (isset($json['Doppel_1']['Heim_1'])) {
-        $dualHeim_11 = $json['Doppel_1']['Heim_1'];
+if (isset($response['Doppel_1'])) {
+    if (isset($response['Doppel_1']['Heim_1'])) {
+        $dualHeim_11 = $response['Doppel_1']['Heim_1'];
         $dualHeim_name_11 = QueryController::getSpielerName($dualHeim_11);
     }
-    if (isset($json['Doppel_1']['Heim_2'])) {
-        $dualHeim_21 = $json['Doppel_1']['Heim_2'];
+    if (isset($response['Doppel_1']['Heim_2'])) {
+        $dualHeim_21 = $response['Doppel_1']['Heim_2'];
         $dualHeim_name_21 = QueryController::getSpielerName($dualHeim_21);
     }
-    if (isset($json['Doppel_1']['Gast_1'])) {
-        $dualGast_11 = $json['Doppel_1']['Gast_1'];
+    if (isset($response['Doppel_1']['Gast_1'])) {
+        $dualGast_11 = $response['Doppel_1']['Gast_1'];
         $dualGast_name_11 = QueryController::getSpielerName($dualGast_11);
     }
-    if (isset($json['Doppel_1']['Gast_2'])) {
-        $dualGast_21 = $json['Doppel_1']['Gast_2'];
+    if (isset($response['Doppel_1']['Gast_2'])) {
+        $dualGast_21 = $response['Doppel_1']['Gast_2'];
         $dualGast_name_21 = QueryController::getSpielerName($dualGast_21);
     }
-    if (isset($json['Doppel_1']['Satz_1'])) {
-        if (isset($json['Doppel_1']['Satz_1']['Punkte_Heim'])) {
-            $dualSatz_1_heim1 = $json['Doppel_1']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Doppel_1']['Satz_1'])) {
+        if (isset($response['Doppel_1']['Satz_1']['Punkte_Heim'])) {
+            $dualSatz_1_heim1 = $response['Doppel_1']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_1']['Satz_1']['Punkte_Gast'])) {
-            $dualSatz_1_gast1 = $json['Doppel_1']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Doppel_1']['Satz_2'])) {
-        if (isset($json['Doppel_1']['Satz_2']['Punkte_Heim'])) {
-            $dualSatz_2_heim1 = $json['Doppel_1']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Doppel_1']['Satz_2']['Punkte_Gast'])) {
-            $dualSatz_2_gast1 = $json['Doppel_1']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Doppel_1']['Satz_1']['Punkte_Gast'])) {
+            $dualSatz_1_gast1 = $response['Doppel_1']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Doppel_1']['Satz_3'])) {
-        if (isset($json['Doppel_1']['Satz_3']['Punkte_Heim'])) {
-            $dualSatz_3_heim1 = $json['Doppel_1']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Doppel_1']['Satz_2'])) {
+        if (isset($response['Doppel_1']['Satz_2']['Punkte_Heim'])) {
+            $dualSatz_2_heim1 = $response['Doppel_1']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_1']['Satz_3']['Punkte_Gast'])) {
-            $dualSatz_3_gast1 = $json['Doppel_1']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Doppel_1']['Satz_2']['Punkte_Gast'])) {
+            $dualSatz_2_gast1 = $response['Doppel_1']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Doppel_1']['Satz_3'])) {
+        if (isset($response['Doppel_1']['Satz_3']['Punkte_Heim'])) {
+            $dualSatz_3_heim1 = $response['Doppel_1']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Doppel_1']['Satz_3']['Punkte_Gast'])) {
+            $dualSatz_3_gast1 = $response['Doppel_1']['Satz_3']['Punkte_Gast'];
         }
     }
 }
 
-if (isset($json['Doppel_2'])) {
-    if (isset($json['Doppel_2']['Heim_1'])) {
-        $dualHeim_12 = $json['Doppel_2']['Heim_1'];
+if (isset($response['Doppel_2'])) {
+    if (isset($response['Doppel_2']['Heim_1'])) {
+        $dualHeim_12 = $response['Doppel_2']['Heim_1'];
         $dualHeim_name_12 = QueryController::getSpielerName($dualHeim_12);
     }
-    if (isset($json['Doppel_2']['Heim_2'])) {
-        $dualHeim_22 = $json['Doppel_2']['Heim_2'];
+    if (isset($response['Doppel_2']['Heim_2'])) {
+        $dualHeim_22 = $response['Doppel_2']['Heim_2'];
         $dualHeim_name_22 = QueryController::getSpielerName($dualHeim_22);
     }
-    if (isset($json['Doppel_2']['Gast_1'])) {
-        $dualGast_12 = $json['Doppel_2']['Gast_1'];
+    if (isset($response['Doppel_2']['Gast_1'])) {
+        $dualGast_12 = $response['Doppel_2']['Gast_1'];
         $dualGast_name_12 = QueryController::getSpielerName($dualGast_12);
     }
-    if (isset($json['Doppel_2']['Gast_2'])) {
-        $dualGast_22 = $json['Doppel_2']['Gast_2'];
+    if (isset($response['Doppel_2']['Gast_2'])) {
+        $dualGast_22 = $response['Doppel_2']['Gast_2'];
         $dualGast_name_22 = QueryController::getSpielerName($dualGast_22);
     }
-    if (isset($json['Doppel_2']['Satz_1'])) {
-        if (isset($json['Doppel_2']['Satz_1']['Punkte_Heim'])) {
-            $dualSatz_1_heim2 = $json['Doppel_2']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Doppel_2']['Satz_1'])) {
+        if (isset($response['Doppel_2']['Satz_1']['Punkte_Heim'])) {
+            $dualSatz_1_heim2 = $response['Doppel_2']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_2']['Satz_1']['Punkte_Gast'])) {
-            $dualSatz_1_gast2 = $json['Doppel_2']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Doppel_2']['Satz_2'])) {
-        if (isset($json['Doppel_2']['Satz_2']['Punkte_Heim'])) {
-            $dualSatz_2_heim2 = $json['Doppel_2']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Doppel_2']['Satz_2']['Punkte_Gast'])) {
-            $dualSatz_2_gast2 = $json['Doppel_2']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Doppel_2']['Satz_1']['Punkte_Gast'])) {
+            $dualSatz_1_gast2 = $response['Doppel_2']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Doppel_2']['Satz_3'])) {
-        if (isset($json['Doppel_2']['Satz_3']['Punkte_Heim'])) {
-            $dualSatz_3_heim2 = $json['Doppel_2']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Doppel_2']['Satz_2'])) {
+        if (isset($response['Doppel_2']['Satz_2']['Punkte_Heim'])) {
+            $dualSatz_2_heim2 = $response['Doppel_2']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_2']['Satz_3']['Punkte_Gast'])) {
-            $dualSatz_3_gast2 = $json['Doppel_2']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Doppel_2']['Satz_2']['Punkte_Gast'])) {
+            $dualSatz_2_gast2 = $response['Doppel_2']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Doppel_2']['Satz_3'])) {
+        if (isset($response['Doppel_2']['Satz_3']['Punkte_Heim'])) {
+            $dualSatz_3_heim2 = $response['Doppel_2']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Doppel_2']['Satz_3']['Punkte_Gast'])) {
+            $dualSatz_3_gast2 = $response['Doppel_2']['Satz_3']['Punkte_Gast'];
         }
     }
 }
 
-if (isset($json['Doppel_3'])) {
-    if (isset($json['Doppel_3']['Heim_1'])) {
-        $dualHeim_13 = $json['Doppel_3']['Heim_1'];
+if (isset($response['Doppel_3'])) {
+    if (isset($response['Doppel_3']['Heim_1'])) {
+        $dualHeim_13 = $response['Doppel_3']['Heim_1'];
         $dualHeim_name_13 = QueryController::getSpielerName($dualHeim_13);
     }
-    if (isset($json['Doppel_3']['Heim_2'])) {
-        $dualHeim_23 = $json['Doppel_3']['Heim_2'];
+    if (isset($response['Doppel_3']['Heim_2'])) {
+        $dualHeim_23 = $response['Doppel_3']['Heim_2'];
         $dualHeim_name_23 = QueryController::getSpielerName($dualHeim_23);
     }
-    if (isset($json['Doppel_3']['Gast_1'])) {
-        $dualGast_13 = $json['Doppel_3']['Gast_1'];
+    if (isset($response['Doppel_3']['Gast_1'])) {
+        $dualGast_13 = $response['Doppel_3']['Gast_1'];
         $dualGast_name_13 = QueryController::getSpielerName($dualGast_13);
     }
-    if (isset($json['Doppel_3']['Gast_2'])) {
-        $dualGast_23 = $json['Doppel_3']['Gast_2'];
+    if (isset($response['Doppel_3']['Gast_2'])) {
+        $dualGast_23 = $response['Doppel_3']['Gast_2'];
         $dualGast_name_23 = QueryController::getSpielerName($dualGast_23);
     }
-    if (isset($json['Doppel_3']['Satz_1'])) {
-        if (isset($json['Doppel_3']['Satz_1']['Punkte_Heim'])) {
-            $dualSatz_1_heim3 = $json['Doppel_3']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Doppel_3']['Satz_1'])) {
+        if (isset($response['Doppel_3']['Satz_1']['Punkte_Heim'])) {
+            $dualSatz_1_heim3 = $response['Doppel_3']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_3']['Satz_1']['Punkte_Gast'])) {
-            $dualSatz_1_gast3 = $json['Doppel_3']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Doppel_3']['Satz_2'])) {
-        if (isset($json['Doppel_3']['Satz_2']['Punkte_Heim'])) {
-            $dualSatz_2_heim3 = $json['Doppel_3']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Doppel_3']['Satz_2']['Punkte_Gast'])) {
-            $dualSatz_2_gast3 = $json['Doppel_3']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Doppel_3']['Satz_1']['Punkte_Gast'])) {
+            $dualSatz_1_gast3 = $response['Doppel_3']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Doppel_3']['Satz_3'])) {
-        if (isset($json['Doppel_3']['Satz_3']['Punkte_Heim'])) {
-            $dualSatz_3_heim3 = $json['Doppel_3']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Doppel_3']['Satz_2'])) {
+        if (isset($response['Doppel_3']['Satz_2']['Punkte_Heim'])) {
+            $dualSatz_2_heim3 = $response['Doppel_3']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_3']['Satz_3']['Punkte_Gast'])) {
-            $dualSatz_3_gast3 = $json['Doppel_3']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Doppel_3']['Satz_2']['Punkte_Gast'])) {
+            $dualSatz_2_gast3 = $response['Doppel_3']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Doppel_3']['Satz_3'])) {
+        if (isset($response['Doppel_3']['Satz_3']['Punkte_Heim'])) {
+            $dualSatz_3_heim3 = $response['Doppel_3']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Doppel_3']['Satz_3']['Punkte_Gast'])) {
+            $dualSatz_3_gast3 = $response['Doppel_3']['Satz_3']['Punkte_Gast'];
         }
     }
 }
 
-if (isset($json['Doppel_4'])) {
-    if (isset($json['Doppel_4']['Heim_1'])) {
-        $dualHeim_14 = $json['Doppel_4']['Heim_1'];
+if (isset($response['Doppel_4'])) {
+    if (isset($response['Doppel_4']['Heim_1'])) {
+        $dualHeim_14 = $response['Doppel_4']['Heim_1'];
         $dualHeim_name_14 = QueryController::getSpielerName($dualHeim_14);
     }
-    if (isset($json['Doppel_4']['Heim_2'])) {
-        $dualHeim_24 = $json['Doppel_4']['Heim_2'];
+    if (isset($response['Doppel_4']['Heim_2'])) {
+        $dualHeim_24 = $response['Doppel_4']['Heim_2'];
         $dualHeim_name_24 = QueryController::getSpielerName($dualHeim_24);
     }
-    if (isset($json['Doppel_4']['Gast_1'])) {
-        $dualGast_14 = $json['Doppel_4']['Gast_1'];
+    if (isset($response['Doppel_4']['Gast_1'])) {
+        $dualGast_14 = $response['Doppel_4']['Gast_1'];
         $dualGast_name_14 = QueryController::getSpielerName($dualGast_14);
     }
-    if (isset($json['Doppel_4']['Gast_2'])) {
-        $dualGast_24 = $json['Doppel_4']['Gast_2'];
+    if (isset($response['Doppel_4']['Gast_2'])) {
+        $dualGast_24 = $response['Doppel_4']['Gast_2'];
         $dualGast_name_24 = QueryController::getSpielerName($dualGast_24);
     }
-    if (isset($json['Doppel_4']['Satz_1'])) {
-        if (isset($json['Doppel_4']['Satz_1']['Punkte_Heim'])) {
-            $dualSatz_1_heim4 = $json['Doppel_4']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Doppel_4']['Satz_1'])) {
+        if (isset($response['Doppel_4']['Satz_1']['Punkte_Heim'])) {
+            $dualSatz_1_heim4 = $response['Doppel_4']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_4']['Satz_1']['Punkte_Gast'])) {
-            $dualSatz_1_gast4 = $json['Doppel_4']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Doppel_4']['Satz_2'])) {
-        if (isset($json['Doppel_4']['Satz_2']['Punkte_Heim'])) {
-            $dualSatz_2_heim4 = $json['Doppel_4']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Doppel_4']['Satz_2']['Punkte_Gast'])) {
-            $dualSatz_2_gast4 = $json['Doppel_4']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Doppel_4']['Satz_1']['Punkte_Gast'])) {
+            $dualSatz_1_gast4 = $response['Doppel_4']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Doppel_4']['Satz_3'])) {
-        if (isset($json['Doppel_4']['Satz_3']['Punkte_Heim'])) {
-            $dualSatz_3_heim4 = $json['Doppel_4']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Doppel_4']['Satz_2'])) {
+        if (isset($response['Doppel_4']['Satz_2']['Punkte_Heim'])) {
+            $dualSatz_2_heim4 = $response['Doppel_4']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Doppel_4']['Satz_3']['Punkte_Gast'])) {
-            $dualSatz_3_gast4 = $json['Doppel_4']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Doppel_4']['Satz_2']['Punkte_Gast'])) {
+            $dualSatz_2_gast4 = $response['Doppel_4']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Doppel_4']['Satz_3'])) {
+        if (isset($response['Doppel_4']['Satz_3']['Punkte_Heim'])) {
+            $dualSatz_3_heim4 = $response['Doppel_4']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Doppel_4']['Satz_3']['Punkte_Gast'])) {
+            $dualSatz_3_gast4 = $response['Doppel_4']['Satz_3']['Punkte_Gast'];
         }
     }
 }
 
-if (isset($json['Einzel_1'])) {
-    if (isset($json['Einzel_1']['Heim'])) {
-        $soloHeim_1 = $json['Einzel_1']['Heim'];
+if (isset($response['Einzel_1'])) {
+    if (isset($response['Einzel_1']['Heim'])) {
+        $soloHeim_1 = $response['Einzel_1']['Heim'];
         $soloHeim_name_1 = QueryController::getSpielerName($soloHeim_1);
     }
 
-    if (isset($json['Einzel_1']['Gast'])) {
-        $soloGast_1 = $json['Einzel_1']['Gast'];
+    if (isset($response['Einzel_1']['Gast'])) {
+        $soloGast_1 = $response['Einzel_1']['Gast'];
         $soloGast_name_1 = QueryController::getSpielerName($soloGast_1);
     }
 
-    if (isset($json['Einzel_1']['Satz_1'])) {
-        if (isset($json['Einzel_1']['Satz_1']['Punkte_Heim'])) {
-            $soloSatz_1_heim1 = $json['Einzel_1']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Einzel_1']['Satz_1'])) {
+        if (isset($response['Einzel_1']['Satz_1']['Punkte_Heim'])) {
+            $soloSatz_1_heim1 = $response['Einzel_1']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_1']['Satz_1']['Punkte_Gast'])) {
-            $soloSatz_1_gast1 = $json['Einzel_1']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Einzel_1']['Satz_2'])) {
-        if (isset($json['Einzel_1']['Satz_2']['Punkte_Heim'])) {
-            $soloSatz_2_heim1 = $json['Einzel_1']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Einzel_1']['Satz_2']['Punkte_Gast'])) {
-            $soloSatz_2_gast1 = $json['Einzel_1']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Einzel_1']['Satz_1']['Punkte_Gast'])) {
+            $soloSatz_1_gast1 = $response['Einzel_1']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Einzel_1']['Satz_3'])) {
-        if (isset($json['Einzel_1']['Satz_3']['Punkte_Heim'])) {
-            $soloSatz_3_heim1 = $json['Einzel_1']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Einzel_1']['Satz_2'])) {
+        if (isset($response['Einzel_1']['Satz_2']['Punkte_Heim'])) {
+            $soloSatz_2_heim1 = $response['Einzel_1']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_1']['Satz_3']['Punkte_Gast'])) {
-            $soloSatz_3_gast1 = $json['Einzel_1']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Einzel_1']['Satz_2']['Punkte_Gast'])) {
+            $soloSatz_2_gast1 = $response['Einzel_1']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Einzel_1']['Satz_3'])) {
+        if (isset($response['Einzel_1']['Satz_3']['Punkte_Heim'])) {
+            $soloSatz_3_heim1 = $response['Einzel_1']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Einzel_1']['Satz_3']['Punkte_Gast'])) {
+            $soloSatz_3_gast1 = $response['Einzel_1']['Satz_3']['Punkte_Gast'];
         }
     }
 }
 
-if (isset($json['Einzel_2'])) {
-    if (isset($json['Einzel_2']['Heim'])) {
-        $soloHeim_2 = $json['Einzel_2']['Heim'];
+if (isset($response['Einzel_2'])) {
+    if (isset($response['Einzel_2']['Heim'])) {
+        $soloHeim_2 = $response['Einzel_2']['Heim'];
         $soloHeim_name_2 = QueryController::getSpielerName($soloHeim_2);
     }
 
-    if (isset($json['Einzel_2']['Gast'])) {
-        $soloGast_2 = $json['Einzel_2']['Gast'];
+    if (isset($response['Einzel_2']['Gast'])) {
+        $soloGast_2 = $response['Einzel_2']['Gast'];
         $soloGast_name_2 = QueryController::getSpielerName($soloGast_2);
     }
 
-    if (isset($json['Einzel_2']['Satz_1'])) {
-        if (isset($json['Einzel_2']['Satz_1']['Punkte_Heim'])) {
-            $soloSatz_1_heim2 = $json['Einzel_2']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Einzel_2']['Satz_1'])) {
+        if (isset($response['Einzel_2']['Satz_1']['Punkte_Heim'])) {
+            $soloSatz_1_heim2 = $response['Einzel_2']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_2']['Satz_1']['Punkte_Gast'])) {
-            $soloSatz_1_gast2 = $json['Einzel_2']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Einzel_2']['Satz_2'])) {
-        if (isset($json['Einzel_2']['Satz_2']['Punkte_Heim'])) {
-            $soloSatz_2_heim2 = $json['Einzel_2']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Einzel_2']['Satz_2']['Punkte_Gast'])) {
-            $soloSatz_2_gast2 = $json['Einzel_2']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Einzel_2']['Satz_1']['Punkte_Gast'])) {
+            $soloSatz_1_gast2 = $response['Einzel_2']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Einzel_2']['Satz_3'])) {
-        if (isset($json['Einzel_2']['Satz_3']['Punkte_Heim'])) {
-            $soloSatz_3_heim2 = $json['Einzel_2']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Einzel_2']['Satz_2'])) {
+        if (isset($response['Einzel_2']['Satz_2']['Punkte_Heim'])) {
+            $soloSatz_2_heim2 = $response['Einzel_2']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_2']['Satz_3']['Punkte_Gast'])) {
-            $soloSatz_3_gast2 = $json['Einzel_2']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Einzel_2']['Satz_2']['Punkte_Gast'])) {
+            $soloSatz_2_gast2 = $response['Einzel_2']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Einzel_2']['Satz_3'])) {
+        if (isset($response['Einzel_2']['Satz_3']['Punkte_Heim'])) {
+            $soloSatz_3_heim2 = $response['Einzel_2']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Einzel_2']['Satz_3']['Punkte_Gast'])) {
+            $soloSatz_3_gast2 = $response['Einzel_2']['Satz_3']['Punkte_Gast'];
         }
     }
 }
 
-if (isset($json['Einzel_3'])) {
-    if (isset($json['Einzel_3']['Heim'])) {
-        $soloHeim_3 = $json['Einzel_3']['Heim'];
+if (isset($response['Einzel_3'])) {
+    if (isset($response['Einzel_3']['Heim'])) {
+        $soloHeim_3 = $response['Einzel_3']['Heim'];
         $soloHeim_name_3 = QueryController::getSpielerName($soloHeim_3);
     }
 
-    if (isset($json['Einzel_3']['Gast'])) {
-        $soloGast_3 = $json['Einzel_3']['Gast'];
+    if (isset($response['Einzel_3']['Gast'])) {
+        $soloGast_3 = $response['Einzel_3']['Gast'];
         $soloGast_name_3 = QueryController::getSpielerName($soloGast_3);
     }
 
-    if (isset($json['Einzel_3']['Satz_1'])) {
-        if (isset($json['Einzel_3']['Satz_1']['Punkte_Heim'])) {
-            $soloSatz_1_heim3 = $json['Einzel_3']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Einzel_3']['Satz_1'])) {
+        if (isset($response['Einzel_3']['Satz_1']['Punkte_Heim'])) {
+            $soloSatz_1_heim3 = $response['Einzel_3']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_3']['Satz_1']['Punkte_Gast'])) {
-            $soloSatz_1_gast3 = $json['Einzel_3']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Einzel_3']['Satz_2'])) {
-        if (isset($json['Einzel_3']['Satz_2']['Punkte_Heim'])) {
-            $soloSatz_2_heim3 = $json['Einzel_3']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Einzel_3']['Satz_2']['Punkte_Gast'])) {
-            $soloSatz_2_gast3 = $json['Einzel_3']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Einzel_3']['Satz_1']['Punkte_Gast'])) {
+            $soloSatz_1_gast3 = $response['Einzel_3']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Einzel_3']['Satz_3'])) {
-        if (isset($json['Einzel_3']['Satz_3']['Punkte_Heim'])) {
-            $soloSatz_3_heim3 = $json['Einzel_3']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Einzel_3']['Satz_2'])) {
+        if (isset($response['Einzel_3']['Satz_2']['Punkte_Heim'])) {
+            $soloSatz_2_heim3 = $response['Einzel_3']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_3']['Satz_3']['Punkte_Gast'])) {
-            $soloSatz_3_gast3 = $json['Einzel_3']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Einzel_3']['Satz_2']['Punkte_Gast'])) {
+            $soloSatz_2_gast3 = $response['Einzel_3']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Einzel_3']['Satz_3'])) {
+        if (isset($response['Einzel_3']['Satz_3']['Punkte_Heim'])) {
+            $soloSatz_3_heim3 = $response['Einzel_3']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Einzel_3']['Satz_3']['Punkte_Gast'])) {
+            $soloSatz_3_gast3 = $response['Einzel_3']['Satz_3']['Punkte_Gast'];
         }
     }
 }
 
-if (isset($json['Einzel_4'])) {
-    if (isset($json['Einzel_4']['Heim'])) {
-        $soloHeim_4 = $json['Einzel_4']['Heim'];
+if (isset($response['Einzel_4'])) {
+    if (isset($response['Einzel_4']['Heim'])) {
+        $soloHeim_4 = $response['Einzel_4']['Heim'];
         $soloHeim_name_4 = QueryController::getSpielerName($soloHeim_4);
     }
 
-    if (isset($json['Einzel_4']['Gast'])) {
-        $soloGast_4 = $json['Einzel_4']['Gast'];
+    if (isset($response['Einzel_4']['Gast'])) {
+        $soloGast_4 = $response['Einzel_4']['Gast'];
         $soloGast_name_4 = QueryController::getSpielerName($soloGast_4);
     }
 
-    if (isset($json['Einzel_4']['Satz_1'])) {
-        if (isset($json['Einzel_4']['Satz_1']['Punkte_Heim'])) {
-            $soloSatz_1_heim4 = $json['Einzel_4']['Satz_1']['Punkte_Heim'];
+    if (isset($response['Einzel_4']['Satz_1'])) {
+        if (isset($response['Einzel_4']['Satz_1']['Punkte_Heim'])) {
+            $soloSatz_1_heim4 = $response['Einzel_4']['Satz_1']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_4']['Satz_1']['Punkte_Gast'])) {
-            $soloSatz_1_gast4 = $json['Einzel_4']['Satz_1']['Punkte_Gast'];
-        }
-    }
-    if (isset($json['Einzel_4']['Satz_2'])) {
-        if (isset($json['Einzel_4']['Satz_2']['Punkte_Heim'])) {
-            $soloSatz_2_heim4 = $json['Einzel_4']['Satz_2']['Punkte_Heim'];
-        }
-        if (isset($json['Einzel_4']['Satz_2']['Punkte_Gast'])) {
-            $soloSatz_2_gast4 = $json['Einzel_4']['Satz_2']['Punkte_Gast'];
+        if (isset($response['Einzel_4']['Satz_1']['Punkte_Gast'])) {
+            $soloSatz_1_gast4 = $response['Einzel_4']['Satz_1']['Punkte_Gast'];
         }
     }
-    if (isset($json['Einzel_4']['Satz_3'])) {
-        if (isset($json['Einzel_4']['Satz_3']['Punkte_Heim'])) {
-            $soloSatz_3_heim4 = $json['Einzel_4']['Satz_3']['Punkte_Heim'];
+    if (isset($response['Einzel_4']['Satz_2'])) {
+        if (isset($response['Einzel_4']['Satz_2']['Punkte_Heim'])) {
+            $soloSatz_2_heim4 = $response['Einzel_4']['Satz_2']['Punkte_Heim'];
         }
-        if (isset($json['Einzel_4']['Satz_3']['Punkte_Gast'])) {
-            $soloSatz_3_gast4 = $json['Einzel_4']['Satz_3']['Punkte_Gast'];
+        if (isset($response['Einzel_4']['Satz_2']['Punkte_Gast'])) {
+            $soloSatz_2_gast4 = $response['Einzel_4']['Satz_2']['Punkte_Gast'];
+        }
+    }
+    if (isset($response['Einzel_4']['Satz_3'])) {
+        if (isset($response['Einzel_4']['Satz_3']['Punkte_Heim'])) {
+            $soloSatz_3_heim4 = $response['Einzel_4']['Satz_3']['Punkte_Heim'];
+        }
+        if (isset($response['Einzel_4']['Satz_3']['Punkte_Gast'])) {
+            $soloSatz_3_gast4 = $response['Einzel_4']['Satz_3']['Punkte_Gast'];
         }
     }
 }
@@ -475,7 +475,7 @@ if (isset($json['Einzel_4'])) {
                 <div class="flex mb-4">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $response['Heimmannschaft'] }}">
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
 
                     </div>
 
