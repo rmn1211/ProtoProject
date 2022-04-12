@@ -1,3 +1,20 @@
+//Init Berechnen der Tabellenwerte die nicht in DB gespichert werden
+window.onload = function ()
+{
+    var doubleLength = document.getElementById("tabDouble").rows.length - 3;
+    var soloLength = document.getElementById("tabSolo").rows.length - 3;
+
+    for (j = 1; j <= doubleLength; j++)
+    {
+        console.log("Double:" + j + " von " + doubleLength);
+        changeSetSumD(j);
+    }
+    for (j = 1; j <= soloLength; j++)
+    {
+        changeSetSumS(j);
+        console.log("Solo:" + j + " von " + soloLength);
+    }
+}
 function activateSubmit()
 {
     var btSubmit = document.getElementById("submitBTN");
@@ -515,6 +532,7 @@ function validateInputsUpload()
 }
 function changeSetSumS(row)
 {
+    console.log("Reihe: " + row + " Solo Change");
     var homeGes = 0;
     var guestGes = 0;
     var home1 = 0;
@@ -590,7 +608,7 @@ function changeSetSumS(row)
         document.getElementById("soloWonMatchHeim" + row).value = 0;
         document.getElementById("soloWonMatchGast" + row).value = 0;
     }
-    for (i = 1; i <= 4; i++) //Momentaner max-Wert bei Solospielen muss bei Aenderungen angepsst werden
+    for (i = 1; i <= 5; i++) //Momentaner max-Wert bei Solospielen muss bei Aenderungen angepsst werden
     {
         try
         {
@@ -633,6 +651,8 @@ function changeSetSumS(row)
 
 function changeSetSumD(row)
 {
+    console.log("Reihe: " + row + " Double Change");
+
     var homeGes = 0;
     var guestGes = 0;
     var home1 = 0;
@@ -708,7 +728,7 @@ function changeSetSumD(row)
         document.getElementById("dualWonMatchHeim" + row).value = 0;
         document.getElementById("dualWonMatchGast" + row).value = 0;
     }
-    for (i = 1; i <= 2; i++) //Momentaner max-Wert bei dualspielen muss bei Aenderungen angepsst werden
+    for (i = 1; i <= 5; i++) //Momentaner max-Wert bei dualspielen muss bei Aenderungen angepsst werden
     {
         try
         {
