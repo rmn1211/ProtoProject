@@ -2,7 +2,7 @@
 window.onload = function ()
 {
     var doubleLength = document.getElementById("tabDouble").rows.length - 3;
-    var soloLength = document.getElementById("tabSolo").rows.length - 3;
+    var soloLength = document.getElementById("tabSolo").rows.length - 5;
 
     for (j = 1; j <= doubleLength; j++)
     {
@@ -14,6 +14,7 @@ window.onload = function ()
         changeSetSumS(j);
         console.log("Solo:" + j + " von " + soloLength);
     }
+    totalResult();
 }
 function activateSubmit()
 {
@@ -554,12 +555,12 @@ function changeSetSumS(row)
 
 
 
-    home1 = parseInt(document.getElementById("soloSatz1heim" + row).value.trim());
-    home2 = parseInt(document.getElementById("soloSatz2heim" + row).value.trim());
-    home3 = parseInt(document.getElementById("soloSatz3heim" + row).value.trim());
-    guest1 = parseInt(document.getElementById("soloSatz1gast" + row).value.trim());
-    guest2 = parseInt(document.getElementById("soloSatz2gast" + row).value.trim());
-    guest3 = parseInt(document.getElementById("soloSatz3gast" + row).value.trim());
+    home1 = parseInt(document.getElementById("soloSatz1heim" + row).value.trim()) || 0;
+    home2 = parseInt(document.getElementById("soloSatz2heim" + row).value.trim()) || 0;
+    home3 = parseInt(document.getElementById("soloSatz3heim" + row).value.trim()) || 0;
+    guest1 = parseInt(document.getElementById("soloSatz1gast" + row).value.trim()) || 0;
+    guest2 = parseInt(document.getElementById("soloSatz2gast" + row).value.trim()) || 0;
+    guest3 = parseInt(document.getElementById("soloSatz3gast" + row).value.trim()) || 0;
     if (home1 > guest1)
     {
         homeWin++;
@@ -612,12 +613,12 @@ function changeSetSumS(row)
     {
         try
         {
-            var soloSetPointHeim = parseInt(document.getElementById("soloSetpointHeim" + i).value.trim());
-            var soloSetPointGast = parseInt(document.getElementById("soloSetpointGast" + i).value.trim());
-            var soloWonSetHeim = parseInt(document.getElementById("soloWonSetHeim" + i).value.trim());
-            var soloWonSetGast = parseInt(document.getElementById("soloWonSetGast" + i).value.trim());
-            var soloWonMatchHeim = parseInt(document.getElementById("soloWonMatchHeim" + i).value.trim());
-            var soloWonMatchGast = parseInt(document.getElementById("soloWonMatchGast" + i).value.trim());
+            var soloSetPointHeim = parseInt(document.getElementById("soloSetpointHeim" + i).value.trim()) || 0;
+            var soloSetPointGast = parseInt(document.getElementById("soloSetpointGast" + i).value.trim()) || 0;
+            var soloWonSetHeim = parseInt(document.getElementById("soloWonSetHeim" + i).value.trim()) || 0;
+            var soloWonSetGast = parseInt(document.getElementById("soloWonSetGast" + i).value.trim()) || 0;
+            var soloWonMatchHeim = parseInt(document.getElementById("soloWonMatchHeim" + i).value.trim()) || 0;
+            var soloWonMatchGast = parseInt(document.getElementById("soloWonMatchGast" + i).value.trim()) || 0;
         }
         catch (e)
         {
@@ -646,7 +647,7 @@ function changeSetSumS(row)
     document.getElementById("sumWonMatchHomeSolo").value = sumWonMatchHome;
     document.getElementById("sumWonMatchGuestSolo").value = sumWonMatchGuest;
 
-
+    totalResult();
 }
 
 function changeSetSumD(row)
@@ -674,12 +675,12 @@ function changeSetSumD(row)
 
 
 
-    home1 = parseInt(document.getElementById("dualSatz1heim" + row).value.trim());
-    home2 = parseInt(document.getElementById("dualSatz2heim" + row).value.trim());
-    home3 = parseInt(document.getElementById("dualSatz3heim" + row).value.trim());
-    guest1 = parseInt(document.getElementById("dualSatz1gast" + row).value.trim());
-    guest2 = parseInt(document.getElementById("dualSatz2gast" + row).value.trim());
-    guest3 = parseInt(document.getElementById("dualSatz3gast" + row).value.trim());
+    home1 = parseInt(document.getElementById("dualSatz1heim" + row).value.trim()) || 0;
+    home2 = parseInt(document.getElementById("dualSatz2heim" + row).value.trim()) || 0;
+    home3 = parseInt(document.getElementById("dualSatz3heim" + row).value.trim()) || 0;
+    guest1 = parseInt(document.getElementById("dualSatz1gast" + row).value.trim()) || 0;
+    guest2 = parseInt(document.getElementById("dualSatz2gast" + row).value.trim()) || 0;
+    guest3 = parseInt(document.getElementById("dualSatz3gast" + row).value.trim()) || 0;
     if (home1 > guest1)
     {
         homeWin++;
@@ -732,12 +733,12 @@ function changeSetSumD(row)
     {
         try
         {
-            var dualSetPointHeim = parseInt(document.getElementById("dualSetpointHeim" + i).value.trim());
-            var dualSetPointGast = parseInt(document.getElementById("dualSetpointGast" + i).value.trim());
-            var dualWonSetHeim = parseInt(document.getElementById("dualWonSetHeim" + i).value.trim());
-            var dualWonSetGast = parseInt(document.getElementById("dualWonSetGast" + i).value.trim());
-            var dualWonMatchHeim = parseInt(document.getElementById("dualWonMatchHeim" + i).value.trim());
-            var dualWonMatchGast = parseInt(document.getElementById("dualWonMatchGast" + i).value.trim());
+            var dualSetPointHeim = parseInt(document.getElementById("dualSetpointHeim" + i).value.trim()) || 0;
+            var dualSetPointGast = parseInt(document.getElementById("dualSetpointGast" + i).value.trim()) || 0;
+            var dualWonSetHeim = parseInt(document.getElementById("dualWonSetHeim" + i).value.trim()) || 0;
+            var dualWonSetGast = parseInt(document.getElementById("dualWonSetGast" + i).value.trim()) || 0;
+            var dualWonMatchHeim = parseInt(document.getElementById("dualWonMatchHeim" + i).value.trim()) || 0;
+            var dualWonMatchGast = parseInt(document.getElementById("dualWonMatchGast" + i).value.trim()) || 0;
         }
         catch (e)
         {
@@ -765,6 +766,44 @@ function changeSetSumD(row)
     document.getElementById("sumWonSetGuestDual").value = sumWonSetGuest;
     document.getElementById("sumWonMatchHomeDual").value = sumWonMatchHome;
     document.getElementById("sumWonMatchGuestDual").value = sumWonMatchGuest;
+    totalResult();
+}
+
+function totalResult()
+{
+    //TF Soloergebnisse
+    var sumSetHomeSolo = parseInt(document.getElementById("sumSetHomeSolo").value) || 0;
+    var sumSetGuestSolo = parseInt(document.getElementById("sumSetGuestSolo").value) || 0;
+
+    var sumWonSetHomeSolo = parseInt(document.getElementById("sumWonSetHomeSolo").value) || 0;
+    var sumWonSetGuestSolo = parseInt(document.getElementById("sumWonSetGuestSolo").value) || 0;
+
+    var sumWonMatchHomeSolo = parseInt(document.getElementById("sumWonMatchHomeSolo").value) || 0;
+    var sumWonMatchGuestSolo = parseInt(document.getElementById("sumWonMatchGuestSolo").value) || 0;
+    //TF Doppelergebnisse
+    var sumSetHomeDual = parseInt(document.getElementById("sumSetHomeDual").value) || 0;
+    var sumSetGuestDual = parseInt(document.getElementById("sumSetGuestDual").value) || 0;
+
+    var sumWonSetHomeDual = parseInt(document.getElementById("sumWonSetHomeDual").value) || 0;
+    var sumWonSetGuestDual = parseInt(document.getElementById("sumWonSetGuestDual").value) || 0;
+
+    var sumWonMatchHomeDual = parseInt(document.getElementById("sumWonMatchHomeDual").value) || 0;
+    var sumWonMatchGuestDual = parseInt(document.getElementById("sumWonMatchGuestDual").value) || 0;
+
+    //Addieren der jeweiligen Felder und Hinzufügen in Gesamttabelle
+    var sumSetHomeTotal = sumSetHomeSolo + sumSetHomeDual;
+    document.getElementById("sumSetHomeTotal").value = sumSetHomeTotal;
+    var sumSetGuestTotal = sumSetGuestSolo + sumSetGuestDual;
+    document.getElementById("sumSetGuestTotal").value = sumSetGuestTotal;
+    var sumWonSetHomeTotal = sumWonSetHomeSolo + sumWonSetHomeDual;
+    document.getElementById("sumWonSetHomeTotal").value = sumWonSetHomeTotal;
+    var sumWonSetGuestTotal = sumWonSetGuestSolo + sumWonSetGuestDual;
+    document.getElementById("sumWonSetGuestTotal").value = sumWonSetGuestTotal;
+    var sumWonMatchHomeTotal = sumWonMatchHomeSolo + sumWonMatchHomeDual;
+    document.getElementById("sumWonMatchHomeTotal").value = sumWonMatchHomeTotal;
+    var sumWonMatchGuestTotal = sumWonMatchGuestSolo + sumWonMatchGuestDual;
+    document.getElementById("sumWonMatchGuestTotal").value = sumWonMatchGuestTotal;
+    console.log(sumWonSetGuestSolo);
 }
 
 function markInput(elem)

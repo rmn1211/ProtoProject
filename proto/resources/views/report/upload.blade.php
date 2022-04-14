@@ -18,27 +18,39 @@
             body {
                 height: 100%;
             }
-          
+
             .loader {
                 border: 16px solid #f3f3f3;
                 border-radius: 50%;
                 border-top: 16px solid green;
                 width: 120px;
                 height: 120px;
-                -webkit-animation: spin 2s linear infinite; /* Safari */
-                animation: spin 2s linear infinite ;
+                -webkit-animation: spin 2s linear infinite;
+                /* Safari */
+                animation: spin 2s linear infinite;
                 display: none;
+                margin: auto;
+            }
+
+            /* Safari */
+            @-webkit-keyframes spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
                 }
 
-                /* Safari */
-                @-webkit-keyframes spin {
-                0% { -webkit-transform: rotate(0deg); }
-                100% { -webkit-transform: rotate(360deg); }
-}
+                100% {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
 
-                @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
             }
 
         </style>
@@ -62,15 +74,14 @@
             <button class="bg-green-500 disabled:opacity-90 hover:bg-green-700 text-white font-bold py-2 px-4 m-8 border-green-700 rounded" type="button" onclick="window.location='{{ url('/make_report') }}'">Bericht ausfüllen </button>
         </div>
 
-        <div class="loader flex flex-row min-h-screen justify-center items-center" id="loader"></div>
+        <div class="loader" id="loader"></div>
     </section>
 
     <script type="text/javascript">
-    $(document).ready(function(){
-  $("#upload").on("submit", function(){
-    document.getElementById("loader").style.display = "flex";
-  });//submit
-});//document ready
-
+        $(document).ready(function() {
+            $("#upload").on("submit", function() {
+                document.getElementById("loader").style.display = "flex";
+            }); //submit
+        }); //document ready
     </script>
 @endsection
