@@ -29,9 +29,8 @@ class QueryController extends Controller
 
         return $spiele;
     }
-
-    public static function getSpieleOk() // nur spiele mit status =1 -> wurden bereits gecheckt
-
+    // nur spiele mit status =1 -> wurden bereits gecheckt
+    public static function getSpieleOk()
     {
         $spiele = DB::connection('mysqlSP')->select('SELECT
             s.ID,
@@ -175,7 +174,7 @@ class QueryController extends Controller
         return $spieler;
     }
 
-    //SELECT QUERIES FROM DUELL
+//SELECT QUERIES FROM DUELL
     public static function getLiga($id)
     {
         $liga = DB::connection('mysqlSP')->table(DB::raw('spiel s, liga l'))
@@ -186,11 +185,12 @@ class QueryController extends Controller
 
     public static function getRegion($id)
     {
+        error_log($id);
         $region = DB::connection('mysqlSP')->select("SELECT
-       r.name, r.ID from region r, liga l where l.region = r.id and l.ID ", [$id]);
+       r.name, r.ID from region r, liga l where l.region = r.id and l.ID = 1");
         return $region[0];
     }
-    //Ersetzt jegliche Abfragen auf Spiel
+//Ersetzt jegliche Abfragen auf Spiel
     public static function getSingleMatch($id)
     {
         $match = DB::connection('mysqlSP')->select("SELECT
@@ -208,25 +208,23 @@ class QueryController extends Controller
         return $match[0];
     }
 
-    public static function getTeams($liga) // kann weg, schreibt nur in var die cookie schreibt   darunter die auch bis getsolo
-
+    // kann weg, schreibt nur in var die cookie schreibt   darunter die auch bis getsolo
+    public static function getTeams($liga)
     {
         $teams = DB::connection('mysqlSP')->select("SELECT * from mannschaft Where liga = '{$liga}' ");
 
         return $teams;
     }
-
-    public static function getArt($duellID) //wird nirgendwo aufgerufen
-
+//wird nirgendwo aufgerufen
+    public static function getArt($duellID)
     {
         $art = DB::connection('mysqlSP')->table(DB::raw('art a, duell d'))
             ->where(DB::connection('mysqlSP')->raw('d.art = a.id and d.ID'), [$duellID])
             ->first();
         return $art->Name;
     }
-
-    public static function getNamesSolo($duellID) // wird nirgendwo aufgerufen
-
+// wird nirgendwo aufgerufen
+    public static function getNamesSolo($duellID)
     {
         $name = DB::connection('mysqlSP')->select('SELECT
             s.Vorname,
@@ -236,8 +234,8 @@ class QueryController extends Controller
             LEFT JOIN spieler s ON e.spieler_Heim = s.ID or e.spieler_Gast = s.ID');
         return $name;
     }
-    public static function getNamesDouble($duellID) //wird nirgwendwo aufgerufen
-
+    //wird nirgwendwo aufgerufen
+    public static function getNamesDouble($duellID)
     {
         //Names is an Arry full of Objects. To gather an Value, first get the index and than the Value
         /* $names = DB::table(DB::raw('duell du, doppel dp, spieler s'))
@@ -250,9 +248,8 @@ class QueryController extends Controller
         FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID  or d.spieler_Heim_2 = s.ID or d.spieler_Gast_1 = s.ID  or d.spieler_Gast_2 = s.ID');
         return $name;
     }
-
-    public static function getDuells($spielID) //wird nirgendwo aufgerufen
-
+    //wird nirgendwo aufgerufen
+    public static function getDuells($spielID)
     {
         $duelle = DB::connection('mysqlSP')->table('duell')
             ->where('Spiel_ID', $spielID)
@@ -262,8 +259,7 @@ class QueryController extends Controller
 
     }
 
-    public static function getSolo($id) #Gruesse an Jabba the Hutt
-
+    public static function getSolo($id)
     {
         $duell = DB::connection('mysqlSP')->select('SELECT
             d.id AS "Duell_ID",																		#ID des eingetlichen Duells
@@ -1243,9 +1239,8 @@ class QueryController extends Controller
     }
 
     // ------------------------------------------------Autocomplete------------------------------------------
-
-    public static function autocompleteSearch(Request $request) //unnötig?
-
+    //unnötig?
+    public static function autocompleteSearch(Request $request)
     {
         $query = $request->get('query');
         $filterResult = DB::connection('mysqlSP')->select('SELECT Name from liga where Name LIKE "$query"');
@@ -1258,8 +1253,8 @@ class QueryController extends Controller
         $ligen = DB::connection('mysqlSP')->select('SELECT * from liga');
         return $ligen;
     }
-    public static function LigaID($name) // first
-
+    // first
+    public static function LigaID($name)
     {
         //$liga =DB::selec*t("SELECT * from liga where name Like '%$teilname%' ");
         //return $liga;
