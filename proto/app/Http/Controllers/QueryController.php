@@ -368,7 +368,9 @@ class QueryController extends Controller
         return $player;
     }
 
-    //   ----------------------------Insert----------------------------
+    //_____________________________________________Spiel hinzufuegen____________________________________________
+
+    //web.php Route /upload: Neues Spiel wird der Datenbank hinzugefuegt
     public function insertMatch(Request $request)
     {
 
@@ -382,8 +384,6 @@ class QueryController extends Controller
         $ligaID = $request->ligaID;
         $schiri = $request->schiri;
         $status = 0;
-
-        #$id = $request -> match;
         DB::connection('mysqlSP')->table(('spiel'))
             ->insert([
                 'Termin' => $date,
@@ -398,21 +398,13 @@ class QueryController extends Controller
 
             ]);
         $id = DB::connection('mysqlSP')->table(('spiel'))->select('ID')->where('Termin', $date)->where('Liga', $ligaID)->where('Heim', $homeID)->where('Gast', $guestID)->latest('ID')->first();
-        $this->insertSoloDuelTest($id, $request);
         $this->insertSoloDuel($id, $request);
         $this->insertDoubleDuel($id, $request);
-        //    $this->setAccepted($id);
         return redirect('/upload');
 
     }
-    public function insertSoloDuelTest($id, Request $request)
-    {
-        $soloCount = $request->soloCount;
-        for ($i = 1; $i <= $soloCount; $i++) {
-            $homeFName1 = $request->soloVnameHeim1 . $i;
-            error_log($homeFName1);
-        }
-    }
+
+    //QueryController insertMatch: Fuegt alle Einzelspiele eines Spiels der Datenbank hinzu
     public function insertSoloDuel($id, Request $request)
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
@@ -672,6 +664,8 @@ class QueryController extends Controller
                     'Punkte_Gast' => $satz3G4]);
         }
     }
+
+    //QueryController insertMatch: Fuegt alle Doppelspiele eines Spiels der Datenbank hinzu
     public function insertDoubleDuel($id, Request $request)
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
@@ -817,15 +811,19 @@ class QueryController extends Controller
         }
     }
 
-    #---------------------------------------------------Update-functions--------------------------------
-    #Hilfsfunktionen zum anhand von Eingaben IDs herauszufinden
+    // QueryController updateMatch, insertMatch: Hilfsfunktionen zum Erhalten der ID anhand der Eingaben
     private function getTeamID($name)
     {
-        $team = DB::connection('mysqlSP')->table('mannschaft')
-            ->where('name', $name)
-            ->first();
-        return $team->ID;
+        $teamID = DB::connection('mysqlSP')->select('SELECT
+            ID
+        FROM
+            mannschaft
+        WHERE
+            name = :sname', ['name' => $name]);
+        return $teamID[0];
     }
+
+    // QueryController updateMatch, insertMatch: Hilfsfunktionen zum Erhalten der ID anhand der Eingaben
     private function getPlayerID($firstname, $lastname)
     {
         $player = DB::connection('mysqlSP')->table('spieler')
