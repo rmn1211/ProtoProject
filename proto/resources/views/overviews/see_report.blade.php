@@ -206,7 +206,7 @@ $arten = QueryController::allTypes();
                     </thead>
                     <tbody class="flex-1 sm:flex-none">
                         @if (count($doppelduell) >= 1)
-                            <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                            <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel1">
                                 <input readonly type="hidden" id="doppelDuellID1" name="doppelDuellID1" value="{{ $doppelduell[0]->Duell_ID }}">
                                 <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
                                     <input readonly type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" name="dualType1" id="dualType1" value="{{ $doppelduell[0]->Duellart }}" />
@@ -273,7 +273,7 @@ $arten = QueryController::allTypes();
                                 </td>
                             </tr>
                             @if (count($doppelduell) >= 2)
-                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel2">
                                     <input readonly type="hidden" id="doppelDuellID2" name="doppelDuellID2" value="{{ $doppelduell[1]->Duell_ID }}">
                                     <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
                                         <input readonly type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" name="dualType2" id="dualType2" value="{{ $doppelduell[1]->Duellart }}" />
@@ -341,7 +341,7 @@ $arten = QueryController::allTypes();
                                 </tr>
 
                                 @if (count($doppelduell) >= 3)
-                                    <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                    <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel3">
                                         <input type="hidden" id="doppelDuellID3" name="doppelDuellID3" value="{{ $doppelduell[2]->Duell_ID }}">
                                         <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
                                             <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" name="dualType3" id="dualType3" value="{{ $doppelduell[2]->Duellart }}" />
@@ -408,7 +408,7 @@ $arten = QueryController::allTypes();
                                         </td>
                                     </tr>
                                     @if (count($doppelduell) >= 4)
-                                        <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                        <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel4">
                                             <input type="hidden" id="doppelDuellID4" name="doppelDuellID4" value="{{ $doppelduell[3]->Duell_ID }}">
                                             <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
                                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" name="dualType4" id="dualType4" value="{{ $doppelduell[3]->Duellart }}" />
@@ -571,7 +571,7 @@ $arten = QueryController::allTypes();
                     </thead>
                     <tbody class="flex-1 sm:flex-none">
                         @if (count($soloduell) >= 1)
-                            <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                            <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="solo1">
                                 <input readonly type="hidden" id="duellID1" name="duellID1" value="{{ $soloduell[0]->Duell_ID }}">
                                 <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
                                     <input readonly type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" name="soloType1" id="soloType1" value="{{ $soloduell[0]->Duellart }}" />
@@ -626,7 +626,7 @@ $arten = QueryController::allTypes();
                                 </td>
                             </tr>
                             @if (count($soloduell) >= 2)
-                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+                                <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="solo2">
                                     <input readonly type="hidden" id="duellID2" name="duellID2" value="{{ $soloduell[1]->Duell_ID }}">
                                     <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
                                         <input readonly type="text" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" name="soloType2" id="soloType2" value="{{ $soloduell[1]->Duellart }}" />

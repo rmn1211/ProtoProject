@@ -1,18 +1,26 @@
 //Init Berechnen der Tabellenwerte die nicht in DB gespichert werden
 window.onload = function ()
 {
-    var doubleLength = document.getElementById("tabDouble").rows.length - 3;
-    var soloLength = document.getElementById("tabSolo").rows.length - 5;
+    var doubleTable = document.getElementById("tabDouble");
+    var soloTable = document.getElementById("tabSolo");
 
-    for (j = 1; j <= doubleLength; j++)
+    for (var i = 0, row; row = doubleTable.rows[i]; i++)
     {
-        console.log("Double:" + j + " von " + doubleLength);
-        changeSetSumD(j);
+        console.log("Double:" + row.id);
+        if (row.id.startsWith("doppel"))
+        {
+            changeSetSumD(i + 1);
+            console.log("Double:" + i);
+        }
     }
-    for (j = 1; j <= soloLength; j++)
+    for (var i = 0, row; row = soloTable.rows[i]; i++)
     {
-        changeSetSumS(j);
-        console.log("Solo:" + j + " von " + soloLength);
+        console.log("Solo:" + row.id);
+        if (row.id.startsWith("doppel"))
+        {
+            changeSetSumS(i + 1);
+            console.log("Solo:" + i);
+        }
     }
     totalResult();
 }
@@ -349,7 +357,7 @@ function validateInputsUpload()
     }
     else
     {
-        complete = false; alert("mindestestn ein Spiel eintragen");
+        complete = false; alert("mindestens ein Spiel eintragen");
     }
 
 
