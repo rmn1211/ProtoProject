@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 class QueryController extends Controller
 {
-    //_____________________________________________QUERIES TO SELECT MATCH____________________________________________
+    //_____________________________________________Mannschaften____________________________________________
+
+    //overview: Alle eingerichten, nicht ueberprueften Spieleberichte
     public static function getSpiele()
     {
         $spiele = DB::connection('mysqlSP')->select('SELECT
@@ -25,11 +27,12 @@ class QueryController extends Controller
             LEFT JOIN mannschaft m on m.id = s.heim
             LEFT JOIN spieler sp on sp.id = m.Kapitaen_ID
         WHERE
-            sp2.id = sp.id and s.status !=1;');
+            sp2.id = sp.id and s.status != :mStatus', ['mStatus' => 1]);
 
         return $spiele;
     }
-    // nur spiele mit status =1 -> wurden bereits gecheckt
+
+    //match_ok: Alle ueberprueften Spieleberichte
     public static function getSpieleOk()
     {
         $spiele = DB::connection('mysqlSP')->select('SELECT
@@ -47,10 +50,12 @@ class QueryController extends Controller
             LEFT JOIN mannschaft m on m.id = s.heim
             LEFT JOIN spieler sp on sp.id = m.Kapitaen_ID
          WHERE
-            sp2.id = sp.id and s.status =1;');
+            sp2.id = sp.id and s.status = :mStatus', ['mStatus' => 1]);
 
         return $spiele;
     }
+
+    //teams_table: Auflistung aller Mannschaften in DB
     public static function getAlleMannschaften()
     {
         $mannschaften = DB::connection('mysqlSP')->select('SELECT
@@ -67,24 +72,8 @@ class QueryController extends Controller
 
         return $mannschaften;
     }
-    public static function getMannschaften($liga)
-    {
-        $mannschaften = DB::connection('mysqlSP')->select('SELECT
-            m.id as "ID",
-            m.name as "Mannschaft",
-            sp.vorname,
-            sp.nachname,
-            v.Name as "Verein",
-            l.name as "Liga"
-        FROM
-            mannschaft m,spieler sp, verein v, liga l
-        WHERE
-            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID and  l.id =?', [$liga]
-        );
 
-        return $mannschaften;
-    }
-
+    //teams_table: Auflistung aller Mannschaften die in der selben Region sind
     public static function getRegionMannschaften($region)
     {
         $mannschaften = DB::connection('mysqlSP')->select('SELECT
@@ -97,12 +86,31 @@ class QueryController extends Controller
         FROM
             mannschaft m,spieler sp, verein v, liga l
         WHERE
-            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID and  l.region =?', [$region]
-        );
+            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID and  l.region = :region', ['region' => $region]);
 
         return $mannschaften;
     }
 
+    //teams_table: Auflistung aller Mannschaften die in selber Liga spielen
+    public static function getMannschaften($liga)
+    {
+        $mannschaften = DB::connection('mysqlSP')->select('SELECT
+            m.id as "ID",
+            m.name as "Mannschaft",
+            sp.vorname,
+            sp.nachname,
+            v.Name as "Verein",
+            l.name as "Liga"
+        FROM
+            mannschaft m,spieler sp, verein v, liga l
+        WHERE
+            m.Kapitaen_ID = sp.ID and m.Verein_ID = v.ID and m.liga = l.ID and l.ID = :liga', ['liga' => $liga]);
+
+        return $mannschaften;
+    }
+    //_____________________________________________Spieler____________________________________________
+
+    //player_table: Auflistung aller Spieler in der DB
     public static function getAlleSpieler()
     {
         $spieler = DB::connection('mysqlSP')->select('SELECT
@@ -119,25 +127,9 @@ class QueryController extends Controller
 
         return $spieler;
     }
-    public static function getSpieler($teamid)
-    {
-        $spieler = DB::connection('mysqlSP')->select('SELECT
-            s.id as "ID",
-            s.Vorname as "Vorname",
-            s.Nachname as "Nachname",
-            s.Geschlecht as "Geschlecht",
-            group_concat(m.name) as "Mannschaften"
-        FROM
-            spieler_mannschaft sm
-        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
-        LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
-        Where m.id=?
-        GROUP BY s.id', [$teamid]);
 
-        return $spieler;
-    }
-
-    public static function getRegionSpieler($regionid)
+    //player_table: Auflistung aller Spieler in selber Region
+    public static function getRegionSpieler($region)
     {
         $spieler = DB::connection('mysqlSP')->select('SELECT
             s.id as "ID",
@@ -150,13 +142,15 @@ class QueryController extends Controller
         LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
         LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
         Left join liga l on l.id = m.liga
-        Where l.region=?
-
-        GROUP BY s.id', [$regionid]);
+        WHERE
+            l.region = :region
+        GROUP BY s.id', ['region' => $region]);
 
         return $spieler;
     }
-    public static function getLigaSpieler($ligaid)
+
+    //player_table: Auflistung aller Spieler in selber Liga
+    public static function getLigaSpieler($liga)
     {
         $spieler = DB::connection('mysqlSP')->select('SELECT
             s.id as "ID",
@@ -168,32 +162,65 @@ class QueryController extends Controller
             spieler_mannschaft sm
         LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
         LEFT JOIN mannschaft m on m.id = sm.Mannschaft_ID
-        Where m.liga=?
-        GROUP BY s.id', [$ligaid]);
+        WHERE
+            m.liga = :liga
+        GROUP BY s.id', ['liga' => $liga]);
 
         return $spieler;
     }
 
-//SELECT QUERIES FROM DUELL
-    public static function getLiga($id)
+    //player_table: Auflistung aller Spieler eines Teams
+    public static function getSpieler($team)
     {
-        $liga = DB::connection('mysqlSP')->table(DB::raw('spiel s, liga l'))
-            ->where(DB::connection('mysqlSP')->raw('s.liga = l.id and s.ID'), [$id])
-            ->first();
-        return $liga;
+        $spieler = DB::connection('mysqlSP')->select('SELECT
+            s.id as "ID",
+            s.Vorname as "Vorname",
+            s.Nachname as "Nachname",
+            s.Geschlecht as "Geschlecht",
+            group_concat(m.name) as "Mannschaften"
+        FROM
+            spieler_mannschaft sm
+        LEFT JOIN spieler s ON s.ID = sm.Spieler_ID
+        LEFT JOIN mannschaft m ON m.id = sm.Mannschaft_ID
+        WHERE
+            m.id = :team
+        GROUP BY s.id', ['team' => $team]);
+
+        return $spieler;
     }
 
-    public static function getRegion($id)
+    //_____________________________________________Berichte____________________________________________
+
+    //see_report, check_report: Liga in der das anzuzeigende Spiel stattfindet
+    public static function getLiga($match)
     {
-        error_log($id);
-        $region = DB::connection('mysqlSP')->select("SELECT
-       r.name, r.ID from region r, liga l where l.region = r.id and l.ID = 1");
+        $liga = DB::connection('mysqlSP')->select('SELECT
+            *
+        FROM
+            spiel s, liga l
+        WHERE
+            s.liga = l.id AND s.id = :match', ['match' => $match]);
+
+        return $liga[0];
+    }
+
+    //see_report, check_report: Region in der Sich die Liga des befindet
+    public static function getRegion($liga)
+    {
+        $region = DB::connection('mysqlSP')->select('SELECT
+            r.name, r.ID
+        FROM
+            region r, liga l
+        WHERE
+            l.region = r.id AND l.ID = :id', ['id' => $liga]);
+
         return $region[0];
     }
-//Ersetzt jegliche Abfragen auf Spiel
-    public static function getSingleMatch($id)
+
+    //see_report, check_report: Informationen des Spiels, die nicht im Duell gespeichert werden
+    public static function getSingleMatch($match)
     {
-        $match = DB::connection('mysqlSP')->select("SELECT
+        $match = DB::connection('mysqlSP')->select('SELECT
             mH.ID as HeimID,
             mH.Name as Heim,
             mG.ID as GastID,
@@ -204,76 +231,29 @@ class QueryController extends Controller
             spiel s
         LEFT JOIN mannschaft mH ON s.Heim = mH.ID
         LEFT JOIN mannschaft mG ON s.Gast = mG.ID
-        WHERE s.ID = ?", [$id]);
+        WHERE
+            s.ID = :id', ['id' => $match]);
+
         return $match[0];
     }
 
-    // kann weg, schreibt nur in var die cookie schreibt   darunter die auch bis getsolo
-    public static function getTeams($liga)
-    {
-        $teams = DB::connection('mysqlSP')->select("SELECT * from mannschaft Where liga = '{$liga}' ");
-
-        return $teams;
-    }
-//wird nirgendwo aufgerufen
-    public static function getArt($duellID)
-    {
-        $art = DB::connection('mysqlSP')->table(DB::raw('art a, duell d'))
-            ->where(DB::connection('mysqlSP')->raw('d.art = a.id and d.ID'), [$duellID])
-            ->first();
-        return $art->Name;
-    }
-// wird nirgendwo aufgerufen
-    public static function getNamesSolo($duellID)
-    {
-        $name = DB::connection('mysqlSP')->select('SELECT
-            s.Vorname,
-            s.Nachname
-        FROM
-            einzel e
-            LEFT JOIN spieler s ON e.spieler_Heim = s.ID or e.spieler_Gast = s.ID');
-        return $name;
-    }
-    //wird nirgwendwo aufgerufen
-    public static function getNamesDouble($duellID)
-    {
-        //Names is an Arry full of Objects. To gather an Value, first get the index and than the Value
-        /* $names = DB::table(DB::raw('duell du, doppel dp, spieler s'))
-        ->where(DB::raw('dp.Spieler_Heim_1= s.ID and dp.Duell_ID =2'))
-        ->pluck('Vorname');
-        return $names;*/
-        $name = DB::connection('mysqlSP')->select('SELECT
-            s.Vorname,
-            s.Nachname
-        FROM doppel d LEFT JOIN spieler s ON d.spieler_Heim_1 = s.ID  or d.spieler_Heim_2 = s.ID or d.spieler_Gast_1 = s.ID  or d.spieler_Gast_2 = s.ID');
-        return $name;
-    }
-    //wird nirgendwo aufgerufen
-    public static function getDuells($spielID)
-    {
-        $duelle = DB::connection('mysqlSP')->table('duell')
-            ->where('Spiel_ID', $spielID)
-            ->pluck('ID');
-
-        return $duelle;
-
-    }
-
-    public static function getSolo($id)
+    //see_report, check_report: Informationen aller Einzelspiele
+    public static function getSolo($match)
     {
         $duell = DB::connection('mysqlSP')->select('SELECT
-            d.id AS "Duell_ID",																		#ID des eingetlichen Duells
-            a.name AS "Duellart",																	#Duell Art: Doppel, Einzel, Herren,Damen, Gemischt
-            s1.ID AS "ID_S1", s1.vorname AS "Vorname_S1", s1.nachname AS "Nachname_S1",								#Name Spieler 1
-            s2.ID AS "ID_S2", s2.vorname AS "Vorname_S2", s2.nachname AS "Nachname_S2",								#Name Spieler 2
+            d.id AS "Duell_ID",																	#ID des eingetlichen Duells
+            a.name AS "Duellart",																#Duell Art: Doppel, Einzel, Herren,Damen, Gemischt
+            s1.ID AS "ID_S1", s1.vorname AS "Vorname_S1", s1.nachname AS "Nachname_S1",			#Name Spieler 1
+            s2.ID AS "ID_S2", s2.vorname AS "Vorname_S2", s2.nachname AS "Nachname_S2",			#Name Spieler 2
             sa1.Punkte_Heim AS "Satz_1_Heim", sa1.Punkte_Gast AS "Satz_1_Gast",					#Punkte im 1. Satz
             sa2.Punkte_Heim AS "Satz_2_Heim", sa2.Punkte_Gast AS "Satz_2_Gast",					#Punkte im 2. Satz
             sa3.Punkte_Heim AS "Satz_3_Heim", sa3.Punkte_Gast AS "Satz_3_Gast",					#Punkte im 3. Satz
-            sa1.Punkte_Heim + sa2.Punkte_Heim + sa3.Punkte_Heim AS "Heim_Gesamt",					#Gesamtpunktzahl Heimmannschaft
-            sa1.Punkte_Gast + sa2.Punkte_Gast + sa3.Punkte_Gast AS "Gast_Gesamt",					#Gesamtpunktzahl Gastmannschaft
-            d.heim_saetze AS "Gewonnene_Sätze_Heim", d.gast_saetze AS "Gewonnene_Sätze_Gast",		#Gewonnene Sätze
+            sa1.Punkte_Heim + sa2.Punkte_Heim + sa3.Punkte_Heim AS "Heim_Gesamt",				#Gesamtpunktzahl Heimmannschaft
+            sa1.Punkte_Gast + sa2.Punkte_Gast + sa3.Punkte_Gast AS "Gast_Gesamt",				#Gesamtpunktzahl Gastmannschaft
+            d.heim_saetze AS "Gewonnene_Sätze_Heim", d.gast_saetze AS "Gewonnene_Sätze_Gast",	#Gewonnene Sätze
             d.heim_spiele AS "Gewonnene_Spiele_Heim", d.gast_spiele AS "Gewonnene_Spiele_Gast"	#Gewonnene Spiele
-        FROM duell d
+        FROM
+            duell d
 	    LEFT JOIN  art a ON a.id = d.art
 	    LEFT JOIN einzel e ON e.Duell_ID = d.ID
 	    LEFT JOIN spieler s1 ON e.Spieler_Heim = s1.ID
@@ -281,27 +261,31 @@ class QueryController extends Controller
         LEFT JOIN  satz sa1 ON sa1.Duell_ID = d.id
         LEFT JOIN  satz sa2 ON sa2.Duell_ID = d.id
         LEFT JOIN  satz sa3 ON sa3.Duell_ID = d.id
-        WHERE d.id IN (e.duell_ID) and sa1.Satz_Nr =1 and sa2.Satz_Nr =2 and sa3.Satz_Nr =3  and d.Spiel_ID = ?', [$id]); #Spiel ID wird in Funktion als Parameter uebertragen, um Spiele zu unterscheiden Um Einzelspiele zu filtern wird nach IDs in Einzel gesucht
+        WHERE
+            d.id IN (e.duell_ID) AND sa1.Satz_Nr = 1 AND sa2.Satz_Nr = 2 AND sa3.Satz_Nr = 3  AND d.Spiel_ID = :id', ['id' => $match]); #Spiel ID wird in Funktion als Parameter uebertragen, um Spiele zu unterscheiden Um Einzelspiele zu filtern wird nach IDs in Einzel gesucht
+
         return $duell;
     }
 
-    public static function getDouble($id)
+    //see_report, check_report: Informationen aller Doppelspiele
+    public static function getDouble($match)
     {
         $duell = DB::connection('mysqlSP')->select('SELECT
             d.id AS "Duell_ID",																		#ID des eingetlichen Duells
             a.name AS "Duellart",																	#Duell Art: Doppel, Einzel, Herren,Damen, Gemischt
-            s1h.ID as "ID_S1_H", s1h.vorname AS "Vorname_S1_H", s1h.nachname AS "Nachname_S1_H",								#Name Spieler 1 Heim
-            s2h.ID as "ID_S2_H", s2h.vorname AS "Vorname_S2_H", s2h.nachname AS "Nachname_S2_H",								#Name Spieler 2 Heim
-            s1g.ID as "ID_S1_G", s1g.vorname AS "Vorname_S1_G", s1g.nachname AS "Nachname_S1_G",								#Name Spieler 1 Gast
-            s2g.ID as "ID_S2_G", s2g.vorname AS "Vorname_S2_G", s2g.nachname AS "Nachname_S2_G",								#Name Spieler 2 Gast
-            sa1.Punkte_Heim AS "Satz_1_Heim", sa1.Punkte_Gast AS "Satz_1_Gast",					#Punkte im 1. Satz
-            sa2.Punkte_Heim AS "Satz_2_Heim", sa2.Punkte_Gast AS "Satz_2_Gast",					#Punkte im 2. Satz
-            sa3.Punkte_Heim AS "Satz_3_Heim", sa3.Punkte_Gast AS "Satz_3_Gast",					#Punkte im 3. Satz
+            s1h.ID as "ID_S1_H", s1h.vorname AS "Vorname_S1_H", s1h.nachname AS "Nachname_S1_H",	#Name Spieler 1 Heim
+            s2h.ID as "ID_S2_H", s2h.vorname AS "Vorname_S2_H", s2h.nachname AS "Nachname_S2_H",	#Name Spieler 2 Heim
+            s1g.ID as "ID_S1_G", s1g.vorname AS "Vorname_S1_G", s1g.nachname AS "Nachname_S1_G",    #Name Spieler 1 Gast
+            s2g.ID as "ID_S2_G", s2g.vorname AS "Vorname_S2_G", s2g.nachname AS "Nachname_S2_G",	#Name Spieler 2 Gast
+            sa1.Punkte_Heim AS "Satz_1_Heim", sa1.Punkte_Gast AS "Satz_1_Gast",					    #Punkte im 1. Satz
+            sa2.Punkte_Heim AS "Satz_2_Heim", sa2.Punkte_Gast AS "Satz_2_Gast",					    #Punkte im 2. Satz
+            sa3.Punkte_Heim AS "Satz_3_Heim", sa3.Punkte_Gast AS "Satz_3_Gast",					    #Punkte im 3. Satz
             sa1.Punkte_Heim + sa2.Punkte_Heim + sa3.Punkte_Heim AS "Heim_Gesamt",					#Gesamtpunktzahl Heimmannschaft
             sa1.Punkte_Gast + sa2.Punkte_Gast + sa3.Punkte_Gast AS "Gast_Gesamt",					#Gesamtpunktzahl Gastmannschaft
             d.heim_saetze AS "Gewonnene_Sätze_Heim", d.gast_saetze AS "Gewonnene_Sätze_Gast",		#Gewonnene Sätze
-            d.heim_spiele AS "Gewonnene_Spiele_Heim", d.gast_spiele AS "Gewonnene_Spiele_Gast"	#Gewonnene Spiele
-        FROM duell d
+            d.heim_spiele AS "Gewonnene_Spiele_Heim", d.gast_spiele AS "Gewonnene_Spiele_Gast"	    #Gewonnene Spiele
+        FROM
+            duell d
 	    LEFT JOIN  art a ON a.id = d.art
 	    LEFT JOIN doppel dp ON dp.Duell_ID = d.ID
 	    LEFT JOIN spieler s1h ON dp.Spieler_Heim_1 = s1h.ID
@@ -311,44 +295,75 @@ class QueryController extends Controller
         LEFT JOIN  satz sa1 ON sa1.Duell_ID = d.id
         LEFT JOIN  satz sa2 ON sa2.Duell_ID = d.id
         LEFT JOIN  satz sa3 ON sa3.Duell_ID = d.id
-        WHERE d.id IN (dp.duell_ID) and sa1.Satz_Nr =1 and sa2.Satz_Nr =2 and sa3.Satz_Nr =3 and d.Spiel_ID = ?', [$id]); #Spiel ID wird in Funktion als Parameter uebertragen, um Spiele zu unterscheiden Um Doppelspiele zu filtern wird nach IDs in Einzel gesucht
+        WHERE
+            d.id IN (dp.duell_ID) AND sa1.Satz_Nr = 1 AND sa2.Satz_Nr = 2 AND sa3.Satz_Nr = 3 AND d.Spiel_ID = :id', ['id' => $match]); #Spiel ID wird in Funktion als Parameter uebertragen, um Spiele zu unterscheiden Um Doppelspiele zu filtern wird nach IDs in Einzel gesucht
 
         return $duell;
     }
-    public static function getTag($id)
+
+    //see_report, check_report: Spieltag einer Runde
+    public static function getTag($match)
     {
-        $tag = DB::connection('mysqlSP')->select('select t.ID,t.Tag as "Tag" from spiel s, spieltag t where  s.ID =?  and s.spieltag=t.id
-       ', [$id]);
+        $tag = DB::connection('mysqlSP')->select('SELECT
+            t.ID, t.Tag AS "Tag"
+        FROM
+            spiel s, spieltag t
+        WHERE
+            s.spieltag=t.id AND s.ID = :id', ['id' => $match]);
 
         return $tag;
     }
-    public static function getRunde($id)
+
+    //see_report, check_report: Runde eines Spieltages
+    public static function getRunde($tag)
     {
-        $runde = DB::connection('mysqlSP')->select('select r.ID,r.Bezeichnung from runde r, spieltag t where t.ID =1 and t.Tag=r.id
-       ', [$id]);
+        $runde = DB::connection('mysqlSP')->select('SELECT
+            r.ID, r.Bezeichnung
+        FROM
+            runde r, spieltag t
+        WHERE
+            t.ID =1 AND t.Tag=r.ID = :id', ['id' => $tag]);
 
         return $runde;
     }
-    public static function getSaison($id)
+
+    //see_report, check_report: Saison einer Runde
+    public static function getSaison($runde)
     {
-        $saison = DB::connection('mysqlSP')->select('select s.ID,s.Name from runde r, saison s where r.ID =1 and r.Saison=s.id
-       ', [$id]);
+        $saison = DB::connection('mysqlSP')->select('SELECT
+            s.ID, s.Name
+         FROM
+            runde r, saison s
+         WHERE
+            r.ID =1 AND r.Saison=s.ID = :id', ['id' => $runde]);
 
         return $saison;
     }
 
-    // -------------------für control_handwriting um Namen aus ID zu bekommen
+    //_____________________________________________Texterkennung Korrektur____________________________________________
+
+    //control_handwriting: Bezeichnung einer Mannschaft anhand der ID
     public static function getMannschaftName($id)
     {
-        $team = DB::connection('mysqlSP')->select('select m.Name from  mannschaft m where m.ID =?
-       ', [$id]);
+        $team = DB::connection('mysqlSP')->select('SELECT
+            m.Name
+        FROM
+            mannschaft m
+        WHERE
+            m.ID = :id', ['id' => $id]);
 
         return $team;
     }
+
+    //control_handwriting: Spielername anhand der ID
     public static function getSpielerName($id)
     {
-        $player = DB::connection('mysqlSP')->select('select s.Vorname, s.Nachname from  spieler s where s.ID =?
-       ', [$id]);
+        $player = DB::connection('mysqlSP')->select('SELECT
+            s.Vorname, s.Nachname
+        FROM
+            spieler s
+        WHERE
+            s.ID = :id', ['id' => $id]);
 
         return $player;
     }
@@ -370,7 +385,6 @@ class QueryController extends Controller
 
         #$id = $request -> match;
         DB::connection('mysqlSP')->table(('spiel'))
-
             ->insert([
                 'Termin' => $date,
                 'Spieltag' => $day,
@@ -383,15 +397,22 @@ class QueryController extends Controller
                 'Schiedsrichter' => $schiri,
 
             ]);
-        $idq = DB::connection('mysqlSP')->table(('spiel'))->select('ID')->where('Termin', $date)->where('Liga', $ligaID)->where('Heim', $homeID)->where('Gast', $guestID)->latest('ID')->first();
-        $id = $idq;
+        $id = DB::connection('mysqlSP')->table(('spiel'))->select('ID')->where('Termin', $date)->where('Liga', $ligaID)->where('Heim', $homeID)->where('Gast', $guestID)->latest('ID')->first();
+        $this->insertSoloDuelTest($id, $request);
         $this->insertSoloDuel($id, $request);
         $this->insertDoubleDuel($id, $request);
         //    $this->setAccepted($id);
         return redirect('/upload');
 
     }
-
+    public function insertSoloDuelTest($id, Request $request)
+    {
+        $soloCount = $request->soloCount;
+        for ($i = 1; $i <= $soloCount; $i++) {
+            $homeFName1 = $request->soloVnameHeim1 . $i;
+            error_log($homeFName1);
+        }
+    }
     public function insertSoloDuel($id, Request $request)
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt

@@ -6,7 +6,6 @@ $matchID = $_GET['selectedID'];
 $match = QueryController::getSingleMatch($matchID);
 $homeID = $match->HeimID;
 $awayID = $match->GastID;
-$teams = QueryController::getTeams($matchID);
 $ligen = QueryController::alleLigen();
 $liga = QueryController::getLiga($matchID);
 $region = QueryController::getRegion($liga->ID);
@@ -27,13 +26,6 @@ $arten = QueryController::allTypes();
     @endforeach
 </datalist>
 <!-- HTML Listen fuellen ENDE-->
-<div id="containerTeams" style="display:none">
-    @foreach ($teams as $team)
-        $cookie_name = $team -> ID;
-        $cookie_val = $team -> Name;
-        setcookie($cookie_name, $cookie_value);
-    @endforeach
-</div>
 @section('page-content')
 
     <head>
@@ -550,7 +542,6 @@ $arten = QueryController::allTypes();
                                 @endif
                             @endif
                         @endif
-                        @endif
                         <tr class="border-solid border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td colspan="15" class="invisible border-solid sm:border-r-2 border-black">
                             </td>
@@ -607,30 +598,6 @@ $arten = QueryController::allTypes();
                                 <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
 
                             </tr>
-                            <!--   @if (count($soloduell) >= 3)
-            <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                                                                                                                                                                <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
-                                                                                                                                                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" colspan="2">Spieler: Heim</th>
-                                                                                                                                                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Spieler: Gast</th>
-                                                                                                                                                                <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                                                                                                                                                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                                                                                                                                                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                                                                                                                                                                <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
-                                                                                                                                                            </tr>
-                                                                                                                                                          @if (count($soloduell) >= 4)
-            <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                                                                                                                                                                    <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
-                                                                                                                                                                    <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" colspan="2">Spieler: Heim</th>
-                                                                                                                                                                    <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Spieler: Gast</th>
-                                                                                                                                                                    <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                                                                                                                                                                    <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                                                                                                                                                                    <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                                                                                                                                                                    <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
-                                                                                                                                                                </tr>
-            @endif
-            @endif -->
                         @endif
                     </thead>
                     <thead>
