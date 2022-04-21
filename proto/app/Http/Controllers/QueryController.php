@@ -340,6 +340,16 @@ class QueryController extends Controller
         return $saison;
     }
 
+    //see_report, check_report: Alle Spieletypen
+    public static function allTypes()
+    {
+        $result = DB::connection('mysqlSP')->select('SELECT
+            *
+        FROM
+            art');
+        return $result;
+    }
+
     //_____________________________________________Texterkennung Korrektur____________________________________________
 
     //control_handwriting: Bezeichnung einer Mannschaft anhand der ID
@@ -819,19 +829,23 @@ class QueryController extends Controller
         FROM
             mannschaft
         WHERE
-            name = :sname', ['name' => $name]);
+            Name = :sname', ['name' => $name]);
         return $teamID[0];
     }
 
     // QueryController updateMatch, insertMatch: Hilfsfunktionen zum Erhalten der ID anhand der Eingaben
     private function getPlayerID($firstname, $lastname)
     {
-        $player = DB::connection('mysqlSP')->table('spieler')
-            ->where([['Vorname', '=', $firstname], ['Nachname', '=', $lastname]])
-            ->first();
-        return $player->ID;
+        $playerID = DB::connection('mysqlSP')->select('SELECT
+            ID
+        FROM
+            spieler
+        WHERE
+            Vorname = :vorname AND Nachname = :nachname', ['vorname' => $firstname, 'nachname' => $lastname]);
+        return $playerID[0];
     }
-    #Eigentliche Updatefunktionen
+
+    //web.php edit: AKtualisieren eines bereits vorhandenen Spiels
     public function updateMatch(Request $request)
     {
         $id = $request->matchID;
@@ -861,12 +875,15 @@ class QueryController extends Controller
         return redirect('/overview');
     }
 
+    //QueryController updateMatch: Setzt Status des Spiels
     private function setDeclined($id)
     {
         $state = DB::connection('mysqlSP')->table(('spiel'))
             ->where(DB::connection('mysqlSP')->raw('ID'), [$id])
             ->update(['Status' => 2]);
     }
+
+    //QueryController updateMatch: Setzt Status des Spiels
     private function setAccepted($id)
     {
         $state = DB::connection('mysqlSP')->table(('spiel'))
@@ -874,6 +891,7 @@ class QueryController extends Controller
             ->update(['Status' => 1]);
     }
 
+    //QueryController updateMatch: Aktualisiert alle Einzelspiele eines vorhandenen Spiels
     public function updateSoloDuel($id, Request $request)
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
@@ -1108,6 +1126,7 @@ class QueryController extends Controller
         //Update in EinzelTabelle
     }
 
+    //QueryController updateMatch: Aktualisiert alle Doppelspiele eines vorhandenen Spiels
     public function updateDoubleDuel($id, Request $request)
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
@@ -1241,32 +1260,7 @@ class QueryController extends Controller
                     'Punkte_Gast' => $satz3G2]);
         }
     }
-
-#----------------------------------Suggestions-------------------------------------------------------------
-
-#Roman
-    #Rueckgabe aller Spieltypen fuer Vorschlagsliste
-    public static function allTypes()
-    {
-        $result = DB::connection('mysqlSP')->select('SELECT * from art');
-        return $result;
-    }
-#Roman-Ende
-    public function index()
-    {
-        return view('check_report');
-    }
-
     // ------------------------------------------------Autocomplete------------------------------------------
-    //unnötig?
-    public static function autocompleteSearch(Request $request)
-    {
-        $query = $request->get('query');
-        $filterResult = DB::connection('mysqlSP')->select('SELECT Name from liga where Name LIKE "$query"');
-
-        return response()->json($filterResult);
-    }
-
     public static function alleLigen()
     {
         $ligen = DB::connection('mysqlSP')->select('SELECT * from liga');
@@ -1275,8 +1269,6 @@ class QueryController extends Controller
     // first
     public static function LigaID($name)
     {
-        //$liga =DB::selec*t("SELECT * from liga where name Like '%$teilname%' ");
-        //return $liga;
 
         $liga = DB::connection('mysqlSP')->table('liga')
             ->where('name', $name)
