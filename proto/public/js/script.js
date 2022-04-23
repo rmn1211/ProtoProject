@@ -1,29 +1,30 @@
-//Init Berechnen der Tabellenwerte die nicht in DB gespichert werden
+//Berechnet die Punkte beim Laden der Seite
 window.onload = function ()
 {
     var doubleTable = document.getElementById("tabDouble");
     var soloTable = document.getElementById("tabSolo");
-
+    var valRow = 1;
     for (var i = 0, row; row = doubleTable.rows[i]; i++)
     {
-        console.log("Double:" + row.id);
         if (row.id.startsWith("doppel"))
         {
-            changeSetSumD(i + 1);
-            console.log("Double:" + i);
+            changeSetSumD(valRow);
+            valRow++
         }
     }
+    valRow = 1;
     for (var i = 0, row; row = soloTable.rows[i]; i++)
     {
-        console.log("Solo:" + row.id);
-        if (row.id.startsWith("doppel"))
+        if (row.id.startsWith("solo"))
         {
-            changeSetSumS(i + 1);
-            console.log("Solo:" + i);
+            changeSetSumS(valRow);
+            valRow++
         }
     }
     totalResult();
 }
+
+// Aktiviert den Submitbutton, wodurch Bericht abgeschickt werden kann
 function activateSubmit()
 {
     var btSubmit = document.getElementById("submitBTN");
@@ -32,6 +33,7 @@ function activateSubmit()
     btSubmit.classList.add('opacity-100');
 }
 
+//Prueft Eingaben des Berichts auf Vollstaendigkeit
 function validateInputs()
 {
     var complete = true;

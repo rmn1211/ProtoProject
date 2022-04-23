@@ -6,7 +6,6 @@ $matchID = $_GET['selectedID'];
 $match = QueryController::getSingleMatch($matchID);
 $homeID = $match->HeimID;
 $awayID = $match->GastID;
-$teams = QueryController::getTeams($matchID);
 $ligen = QueryController::alleLigen();
 $liga = QueryController::getLiga($matchID);
 $region = QueryController::getRegion($liga->ID);
@@ -26,14 +25,7 @@ $arten = QueryController::allTypes();
         <option value="{{ $art->Name }}">
     @endforeach
 </datalist>
-<!-- HTML Listen fuellen ENDE-->
-<div id="containerTeams" style="display:none">
-    @foreach ($teams as $team)
-        $cookie_name = $team -> ID;
-        $cookie_val = $team -> Name;
-        setcookie($cookie_name, $cookie_value);
-    @endforeach
-</div>
+
 @section('page-content')
 
     <head>
