@@ -78,7 +78,7 @@ $arten = QueryController::allTypes();
                 <input type="hidden" id="matchID" name="matchID" value="{{ $matchID }}">
                 <input type="hidden" id="soloCount" name="soloCount" value="{{ count($soloduell) }}">
                 <input type="hidden" id="doubleCount" name="doubleCount" value="{{ count($doppelduell) }}">
-                <div class="flex mb-4">
+                <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
                         <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" onChange="markInput(this)" class="bg-gray-100 text-gray-900 w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $region->name }}">
@@ -269,7 +269,7 @@ $arten = QueryController::allTypes();
                             @endif
                         @endif
                     </thead>
-                    <tbody class="flex-1 sm:flex-none">
+                    <tbody class="flex-1 sm:flex-none" id="tabDoubleBody">
                         @if (count($doppelduell) >= 1)
                             <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel1">
                                 <input type="hidden" id="doppelDuellID1" name="doppelDuellID1" value="{{ $doppelduell[0]->Duell_ID }}">
@@ -636,7 +636,7 @@ $arten = QueryController::allTypes();
                             </tr>
                         @endif
                     </thead>
-                    <tbody class="flex-1 sm:flex-none" id="tabSolo">
+                    <tbody class="flex-1 sm:flex-none" id="tabSoloBody">
                         @if (count($soloduell) >= 1)
                             <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="solo1">
                                 <input type="hidden" id="duellID1" name="duellID1" value="{{ $soloduell[0]->Duell_ID }}">

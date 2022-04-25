@@ -467,12 +467,12 @@ if (isset($response['Einzel_4'])) {
     </section>
     <section class="mt-10 overflow-auto">
         <div class="w-full flex flex-row lg:justify-center">
-            <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputsUpload();" action="{{ url('/upload') }}">
+            <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
                 @csrf
                 <input type="hidden" id="matchID" name="matchID">
                 <input type="hidden" id="soloCount" name="soloCount">
                 <input type="hidden" id="doubleCount" name="doubleCount">
-                <div class="flex mb-4">
+                <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
                         <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
@@ -655,7 +655,7 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
                         </tr>
                     </thead>
-                    <tbody class="flex-1 sm:flex-none">
+                    <tbody class="flex-1 sm:flex-none" id="tabDoubleBody">
                         <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel1">
                             <input type="hidden" id="doppelDuellID1" name="doppelDuellID1">
                             <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
@@ -1015,7 +1015,7 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
                         </tr>
                     </thead>
-                    <tbody class="flex-1 sm:flex-none">
+                    <tbody class="flex-1 sm:flex-none" id="tabSoloBody">
 
                         <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="solo1">
                             <input type="hidden" id="duellID1" name="duellID1">
