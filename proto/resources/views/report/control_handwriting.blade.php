@@ -470,8 +470,8 @@ if (isset($response['Einzel_4'])) {
             <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
                 @csrf
                 <input type="hidden" id="matchID" name="matchID">
-                <input type="hidden" id="soloCount" name="soloCount">
-                <input type="hidden" id="doubleCount" name="doubleCount">
+                <input type="hidden" id="soloCount" name="soloCount" value ="2">
+                <input type="hidden" id="doubleCount" name="doubleCount" value = "4">
                 <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
