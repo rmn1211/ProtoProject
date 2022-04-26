@@ -662,64 +662,64 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1" value="GD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $dualHeim_name_11[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $dualHeim_name_11[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" value="{{ $dualHeim_name_11[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" value="{{ $dualHeim_name_11[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $dualHeim_name_21[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $dualHeim_name_21[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" value="{{ $dualGast_name_11[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" value="{{ $dualGast_name_11[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11" value="{{ $dualGast_name_11[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21" value="{{ $dualGast_name_21[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21" value="{{ $dualGast_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" value=" {{ $dualSatz_1_heim1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" value="{{ $dualSatz_1_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" value=" {{ $dualSatz_1_gast1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" value="{{ $dualSatz_1_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(1)" name="dualSatz2heim1" id="dualSatz2heim1" value=" {{ $dualSatz_2_heim1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(1)" name="dualSatz2heim1" id="dualSatz2heim1" value="{{ $dualSatz_2_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1" value=" {{ $dualSatz_2_gast1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1" value="{{ $dualSatz_2_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1" value=" {{ $dualSatz_3_heim1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1" value="{{ $dualSatz_3_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1" value=" {{ $dualSatz_3_gast1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1" value="{{ $dualSatz_3_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim1" id="dualSetpointHeim1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim1" id="dualSetpointHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast1" id="dualSetpointGast1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast1" id="dualSetpointGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim1" id="dualWonSetHeim1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim1" id="dualWonSetHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast1" id="dualWonSetGast1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast1" id="dualWonSetGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim1" id="dualWonMatchHeim1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim1" id="dualWonMatchHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast1" id="dualWonMatchGast1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast1" id="dualWonMatchGast1" />
                             </td>
                         </tr>
 
@@ -729,64 +729,64 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType2" id="dualType2" value="GD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" value="{{ $dualHeim_name_12[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" value="{{ $dualHeim_name_12[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12" value="{{ $dualHeim_name_12[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12" value="{{ $dualHeim_name_12[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $dualHeim_name_22[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $dualHeim_name_22[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" value="{{ $dualHeim_name_22[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" value="{{ $dualHeim_name_22[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12" value="{{ $dualGast_name_12[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12" value="{{ $dualGast_name_12[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" value="{{ $dualGast_name_12[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" value="{{ $dualGast_name_12[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" value="{{ $dualGast_name_22[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" value="{{ $dualGast_name_22[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" value="{{ $dualGast_name_22[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" value="{{ $dualGast_name_22[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" value=" {{ $dualSatz_1_heim2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" value="{{ $dualSatz_1_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2" value=" {{ $dualSatz_1_gast2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2" value="{{ $dualSatz_1_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2" value=" {{ $dualSatz_2_heim2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2" value="{{ $dualSatz_2_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2" value=" {{ $dualSatz_2_gast2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2" value="{{ $dualSatz_2_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2" value=" {{ $dualSatz_3_heim2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2" value="{{ $dualSatz_3_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2" value=" {{ $dualSatz_3_gast2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2" value="{{ $dualSatz_3_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim2" id="dualSetpointHeim2" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim2" id="dualSetpointHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast2" id="dualSetpointGast2" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast2" id="dualSetpointGast2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim2" id="dualWonSetHeim2" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim2" id="dualWonSetHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast2" id="dualWonSetGast2" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast2" id="dualWonSetGast2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim2" id="dualWonMatchHeim2" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim2" id="dualWonMatchHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast2" id="dualWonMatchGast2" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast2" id="dualWonMatchGast2" />
                             </td>
                         </tr>
 
@@ -796,64 +796,64 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType3" id="dualType3" value="DD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $dualHeim_name_13[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $dualHeim_name_13[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $dualHeim_name_13[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $dualHeim_name_13[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $dualHeim_name_23[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $dualHeim_name_23[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim23" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" value="{{ $dualGast_name_13[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" value="{{ $dualGast_name_13[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" value="{{ $dualGast_name_13[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" value="{{ $dualGast_name_23[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" value="{{ $dualGast_name_23[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" value="{{ $dualGast_name_23[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" value="{{ $dualGast_name_23[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value=" {{ $dualSatz_1_heim3 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value="{{ $dualSatz_1_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value=" {{ $dualSatz_1_gast3 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value="{{ $dualSatz_1_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(3)" name="dualSatz2heim33" id="dualSatz2heim3" value=" {{ $dualSatz_2_heim3 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(3)" name="dualSatz2heim33" id="dualSatz2heim3" value="{{ $dualSatz_2_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value=" {{ $dualSatz_2_gast3 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value="{{ $dualSatz_2_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" value=" {{ $dualSatz_3_heim3 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" value="{{ $dualSatz_3_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" value=" {{ $dualSatz_3_gast3 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" value="{{ $dualSatz_3_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim3" id="dualSetpointHeim3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim3" id="dualSetpointHeim3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast3" id="dualSetpointGast3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast3" id="dualSetpointGast3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim3" id="dualWonSetHeim3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim3" id="dualWonSetHeim3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast3" id="dualWonSetGast3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast3" id="dualWonSetGast3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim3" id="dualWonMatchHeim3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim3" id="dualWonMatchHeim3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast3" id="dualWonMatchGast3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast3" id="dualWonMatchGast3" />
                             </td>
                         </tr>
                         <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel4">
@@ -862,64 +862,64 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4" value="HD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $dualHeim_name_14[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $dualHeim_name_14[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14" value="{{ $dualHeim_name_14[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14" value="{{ $dualHeim_name_14[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $dualHeim_name_24[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $dualHeim_name_24[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" value="{{ $dualHeim_name_24[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" value="{{ $dualHeim_name_24[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" value="{{ $dualGast_name_14[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" value="{{ $dualGast_name_14[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" value="{{ $dualGast_name_14[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" value="{{ $dualGast_name_24[0]->Vorname ?? '' }}  " />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" value="{{ $dualGast_name_24[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" value="{{ $dualGast_name_24[0]->Nachname ?? '' }}  " />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" value="{{ $dualGast_name_24[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value=" {{ $dualSatz_1_heim4 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value="{{ $dualSatz_1_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" value=" {{ $dualSatz_1_gast4 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" value="{{ $dualSatz_1_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(4)" name="dualSatz2heim33" id="dualSatz2heim4" value=" {{ $dualSatz_2_heim4 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(4)" name="dualSatz2heim33" id="dualSatz2heim4" value="{{ $dualSatz_2_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" value=" {{ $dualSatz_2_gast4 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" value="{{ $dualSatz_2_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" value=" {{ $dualSatz_3_heim4 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" value="{{ $dualSatz_3_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" value=" {{ $dualSatz_3_gast4 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" value="{{ $dualSatz_3_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim4" id="dualSetpointHeim4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim4" id="dualSetpointHeim4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast4" id="dualSetpointGast4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointGast4" id="dualSetpointGast4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim4" id="dualWonSetHeim4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetHeim4" id="dualWonSetHeim4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast4" id="dualWonSetGast4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonSetGast4" id="dualWonSetGast4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim4" id="dualWonMatchHeim4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchHeim4" id="dualWonMatchHeim4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast4" id="dualWonMatchGast4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="dualWonMatchGast4" id="dualWonMatchGast4" />
                             </td>
                         </tr>
                         <tr class="border-solid border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
@@ -952,15 +952,15 @@ if (isset($response['Einzel_4'])) {
 
                 <input type="hidden" name="regionID" id="regionID">
                 <input type="hidden" name="ligaID" id="ligaID">
-                <input type="hidden" name="HeimID" id="HeimID" value="{{ $HeimID }} ">
-                <input type="hidden" name="GastID" id="GastID" value="{{ $GastID }} ">
+                <input type="hidden" name="HeimID" id="HeimID" value="{{ $HeimID }}">
+                <input type="hidden" name="GastID" id="GastID" value="{{ $GastID }}">
                 <input type="hidden" name="saisonID" id="saisonID">
                 <input type="hidden" name="rundeID" id="rundeID">
                 <input type="hidden" name="tagID" id="tagID">
                 <table class="w-full flex flex-row flex-wrap rounded-lg my-5" id="tabSolo">
                     <thead>
                         <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 align-middle text-center">Art</th>
+                            <th class="w-28 h-8 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center">Art</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler: Heim</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler: Gast</th>
                             <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="6" colspan="6">Satzergebnisse</th>
@@ -970,7 +970,7 @@ if (isset($response['Einzel_4'])) {
                         </tr>
 
                         <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
+                            <th class="w-28 h-8 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" colspan="2">Spieler: Heim</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Spieler: Gast</th>
                             <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
@@ -995,7 +995,7 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
                             <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
                             <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
+                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Gast</th>
                         </tr>
 
                         <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
@@ -1012,7 +1012,7 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
                             <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
                             <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
+                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Gast</th>
                         </tr>
                     </thead>
                     <tbody class="flex-1 sm:flex-none" id="tabSoloBody">
@@ -1023,53 +1023,53 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType1" id="soloType1" value="HE" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloHeim_name_1[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloHeim_name_1[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloHeim_name_1[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloHeim_name_1[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloGast_name_1[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloGast_name_1[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloGast_name_1[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloGast_name_1[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloSatz_1_heim1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloSatz_1_heim1 }}" />
 
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1gast1" id="soloSatz1gast1" value="{{ $soloSatz_1_gast1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1gast1" id="soloSatz1gast1" value="{{ $soloSatz_1_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz2heim1" id="soloSatz2heim1" value="{{ $soloSatz_2_heim1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz2heim1" id="soloSatz2heim1" value="{{ $soloSatz_2_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz2gast1" id="soloSatz2gast1" value="{{ $soloSatz_2_gast1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz2gast1" id="soloSatz2gast1" value="{{ $soloSatz_2_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz3heim1" id="soloSatz3heim1" value="{{ $soloSatz_3_heim1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz3heim1" id="soloSatz3heim1" value="{{ $soloSatz_3_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz3gast1" id="soloSatz3gast1" value="{{ $soloSatz_3_gast1 }} " />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz3gast1" id="soloSatz3gast1" value="{{ $soloSatz_3_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim1" id="soloSetpointHeim1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim1" id="soloSetpointHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointGast1" id="soloSetpointGast1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointGast1" id="soloSetpointGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetHeim1" id="soloWonSetHeim1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetHeim1" id="soloWonSetHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetGast1" id="soloWonSetGast1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="soloWonSetGast1" id="soloWonSetGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:sm:text-right focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchHeim1" id="soloWonMatchHeim1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchHeim1" id="soloWonMatchHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchGast1" id="soloWonMatchGast1" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="soloWonMatchGast1" id="soloWonMatchGast1" />
                             </td>
                         </tr>
 
@@ -1079,49 +1079,49 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType2" id="soloType2" value="DE" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloHeim_name_2[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloHeim_name_2[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloHeim_name_2[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloHeim_name_2[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloGast_name_2[0]->Vorname ?? '' }} " />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloGast_name_2[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloGast_name_2[0]->Nachname ?? '' }} " />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloGast_name_2[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right  text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloSatz_1_heim2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloSatz_1_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloSatz_1_gast2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloSatz_1_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloSatz_2_heim2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloSatz_2_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloSatz_2_gast2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloSatz_2_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right  text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloSatz_3_heim2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloSatz_3_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloSatz_3_gast2 }} " />
+                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloSatz_3_gast2 }}" />
                             </td>
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right  text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim2" id="soloSetpointHeim2" />
+                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim2" id="soloSetpointHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="soloSetpointGast2" id="soloSetpointGast2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right  text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloWonSetHeim2" readonly="readonly" tabindex="-1" id="soloWonSetHeim2" />
+                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloWonSetHeim2" readonly="readonly" tabindex="-1" id="soloWonSetHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="soloWonSetGast2" id="soloWonSetGast2" />
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right  text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloWonMatchHeim2" readonly="readonly" tabindex="-1" id="soloWonMatchHeim2" />
+                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloWonMatchHeim2" readonly="readonly" tabindex="-1" id="soloWonMatchHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black">
                                 <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" readonly="readonly" tabindex="-1" name="soloWonMatchGast2" id="soloWonMatchGast2" />
@@ -1234,7 +1234,7 @@ if (isset($response['Einzel_4'])) {
                         }
                     });
                 },
-                // focus:function() {if (this.value == ""){
+                // focus:function() {if (this.value ==""){
                 //  $(this).autocomplete("search");}}
                 select: function(event, ui) {
                     // Set selection

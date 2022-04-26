@@ -375,7 +375,6 @@ class QueryController extends Controller
     //web.php Route /upload: Neues Spiel wird der Datenbank hinzugefuegt
     public function insertMatch(Request $request)
     {
-
         $place = $request->tfPlace;
         $home = $request->tfHome;
         $homeID = $this->getTeamID($home);
@@ -397,7 +396,6 @@ class QueryController extends Controller
                 'Status' => $status,
                 'Liga' => $ligaID,
                 'Schiedsrichter' => $schiri,
-
             ]);
         $id = DB::connection('mysqlSP')->table(('spiel'))->select('ID')->where('Termin', $date)->where('Liga', $ligaID)->where('Heim', $homeID)->where('Gast', $guestID)->latest('ID')->first();
         $this->insertSoloDuel($id, $request);
@@ -411,24 +409,29 @@ class QueryController extends Controller
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
         $soloCount = $request->soloCount;
+        if (empty($soloCount)) {
+            $soloCount = 2;
+        }
+        error_log($soloCount);
 
         //IDs der Spieler werden benoetigt
         if ($soloCount >= 1) {
-            $soloType1 = $request->soloType1;
-            $homeFName1 = $request->soloVnameHeim1;
-            $homeLName1 = $request->soloNnameHeim1;
-            $guestFName1 = $request->soloVnameGast1;
-            $guestLName1 = $request->soloNnameGast1;
-            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
-            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
-            $satz1H1 = $request->soloSatz1heim1;
-            $satz1G1 = $request->soloSatz1gast1;
-            $satz2H1 = $request->soloSatz2heim1;
-            $satz2G1 = $request->soloSatz2gast1;
-            $satz3H1 = $request->soloSatz3heim1;
-            $satz3G1 = $request->soloSatz3gast1;
+
+            $homeFName = $request->soloVnameHeim1;
+            $homeLName = $request->soloNnameHeim1;
+            $guestFName = $request->soloVnameGast1;
+            $guestLName = $request->soloNnameGast1;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim1;
+            $satz1G = $request->soloSatz1gast1;
+            $satz2H = $request->soloSatz2heim1;
+            $satz2G = $request->soloSatz2gast1;
+            $satz3H = $request->soloSatz3heim1;
+            $satz3G = $request->soloSatz3gast1;
+            $soloType = $request->soloType1;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType1)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -442,45 +445,45 @@ class QueryController extends Controller
                 ->latest('ID')->first();
 
             DB::connection('mysqlSP')->table('einzel')
-                ->insert(['Duell_ID' => $singleID->ID, 'Spieler_Heim' => $homePID1,
-                    'Spieler_Gast' => $guestPID1],
+                ->insert(['Duell_ID' => $singleID->ID, 'Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                 );
 
             DB::connection('mysqlSP')->table('satz')
-            //  ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 1]])
-                ->insert(['Punkte_Heim' => $satz1H1,
+            //  ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->insert(['Punkte_Heim' => $satz1H,
                     'Satz_Nr' => 1,
                     'Duell_ID' => $singleID->ID,
-                    'Punkte_Gast' => $satz1G1]);
+                    'Punkte_Gast' => $satz1G]);
 
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H1,
-                    'Punkte_Gast' => $satz2G1]);
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H1,
-                    'Punkte_Gast' => $satz3G1]);
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($soloCount >= 2) {
 
-            $homeFName2 = $request->soloVnameHeim2;
-            $homeLName2 = $request->soloNnameHeim2;
-            $guestFName2 = $request->soloVnameGast2;
-            $guestLName2 = $request->soloNnameGast2;
-            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
-            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
-            $satz1H2 = $request->soloSatz1heim2;
-            $satz1G2 = $request->soloSatz1gast2;
-            $satz2H2 = $request->soloSatz2heim2;
-            $satz2G2 = $request->soloSatz2gast2;
-            $satz3H2 = $request->soloSatz3heim2;
-            $satz3G2 = $request->soloSatz3gast2;
-            $soloType2 = $request->soloType2;
+            $homeFName = $request->soloVnameHeim2;
+            $homeLName = $request->soloNnameHeim2;
+            $guestFName = $request->soloVnameGast2;
+            $guestLName = $request->soloNnameGast2;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim2;
+            $satz1G = $request->soloSatz1gast2;
+            $satz2H = $request->soloSatz2heim2;
+            $satz2G = $request->soloSatz2gast2;
+            $satz3H = $request->soloSatz3heim2;
+            $satz3G = $request->soloSatz3gast2;
+            $soloType = $request->soloType2;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType2)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -493,45 +496,47 @@ class QueryController extends Controller
                 ->latest('ID')->first();
 
             DB::connection('mysqlSP')->table('einzel')
-                ->insert(['Duell_ID' => $singleID->ID, 'Spieler_Heim' => $homePID2,
-                    'Spieler_Gast' => $guestPID2],
+                ->insert(['Duell_ID' => $singleID->ID,
+                    'Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                 );
 
             DB::connection('mysqlSP')->table('satz')
-            //  ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 1]])
-                ->insert(['Duell_ID' => $singleID->ID, 'Satz_Nr' => 1,
-                    'Punkte_Heim' => $satz1H2,
-                    'Punkte_Gast' => $satz1G2]);
+            //  ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->insert(['Duell_ID' => $singleID->ID,
+                    'Satz_Nr' => 1,
+                    'Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
 
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H2,
-                    'Punkte_Gast' => $satz2G2]);
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H2,
-                    'Punkte_Gast' => $satz3G2]);
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
 
         }
         if ($soloCount >= 3) {
 
-            $homeFName3 = $request->soloVnameHeim3;
-            $homeLName3 = $request->soloNnameHeim3;
-            $guestFName3 = $request->soloVnameGast3;
-            $guestLName3 = $request->soloNnameGast3;
-            $homePID3 = $this->getPlayerID($homeFName3, $homeLName3);
-            $guestPID3 = $this->getPlayerID($guestFName3, $guestLName3);
-            $satz1H3 = $request->soloSatz1heim3;
-            $satz1G3 = $request->soloSatz1gast3;
-            $satz2H3 = $request->soloSatz2heim3;
-            $satz2G3 = $request->soloSatz2gast3;
-            $satz3H3 = $request->soloSatz3heim3;
-            $satz3G3 = $request->soloSatz3gast3;
-            $soloType3 = $request->soloType3;
+            $homeFName = $request->soloVnameHeim3;
+            $homeLName = $request->soloNnameHeim3;
+            $guestFName = $request->soloVnameGast3;
+            $guestLName = $request->soloNnameGast3;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim3;
+            $satz1G = $request->soloSatz1gast3;
+            $satz2H = $request->soloSatz2heim3;
+            $satz2G = $request->soloSatz2gast3;
+            $satz3H = $request->soloSatz3heim3;
+            $satz3G = $request->soloSatz3gast3;
+            $soloType = $request->soloType3;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType3)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -545,44 +550,46 @@ class QueryController extends Controller
                 ->latest('ID')->first();
 
             DB::connection('mysqlSP')->table('einzel')
-                ->insert(['Duell_ID' => $singleID->ID, 'Spieler_Heim' => $homePID3,
-                    'Spieler_Gast' => $guestPID3],
+                ->insert(['Duell_ID' => $singleID->ID,
+                    'Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                 );
 
             DB::connection('mysqlSP')->table('satz')
-            //  ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 1]])
-                ->insert(['Duell_ID' => $singleID->ID, 'Satz_Nr' => 1,
-                    'Punkte_Heim' => $satz1H3,
-                    'Punkte_Gast' => $satz1G3]);
+            //  ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->insert(['Duell_ID' => $singleID->ID,
+                    'Satz_Nr' => 1,
+                    'Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
 
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H3,
-                    'Punkte_Gast' => $satz2G3]);
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H3,
-                    'Punkte_Gast' => $satz3G3]);
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($soloCount >= 4) {
 
-            $homeFName4 = $request->soloVnameHeim4;
-            $homeLName4 = $request->soloNnameHeim4;
-            $guestFName4 = $request->soloVnameGast4;
-            $guestLName4 = $request->soloNnameGast4;
-            $homePID4 = $this->getPlayerID($homeFName4, $homeLName4);
-            $guestPID4 = $this->getPlayerID($guestFName4, $guestLName4);
-            $satz1H4 = $request->soloSatz1heim4;
-            $satz1G4 = $request->soloSatz1gast4;
-            $satz2H4 = $request->soloSatz2heim4;
-            $satz2G4 = $request->soloSatz2gast4;
-            $satz3H4 = $request->soloSatz3heim4;
-            $satz3G4 = $request->soloSatz3gast4;
-            $soloType4 = $request->soloType4;
+            $homeFName = $request->soloVnameHeim4;
+            $homeLName = $request->soloNnameHeim4;
+            $guestFName = $request->soloVnameGast4;
+            $guestLName = $request->soloNnameGast4;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim4;
+            $satz1G = $request->soloSatz1gast4;
+            $satz2H = $request->soloSatz2heim4;
+            $satz2G = $request->soloSatz2gast4;
+            $satz3H = $request->soloSatz3heim4;
+            $satz3G = $request->soloSatz3gast4;
+            $soloType = $request->soloType4;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType4)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -596,26 +603,27 @@ class QueryController extends Controller
                 ->latest('ID')->first();
 
             DB::connection('mysqlSP')->table('einzel')
-                ->insert(['Duell_ID' => $singleID->ID, 'Spieler_Heim' => $homePID4,
-                    'Spieler_Gast' => $guestPID4],
+                ->insert(['Duell_ID' => $singleID->ID,
+                    'Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                 );
 
             DB::connection('mysqlSP')->table('satz')
-            //  ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 1]])
+            //  ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
                 ->insert(['Duell_ID' => $singleID->ID, 'Satz_Nr' => 1,
-                    'Punkte_Heim' => $satz1H4,
-                    'Punkte_Gast' => $satz1G4]);
+                    'Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
 
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H4,
-                    'Punkte_Gast' => $satz2G4]);
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $singleID->ID,
                     'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H4,
-                    'Punkte_Gast' => $satz3G4]);
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
     }
 
@@ -624,30 +632,33 @@ class QueryController extends Controller
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
         $doubleCount = $request->doubleCount;
+        if (empty($doubleCount)) {
+            $doubleCount = 4;
+        }
         //IDs der Spieler werden benoetigt
         if ($doubleCount >= 1) {
 
-            $homeFName11 = $request->dualVnameHeim11;
-            $homeLName11 = $request->dualNnameHeim11;
-            $homeFName21 = $request->dualVnameHeim21;
-            $homeLName21 = $request->dualNnameHeim21;
-            $guestFName11 = $request->dualVnameGast11;
-            $guestLName11 = $request->dualNnameGast11;
-            $guestFName21 = $request->dualVnameGast21;
-            $guestLName21 = $request->dualNnameGast21;
-            $homePID11 = $this->getPlayerID($homeFName11, $homeLName11);
-            $homePID21 = $this->getPlayerID($homeFName21, $homeLName21);
-            $guestPID11 = $this->getPlayerID($guestFName11, $guestLName11);
-            $guestPID21 = $this->getPlayerID($guestFName21, $guestLName21);
-            $satz1H1 = $request->dualSatz1heim1;
-            $satz1G1 = $request->dualSatz1gast1;
-            $satz2H1 = $request->dualSatz2heim1;
-            $satz2G1 = $request->dualSatz2gast1;
-            $satz3H1 = $request->dualSatz3heim1;
-            $satz3G1 = $request->dualSatz3gast1;
-            $dualType1 = $request->dualType1;
+            $homeFName1 = $request->dualVnameHeim11;
+            $homeLName1 = $request->dualNnameHeim11;
+            $homeFName2 = $request->dualVnameHeim21;
+            $homeLName2 = $request->dualNnameHeim21;
+            $guestFName1 = $request->dualVnameGast11;
+            $guestLName1 = $request->dualNnameGast11;
+            $guestFName2 = $request->dualVnameGast21;
+            $guestLName2 = $request->dualNnameGast21;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim1;
+            $satz1G = $request->dualSatz1gast1;
+            $satz2H = $request->dualSatz2heim1;
+            $satz2G = $request->dualSatz2gast1;
+            $satz3H = $request->dualSatz3heim1;
+            $satz3G = $request->dualSatz3gast1;
+            $dualType = $request->dualType1;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $dualType1)->value('ID');
+                ->select('ID')->where('Name', $dualType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -662,48 +673,52 @@ class QueryController extends Controller
 
             DB::connection('mysqlSP')->table('doppel')
 
-                ->insert(['Duell_ID' => $doubleID->ID, 'Spieler_Heim_1' => $homePID11,
-                    'Spieler_Heim_2' => $homePID21,
-                    'Spieler_Gast_1' => $guestPID11,
-                    'Spieler_Gast_2' => $guestPID21]
+                ->insert(['Duell_ID' => $doubleID->ID,
+                    'Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
                 );
             DB::connection('mysqlSP')->table('satz')
 
-                ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 1,
-                    'Punkte_Heim' => $satz1H1,
-                    'Punkte_Gast' => $satz1G1]);
+                ->insert(['Duell_ID' => $doubleID->ID,
+                    'Satz_Nr' => 1,
+                    'Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
-                ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H1,
-                    'Punkte_Gast' => $satz2G1]);
+                ->insert(['Duell_ID' => $doubleID->ID,
+                    'Satz_Nr' => 2,
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
-                ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H1,
-                    'Punkte_Gast' => $satz3G1]);
+                ->insert(['Duell_ID' => $doubleID->ID,
+                    'Satz_Nr' => 3,
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($doubleCount >= 2) {
 
-            $homeFName12 = $request->dualVnameHeim12;
-            $homeLName12 = $request->dualNnameHeim12;
-            $homeFName22 = $request->dualVnameHeim22;
-            $homeLName22 = $request->dualNnameHeim22;
-            $guestFName12 = $request->dualVnameGast12;
-            $guestLName12 = $request->dualNnameGast12;
-            $guestFName22 = $request->dualVnameGast22;
-            $guestLName22 = $request->dualNnameGast22;
-            $homePID12 = $this->getPlayerID($homeFName12, $homeLName12);
-            $homePID22 = $this->getPlayerID($homeFName22, $homeLName22);
-            $guestPID12 = $this->getPlayerID($guestFName12, $guestLName12);
-            $guestPID22 = $this->getPlayerID($guestFName22, $guestLName22);
-            $satz1H2 = $request->dualSatz1heim2;
-            $satz1G2 = $request->dualSatz1gast2;
-            $satz2H2 = $request->dualSatz2heim2;
-            $satz2G2 = $request->dualSatz2gast2;
-            $satz3H2 = $request->dualSatz3heim2;
-            $satz3G2 = $request->dualSatz3gast2;
-            $dualType2 = $request->dualType2;
+            $homeFName1 = $request->dualVnameHeim12;
+            $homeLName1 = $request->dualNnameHeim12;
+            $homeFName2 = $request->dualVnameHeim22;
+            $homeLName2 = $request->dualNnameHeim22;
+            $guestFName1 = $request->dualVnameGast12;
+            $guestLName1 = $request->dualNnameGast12;
+            $guestFName2 = $request->dualVnameGast22;
+            $guestLName2 = $request->dualNnameGast22;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim2;
+            $satz1G = $request->dualSatz1gast2;
+            $satz2H = $request->dualSatz2heim2;
+            $satz2G = $request->dualSatz2gast2;
+            $satz3H = $request->dualSatz3heim2;
+            $satz3G = $request->dualSatz3gast2;
+            $dualType = $request->dualType2;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $dualType2)->value('ID');
+                ->select('ID')->where('Name', $dualType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -718,48 +733,49 @@ class QueryController extends Controller
 
             DB::connection('mysqlSP')->table('doppel')
 
-                ->insert(['Duell_ID' => $doubleID->ID, 'Spieler_Heim_1' => $homePID12,
-                    'Spieler_Heim_2' => $homePID22,
-                    'Spieler_Gast_1' => $guestPID12,
-                    'Spieler_Gast_2' => $guestPID22]
+                ->insert(['Duell_ID' => $doubleID->ID,
+                    'Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
                 );
             DB::connection('mysqlSP')->table('satz')
 
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 1,
-                    'Punkte_Heim' => $satz1H2,
-                    'Punkte_Gast' => $satz1G2]);
+                    'Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H2,
-                    'Punkte_Gast' => $satz2G2]);
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H2,
-                    'Punkte_Gast' => $satz3G2]);
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($doubleCount >= 3) {
 
-            $homeFName13 = $request->dualVnameHeim13;
-            $homeLName13 = $request->dualNnameHeim13;
-            $homeFName23 = $request->dualVnameHeim23;
-            $homeLName23 = $request->dualNnameHeim23;
-            $guestFName13 = $request->dualVnameGast13;
-            $guestLName13 = $request->dualNnameGast13;
-            $guestFName23 = $request->dualVnameGast23;
-            $guestLName23 = $request->dualNnameGast23;
-            $homePID13 = $this->getPlayerID($homeFName13, $homeLName13);
-            $homePID23 = $this->getPlayerID($homeFName23, $homeLName23);
-            $guestPID13 = $this->getPlayerID($guestFName13, $guestLName13);
-            $guestPID23 = $this->getPlayerID($guestFName23, $guestLName23);
-            $satz1H3 = $request->dualSatz1heim3;
-            $satz1G3 = $request->dualSatz1gast3;
-            $satz2H3 = $request->dualSatz2heim3;
-            $satz2G3 = $request->dualSatz2gast3;
-            $satz3H3 = $request->dualSatz3heim3;
-            $satz3G3 = $request->dualSatz3gast3;
-            $dualType3 = $request->dualType3;
+            $homeFName1 = $request->dualVnameHeim13;
+            $homeLName1 = $request->dualNnameHeim13;
+            $homeFName2 = $request->dualVnameHeim23;
+            $homeLName2 = $request->dualNnameHeim23;
+            $guestFName1 = $request->dualVnameGast13;
+            $guestLName1 = $request->dualNnameGast13;
+            $guestFName2 = $request->dualVnameGast23;
+            $guestLName2 = $request->dualNnameGast23;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim3;
+            $satz1G = $request->dualSatz1gast3;
+            $satz2H = $request->dualSatz2heim3;
+            $satz2G = $request->dualSatz2gast3;
+            $satz3H = $request->dualSatz3heim3;
+            $satz3G = $request->dualSatz3gast3;
+            $dualType = $request->dualType3;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $dualType3)->value('ID');
+                ->select('ID')->where('Name', $dualType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -774,48 +790,49 @@ class QueryController extends Controller
 
             DB::connection('mysqlSP')->table('doppel')
 
-                ->insert(['Duell_ID' => $doubleID->ID, 'Spieler_Heim_1' => $homePID13,
-                    'Spieler_Heim_2' => $homePID23,
-                    'Spieler_Gast_1' => $guestPID13,
-                    'Spieler_Gast_2' => $guestPID23]
+                ->insert(['Duell_ID' => $doubleID->ID,
+                    'Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
                 );
             DB::connection('mysqlSP')->table('satz')
 
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 1,
-                    'Punkte_Heim' => $satz1H3,
-                    'Punkte_Gast' => $satz1G3]);
+                    'Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H3,
-                    'Punkte_Gast' => $satz2G3]);
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H3,
-                    'Punkte_Gast' => $satz3G3]);
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($doubleCount >= 4) {
 
-            $homeFName14 = $request->dualVnameHeim14;
-            $homeLName14 = $request->dualNnameHeim14;
-            $homeFName24 = $request->dualVnameHeim24;
-            $homeLName24 = $request->dualNnameHeim24;
-            $guestFName14 = $request->dualVnameGast14;
-            $guestLName14 = $request->dualNnameGast14;
-            $guestFName24 = $request->dualVnameGast24;
-            $guestLName24 = $request->dualNnameGast24;
-            $homePID14 = $this->getPlayerID($homeFName14, $homeLName14);
-            $homePID24 = $this->getPlayerID($homeFName24, $homeLName24);
-            $guestPID14 = $this->getPlayerID($guestFName14, $guestLName14);
-            $guestPID24 = $this->getPlayerID($guestFName24, $guestLName24);
-            $satz1H4 = $request->dualSatz1heim4;
-            $satz1G4 = $request->dualSatz1gast4;
-            $satz2H4 = $request->dualSatz2heim4;
-            $satz2G4 = $request->dualSatz2gast4;
-            $satz3H4 = $request->dualSatz3heim4;
-            $satz3G4 = $request->dualSatz3gast4;
-            $dualType4 = $request->dualType4;
+            $homeFName1 = $request->dualVnameHeim14;
+            $homeLName1 = $request->dualNnameHeim14;
+            $homeFName2 = $request->dualVnameHeim24;
+            $homeLName2 = $request->dualNnameHeim24;
+            $guestFName1 = $request->dualVnameGast14;
+            $guestLName1 = $request->dualNnameGast14;
+            $guestFName2 = $request->dualVnameGast24;
+            $guestLName2 = $request->dualNnameGast24;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim4;
+            $satz1G = $request->dualSatz1gast4;
+            $satz2H = $request->dualSatz2heim4;
+            $satz2G = $request->dualSatz2gast4;
+            $satz3H = $request->dualSatz3heim4;
+            $satz3G = $request->dualSatz3gast4;
+            $dualType = $request->dualType4;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $dualType4)->value('ID');
+                ->select('ID')->where('Name', $dualType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
                 ->insert([
@@ -830,24 +847,25 @@ class QueryController extends Controller
 
             DB::connection('mysqlSP')->table('doppel')
 
-                ->insert(['Duell_ID' => $doubleID->ID, 'Spieler_Heim_1' => $homePID14,
-                    'Spieler_Heim_2' => $homePID24,
-                    'Spieler_Gast_1' => $guestPID14,
-                    'Spieler_Gast_2' => $guestPID24]
+                ->insert(['Duell_ID' => $doubleID->ID,
+                    'Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
                 );
             DB::connection('mysqlSP')->table('satz')
 
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 1,
-                    'Punkte_Heim' => $satz1H4,
-                    'Punkte_Gast' => $satz1G4]);
+                    'Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 2,
-                    'Punkte_Heim' => $satz2H4,
-                    'Punkte_Gast' => $satz2G4]);
+                    'Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
                 ->insert(['Duell_ID' => $doubleID->ID, 'Satz_Nr' => 3,
-                    'Punkte_Heim' => $satz3H4,
-                    'Punkte_Gast' => $satz3G4]);
+                    'Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
     }
 
@@ -859,8 +877,8 @@ class QueryController extends Controller
         FROM
             mannschaft
         WHERE
-            Name = :sname', ['name' => $name]);
-        return $teamID[0];
+            Name = :name', ['name' => $name]);
+        return $teamID[0]->ID;
     }
 
     // QueryController updateMatch, insertMatch: Hilfsfunktionen zum Erhalten der ID anhand der Eingaben
@@ -872,7 +890,7 @@ class QueryController extends Controller
             spieler
         WHERE
             Vorname = :vorname AND Nachname = :nachname', ['vorname' => $firstname, 'nachname' => $lastname]);
-        return $playerID[0];
+        return $playerID[0]->ID;
     }
 
     //web.php edit: AKtualisieren eines bereits vorhandenen Spiels
@@ -928,176 +946,176 @@ class QueryController extends Controller
         $soloCount = $request->soloCount;
         //IDs der Spieler werden benoetigt
         if ($soloCount >= 1) {
-            $duellID1 = $request->duellID1;
-            $homeFName1 = $request->soloVnameHeim1;
-            $homeLName1 = $request->soloNnameHeim1;
-            $guestFName1 = $request->soloVnameGast1;
-            $guestLName1 = $request->soloNnameGast1;
-            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
-            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
-            $satz1H1 = $request->soloSatz1heim1;
-            $satz1G1 = $request->soloSatz1gast1;
-            $satz2H1 = $request->soloSatz2heim1;
-            $satz2G1 = $request->soloSatz2gast1;
-            $satz3H1 = $request->soloSatz3heim1;
-            $satz3G1 = $request->soloSatz3gast1;
-            $soloType1 = $request->soloType1;
+            $duellID = $request->duellID1;
+            $homeFName = $request->soloVnameHeim1;
+            $homeLName = $request->soloNnameHeim1;
+            $guestFName = $request->soloVnameGast1;
+            $guestLName = $request->soloNnameGast1;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim1;
+            $satz1G = $request->soloSatz1gast1;
+            $satz2H = $request->soloSatz2heim1;
+            $satz2G = $request->soloSatz2gast1;
+            $satz3H = $request->soloSatz3heim1;
+            $satz3G = $request->soloSatz3gast1;
+            $soloType = $request->soloType1;
 
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType1)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
             DB::connection('mysqlSP')->table('duell')
-                ->where('ID', $duellID1)
+                ->where('ID', $duellID)
                 ->update([
 
                     'Art' => $art,
                 ]);
 
             DB::connection('mysqlSP')->table('einzel')
-                ->where('Duell_ID', $duellID1)
-                ->update(['Spieler_Heim' => $homePID1,
-                    'Spieler_Gast' => $guestPID1],
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                     '');
 
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 1]])
-                ->update(['Punkte_Heim' => $satz1H1,
-                    'Punkte_Gast' => $satz1G1]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 2]])
-                ->update(['Punkte_Heim' => $satz2H1,
-                    'Punkte_Gast' => $satz2G1]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 3]])
-                ->update(['Punkte_Heim' => $satz3H1,
-                    'Punkte_Gast' => $satz3G1]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($soloCount >= 2) {
-            $duellID2 = $request->duellID2;
-            $homeFName2 = $request->soloVnameHeim2;
-            $homeLName2 = $request->soloNnameHeim2;
-            $guestFName2 = $request->soloVnameGast2;
-            $guestLName2 = $request->soloNnameGast2;
-            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
-            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
-            $satz1H2 = $request->soloSatz1heim2;
-            $satz1G2 = $request->soloSatz1gast2;
-            $satz2H2 = $request->soloSatz2heim2;
-            $satz2G2 = $request->soloSatz2gast2;
-            $satz3H2 = $request->soloSatz3heim2;
-            $satz3G2 = $request->soloSatz3gast2;
-            $soloType2 = $request->soloType2;
+            $duellID = $request->duellID2;
+            $homeFName = $request->soloVnameHeim2;
+            $homeLName = $request->soloNnameHeim2;
+            $guestFName = $request->soloVnameGast2;
+            $guestLName = $request->soloNnameGast2;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim2;
+            $satz1G = $request->soloSatz1gast2;
+            $satz2H = $request->soloSatz2heim2;
+            $satz2G = $request->soloSatz2gast2;
+            $satz3H = $request->soloSatz3heim2;
+            $satz3G = $request->soloSatz3gast2;
+            $soloType = $request->soloType2;
 
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType2)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
             DB::connection('mysqlSP')->table('duell')
-                ->where('ID', $duellID2)
+                ->where('ID', $duellID)
                 ->update([
 
                     'Art' => $art,
                 ]);
 
             DB::connection('mysqlSP')->table('einzel')
-                ->where('Duell_ID', $duellID2)
-                ->update(['Spieler_Heim' => $homePID2,
-                    'Spieler_Gast' => $guestPID2],
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                     '');
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 1]])
-                ->update(['Punkte_Heim' => $satz1H2,
-                    'Punkte_Gast' => $satz1G2]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 2]])
-                ->update(['Punkte_Heim' => $satz2H2,
-                    'Punkte_Gast' => $satz2G2]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 3]])
-                ->update(['Punkte_Heim' => $satz3H2,
-                    'Punkte_Gast' => $satz3G2]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($soloCount >= 3) {
-            $duellID3 = $request->duellID3;
-            $homeFName3 = $request->soloVnameHeim3;
-            $homeLName3 = $request->soloNnameHeim3;
-            $guestFName3 = $request->soloVnameGast3;
-            $guestLName3 = $request->soloNnameGast3;
-            $homePID3 = $this->getPlayerID($homeFName3, $homeLName3);
-            $guestPID3 = $this->getPlayerID($guestFName3, $guestLName3);
-            $satz1H3 = $request->soloSatz1heim3;
-            $satz1G3 = $request->soloSatz1gast3;
-            $satz2H3 = $request->soloSatz2heim3;
-            $satz2G3 = $request->soloSatz2gast3;
-            $satz3H3 = $request->soloSatz3heim3;
-            $satz3G3 = $request->soloSatz3gast3;
-            $soloType3 = $request->soloType3;
+            $duellID = $request->duellID3;
+            $homeFName = $request->soloVnameHeim3;
+            $homeLName = $request->soloNnameHeim3;
+            $guestFName = $request->soloVnameGast3;
+            $guestLName = $request->soloNnameGast3;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim3;
+            $satz1G = $request->soloSatz1gast3;
+            $satz2H = $request->soloSatz2heim3;
+            $satz2G = $request->soloSatz2gast3;
+            $satz3H = $request->soloSatz3heim3;
+            $satz3G = $request->soloSatz3gast3;
+            $soloType = $request->soloType3;
 
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType3)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
             DB::connection('mysqlSP')->table('duell')
-                ->where('ID', $duellID3)
+                ->where('ID', $duellID)
                 ->update([
 
                     'Art' => $art,
                 ]);
 
             DB::connection('mysqlSP')->table('einzel')
-                ->where('Duell_ID', $duellID3)
-                ->update(['Spieler_Heim' => $homePID3,
-                    'Spieler_Gast' => $guestPID3],
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                     '');
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID3], ['Satz_Nr', '=', 1]])
-                ->update(['Punkte_Heim' => $satz1H3,
-                    'Punkte_Gast' => $satz1G3]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID3], ['Satz_Nr', '=', 2]])
-                ->update(['Punkte_Heim' => $satz2H3,
-                    'Punkte_Gast' => $satz2G3]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID3], ['Satz_Nr', '=', 3]])
-                ->update(['Punkte_Heim' => $satz3H3,
-                    'Punkte_Gast' => $satz3G3]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($soloCount >= 4) {
-            $duellID4 = $request->duellID4;
-            $homeFName4 = $request->soloVnameHeim4;
-            $homeLName4 = $request->soloNnameHeim4;
-            $guestFName4 = $request->soloVnameGast4;
-            $guestLName4 = $request->soloNnameGast4;
-            $homePID4 = $this->getPlayerID($homeFName4, $homeLName4);
-            $guestPID4 = $this->getPlayerID($guestFName4, $guestLName4);
-            $satz1H4 = $request->soloSatz1heim4;
-            $satz1G4 = $request->soloSatz1gast4;
-            $satz2H4 = $request->soloSatz2heim4;
-            $satz2G4 = $request->soloSatz2gast4;
-            $satz3H4 = $request->soloSatz3heim4;
-            $satz3G4 = $request->soloSatz3gast4;
-            $soloType4 = $request->soloType4;
+            $duellID = $request->duellID4;
+            $homeFName = $request->soloVnameHeim4;
+            $homeLName = $request->soloNnameHeim4;
+            $guestFName = $request->soloVnameGast4;
+            $guestLName = $request->soloNnameGast4;
+            $homePID = $this->getPlayerID($homeFName, $homeLName);
+            $guestPID = $this->getPlayerID($guestFName, $guestLName);
+            $satz1H = $request->soloSatz1heim4;
+            $satz1G = $request->soloSatz1gast4;
+            $satz2H = $request->soloSatz2heim4;
+            $satz2G = $request->soloSatz2gast4;
+            $satz3H = $request->soloSatz3heim4;
+            $satz3G = $request->soloSatz3gast4;
+            $soloType = $request->soloType4;
 
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $soloType4)->value('ID');
+                ->select('ID')->where('Name', $soloType)->value('ID');
             DB::connection('mysqlSP')->table('duell')
-                ->where('ID', $duellID4)
+                ->where('ID', $duellID)
                 ->update([
                     'Art' => $art,
                 ]);
 
             DB::connection('mysqlSP')->table('einzel')
-                ->where('Duell_ID', $duellID4)
-                ->update(['Spieler_Heim' => $homePID4,
-                    'Spieler_Gast' => $guestPID4],
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim' => $homePID,
+                    'Spieler_Gast' => $guestPID],
                     '');
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID4], ['Satz_Nr', '=', 1]])
-                ->update(['Punkte_Heim' => $satz1H4,
-                    'Punkte_Gast' => $satz1G4]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID4], ['Satz_Nr', '=', 2]])
-                ->update(['Punkte_Heim' => $satz2H4,
-                    'Punkte_Gast' => $satz2G4]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID4], ['Satz_Nr', '=', 3]])
-                ->update(['Punkte_Heim' => $satz3H4,
-                    'Punkte_Gast' => $satz3G4]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
 
         //Update in EinzelTabelle
@@ -1110,107 +1128,212 @@ class QueryController extends Controller
         $doubleCount = $request->doubleCount;
         //IDs der Spieler werden benoetigt
         if ($doubleCount >= 1) {
-            $duellID1 = $request->doppelDuellID1;
-            $homeFName11 = $request->dualVnameHeim11;
-            $homeLName11 = $request->dualNnameHeim11;
-            $homeFName21 = $request->dualVnameHeim21;
-            $homeLName21 = $request->dualNnameHeim21;
-            $guestFName11 = $request->dualVnameGast11;
-            $guestLName11 = $request->dualNnameGast11;
-            $guestFName21 = $request->dualVnameGast21;
-            $guestLName21 = $request->dualNnameGast21;
-            $homePID11 = $this->getPlayerID($homeFName11, $homeLName11);
-            $homePID21 = $this->getPlayerID($homeFName21, $homeLName21);
-            $guestPID11 = $this->getPlayerID($guestFName11, $guestLName11);
-            $guestPID21 = $this->getPlayerID($guestFName21, $guestLName21);
-            $satz1H1 = $request->dualSatz1heim1;
-            $satz1G1 = $request->dualSatz1gast1;
-            $satz2H1 = $request->dualSatz2heim1;
-            $satz2G1 = $request->dualSatz2gast1;
-            $satz3H1 = $request->dualSatz3heim1;
-            $satz3G1 = $request->dualSatz3gast1;
-            $dualType1 = $request->dualType1;
+            $duellID = $request->doppelDuellID1;
+            $homeFName1 = $request->dualVnameHeim11;
+            $homeLName1 = $request->dualNnameHeim11;
+            $homeFName2 = $request->dualVnameHeim21;
+            $homeLName2 = $request->dualNnameHeim21;
+            $guestFName1 = $request->dualVnameGast11;
+            $guestLName1 = $request->dualNnameGast11;
+            $guestFName2 = $request->dualVnameGast21;
+            $guestLName2 = $request->dualNnameGast21;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim1;
+            $satz1G = $request->dualSatz1gast1;
+            $satz2H = $request->dualSatz2heim1;
+            $satz2G = $request->dualSatz2gast1;
+            $satz3H = $request->dualSatz3heim1;
+            $satz3G = $request->dualSatz3gast1;
+            $dualType = $request->dualType1;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $dualType1)->value('ID');
+                ->select('ID')->where('Name', $dualType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
-                ->where('ID', $duellID1)
+                ->where('ID', $duellID)
                 ->update([
 
                     'Art' => $art,
                 ]);
 
             DB::connection('mysqlSP')->table('doppel')
-                ->where('Duell_ID', $duellID1)
-                ->update(['Spieler_Heim_1' => $homePID11,
-                    'Spieler_Heim_2' => $homePID21,
-                    'Spieler_Gast_1' => $guestPID11,
-                    'Spieler_Gast_2' => $guestPID21]
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
                 );
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 1]])
-                ->update(['Punkte_Heim' => $satz1H1,
-                    'Punkte_Gast' => $satz1G1]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 2]])
-                ->update(['Punkte_Heim' => $satz2H1,
-                    'Punkte_Gast' => $satz2G1]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID1], ['Satz_Nr', '=', 3]])
-                ->update(['Punkte_Heim' => $satz3H1,
-                    'Punkte_Gast' => $satz3G1]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
         if ($doubleCount >= 2) {
-            $duellID2 = $request->doppelDuellID2;
-            $homeFName12 = $request->dualVnameHeim12;
-            $homeLName12 = $request->dualNnameHeim12;
-            $homeFName22 = $request->dualVnameHeim22;
-            $homeLName22 = $request->dualNnameHeim22;
-            $guestFName12 = $request->dualVnameGast12;
-            $guestLName12 = $request->dualNnameGast12;
-            $guestFName22 = $request->dualVnameGast22;
-            $guestLName22 = $request->dualNnameGast22;
-            $homePID12 = $this->getPlayerID($homeFName12, $homeLName12);
-            $homePID22 = $this->getPlayerID($homeFName22, $homeLName22);
-            $guestPID12 = $this->getPlayerID($guestFName12, $guestLName12);
-            $guestPID22 = $this->getPlayerID($guestFName22, $guestLName22);
-            $satz1H2 = $request->dualSatz1heim2;
-            $satz1G2 = $request->dualSatz1gast2;
-            $satz2H2 = $request->dualSatz2heim2;
-            $satz2G2 = $request->dualSatz2gast2;
-            $satz3H2 = $request->dualSatz3heim2;
-            $satz3G2 = $request->dualSatz3gast2;
-            $dualType2 = $request->dualType2;
+            $duellID = $request->doppelDuellID2;
+            $homeFName1 = $request->dualVnameHeim12;
+            $homeLName1 = $request->dualNnameHeim12;
+            $homeFName2 = $request->dualVnameHeim22;
+            $homeLName2 = $request->dualNnameHeim22;
+            $guestFName1 = $request->dualVnameGast12;
+            $guestLName1 = $request->dualNnameGast12;
+            $guestFName2 = $request->dualVnameGast22;
+            $guestLName2 = $request->dualNnameGast22;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim2;
+            $satz1G = $request->dualSatz1gast2;
+            $satz2H = $request->dualSatz2heim2;
+            $satz2G = $request->dualSatz2gast2;
+            $satz3H = $request->dualSatz3heim2;
+            $satz3G = $request->dualSatz3gast2;
+            $dualType = $request->dualType2;
             $art = DB::connection('mysqlSP')->table('art')
-                ->select('ID')->where('Name', $dualType2)->value('ID');
+                ->select('ID')->where('Name', $dualType)->value('ID');
 
             DB::connection('mysqlSP')->table('duell')
-                ->where('ID', $duellID2)
+                ->where('ID', $duellID)
                 ->update([
 
                     'Art' => $art,
                 ]);
 
             DB::connection('mysqlSP')->table('doppel')
-                ->where('Duell_ID', $duellID2)
-                ->update(['Spieler_Heim_1' => $homePID12,
-                    'Spieler_Heim_2' => $homePID22,
-                    'Spieler_Gast_1' => $guestPID12,
-                    'Spieler_Gast_2' => $guestPID22]
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
                 );
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 1]])
-                ->update(['Punkte_Heim' => $satz1H2,
-                    'Punkte_Gast' => $satz1G2]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 2]])
-                ->update(['Punkte_Heim' => $satz2H2,
-                    'Punkte_Gast' => $satz2G2]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
             DB::connection('mysqlSP')->table('satz')
-                ->where([['Duell_ID', '=', $duellID2], ['Satz_Nr', '=', 3]])
-                ->update(['Punkte_Heim' => $satz3H2,
-                    'Punkte_Gast' => $satz3G2]);
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
         }
+
+        if ($doubleCount >= 3) {
+            $homeFName1 = $request->dualVnameHeim13;
+            $homeLName1 = $request->dualNnameHeim13;
+            $homeFName2 = $request->dualVnameHeim23;
+            $homeLName2 = $request->dualNnameHeim23;
+            $guestFName1 = $request->dualVnameGast13;
+            $guestLName1 = $request->dualNnameGast13;
+            $guestFName2 = $request->dualVnameGast23;
+            $guestLName2 = $request->dualNnameGast23;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim3;
+            $satz1G = $request->dualSatz1gast3;
+            $satz2H = $request->dualSatz2heim3;
+            $satz2G = $request->dualSatz2gast3;
+            $satz3H = $request->dualSatz3heim3;
+            $satz3G = $request->dualSatz3gast3;
+            $dualType = $request->dualType3;
+            error_log("1. Satz2 Heim: " . $satz2H);
+            $art = DB::connection('mysqlSP')->table('art')
+                ->select('ID')->where('Name', $dualType)->value('ID');
+
+            DB::connection('mysqlSP')->table('duell')
+                ->where('ID', $duellID)
+                ->update([
+
+                    'Art' => $art,
+                ]);
+
+            DB::connection('mysqlSP')->table('doppel')
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
+                );
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
+        }
+
+        if ($doubleCount >= 4) {
+            $homeFName1 = $request->dualVnameHeim14;
+            $homeLName1 = $request->dualNnameHeim14;
+            $homeFName2 = $request->dualVnameHeim24;
+            $homeLName2 = $request->dualNnameHeim24;
+            $guestFName1 = $request->dualVnameGast14;
+            $guestLName1 = $request->dualNnameGast14;
+            $guestFName2 = $request->dualVnameGast24;
+            $guestLName2 = $request->dualNnameGast24;
+            $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
+            $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
+            $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
+            $guestPID2 = $this->getPlayerID($guestFName2, $guestLName2);
+            $satz1H = $request->dualSatz1heim4;
+            $satz1G = $request->dualSatz1gast4;
+            $satz2H = $request->dualSatz2heim4;
+            $satz2G = $request->dualSatz2gast4;
+            $satz3H = $request->dualSatz3heim4;
+            $satz3G = $request->dualSatz3gast4;
+            $dualType = $request->dualType4;
+            error_log("2.Satz2 Heim: " . $satz2H);
+            $art = DB::connection('mysqlSP')->table('art')
+                ->select('ID')->where('Name', $dualType)->value('ID');
+
+            DB::connection('mysqlSP')->table('duell')
+                ->where('ID', $duellID)
+                ->update([
+
+                    'Art' => $art,
+                ]);
+
+            DB::connection('mysqlSP')->table('doppel')
+                ->where('Duell_ID', $duellID)
+                ->update(['Spieler_Heim_1' => $homePID1,
+                    'Spieler_Heim_2' => $homePID2,
+                    'Spieler_Gast_1' => $guestPID1,
+                    'Spieler_Gast_2' => $guestPID2]
+                );
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 1]])
+                ->update(['Punkte_Heim' => $satz1H,
+                    'Punkte_Gast' => $satz1G]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 2]])
+                ->update(['Punkte_Heim' => $satz2H,
+                    'Punkte_Gast' => $satz2G]);
+            DB::connection('mysqlSP')->table('satz')
+                ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
+                ->update(['Punkte_Heim' => $satz3H,
+                    'Punkte_Gast' => $satz3G]);
+        }
+
     }
     //_____________________________________________Texterkennung Korrektur____________________________________________
 
