@@ -1250,7 +1250,6 @@ class QueryController extends Controller
             $satz3H = $request->dualSatz3heim3;
             $satz3G = $request->dualSatz3gast3;
             $dualType = $request->dualType3;
-            error_log("1. Satz2 Heim: " . $satz2H);
             $art = DB::connection('mysqlSP')->table('art')
                 ->select('ID')->where('Name', $dualType)->value('ID');
 
@@ -1302,7 +1301,6 @@ class QueryController extends Controller
             $satz3H = $request->dualSatz3heim4;
             $satz3G = $request->dualSatz3gast4;
             $dualType = $request->dualType4;
-            error_log("2.Satz2 Heim: " . $satz2H);
             $art = DB::connection('mysqlSP')->table('art')
                 ->select('ID')->where('Name', $dualType)->value('ID');
 
