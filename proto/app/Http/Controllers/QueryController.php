@@ -884,6 +884,7 @@ class QueryController extends Controller
     // QueryController updateMatch, insertMatch: Hilfsfunktionen zum Erhalten der ID anhand der Eingaben
     private function getPlayerID($firstname, $lastname)
     {
+        error_log('Spieler: ' . $firstname . " " . $lastname);
         $playerID = DB::connection('mysqlSP')->select('SELECT
             ID
         FROM
@@ -906,6 +907,7 @@ class QueryController extends Controller
             $guestID = $this->getTeamID($guest);
             $day = $request->tag;
             $schiri = $request->schiri;
+            error_log($request);
             #$id = $request -> match;
             $set = DB::connection('mysqlSP')->table(('spiel'))
                 ->where(DB::connection('mysqlSP')->raw('ID'), [$id])

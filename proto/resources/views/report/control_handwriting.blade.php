@@ -470,8 +470,8 @@ if (isset($response['Einzel_4'])) {
             <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
                 @csrf
                 <input type="hidden" id="matchID" name="matchID">
-                <input type="hidden" id="soloCount" name="soloCount" value ="2">
-                <input type="hidden" id="doubleCount" name="doubleCount" value = "4">
+                <input type="hidden" id="soloCount" name="soloCount" value="2">
+                <input type="hidden" id="doubleCount" name="doubleCount" value="4">
                 <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
@@ -805,7 +805,7 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $dualHeim_name_23[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $dualHeim_name_23[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" value="{{ $dualGast_name_13[0]->Vorname ?? '' }}" />
@@ -826,7 +826,7 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value="{{ $dualSatz_1_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(3)" name="dualSatz2heim33" id="dualSatz2heim3" value="{{ $dualSatz_2_heim3 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" value="{{ $dualSatz_2_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value="{{ $dualSatz_2_gast3 }}" />
@@ -892,7 +892,7 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" value="{{ $dualSatz_1_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(4)" name="dualSatz2heim33" id="dualSatz2heim4" value="{{ $dualSatz_2_heim4 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4" value="{{ $dualSatz_2_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" value="{{ $dualSatz_2_gast4 }}" />
