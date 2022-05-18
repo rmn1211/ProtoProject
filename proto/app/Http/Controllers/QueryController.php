@@ -1468,7 +1468,7 @@ class QueryController extends Controller
         foreach ($spieler as $player) {
 
             if (stristr($player->Nachname, $search) !== false) {
-                $response[] = array("ID" => $player->ID, "Nname" => $player->Nachname);}
+                $response[] = array("ID" => $player->ID, "Vname" => $player->Vorname, "Nname" => $player->Nachname);}
 
         }
         return response()->json($response);
@@ -1494,9 +1494,8 @@ class QueryController extends Controller
 
         $response = array();
         foreach ($spieler as $player) {
-
             if (stristr($player->Vorname, $search) !== false) {
-                $response[] = array("ID" => $player->ID, "Vname" => $player->Vorname);}
+                $response[] = array("ID" => $player->ID, "Vname" => $player->Vorname, "Nname" => $player->Nachname);}
         }
 
         return response()->json($response);

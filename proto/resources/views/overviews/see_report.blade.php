@@ -81,27 +81,23 @@ $arten = QueryController::allTypes();
                 <div class="flex mb-4">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
-                        <input readonly type="text" id="region" name="region" class="bg-gray-100 text-gray-900 w-full  border-gray-700 border-r-2 cursor-default border-b-full border-gray-700  px-3 pb-3" value="{{ $region->name }}">
-
+                        <input readonly type="text" id="region" name="region" class="bg-gray-100 text-gray-900 w-full border-gray-700 border-r-2 cursor-default border-b-full border-gray-700  px-3 pb-3" value="{{ $region->name }}">
                     </div>
-
-                    <div class="w-1/full bg-green-400 h-12">
-
-
+                    <div class="break-normal w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input readonly type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full  border-gray-700 border-r-2 cursor-default border-b-full border-gray-700  px-3 pb-3" value="{{ $liga->Name }}">
+                        <input readonly type="text" id="liga" name="liga" class="hover:break-after-column bg-gray-100 text-gray-900 w-full border-gray-700 border-r-2 cursor-default border-b-full border-gray-700  px-3 pb-3" value="{{ $liga->Name }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Saison:</label>
-                        <input readonly type="text" name=" saison" id="saison" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2  w-full cursor-default border-b-full  border-gray-700  px-3 pb-3" value="{{ $saison[0]->Name }}">
+                        <input readonly type="text" name=" saison" id="saison" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2  w-full cursor-default border-b-full  border-gray-700  px-3 pb-3" value="{{ $saison[0]->Name }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Runde:</label>
-                        <input readonly type="text" name=" runde" id="runde" class="bg-gray-100 text-gray-900  w-full cursor-default border-b-full border-gray-700   border-r-2  px-3 pb-3" value="{{ $runde[0]->Bezeichnung }}">
+                        <input readonly type="text" name=" runde" id="runde" class="bg-gray-100 text-gray-900 w-full cursor-default border-b-full border-gray-700   border-r-2  px-3 pb-3" value="{{ $runde[0]->Bezeichnung }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Spieltag:</label>
-                        <input readonly type="text" name=" tag" id="tag" class="bg-gray-100 text-gray-900  w-full cursor-default border-b-full border-gray-700  border-r-2  px-3 pb-3" value="{{ $tag[0]->Tag }}">
+                        <input readonly type="text" name=" tag" id="tag" class="bg-gray-100 text-gray-900 w-full cursor-default border-b-full border-gray-700  border-r-2  px-3 pb-3" value="{{ $tag[0]->Tag }}">
                     </div>
 
 

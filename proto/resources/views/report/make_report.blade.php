@@ -48,7 +48,7 @@
             <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
                 @csrf
                 <input type="hidden" id="matchID" name="matchID">
-                <input type="hidden" id="soloCount" name="soloCount" value = "2">
+                <input type="hidden" id="soloCount" name="soloCount" value="2">
                 <input type="hidden" id="doubleCount" name="doubleCount" value="4">
                 <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
@@ -58,8 +58,6 @@
                     </div>
 
                     <div class="w-1/full bg-green-400 h-12">
-
-
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
                         <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100   border-gray-700 border-r-2 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
@@ -1352,7 +1350,8 @@
 
         function NnameH(elem) {
             var id = document.getElementById(elem);
-
+            var fNameID = elem.replace("Nname", "Vname");
+            var fName = document.getElementById(fNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1370,7 +1369,9 @@
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Nname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1382,7 +1383,8 @@
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelN);
+                    $(fName).val(ui.item.labelV);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
@@ -1394,7 +1396,9 @@
 
         function VnameH(elem) { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
             var id = document.getElementById(elem);
-
+            var nNameID = elem.replace("Vname", "Nname");
+            console.log(nNameID);
+            var nName = document.getElementById(nNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1412,7 +1416,9 @@
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Vname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1424,7 +1430,8 @@
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelV);
+                    $(nName).val(ui.item.labelN);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
@@ -1436,7 +1443,8 @@
 
         function NnameG(elem) {
             var id = document.getElementById(elem);
-
+            var fNameID = elem.replace("Nname", "Vname");
+            var fName = document.getElementById(fNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1454,7 +1462,9 @@
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Nname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1466,7 +1476,8 @@
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelN);
+                    $(fName).val(ui.item.labelV);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
@@ -1478,6 +1489,8 @@
 
         function VnameG(elem) {
             var id = document.getElementById(elem);
+            var nNameID = elem.replace("Vname", "Nname");
+            var nName = document.getElementById(nNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1495,7 +1508,9 @@
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Vname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1507,7 +1522,8 @@
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelV);
+                    $(nName).val(ui.item.labelN);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);

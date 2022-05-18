@@ -1542,7 +1542,6 @@ if (isset($response['Einzel_4'])) {
 
         }
 
-
         function MannschaftenH() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
             if ($("#liga").val().length > 0) {
                 $("#tfHome").autocomplete({
@@ -1659,7 +1658,6 @@ if (isset($response['Einzel_4'])) {
         }
 
         function MannschaftenG() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-
             if ($("#liga").val().length > 0) {
                 $("#tfAway").autocomplete({
                     minLength: 0,
@@ -1776,7 +1774,8 @@ if (isset($response['Einzel_4'])) {
 
         function NnameH(elem) {
             var id = document.getElementById(elem);
-
+            var fNameID = elem.replace("Nname", "Vname");
+            var fName = document.getElementById(fNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1794,7 +1793,9 @@ if (isset($response['Einzel_4'])) {
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Nname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1806,7 +1807,8 @@ if (isset($response['Einzel_4'])) {
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelN);
+                    $(fName).val(ui.item.labelV);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
@@ -1816,9 +1818,11 @@ if (isset($response['Einzel_4'])) {
 
         }
 
-        function VnameH(elem) { // 
+        function VnameH(elem) { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
             var id = document.getElementById(elem);
-
+            var nNameID = elem.replace("Vname", "Nname");
+            console.log(nNameID);
+            var nName = document.getElementById(nNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1836,7 +1840,9 @@ if (isset($response['Einzel_4'])) {
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Vname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1848,7 +1854,8 @@ if (isset($response['Einzel_4'])) {
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelV);
+                    $(nName).val(ui.item.labelN);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
@@ -1860,7 +1867,8 @@ if (isset($response['Einzel_4'])) {
 
         function NnameG(elem) {
             var id = document.getElementById(elem);
-
+            var fNameID = elem.replace("Nname", "Vname");
+            var fName = document.getElementById(fNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1878,7 +1886,9 @@ if (isset($response['Einzel_4'])) {
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Nname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1890,7 +1900,8 @@ if (isset($response['Einzel_4'])) {
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelN);
+                    $(fName).val(ui.item.labelV);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);
@@ -1902,6 +1913,8 @@ if (isset($response['Einzel_4'])) {
 
         function VnameG(elem) {
             var id = document.getElementById(elem);
+            var nNameID = elem.replace("Vname", "Nname");
+            var nName = document.getElementById(nNameID);
             $(id).autocomplete({
                 minLength: 0,
                 source: function(request, response) {
@@ -1919,7 +1932,9 @@ if (isset($response['Einzel_4'])) {
                         success: function(data) {
                             response(data.map(function(value) {
                                 return {
-                                    'label': value.Vname,
+                                    'label': value.Vname + ' ' + value.Nname,
+                                    'labelV': value.Vname,
+                                    'labelN': value.Nname,
                                     'value': value.ID
                                 };
                             }));
@@ -1931,7 +1946,8 @@ if (isset($response['Einzel_4'])) {
                     event.preventDefault();
                     var label = ui.item.label;
                     var value = ui.item.value;
-                    $(id).val(ui.item.label);
+                    $(id).val(ui.item.labelV);
+                    $(nName).val(ui.item.labelN);
 
                     // $("#employee_search").text(ui.item.label); // display the selected text
                     //$("#liga").text(ui.item.label);

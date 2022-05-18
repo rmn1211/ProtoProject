@@ -72,4 +72,8 @@ class PageController extends Controller
     {
         return view('report.control_handwriting', $json);
     }
+    public function testarea()
+    {
+        return view('report.testarea');
+    }
 }
