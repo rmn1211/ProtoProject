@@ -34,6 +34,8 @@ Route::post('/overview/edit', [QueryController::class, 'updateMatch']);
 Route::post('/overview/edit', [QueryController::class, 'updateSoloDuel']);
 Route::get('/overviews/player_table', [PageController::class, 'player_table'])->name('player_table');
 Route::get('/overviews/teams_table', [PageController::class, 'teams_table'])->name('teams_table');
+
+Route::get('/test', [PageController::class, 'testarea'])->name('testarea');
 //ENDE TestRouten
 Route::get('/autocomplete-search', [QueryController::class, 'autocompleteSearch']);
 
