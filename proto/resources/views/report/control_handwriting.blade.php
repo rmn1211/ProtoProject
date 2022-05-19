@@ -8,69 +8,127 @@ use App\Http\Controllers\QueryController;
 
 $HeimID = '';
 $Heim;
+$Heimmannschaft_Prob=False;
 $GastID = '';
 $Gast;
+$Gastmannschaft_Prob=False
 $dualHeim_name_11;
+$dualHeim_name_11_Prob=False;
 $dualHeim_name_21;
+$dualHeim_name_21_Prob=False;
 $dualGast_name_11;
+$dualGast_name_11_Prob=False;
 $dualGast_name_21;
+$dualGast_name_21_Prob=False;
 $dualSatz_1_heim1 = '';
+$dualSatz_1_heim1_Prob=False;
 $dualSatz_1_gast1 = '';
+$dualSatz_1_gast1_Prob=False;
 $dualSatz_2_heim1 = '';
+$dualSatz_2_heim1_Prob=False; 
 $dualSatz_2_gast1 = '';
+$dualSatz_2_gast1_Prob=False;
 $dualSatz_3_heim1 = '';
+$dualSatz_3_heim1_Prob=False;
 $dualSatz_3_gast1 = '';
+$dualSatz_3_gast1_Prob=False ;
 
 $dualHeim_name_12;
+$dualHeim_name_12_Prob=False;
 $dualHeim_name_22;
+$dualHeim_name_22_Prob=False;
 $dualGast_name_12;
+$dualGast_name_12_Prob=False;
 $dualGast_name_22;
+$dualGast_name_22_Prob=False;
 $dualSatz_1_heim2 = '';
+$dualSatz_1_heim2_Prob=False;
 $dualSatz_1_gast2 = '';
+$dualSatz_1_gast2_Prob=False;
 $dualSatz_2_heim2 = '';
+$dualSatz_2_heim2_Prob=False;
 $dualSatz_2_gast2 = '';
+$dualSatz_2_gast2_Prob=False;
 $dualSatz_3_heim2 = '';
+$dualSatz_3_heim2_Prob=False;
 $dualSatz_3_gast2 = '';
+$dualSatz_3_gast2_Prob=False;
 
 $dualHeim_name_13;
+$dualHeim_name_13_Prob=False;
 $dualHeim_name_23;
+$dualHeim_name_23_Prob=False;
 $dualGast_name_13;
+$dualGast_name_13_Prob=False;
 $dualGast_name_23;
+$dualGast_name_23_Prob=False;
 $dualSatz_1_heim3 = '';
+$dualSatz_1_heim3_Prob=False;
 $dualSatz_1_gast3 = '';
+$dualSatz_1_gast3_Prob=False;
 $dualSatz_2_heim3 = '';
+$dualSatz_2_heim3_Prob=False;
 $dualSatz_2_gast3 = '';
+$dualSatz_2_gast3_Prob=False;
 $dualSatz_3_heim3 = '';
+$dualSatz_3_heim3_Prob=False;
 $dualSatz_3_gast3 = '';
+$dualSatz_3_gast3_Prob=False;
 
 $dualHeim_name_14;
+$dualHeim_name_14_Prob=False;
 $dualHeim_name_24;
+$dualHeim_name_24_Prob=False;
 $dualGast_name_14;
+$dualGast_name_14_Prob=False
 $dualGast_name_24;
+$dualGast_name_24_Prob=False;
 $dualSatz_1_heim4 = '';
+$dualSatz_1_heim4_Prob=False;
 $dualSatz_1_gast4 = '';
+$dualSatz_1_gast4_Prob=False;
 $dualSatz_2_heim4 = '';
+$dualSatz_2_heim4_Prob=False;
 $dualSatz_2_gast4 = '';
+$dualSatz_2_gast4_Prob=False; 
 $dualSatz_3_heim4 = '';
+$dualSatz_3_heim4_Prob=False;
 $dualSatz_3_gast4 = '';
+$dualSatz_3_gast4_Prob=False;
 
 $soloHeim_name_1;
+$soloHeim_name_1_Prob=False;
 $soloGast_name_1;
+$soloGast_name_1_Prob=False;
 $soloSatz_1_heim1 = '';
+$soloSatz_1_heim1_Prob=False;
 $soloSatz_1_gast1 = '';
+$soloSatz_1_gast1_Prob=False;
 $soloSatz_2_gast1 = '';
+$soloSatz_2_gast1_Prob=False;
 $soloSatz_2_heim1 = '';
+$soloSatz_2_heim1_Prob=False;
 $soloSatz_3_heim1 = '';
+$soloSatz_3_heim1_Prob=False;
 $soloSatz_3_gast1 = '';
+$soloSatz_3_gast1_Prob=False;
 
 $soloHeim_name_2;
+$soloHeim_name_2_Prob=False;
 $soloGast_name_2;
+$soloGast_name_2_Prob=False;
 $soloSatz_1_heim2 = '';
+$soloSatz_1_heim2_Prob=False;
 $soloSatz_1_gast2 = '';
+$soloSatz_1_gast2_Prob=False;
 $soloSatz_2_gast2 = '';
+$soloSatz_2_gast2_Prob=False;
 $soloSatz_2_heim2 = '';
+$soloSatz_2_heim2_Prob=False;
 $soloSatz_3_heim2 = '';
+$soloSatz_3_heim2_Prob=False;
 $soloSatz_3_gast2 = '';
+$soloSatz_3_gast2_Prob=False;
 
 $soloHeim_name_3;
 $soloGast_name_3;
@@ -92,51 +150,63 @@ $soloSatz_3_gast4 = '';
 
 if (isset($response['Heimmannschaft'])) {
     $HeimID = $response['Heimmannschaft'];
+    $Heimmannschaft_Prob=  $response['Heimmannschaft']['Heimmannschaft_Prob'];
     $Heim = QueryController::getMannschaftName($HeimID);
 }
 if (isset($response['Gastmannschaft'])) {
     $GastID = $response['Gastmannschaft'];
+    $Gastmannschaft_Prob = $response['Gastmannschaft']['Gastmannschaft_Prob'];
     $Gast = QueryController::getMannschaftName($GastID);
 }
 if (isset($response['Doppel_1'])) {
     if (isset($response['Doppel_1']['Heim_1'])) {
         $dualHeim_11 = $response['Doppel_1']['Heim_1'];
+        $dualHeim_name_11_Prob = $response['Doppel_1']['Heim_1']['Heim_1_Prob'];
         $dualHeim_name_11 = QueryController::getSpielerName($dualHeim_11);
     }
     if (isset($response['Doppel_1']['Heim_2'])) {
         $dualHeim_21 = $response['Doppel_1']['Heim_2'];
+         $dualHeim_name_21_Prob = $response['Doppel_1']['Heim_2']['Heim_2_Prob'];
         $dualHeim_name_21 = QueryController::getSpielerName($dualHeim_21);
     }
     if (isset($response['Doppel_1']['Gast_1'])) {
         $dualGast_11 = $response['Doppel_1']['Gast_1'];
+         $dualGast_name_11_Prob = $response['Doppel_1']['Gast_1']['Gast_1_Prob'];
         $dualGast_name_11 = QueryController::getSpielerName($dualGast_11);
     }
     if (isset($response['Doppel_1']['Gast_2'])) {
         $dualGast_21 = $response['Doppel_1']['Gast_2'];
+        $dualGast_name_21_Prob  = $response['Doppel_1']['Gast_2']['Gast_2_Prob'];
         $dualGast_name_21 = QueryController::getSpielerName($dualGast_21);
     }
     if (isset($response['Doppel_1']['Satz_1'])) {
         if (isset($response['Doppel_1']['Satz_1']['Punkte_Heim'])) {
+        $dualSatz_1_heim1_Prob =  $response['Doppel_1']['Satz_1']['Punkte_Heim']['Punkte_Heim_Prob'];
             $dualSatz_1_heim1 = $response['Doppel_1']['Satz_1']['Punkte_Heim'];
         }
         if (isset($response['Doppel_1']['Satz_1']['Punkte_Gast'])) {
             $dualSatz_1_gast1 = $response['Doppel_1']['Satz_1']['Punkte_Gast'];
+            $dualSatz_1_gast1_Prob = $response['Doppel_1']['Satz_1']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_1']['Satz_2'])) {
         if (isset($response['Doppel_1']['Satz_2']['Punkte_Heim'])) {
             $dualSatz_2_heim1 = $response['Doppel_1']['Satz_2']['Punkte_Heim'];
+             $dualSatz_2_heim1_Prob = $response['Doppel_1']['Satz_2']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_1']['Satz_2']['Punkte_Gast'])) {
             $dualSatz_2_gast1 = $response['Doppel_1']['Satz_2']['Punkte_Gast'];
+            $dualSatz_2_gast1_Prob = $response['Doppel_1']['Satz_2']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_1']['Satz_3'])) {
         if (isset($response['Doppel_1']['Satz_3']['Punkte_Heim'])) {
             $dualSatz_3_heim1 = $response['Doppel_1']['Satz_3']['Punkte_Heim'];
+             $dualSatz_3_heim1_Prob = $response['Doppel_1']['Satz_3']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_1']['Satz_3']['Punkte_Gast'])) {
             $dualSatz_3_gast1 = $response['Doppel_1']['Satz_3']['Punkte_Gast'];
+             $dualSatz_3_gast1_Prob = $response['Doppel_1']['Satz_3']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
 }
@@ -144,42 +214,52 @@ if (isset($response['Doppel_1'])) {
 if (isset($response['Doppel_2'])) {
     if (isset($response['Doppel_2']['Heim_1'])) {
         $dualHeim_12 = $response['Doppel_2']['Heim_1'];
+         $dualHeim_name_12_Prob= $response['Doppel_2']['Heim_1']['Heim_1_Prob'];
         $dualHeim_name_12 = QueryController::getSpielerName($dualHeim_12);
     }
     if (isset($response['Doppel_2']['Heim_2'])) {
         $dualHeim_22 = $response['Doppel_2']['Heim_2'];
+         $dualHeim_name_22_Prob  = $response['Doppel_2']['Heim_2']['Heim_2_Prob'];
         $dualHeim_name_22 = QueryController::getSpielerName($dualHeim_22);
     }
     if (isset($response['Doppel_2']['Gast_1'])) {
         $dualGast_12 = $response['Doppel_2']['Gast_1'];
+           $dualGast_name_12_Prob = $response['Doppel_2']['Gast_1']['Gast_1_Prob'];
         $dualGast_name_12 = QueryController::getSpielerName($dualGast_12);
     }
     if (isset($response['Doppel_2']['Gast_2'])) {
         $dualGast_22 = $response['Doppel_2']['Gast_2'];
+        $dualGast_name_22_Prob = $response['Doppel_2']['Gast_2']['Gast_2_Prob'];
         $dualGast_name_22 = QueryController::getSpielerName($dualGast_22);
     }
     if (isset($response['Doppel_2']['Satz_1'])) {
         if (isset($response['Doppel_2']['Satz_1']['Punkte_Heim'])) {
             $dualSatz_1_heim2 = $response['Doppel_2']['Satz_1']['Punkte_Heim'];
+            $dualSatz_1_heim2_Prob = $response['Doppel_2']['Satz_1']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_2']['Satz_1']['Punkte_Gast'])) {
             $dualSatz_1_gast2 = $response['Doppel_2']['Satz_1']['Punkte_Gast'];
+            $dualSatz_1_gast2_Prob = $response['Doppel_2']['Satz_1']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_2']['Satz_2'])) {
         if (isset($response['Doppel_2']['Satz_2']['Punkte_Heim'])) {
             $dualSatz_2_heim2 = $response['Doppel_2']['Satz_2']['Punkte_Heim'];
+            $dualSatz_2_heim2_Prob = $response['Doppel_2']['Satz_2']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_2']['Satz_2']['Punkte_Gast'])) {
             $dualSatz_2_gast2 = $response['Doppel_2']['Satz_2']['Punkte_Gast'];
+             $dualSatz_2_gast2_Prob = $response['Doppel_2']['Satz_2']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_2']['Satz_3'])) {
         if (isset($response['Doppel_2']['Satz_3']['Punkte_Heim'])) {
             $dualSatz_3_heim2 = $response['Doppel_2']['Satz_3']['Punkte_Heim'];
+            $dualSatz_3_heim2_Prob = $response['Doppel_2']['Satz_3']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_2']['Satz_3']['Punkte_Gast'])) {
             $dualSatz_3_gast2 = $response['Doppel_2']['Satz_3']['Punkte_Gast'];
+            $dualSatz_3_gast2_Prob = $response['Doppel_2']['Satz_3']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
 }
@@ -187,42 +267,52 @@ if (isset($response['Doppel_2'])) {
 if (isset($response['Doppel_3'])) {
     if (isset($response['Doppel_3']['Heim_1'])) {
         $dualHeim_13 = $response['Doppel_3']['Heim_1'];
+         $dualHeim_name_13_Prob= $response['Doppel_3']['Heim_1']['Heim_1_Prob'];
         $dualHeim_name_13 = QueryController::getSpielerName($dualHeim_13);
     }
     if (isset($response['Doppel_3']['Heim_2'])) {
         $dualHeim_23 = $response['Doppel_3']['Heim_2'];
+        $dualHeim_name_23_Prob= $response['Doppel_3']['Heim_2']['Heim_2_Prob'];
         $dualHeim_name_23 = QueryController::getSpielerName($dualHeim_23);
     }
     if (isset($response['Doppel_3']['Gast_1'])) {
         $dualGast_13 = $response['Doppel_3']['Gast_1'];
+        $dualGast_name_13_Prob = $response['Doppel_3']['Gast_1']['Gast_1_Prob'];
         $dualGast_name_13 = QueryController::getSpielerName($dualGast_13);
     }
     if (isset($response['Doppel_3']['Gast_2'])) {
         $dualGast_23 = $response['Doppel_3']['Gast_2'];
+        $dualGast_name_23_Prob = $response['Doppel_3']['Gast_2']['Gast_2_Prob'];
         $dualGast_name_23 = QueryController::getSpielerName($dualGast_23);
     }
     if (isset($response['Doppel_3']['Satz_1'])) {
         if (isset($response['Doppel_3']['Satz_1']['Punkte_Heim'])) {
             $dualSatz_1_heim3 = $response['Doppel_3']['Satz_1']['Punkte_Heim'];
+             $dualSatz_1_heim3_Prob = $response['Doppel_3']['Satz_1']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_3']['Satz_1']['Punkte_Gast'])) {
             $dualSatz_1_gast3 = $response['Doppel_3']['Satz_1']['Punkte_Gast'];
+             $dualSatz_1_gast3_Prob = $response['Doppel_3']['Satz_1']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_3']['Satz_2'])) {
         if (isset($response['Doppel_3']['Satz_2']['Punkte_Heim'])) {
             $dualSatz_2_heim3 = $response['Doppel_3']['Satz_2']['Punkte_Heim'];
+             $dualSatz_2_heim3_Prob = $response['Doppel_3']['Satz_2']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_3']['Satz_2']['Punkte_Gast'])) {
             $dualSatz_2_gast3 = $response['Doppel_3']['Satz_2']['Punkte_Gast'];
+            $dualSatz_2_gast3_Prob = $response['Doppel_3']['Satz_2']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_3']['Satz_3'])) {
         if (isset($response['Doppel_3']['Satz_3']['Punkte_Heim'])) {
             $dualSatz_3_heim3 = $response['Doppel_3']['Satz_3']['Punkte_Heim'];
+             $dualSatz_3_heim3_Prob = $response['Doppel_3']['Satz_3']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_3']['Satz_3']['Punkte_Gast'])) {
             $dualSatz_3_gast3 = $response['Doppel_3']['Satz_3']['Punkte_Gast'];
+            $dualSatz_3_gast3_Prob = $response['Doppel_3']['Satz_3']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
 }
@@ -230,42 +320,52 @@ if (isset($response['Doppel_3'])) {
 if (isset($response['Doppel_4'])) {
     if (isset($response['Doppel_4']['Heim_1'])) {
         $dualHeim_14 = $response['Doppel_4']['Heim_1'];
+        $dualHeim_name_14_Prob= $response['Doppel_4']['Heim_1']['Heim_1_Prob'];
         $dualHeim_name_14 = QueryController::getSpielerName($dualHeim_14);
     }
     if (isset($response['Doppel_4']['Heim_2'])) {
         $dualHeim_24 = $response['Doppel_4']['Heim_2'];
+         $dualHeim_name_24_Prob= $response['Doppel_4']['Heim_2']['Heim_2_Prob'];
         $dualHeim_name_24 = QueryController::getSpielerName($dualHeim_24);
     }
     if (isset($response['Doppel_4']['Gast_1'])) {
         $dualGast_14 = $response['Doppel_4']['Gast_1'];
+        $dualGast_name_14_Prob = $response['Doppel_4']['Gast_1']['Gast_1_Prob'];
         $dualGast_name_14 = QueryController::getSpielerName($dualGast_14);
     }
     if (isset($response['Doppel_4']['Gast_2'])) {
         $dualGast_24 = $response['Doppel_4']['Gast_2'];
+        $dualGast_name_24_Prob = $response['Doppel_4']['Gast_2']['Gast_2_Prob'];
         $dualGast_name_24 = QueryController::getSpielerName($dualGast_24);
     }
     if (isset($response['Doppel_4']['Satz_1'])) {
         if (isset($response['Doppel_4']['Satz_1']['Punkte_Heim'])) {
             $dualSatz_1_heim4 = $response['Doppel_4']['Satz_1']['Punkte_Heim'];
+            $dualSatz_1_heim4_Prob = $response['Doppel_4']['Satz_1']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_4']['Satz_1']['Punkte_Gast'])) {
             $dualSatz_1_gast4 = $response['Doppel_4']['Satz_1']['Punkte_Gast'];
+            $dualSatz_1_gast4_Prob = $response['Doppel_4']['Satz_1']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_4']['Satz_2'])) {
         if (isset($response['Doppel_4']['Satz_2']['Punkte_Heim'])) {
             $dualSatz_2_heim4 = $response['Doppel_4']['Satz_2']['Punkte_Heim'];
+            $dualSatz_2_heim4_Prob = $response['Doppel_4']['Satz_2']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_4']['Satz_2']['Punkte_Gast'])) {
             $dualSatz_2_gast4 = $response['Doppel_4']['Satz_2']['Punkte_Gast'];
+             $dualSatz_2_gast4_Prob = $response['Doppel_4']['Satz_2']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Doppel_4']['Satz_3'])) {
         if (isset($response['Doppel_4']['Satz_3']['Punkte_Heim'])) {
             $dualSatz_3_heim4 = $response['Doppel_4']['Satz_3']['Punkte_Heim'];
+            $dualSatz_3_heim4_Prob = $response['Doppel_4']['Satz_3']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Doppel_4']['Satz_3']['Punkte_Gast'])) {
             $dualSatz_3_gast4 = $response['Doppel_4']['Satz_3']['Punkte_Gast'];
+            $dualSatz_3_gast4_Prob = $response['Doppel_4']['Satz_3']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
 }
@@ -273,36 +373,44 @@ if (isset($response['Doppel_4'])) {
 if (isset($response['Einzel_1'])) {
     if (isset($response['Einzel_1']['Heim'])) {
         $soloHeim_1 = $response['Einzel_1']['Heim'];
+         $soloHeim_name_1_Prob= $response['Einzel_1']['Heim'];['Heim_Prob'];
         $soloHeim_name_1 = QueryController::getSpielerName($soloHeim_1);
     }
 
     if (isset($response['Einzel_1']['Gast'])) {
         $soloGast_1 = $response['Einzel_1']['Gast'];
+         $soloGast_name_1_Prob= $response['Einzel_1']['Gast'];['Gast_Prob'];
         $soloGast_name_1 = QueryController::getSpielerName($soloGast_1);
     }
 
     if (isset($response['Einzel_1']['Satz_1'])) {
         if (isset($response['Einzel_1']['Satz_1']['Punkte_Heim'])) {
             $soloSatz_1_heim1 = $response['Einzel_1']['Satz_1']['Punkte_Heim'];
+            $soloSatz_1_heim1_Prob = $response['Einzel_1']['Satz_1']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Einzel_1']['Satz_1']['Punkte_Gast'])) {
             $soloSatz_1_gast1 = $response['Einzel_1']['Satz_1']['Punkte_Gast'];
+             $soloSatz_1_gast1_Prob = $response['Einzel_1']['Satz_1']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Einzel_1']['Satz_2'])) {
         if (isset($response['Einzel_1']['Satz_2']['Punkte_Heim'])) {
             $soloSatz_2_heim1 = $response['Einzel_1']['Satz_2']['Punkte_Heim'];
+             $soloSatz_2_heim1_Prob = $response['Einzel_1']['Satz_2']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Einzel_1']['Satz_2']['Punkte_Gast'])) {
             $soloSatz_2_gast1 = $response['Einzel_1']['Satz_2']['Punkte_Gast'];
+            $soloSatz_2_gast1_Prob = $response['Einzel_1']['Satz_2']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Einzel_1']['Satz_3'])) {
         if (isset($response['Einzel_1']['Satz_3']['Punkte_Heim'])) {
             $soloSatz_3_heim1 = $response['Einzel_1']['Satz_3']['Punkte_Heim'];
+            $soloSatz_3_heim1_Prob = $response['Einzel_1']['Satz_3']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Einzel_1']['Satz_3']['Punkte_Gast'])) {
             $soloSatz_3_gast1 = $response['Einzel_1']['Satz_3']['Punkte_Gast'];
+            $soloSatz_3_gast1_Prob = $response['Einzel_1']['Satz_3']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
 }
@@ -310,36 +418,45 @@ if (isset($response['Einzel_1'])) {
 if (isset($response['Einzel_2'])) {
     if (isset($response['Einzel_2']['Heim'])) {
         $soloHeim_2 = $response['Einzel_2']['Heim'];
+        $soloHeim_name_2_Prob= $response['Einzel_2']['Heim'];['Heim_Prob'];
         $soloHeim_name_2 = QueryController::getSpielerName($soloHeim_2);
     }
 
     if (isset($response['Einzel_2']['Gast'])) {
         $soloGast_2 = $response['Einzel_2']['Gast'];
+        $soloGast_name_2_Prob= $response['Einzel_2']['Gast'];['Gast_Prob'];
         $soloGast_name_2 = QueryController::getSpielerName($soloGast_2);
     }
 
     if (isset($response['Einzel_2']['Satz_1'])) {
         if (isset($response['Einzel_2']['Satz_1']['Punkte_Heim'])) {
             $soloSatz_1_heim2 = $response['Einzel_2']['Satz_1']['Punkte_Heim'];
+             $soloSatz_1_heim2_Prob = $response['Einzel_2']['Satz_1']['Punkte_Heim']['Punkte_Heim_Prob'];
+        }
         }
         if (isset($response['Einzel_2']['Satz_1']['Punkte_Gast'])) {
             $soloSatz_1_gast2 = $response['Einzel_2']['Satz_1']['Punkte_Gast'];
+            $soloSatz_1_gast2_Prob = $response['Einzel_2']['Satz_1']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Einzel_2']['Satz_2'])) {
         if (isset($response['Einzel_2']['Satz_2']['Punkte_Heim'])) {
             $soloSatz_2_heim2 = $response['Einzel_2']['Satz_2']['Punkte_Heim'];
+             $soloSatz_2_heim2_Prob = $response['Einzel_2']['Satz_2']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Einzel_2']['Satz_2']['Punkte_Gast'])) {
             $soloSatz_2_gast2 = $response['Einzel_2']['Satz_2']['Punkte_Gast'];
+            $soloSatz_2_gast2_Prob = $response['Einzel_2']['Satz_2']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
     if (isset($response['Einzel_2']['Satz_3'])) {
         if (isset($response['Einzel_2']['Satz_3']['Punkte_Heim'])) {
             $soloSatz_3_heim2 = $response['Einzel_2']['Satz_3']['Punkte_Heim'];
+            $soloSatz_3_heim2_Prob = $response['Einzel_2']['Satz_3']['Punkte_Heim']['Punkte_Heim_Prob'];
         }
         if (isset($response['Einzel_2']['Satz_3']['Punkte_Gast'])) {
             $soloSatz_3_gast2 = $response['Einzel_2']['Satz_3']['Punkte_Gast'];
+            $soloSatz_3_gast2_Prob = $response['Einzel_2']['Satz_3']['Punkte_Gast']['Punkte_Gast_Prob'];
         }
     }
 }
@@ -470,8 +587,8 @@ if (isset($response['Einzel_4'])) {
             <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
                 @csrf
                 <input type="hidden" id="matchID" name="matchID">
-                <input type="hidden" id="soloCount" name="soloCount" value="2">
-                <input type="hidden" id="doubleCount" name="doubleCount" value="4">
+                <input type="hidden" id="soloCount" name="soloCount" value ="2">
+                <input type="hidden" id="doubleCount" name="doubleCount" value = "4">
                 <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
@@ -502,15 +619,19 @@ if (isset($response['Einzel_4'])) {
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
 
-                        <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $Heim[0]->Name ?? '' }}">
+                        <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3 ={$Heimmannschaft_Prob == True}"
+                        class="bg-yellow-300 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3 ={$Heimmannschaft_Prob == False}"
+                        value="{{ $Heim[0]->Name ?? '' }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $Gast[0]->Name ?? '' }}">
+                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" name="tfAway" id="tfAway" class="bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3 ={$Gastmannschaft_Prob == True}"
+                        class="bg-yellow-300 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3 ={$Gastmannschaft_Prob == False}"
+                        value="{{ $Gast[0]->Name ?? '' }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Schiedsrichter:</label>
-                        <input type="text" name="schiri" id="schiri" class="bg-gray-100 text-gray-900  w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input type="text" name="schiri" id="schiri" class="bg-gray-100 text-gray-900  w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3 ">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Austragungsort:</label>
@@ -662,46 +783,62 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1" value="GD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $dualHeim_name_11[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={dualHeim_name_11_Prob == True}"
+                                class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={dualHeim_name_11_Prob == False}"
+                                name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $dualHeim_name_11[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" value="{{ $dualHeim_name_11[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={dualHeim_name_11_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={dualHeim_name_11_Prob == False}"
+                                name="dualNnameHeim11" id="dualNnameHeim11" value="{{ $dualHeim_name_11[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $dualHeim_name_21[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualHeim_name_21_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualHeim_name_21_Prob == False}"
+                                name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $dualHeim_name_21[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualHeim_name_21_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualHeim_name_11_Prob == False}"
+                                name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" value="{{ $dualGast_name_11[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualGast_name_11_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualGast_name_11_Prob == False}"
+                                name="dualVnameGast11" id="dualVnameGast11" value="{{ $dualGast_name_11[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11" value="{{ $dualGast_name_11[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualGast_name_11_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualGast_name_11_Prob == False}"
+                                name="dualNnameGast11" id="dualNnameGast11" value="{{ $dualGast_name_11[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualGast_name_21_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualGast_name_21_Prob == False}"
+                                name="dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21" value="{{ $dualGast_name_21[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualGast_name_21_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualGast_name_21_Prob == False}"
+                                name="dualNnameGast21" id="dualNnameGast21" value="{{ $dualGast_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" value="{{ $dualSatz_1_heim1 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualSatz_1_heim1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualSatz_1_heim1_Prob == False}"
+                                onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" value="{{ $dualSatz_1_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" value="{{ $dualSatz_1_gast1 }}" />
+                                <input type="text" size="4"class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualSatz_1_gast1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualSatz_1_gast1_Prob == False}"
+                                onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" value="{{ $dualSatz_1_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(1)" name="dualSatz2heim1" id="dualSatz2heim1" value="{{ $dualSatz_2_heim1 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualSatz_2_heim1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualSatz_2_heim1_Prob == False}"
+                                onchange="changeSetSumD(1)" name="dualSatz2heim1" id="dualSatz2heim1" value="{{ $dualSatz_2_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1" value="{{ $dualSatz_2_gast1 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualSatz_2_gast1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualSatz_2_gast1_Prob == False}"
+                                onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1" value="{{ $dualSatz_2_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1" value="{{ $dualSatz_3_heim1 }}" />
+
+                            <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualSatz_3_heim1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualSatz_3_heim1_Prob == False}"
+                            onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1" value="{{ $dualSatz_3_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1" value="{{ $dualSatz_3_gast1 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={$dualSatz_3_gast1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={$dualSatz_3_gast1_Prob == False}"
+                                onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1" value="{{ $dualSatz_3_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim1" id="dualSetpointHeim1" />
@@ -729,46 +866,60 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType2" id="dualType2" value="GD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" value="{{ $dualHeim_name_12[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_12_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_12_Prob == False}"
+                                name="dualVnameHeim12" id="dualVnameHeim12" value="{{ $dualHeim_name_12[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12" value="{{ $dualHeim_name_12[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_12_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_12_Prob == False}"
+                                name="dualNnameHeim12" id="dualNnameHeim12" value="{{ $dualHeim_name_12[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $dualHeim_name_22[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_22_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_22_Prob == False}"
+                                name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $dualHeim_name_22[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" value="{{ $dualHeim_name_22[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_22_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_22_Prob == False}"
+                                name="dualNnameHeim22" id="dualNnameHeim22" value="{{ $dualHeim_name_22[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12" value="{{ $dualGast_name_12[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_12_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_12_Prob == False}"
+                                name="dualVnameGast12" id="dualVnameGast12" value="{{ $dualGast_name_12[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" value="{{ $dualGast_name_12[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_12_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_12_Prob == False}"
+                                name="dualNnameGast12" id="dualNnameGast12" value="{{ $dualGast_name_12[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" value="{{ $dualGast_name_22[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_22_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_22_Prob == False}"
+                                name="dualVnameGast22" id="dualVnameGast22" value="{{ $dualGast_name_22[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" value="{{ $dualGast_name_22[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_22_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_22_Prob == False}"
+                                name="dualNnameGast22" id="dualNnameGast22" value="{{ $dualGast_name_22[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" value="{{ $dualSatz_1_heim2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_1_heim2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_1_heim2_Prob == False}"
+                                onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" value="{{ $dualSatz_1_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2" value="{{ $dualSatz_1_gast2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_1_gast2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_1_gast2_Prob == False}"
+                                onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2" value="{{ $dualSatz_1_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2" value="{{ $dualSatz_2_heim2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_2_heim2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_2_heim2_Prob == False}"
+                                onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2" value="{{ $dualSatz_2_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2" value="{{ $dualSatz_2_gast2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_2_gast2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_2_gast2_Prob == False}"
+                                onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2" value="{{ $dualSatz_2_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2" value="{{ $dualSatz_3_heim2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_3_heim2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_3_heim2_Prob == False}"
+                                onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2" value="{{ $dualSatz_3_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2" value="{{ $dualSatz_3_gast2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_3_gast2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_3_gast2_Prob == False}"
+                                onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2" value="{{ $dualSatz_3_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim2" id="dualSetpointHeim2" />
@@ -796,46 +947,60 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType3" id="dualType3" value="DD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $dualHeim_name_13[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_13_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_13_Prob == False}"
+                                name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $dualHeim_name_13[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $dualHeim_name_13[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_13_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_13_Prob == False}"
+                                name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $dualHeim_name_13[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $dualHeim_name_23[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_23_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_23_Prob == False}"
+                                name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $dualHeim_name_23[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $dualHeim_name_23[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $duaGast_name_13_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_13_Prob == False}"
+                                name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" value="{{ $dualGast_name_13[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_13_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_13_Prob == False}"
+                                name="dualVnameGast13" id="dualVnameGast13" value="{{ $dualGast_name_13[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" value="{{ $dualGast_name_13[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_13_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_13_Prob == False}"
+                                name="dualNnameGast13" id="dualNnameGast13" value="{{ $dualGast_name_13[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" value="{{ $dualGast_name_23[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_23_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_23_Prob == False}"
+                                name="dualVnameGast23" id="dualVnameGast23" value="{{ $dualGast_name_23[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" value="{{ $dualGast_name_23[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_23_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_23_Prob == False}"
+                                name="dualNnameGast23" id="dualNnameGast23" value="{{ $dualGast_name_23[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value="{{ $dualSatz_1_heim3 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_1_heim3_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_1_heim3_Prob == False}"
+                                onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value="{{ $dualSatz_1_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value="{{ $dualSatz_1_gast3 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_1_gast3_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_1_gast3_Prob == False}"
+                                onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value="{{ $dualSatz_1_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" value="{{ $dualSatz_2_heim3 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_2_heim3_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_2_heim3_Prob == False}"
+                                onchange="changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" value="{{ $dualSatz_2_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value="{{ $dualSatz_2_gast3 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_2_gast3_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_2_gast3_Prob == False}"
+                                onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value="{{ $dualSatz_2_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" value="{{ $dualSatz_3_heim3 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_3_heim3_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_3_heim3_Prob == False}"
+                                onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" value="{{ $dualSatz_3_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" value="{{ $dualSatz_3_gast3 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_3_gast3_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_3_gast3_Prob == False}"
+                                onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" value="{{ $dualSatz_3_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim3" id="dualSetpointHeim3" />
@@ -862,46 +1027,60 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4" value="HD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $dualHeim_name_14[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_14_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_14_Prob == False}"
+                                name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $dualHeim_name_14[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14" value="{{ $dualHeim_name_14[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_14_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_14_Prob == False}"
+                                name="dualNnameHeim14" id="dualNnameHeim14" value="{{ $dualHeim_name_14[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $dualHeim_name_24[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_24_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_24_Prob == False}"
+                                name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $dualHeim_name_24[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" value="{{ $dualHeim_name_24[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualHeim_name_24_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualHeim_name_24_Prob == False}"
+                                name="dualNnameHeim24" id="dualNnameHeim24" value="{{ $dualHeim_name_24[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" value="{{ $dualGast_name_14[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_14_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_14_Prob == False}"
+                                name="dualVnameGast14" id="dualVnameGast14" value="{{ $dualGast_name_14[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" value="{{ $dualGast_name_14[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_14_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_14_Prob == False}"
+                                name="dualNnameGast14" id="dualNnameGast14" value="{{ $dualGast_name_14[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" value="{{ $dualGast_name_24[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_24_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_24_Prob == False}"
+                                name="dualVnameGast24" id="dualVnameGast24" value="{{ $dualGast_name_24[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" value="{{ $dualGast_name_24[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualGast_name_24_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualGast_name_24_Prob == False}"
+                                name="dualNnameGast24" id="dualNnameGast24" value="{{ $dualGast_name_24[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value="{{ $dualSatz_1_heim4 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_1_heim4_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_1_heim4_Prob == False}"
+                                onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value="{{ $dualSatz_1_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" value="{{ $dualSatz_1_gast4 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_1_gast4_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_1_gast4_Prob == False}"
+                                onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" value="{{ $dualSatz_1_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4" value="{{ $dualSatz_2_heim4 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_2_heim4_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_2_heim4_Prob == False}"
+                                onchange="changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4" value="{{ $dualSatz_2_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" value="{{ $dualSatz_2_gast4 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_2_gast4_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_2_gast4_Prob == False}"
+                                onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" value="{{ $dualSatz_2_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" value="{{ $dualSatz_3_heim4 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_3_heim4_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_3_heim4_Prob == False}"
+                                onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" value="{{ $dualSatz_3_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" value="{{ $dualSatz_3_gast4 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $dualSatz_3_gast4_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $dualSatz_3_gast4_Prob == False}"
+                                onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" value="{{ $dualSatz_3_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim4" id="dualSetpointHeim4" />
@@ -1023,35 +1202,45 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType1" id="soloType1" value="HE" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloHeim_name_1[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloHeim_name_1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloHeim_name_1_Prob == False}"
+                                name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloHeim_name_1[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloHeim_name_1[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloHeim_name_1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloHeim_name_1_Prob == False}"
+                                name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloHeim_name_1[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloGast_name_1[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloGast_name_1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloGast_name_1_Prob == False}"
+                                name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloGast_name_1[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloGast_name_1[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloGast_name_1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloGast_name_1_Prob == False}"
+                                name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloGast_name_1[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloSatz_1_heim1 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $$soloSatz_1_heim1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_1_heim1_Prob == False}"
+                                onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloSatz_1_heim1 }}" />
 
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1gast1" id="soloSatz1gast1" value="{{ $soloSatz_1_gast1 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $$soloSatz_1_gast1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_1_gast1_Prob == False}"
+                                onchange=" changeSetSumS(1)" name="soloSatz1gast1" id="soloSatz1gast1" value="{{ $soloSatz_1_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz2heim1" id="soloSatz2heim1" value="{{ $soloSatz_2_heim1 }}" />
+                                <input type="text" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $$soloSatz_2_heim1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_2_heim1_Prob == False}"
+                                onchange=" changeSetSumS(1)" name="soloSatz2heim1" id="soloSatz2heim1" value="{{ $soloSatz_2_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz2gast1" id="soloSatz2gast1" value="{{ $soloSatz_2_gast1 }}" />
+                                <input type="text" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $$soloSatz_2_gast1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_2_gast1_Prob == False}"
+                                onchange=" changeSetSumS(1)" name="soloSatz2gast1" id="soloSatz2gast1" value="{{ $soloSatz_2_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz3heim1" id="soloSatz3heim1" value="{{ $soloSatz_3_heim1 }}" />
+                                <input type="text" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $$soloSatz_3_heim1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_3_heim1_Prob == False}"
+                                onchange=" changeSetSumS(1)" name="soloSatz3heim1" id="soloSatz3heim1" value="{{ $soloSatz_3_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz3gast1" id="soloSatz3gast1" value="{{ $soloSatz_3_gast1 }}" />
+                                <input type="text" size="4"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $$soloSatz_3_gast1_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_3_gast1_Prob == False}"
+                                onchange=" changeSetSumS(1)" name="soloSatz3gast1" id="soloSatz3gast1" value="{{ $soloSatz_3_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim1" id="soloSetpointHeim1" />
@@ -1079,34 +1268,44 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType2" id="soloType2" value="DE" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloHeim_name_2[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20"  class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloHeim_name_2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloHeim_name_2_Prob == False}"
+                                name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloHeim_name_2[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloHeim_name_2[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloHeim_name_2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloHeim_name_2_Prob == False}"
+                                name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloHeim_name_2[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloGast_name_2[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloGast_name_2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloGast_name_2_Prob == False}"
+                                name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloGast_name_2[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloGast_name_2[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloGast_name_2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloGast_name_2_Prob == False}"
+                                name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloGast_name_2[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloSatz_1_heim2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloSatz_1_heim2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_1_heim2_Prob == False}"
+                                onchange=" changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloSatz_1_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloSatz_1_gast2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloSatz_1_gast2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_1_gast2_Prob == False}"
+                                onchange=" changeSetSumS(2)" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloSatz_1_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloSatz_2_heim2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloSatz_2_heim2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_2_heim2_Prob == False}"
+                                onchange=" changeSetSumS(2)" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloSatz_2_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloSatz_2_gast2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloSatz_2_gast2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_2_gast2_Prob == False}"
+                                onchange=" changeSetSumS(2)" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloSatz_2_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloSatz_3_heim2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloSatz_3_heim2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_3_heim2_Prob == False}"
+                                onchange=" changeSetSumS(2)" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloSatz_3_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onchange=" changeSetSumS(2)" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloSatz_3_gast2 }}" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5 ={ $soloSatz_3_gast2_Prob == True}" class="bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ={ $soloSatz_3_gast2_Prob == False}"
+                                onchange=" changeSetSumS(2)" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloSatz_3_gast2 }}" />
                             </td>
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">

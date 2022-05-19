@@ -336,7 +336,7 @@ $arten = QueryController::allTypes();
                                     <tr class="border-solid border-b-2 border-black w-44 sm:w-auto flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0" id="doppel3">
                                         <input type="hidden" id="doppelDuellID3" name="doppelDuellID3" value="{{ $doppelduell[2]->Duell_ID }}">
                                         <td class="bg-gray-100 h-8 text-black border-solid border-b-2 sm:border-r-2 border-black">
-                                            <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" readonly="readonly" name="dualType3" id="dualType3" value="{{ $doppelduell[2]->Duellart }}" />
+                                            <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full cursor-default" name="dualType3" id="dualType3" value="{{ $doppelduell[2]->Duellart }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                             <input type="text" onload="VnameH(this.id)" readonly="readonly" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right cursor-default sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $doppelduell[2]->Vorname_S1_H }}" />

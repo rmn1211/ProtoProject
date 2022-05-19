@@ -49,12 +49,12 @@ color:black;}
       <div class="w-1/4 bg-green-400 h-12">
      
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Liga:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="Liga()" onfocusin="Liga()"type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full border-gray-700 border-r-2 focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="Liga()"type="text" id="liga" name="liga" class="bg-gray-100 text-gray-900 w-full border-gray-700 border-r-2 focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
                     </div>
 
                     <div class="w-1/4 bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Mannschaft:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" onfocusin="Mannschaft()"oninput="Mannschaft()" type="text" name="team" id="team" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="Mannschaft()" type="text" name="team" id="team" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-4 border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" >
                     </div>
                     
                 </div>
@@ -83,9 +83,12 @@ color:black;}
 
 
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
-          alleLigen();
-         alleTeams();
+        
          $(document).ready(function() {
+          ligaregion();
+          ligateam();
+           document.getElementById("team").disabled = true;
+            document.getElementById("liga").disabled = true;
          $("#region").autocomplete({
          minLength: 0,
                 source: function(request, response) {
@@ -115,8 +118,9 @@ color:black;}
                     var value = ui.item.value;
                     $('#region').val(ui.item.label);
                      $('#regionID').val(ui.item.value);
-                      ligaregion();
-                      teamregion();
+                    
+                      document.getElementById("liga").disabled = false;
+                      document.getElementById("team").disabled = true;
                      document.getElementById("selectedID").value = "";
                       document.getElementById("liga").value = "";
                        document.getElementById("ligaID").value = "";
@@ -131,8 +135,8 @@ color:black;}
 
          function regioncheck(){
          if( !$('#region').val() ) {
-         alleLigen();
-         alleTeams();
+        document.getElementById("liga").disabled = true;
+        document.getElementById("team").disabled = true;
         document.getElementById("selectedID").value = "";
                       document.getElementById("liga").value = "";
                        document.getElementById("ligaID").value = "";
@@ -141,21 +145,21 @@ color:black;}
 
          }}
         function Liga(){
-          if( !$('#region').val() ) {alleTeams();
-          }
-          else{
-          teamregion();
-          }
+          if( !$('#liga').val() ) {
+          document.getElementById("team").disabled = true;  
         document.getElementById("ligaID").value = "";
          document.getElementById("selectedID").value = "";
+            document.getElementById("team").value = ""; }
+        
+       
                    
-                        document.getElementById("team").value = "";
+                     
                          document.getElementById("idForm").submit(); 
         
         
 
         }
-        function Mannschaft() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
+        function Mannschaft() { 
          if( !$('#team').val() ) {
         document.getElementById("selectedID").value = "";
         document.getElementById("idForm").submit(); 
@@ -200,128 +204,8 @@ color:black;}
                         return false;
                     }
                 });}
-        function teamregion(){
-        $("#team").autocomplete({
-          minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('regionMannschaften') }}", 
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                region: $("#regionID").val()
+        
 
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#team').val(ui.item.label);
-                          $('#selectedID').val(ui.item.value);
-                        document.getElementById("idForm").submit(); 
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });}
-        function alleTeams(){
-        $("#team").autocomplete({
-          minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('mannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                               
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#team').val(ui.item.label);
-                          $('#selectedID').val(ui.item.value);
-                        document.getElementById("idForm").submit(); 
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });
-
-
-        }
-
-        function alleLigen(){
-        $("#liga").autocomplete({
-          minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('alleLigen2') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data:{ 
-                            _token: CSRF_TOKEN,
-                            search: request.term
-                           
-                       } ,
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#liga').val(ui.item.label);
-                    $('#ligaID').val(ui.item.value);
-                    document.getElementById("selectedID").value = "";
-                   ligateam();
-                        document.getElementById("team").value = "";
-                       document.getElementById("idForm").submit(); 
-                    
-                  
-                    return false;
-                }
-            });
-
-        }
         function ligaregion(){
         
         $("#liga").autocomplete({
@@ -355,7 +239,7 @@ color:black;}
                     var value = ui.item.value;
                     $('#liga').val(ui.item.label);
                     $('#ligaID').val(ui.item.value);
-                    ligateam();
+                   document.getElementById("team").disabled = false;
                    document.getElementById("selectedID").value = "";
                     
                         document.getElementById("team").value = "";

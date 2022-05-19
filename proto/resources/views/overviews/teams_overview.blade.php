@@ -70,7 +70,7 @@ use App\Http\Controllers\QueryController;
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
 
                 $(document).ready(function() {
-                    alleLigen();
+                   ligaregion();
                     $("#region").autocomplete({
                         minLength: 0,
                         minChars: 0,
@@ -107,6 +107,7 @@ use App\Http\Controllers\QueryController;
                             $('#regionID').val(ui.item.value);
                             document.getElementById("selectedID").value = "";
                             ligaregion();
+                            document.getElementById("liga").disabled = false;
                             document.getElementById("liga").value = "";
                             document.getElementById("idForm").submit();
                             // $("#employee_search").text(ui.item.label); // display the selected text
@@ -120,7 +121,7 @@ use App\Http\Controllers\QueryController;
                 function regioncheck() {
                     if (!$('#region').val()) {
                         document.getElementById("selectedID").value = "";
-                        alleLigen();
+                      document.getElementById("liga").disabled = true;
                         document.getElementById("liga").value = "";
                         document.getElementById("regionID").value = "";
                         document.getElementById("idForm").submit();
@@ -139,46 +140,7 @@ use App\Http\Controllers\QueryController;
 
                 }
 
-                function alleLigen() {
-                    $("#liga").autocomplete({
-                        minLength: 0,
-                        source: function(request, response) {
-                            // Fetch data
-                            $.ajax({
-                                url: "{{ route('alleLigen2') }}",
-                                type: 'post',
-                                dataType: "json",
-                                data: {
-                                    _token: CSRF_TOKEN,
-                                    search: request.term
-
-                                },
-                                success: function(data) {
-                                    response(data.map(function(value) {
-                                        return {
-                                            'label': value.Name,
-                                            'value': value.ID
-                                        };
-                                    }));
-                                }
-                            });
-                        },
-                        select: function(event, ui) {
-                            // Set selection
-                            event.preventDefault();
-                            var label = ui.item.label;
-                            var value = ui.item.value;
-                            $('#liga').val(ui.item.label);
-                            $('#selectedID').val(ui.item.value);
-
-                            document.getElementById("idForm").submit();
-
-                            return false;
-                        }
-                    });
-
-
-                }
+                
 
                 function ligaregion() {
 

@@ -177,28 +177,28 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" />
+                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" />
+                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" />
+                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" />
+                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11" />
+                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" />
+                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21" />
+                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" />
@@ -244,28 +244,28 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType2" id="dualType2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" />
+                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" />
+                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12" />
+                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" />
+                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" />
+                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" />
+                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" />
@@ -310,28 +310,28 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType3" id="dualType3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" />
+                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" />
+                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" />
+                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" />
@@ -378,28 +378,28 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" />
+                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" />
+                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" />
+                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" />
+                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" />
@@ -600,16 +600,16 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType1" id="soloType1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" />
+                                <input type="text" onload="NnameH(this.id)"  onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" />
@@ -655,16 +655,16 @@
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType2" id="soloType2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim2" id="soloVnameHeim2" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');"  size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim2" id="soloVnameHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameHeim2" id="soloNnameHeim2" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameHeim2" id="soloNnameHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast2" id="soloVnameGast2" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');"  size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast2" id="soloVnameGast2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameGast2" id="soloNnameGast2" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameGast2" id="soloNnameGast2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 sm:text-right  text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" />
@@ -778,10 +778,11 @@
 
 
         $(document).ready(function() {
+             document.getElementById("liga").disabled = true;
             document.getElementById("saison").disabled = true;
             document.getElementById("runde").disabled = true;
             document.getElementById("tag").disabled = true;
-            alleLigen();
+           
             saison();
             runde();
             tag();
@@ -823,6 +824,7 @@
                     document.getElementById("tag").disabled = true;
                     document.getElementById("runde").disabled = true;
                     ligaregion();
+                    document.getElementById("liga").disabled = false;
                     document.getElementById("liga").value = "";
                     document.getElementById("ligaID").value = "";
                     document.getElementById("saison").value = "";
@@ -846,7 +848,7 @@
         function regioncheck() {
             if (!$('#region').val()) {
 
-                alleLigen();
+                document.getElementById("liga").disabled = true;
                 document.getElementById("saison").disabled = true;
                 document.getElementById("tag").disabled = true;
                 document.getElementById("runde").disabled = true;
