@@ -80,7 +80,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $("#upload").on("submit", function() {
-                document.getElementById("loader").style.display = "flex";
+                document.getElementById("loader").style.visibility = "visible";
             }); //submit
         }); //document ready
     </script>
