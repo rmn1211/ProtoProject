@@ -28,7 +28,7 @@
                 -webkit-animation: spin 2s linear infinite;
                 /* Safari */
                 animation: spin 2s linear infinite;
-                display: none;
+                visibility: hidden;
                 margin: auto;
             }
 
