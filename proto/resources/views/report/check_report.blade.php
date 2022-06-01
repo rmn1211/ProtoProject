@@ -27,47 +27,31 @@ $arten = QueryController::allTypes();
 </datalist>
 <!-- HTML Listen fuellen ENDE-->
 @section('page-content')
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
 
-    <head>
-
-        <!-- Meta -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <style>
-            html,
-            body {
-                height: 100%;
+        @media (min-width: 640px) {
+            table {
+                display: inline-table !important;
             }
 
-            @media (min-width: 640px) {
-                table {
-                    display: inline-table !important;
-                }
-
-                thead tr:not(:first-child) {
-                    display: none;
-                }
+            thead tr:not(:first-child) {
+                display: none;
             }
+        }
 
-            td:not(:last-child) {
-                border-bottom: 0;
-            }
+        td:not(:last-child) {
+            border-bottom: 0;
+        }
 
-            th:not(:last-child) {
-                border-bottom: 2px solid rgba(0, 0, 0, .1);
-            }
+        th:not(:last-child) {
+            border-bottom: 2px solid rgba(0, 0, 0, .1);
+        }
 
-        </style>
-
-    </head>
+    </style>
     <section>
         <h3 class="font-bold  text-2xl">Spielberichtsbogen</h3>
     </section>
@@ -81,7 +65,7 @@ $arten = QueryController::allTypes();
                 <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" onChange="markInput(this)" class="bg-gray-100 text-gray-900 w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $region->name }}"  >
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" onChange="markInput(this)" class="bg-gray-100 text-gray-900 w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $region->name }}">
 
                     </div>
 
@@ -277,19 +261,19 @@ $arten = QueryController::allTypes();
                                     <input type="text" list="arten" size="4" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1" value="{{ $doppelduell[0]->Duellart }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $doppelduell[0]->Vorname_S1_H }}" />
+                                    <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $doppelduell[0]->Vorname_S1_H }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                     <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" value="{{ $doppelduell[0]->Nachname_S1_H }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $doppelduell[0]->Vorname_S2_H }}" />
+                                    <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $doppelduell[0]->Vorname_S2_H }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $doppelduell[0]->Nachname_S2_H }}" />
+                                    <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $doppelduell[0]->Nachname_S2_H }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" value="{{ $doppelduell[0]->Vorname_S1_G }}" />
+                                    <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" value="{{ $doppelduell[0]->Vorname_S1_G }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                     <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11" value="{{ $doppelduell[0]->Nachname_S1_G }}" />
@@ -350,7 +334,7 @@ $arten = QueryController::allTypes();
                                         <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12" value="{{ $doppelduell[1]->Nachname_S1_H }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $doppelduell[1]->Vorname_S2_H }}" />
+                                        <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $doppelduell[1]->Vorname_S2_H }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                         <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" value="{{ $doppelduell[1]->Nachname_S2_H }}" />
@@ -362,10 +346,10 @@ $arten = QueryController::allTypes();
                                         <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" value="{{ $doppelduell[1]->Nachname_S1_G }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" value="{{ $doppelduell[1]->Vorname_S2_G }}" />
+                                        <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" value="{{ $doppelduell[1]->Vorname_S2_G }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                        <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" value="{{ $doppelduell[1]->Nachname_S2_G }}" />
+                                        <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" value="{{ $doppelduell[1]->Nachname_S2_G }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                         <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" value="{{ $doppelduell[1]->Satz_1_Heim }}" />
@@ -411,13 +395,13 @@ $arten = QueryController::allTypes();
                                             <input type="text" list="arten" size="4" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType3" id="dualType3" value="{{ $doppelduell[2]->Duellart }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $doppelduell[2]->Vorname_S1_H }}" />
+                                            <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $doppelduell[2]->Vorname_S1_H }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $doppelduell[2]->Nachname_S1_H }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $doppelduell[2]->Vorname_S2_H }}" />
+                                            <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $doppelduell[2]->Vorname_S2_H }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                             <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $doppelduell[2]->Nachname_S2_H }}" />
@@ -426,13 +410,13 @@ $arten = QueryController::allTypes();
                                             <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" value="{{ $doppelduell[2]->Vorname_S1_G }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                            <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" value="{{ $doppelduell[2]->Nachname_S1_G }}" />
+                                            <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" value="{{ $doppelduell[2]->Nachname_S1_G }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                            <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" value="{{ $doppelduell[2]->Vorname_S2_G }}" />
+                                            <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast23" id="dualVnameGast23" value="{{ $doppelduell[2]->Vorname_S2_G }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                            <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" value="{{ $doppelduell[2]->Nachname_S2_G }}" />
+                                            <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" value="{{ $doppelduell[2]->Nachname_S2_G }}" />
                                         </td>
                                         <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                             <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value="{{ $doppelduell[2]->Satz_1_Heim }}" />
@@ -478,13 +462,13 @@ $arten = QueryController::allTypes();
                                                 <input type="text" list="arten" size="4" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4" value="{{ $doppelduell[3]->Duellart }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $doppelduell[3]->Vorname_S1_H }}" />
+                                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $doppelduell[3]->Vorname_S1_H }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14" value="{{ $doppelduell[3]->Nachname_S1_H }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $doppelduell[3]->Vorname_S2_H }}" />
+                                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $doppelduell[3]->Vorname_S2_H }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                                 <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" value="{{ $doppelduell[3]->Nachname_S2_H }}" />
@@ -493,13 +477,13 @@ $arten = QueryController::allTypes();
                                                 <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" value="{{ $doppelduell[3]->Vorname_S1_G }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" value="{{ $doppelduell[3]->Nachname_S1_G }}" />
+                                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" value="{{ $doppelduell[3]->Nachname_S1_G }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                                 <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" value="{{ $doppelduell[3]->Vorname_S2_G }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" value="{{ $doppelduell[3]->Nachname_S2_G }}" />
+                                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" value="{{ $doppelduell[3]->Nachname_S2_G }}" />
                                             </td>
                                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value="{{ $doppelduell[3]->Satz_1_Heim }}" />
@@ -644,16 +628,16 @@ $arten = QueryController::allTypes();
                                     <input type="text" list="arten" size="4" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType1" id="soloType1" value="{{ $soloduell[0]->Duellart }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameH(this.id)"onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloduell[0]->Vorname_S1 }}" />
+                                    <input type="text" onload="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloduell[0]->Vorname_S1 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                     <input type="text" onload="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloduell[0]->Nachname_S1 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                    <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');"  size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloduell[0]->Vorname_S2 }}" />
+                                    <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloduell[0]->Vorname_S2 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                    <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloduell[0]->Nachname_S2 }}" />
+                                    <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" onChange="markInput(this)" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloduell[0]->Nachname_S2 }}" />
                                 </td>
                                 <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                     <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloduell[0]->Satz_1_Heim }}" />
@@ -699,13 +683,13 @@ $arten = QueryController::allTypes();
                                         <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloType2" id="soloType2" value="{{ $soloduell[1]->Duellart }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');"  size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloduell[1]->Vorname_S1 }}" />
+                                        <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloduell[1]->Vorname_S1 }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                         <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloduell[1]->Nachname_S1 }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                        <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');"  size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloduell[1]->Vorname_S2 }}" />
+                                        <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" onChange="markInput(this)" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloduell[1]->Vorname_S2 }}" />
                                     </td>
                                     <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                         <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" onChange="markInput(this)" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloduell[1]->Nachname_S2 }}" />
@@ -826,718 +810,4 @@ $arten = QueryController::allTypes();
             <!--    <button class='fixed bottom-0 right-2 my-2 float-right px-3 py-3 rounded bg-green-500 active:bg-green-700 text-white text-sm opacity-70 hover:opacity-100 font-bold lg:hidden'>TAB</button>-->
         </div>
     </section>
-    <script type="text/javascript">
-        // CSRF Token
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        $(document).ready(function() {
-       if ($('#region').val()) {
-               ligaregion();}
-            saison();
-            runde();
-            tag();
-            $("#region").autocomplete({
-                minLength: 0,
-                minChars: 0,
-
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('alleRegionen') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-
-                                };
-                            }));
-                        }
-                    });
-                },
-                // focus:function() {if (this.value == ""){
-                //  $(this).autocomplete("search");}}
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#region').val(ui.item.label);
-                    $('#regionID').val(ui.item.value);
-                    document.getElementById("saison").disabled = true;
-                    document.getElementById("tag").disabled = true;
-                    document.getElementById("runde").disabled = true;
-                    ligaregion();
-                    document.getElementById("liga").disabled = false;
-                    document.getElementById("liga").value = "";
-                    document.getElementById("ligaID").value = "";
-                    document.getElementById("saison").value = "";
-                    document.getElementById("saisonID").value = "";
-                    document.getElementById("runde").value = "";
-                    document.getElementById("rundeID").value = "";
-                    document.getElementById("tag").value = "";
-                    document.getElementById("tagID").value = "";
-                    document.getElementById("tfHome").value = "";
-                    document.getElementById("HeimID").value = "";
-                    document.getElementById("tfAway").value = "";
-                    document.getElementById("GastID").value = "";
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-        });
-
-        function regioncheck() {
-            if (!$('#region').val()) {
-                document.getElementById("liga").disabled = true;
-                document.getElementById("saison").disabled = true;
-                document.getElementById("tag").disabled = true;
-                document.getElementById("runde").disabled = true;
-                document.getElementById("liga").value = "";
-                document.getElementById("ligaID").value = "";
-                document.getElementById("regionID").value = "";
-                document.getElementById("saison").value = "";
-                document.getElementById("saisonID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("tfHome").value = "";
-                document.getElementById("HeimID").value = "";
-                document.getElementById("tfAway").value = "";
-                document.getElementById("GastID").value = "";
-            }
-        }
-
-        function check() {
-            if (!$('#liga').val()) {
-                document.getElementById("ligaID").value = "";
-                document.getElementById("saison").value = "";
-                document.getElementById("saisonID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("tfHome").value = "";
-                document.getElementById("HeimID").value = "";
-                document.getElementById("tfAway").value = "";
-                document.getElementById("GastID").value = "";
-                document.getElementById("saison").disabled = true;
-                document.getElementById("tag").disabled = true;
-                document.getElementById("runde").disabled = true;
-            }
-        }
-
-     
-
-        function ligaregion() {
-            $("#liga").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('regionLigen') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            region: $("#region").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#liga').val(ui.item.label);
-                    $('#ligaID').val(ui.item.value);
-                    document.getElementById("saison").disabled = false;
-                    return false;
-                }
-            });
-        }
-
-        function saisoncheck() {
-            if (!$('#saison').val()) {
-                document.getElementById("runde").value = "";
-                document.getElementById("saisonID").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("runde").disabled = true;
-                document.getElementById("tag").disabled = true;
-            }
-        }
-
-        function saison() {
-            $("#saison").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('saison') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            ligaID: $("#ligaID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#saison').val(ui.item.label);
-                    $('#saisonID').val(ui.item.value);
-                    document.getElementById("runde").disabled = false;
-                    return false;
-                }
-            });
-
-        }
-
-        function rundecheck() {
-            if (!$('#runde').val()) {
-
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-
-                document.getElementById("tag").disabled = true;
-
-            }
-        }
-
-        function runde() {
-
-
-            $("#runde").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('runde') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            saisonID: $("#saisonID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#runde').val(ui.item.label);
-                    $('#rundeID').val(ui.item.value);
-                    document.getElementById("tag").disabled = false;
-                    return false;
-                }
-            });
-
-        }
-
-        function tagcheck() {
-            if (!$('#tag').val()) {
-                document.getElementById("tagID").value = "";
-            }
-        }
-
-        function tag() {
-
-
-            $("#tag").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('tag') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            rundeID: $("#rundeID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#tag').val(ui.item.label);
-                    $('#tagID').val(ui.item.value);;
-                    return false;
-                }
-            });
-
-        }
-
-
-        function MannschaftenH() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-            if ($("#liga").val().length > 0) {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('alleMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                liga: $("#liga").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });
-            } else if ($("#region").val().length > 0) {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('regionMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                region: $("#regionID").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-            } else {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('mannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-
-
-            }
-        }
-
-        function MannschaftenG() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-
-            if ($("#liga").val().length > 0) {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('alleMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                liga: $("#liga").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });
-            } else if ($("#region").val().length > 0) {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('regionMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                region: $("#regionID").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-            } else {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('mannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-
-
-            }
-        }
-
-        function NnameH(elem) {
-            var id = document.getElementById(elem);
-            var fNameID = elem.replace("Nname", "Vname");
-            var fName = document.getElementById(fNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerNname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#HeimID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelN);
-                    $(fName).val(ui.item.labelV);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function VnameH(elem) { //  erstellt liste mit passenden vornamen der heimmannschaft
-            var id = document.getElementById(elem);
-            var nNameID = elem.replace("Vname", "Nname");
-            console.log(nNameID);
-            var nName = document.getElementById(nNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch    
-                    $.ajax({
-                        url: "{{ route('getSpielerVname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#HeimID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelV);
-                    $(nName).val(ui.item.labelN);
-
-                  
-                    return false;
-                }
-            });
-
-        }
-
-        function NnameG(elem) {
-            var id = document.getElementById(elem);
-            var fNameID = elem.replace("Nname", "Vname");
-            var fName = document.getElementById(fNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerNname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#GastID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelN);
-                    $(fName).val(ui.item.labelV);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function VnameG(elem) {
-            var id = document.getElementById(elem);
-            var nNameID = elem.replace("Vname", "Nname");
-            var nName = document.getElementById(nNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerVname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#GastID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelV);
-                    $(nName).val(ui.item.labelN);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-    </script>
 @endsection

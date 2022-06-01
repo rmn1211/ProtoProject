@@ -74,6 +74,6 @@ class PageController extends Controller
     }
     public function testarea()
     {
-        return view('report.testarea');
+        return view('report.test');
     }
 }

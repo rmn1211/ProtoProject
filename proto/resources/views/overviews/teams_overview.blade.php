@@ -5,22 +5,6 @@ use App\Http\Controllers\QueryController;
 
 @endphp
 @section('page-content')
-
-    <head>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-        <!-- Meta -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    </head>
     <style>
         .alle {
             background-color: white;
@@ -54,23 +38,23 @@ use App\Http\Controllers\QueryController;
             <form class="" name="idForm" id="idForm" method="GET" target="teams_table" action="{{ url('/overviews/teams_table') }}">
                 <input type="hidden" name="selectedID" id="selectedID" value="">
                 <input type="hidden" name="regionID" id="regionID" value="">
-            </form </br> </br> </br> </br>
+            </form>
 
             <iframe name="teams_table" id="teams_table" src="{{ url('/overviews/teams_table') }}" class="" width="100%" height="100%">
             </iframe>
             <br>
 
             <!-- FORM besteht nur aus Hidden Inputfield, dass die ID enthält, da nur diese benötigt wird.
-        Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht
-        <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}"
-          <input type="hidden" name="selectedID" id="selectedID" value="">
-          <input class = "bg-green-500"type="submit" value="Detail">
-        </form> -->
+                        Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht
+                        <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}"
+                          <input type="hidden" name="selectedID" id="selectedID" value="">
+                          <input class = "bg-green-500"type="submit" value="Detail">
+                        </form> -->
             <script type="text/javascript">
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
 
                 $(document).ready(function() {
-                   ligaregion();
+                    ligaregion();
                     $("#region").autocomplete({
                         minLength: 0,
                         minChars: 0,
@@ -121,7 +105,7 @@ use App\Http\Controllers\QueryController;
                 function regioncheck() {
                     if (!$('#region').val()) {
                         document.getElementById("selectedID").value = "";
-                      document.getElementById("liga").disabled = true;
+                        document.getElementById("liga").disabled = true;
                         document.getElementById("liga").value = "";
                         document.getElementById("regionID").value = "";
                         document.getElementById("idForm").submit();
@@ -140,7 +124,7 @@ use App\Http\Controllers\QueryController;
 
                 }
 
-                
+
 
                 function ligaregion() {
 

@@ -1,62 +1,45 @@
 @extends('heafoo')
 @section('page-content')
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
 
-    <head>
-
-        <!-- Meta -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <style>
-            html,
-            body {
-                height: 100%;
+        @media (min-width: 640px) {
+            table {
+                display: inline-table !important;
             }
 
-            @media (min-width: 640px) {
-                table {
-                    display: inline-table !important;
-                }
-
-                thead tr:not(:first-child) {
-                    display: none;
-                }
+            thead tr:not(:first-child) {
+                display: none;
             }
+        }
 
-            td:not(:last-child) {
-                border-bottom: 0;
-            }
+        td:not(:last-child) {
+            border-bottom: 0;
+        }
 
-            th:not(:last-child) {
-                border-bottom: 2px solid rgba(0, 0, 0, .1);
-            }
+        th:not(:last-child) {
+            border-bottom: 2px solid rgba(0, 0, 0, .1);
+        }
 
-        </style>
-
-    </head>
+    </style>
     <section>
-        <h3 class="font-bold  text-2xl">Spielberichtsbogen</h3>
+        <h3 class="font-bold text-2xl">Spielberichtsbogen</h3>
     </section>
-    <section class="mt-10 overflow-auto">
+    <section class="mt-10">
         <div class="w-full flex flex-row lg:justify-center">
             <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
                 @csrf
                 <input type="hidden" id="matchID" name="matchID">
                 <input type="hidden" id="soloCount" name="soloCount" value="2">
                 <input type="hidden" id="doubleCount" name="doubleCount" value="4">
-                <div class="flex mb-4" id="matchRow">
+                <div class="flex mb-4 overflow-x:auto" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
                         <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
-
                     </div>
-
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
                         <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100   border-gray-700 border-r-2 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
@@ -74,7 +57,6 @@
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Spieltag:</label>
                         <input type="text" oninput="tagcheck()" onfocus="javascript:$(this).autocomplete('search');" name="tag" id="tag" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
-
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
                         <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" name=" tfHome" id="tfHome" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3">
@@ -92,8 +74,6 @@
                         <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
                 </div>
-
-
                 <h1>Doppel</h1>
                 <table class="w-full flex flex-row flex-wrap rounded-lg my-5" id="tabDouble">
                     <thead>
@@ -108,43 +88,8 @@
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Sätze</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid align-middle text-center" rowspan="2" colspan="2">Punkte</th>
                         </tr>
-
-                        <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Heim</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Gast</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler 2: Gast</th>
-                            <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
-                        </tr>
-
                     </thead>
                     <thead>
-                        <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
-                        </tr>
-
                         <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                             <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
                             <th class="text-center h-8 sm:h-auto">Vorname</th>
@@ -175,28 +120,28 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim11" id="dualVnameHeim11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim11" id="dualNnameHeim11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim21" id="dualVnameHeim21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim21" id="dualNnameHeim21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast11" id="dualVnameGast11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast11" id="dualNnameGast11" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast21" id="dualVnameGast21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast21" id="dualNnameGast21" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" />
@@ -242,7 +187,7 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType2" id="dualType2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim12" id="dualVnameHeim12" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim12" id="dualNnameHeim12" />
@@ -251,19 +196,19 @@
                                 <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim22" id="dualVnameHeim22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim22" id="dualNnameHeim22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast12" id="dualVnameGast12" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast12" id="dualNnameGast12" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast22" id="dualVnameGast22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast22" id="dualNnameGast22" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" />
@@ -311,16 +256,16 @@
                                 <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim13" id="dualVnameHeim13" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)"  onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim13" id="dualNnameHeim13" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim23" id="dualVnameHeim23" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim23" id="dualNnameHeim23" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast13" id="dualVnameGast13" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast13" id="dualNnameGast13" />
@@ -332,22 +277,22 @@
                                 <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast23" id="dualNnameGast23" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right cursor-default p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim3" id="dualSetpointHeim3" />
@@ -376,22 +321,22 @@
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameHeim14" id="dualVnameHeim14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim14" id="dualNnameHeim14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)"  onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameHeim24" id="dualVnameHeim24" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameHeim24" id="dualNnameHeim24" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)"  onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="dualVnameGast14" id="dualVnameGast14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)"  onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast14" id="dualNnameGast14" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="dualVnameGast24" id="dualVnameGast24" />
@@ -400,22 +345,22 @@
                                 <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="dualNnameGast24" id="dualNnameGast24" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange="markInput(this); changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" />
+                                <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right cursor-default p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim4" id="dualSetpointHeim4" />
@@ -478,47 +423,11 @@
                             <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 align-middle text-center">Art</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler: Heim</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Spieler: Gast</th>
-                            <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="6" colspan="6">Satzergebnisse</th>
+                            <th class="w-14 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="6" colspan="6">Satzergebnisse</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Sätze</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid align-middle text-center" rowspan="2" colspan="2">Punkte</th>
                         </tr>
-
-                        <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" colspan="2">Spieler: Heim</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Spieler: Gast</th>
-                            <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
-                        </tr>
-
-                        <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" colspan="2">Spieler: Heim</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Spieler: Gast</th>
-                            <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
-                        </tr>
-
-                        <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" colspan="2">Spieler: Heim</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Spieler: Gast</th>
-                            <th class="w-28 h-48 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="6" colspan="6">Satzergebnisse</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
-                            <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
-                        </tr>
-
-
-
                     </thead>
                     <thead>
                         <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
@@ -537,58 +446,6 @@
                             <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
                             <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
                         </tr>
-
-                        <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
-                        </tr>
-
-                        <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
-                        </tr>
-
-                        <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="border-solid h-8 sm:h-auto border-t-2 border-green-500 sm:border-white sm:border-r-2 text-center">Art</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="text-center h-8 sm:h-auto">Vorname</th>
-                            <th class="border-solid h-8 sm:h-auto sm:border-r-2 text-center">Nachname</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">1. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center" colspan="2">2. Satz</th>
-                            <th class="w-full sm:w-4 h-16 sm:h-auto text-center border-solid sm:border-r-2" colspan="2">3. Satz</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center border-solid sm:border-r-2">Gast</th>
-                            <th class="w-full sm:w-4 h-8 sm:h-auto text-center">Heim</th>
-                            <th class="w-full  sm:w-4 h-8 sm:h-auto text-center">Gast</th>
-                        </tr>
-
                     </thead>
                     <tbody class="flex-1 sm:flex-none" id="tabSoloBody">
 
@@ -601,13 +458,13 @@
                                 <input type="text" onload="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5" name="soloVnameHeim1" id="soloVnameHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)"  onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameHeim1" id="soloNnameHeim1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast1" id="soloVnameGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"  size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5" name="soloNnameGast1" id="soloNnameGast1" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" />
@@ -653,13 +510,13 @@
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType2" id="soloType2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');"  size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim2" id="soloVnameHeim2" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameHeim2" id="soloVnameHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameHeim2" id="soloNnameHeim2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');"  size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast2" id="soloVnameGast2" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5" name="soloVnameGast2" id="soloVnameGast2" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300" name="soloNnameGast2" id="soloNnameGast2" />
@@ -770,769 +627,4 @@
 
         </div>
     </section>
-    <script type="text/javascript">
-        // CSRF Token
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-
-        $(document).ready(function() {
-             document.getElementById("liga").disabled = true;
-            document.getElementById("saison").disabled = true;
-            document.getElementById("runde").disabled = true;
-            document.getElementById("tag").disabled = true;
-           
-            saison();
-            runde();
-            tag();
-            $("#region").autocomplete({
-                minLength: 0,
-                minChars: 0,
-
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('alleRegionen') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-
-                                };
-                            }));
-                        }
-                    });
-                },
-                // focus:function() {if (this.value == ""){
-                //  $(this).autocomplete("search");}}
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#region').val(ui.item.label);
-                    $('#regionID').val(ui.item.value);
-                    document.getElementById("saison").disabled = true;
-                    document.getElementById("tag").disabled = true;
-                    document.getElementById("runde").disabled = true;
-                    ligaregion();
-                    document.getElementById("liga").disabled = false;
-                    document.getElementById("liga").value = "";
-                    document.getElementById("ligaID").value = "";
-                    document.getElementById("saison").value = "";
-                    document.getElementById("saisonID").value = "";
-                    document.getElementById("runde").value = "";
-                    document.getElementById("rundeID").value = "";
-                    document.getElementById("tag").value = "";
-                    document.getElementById("tagID").value = "";
-                    document.getElementById("tfHome").value = "";
-                    document.getElementById("HeimID").value = "";
-                    document.getElementById("tfAway").value = "";
-                    document.getElementById("GastID").value = "";
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        });
-
-        function regioncheck() {
-            if (!$('#region').val()) {
-
-                document.getElementById("liga").disabled = true;
-                document.getElementById("saison").disabled = true;
-                document.getElementById("tag").disabled = true;
-                document.getElementById("runde").disabled = true;
-                document.getElementById("liga").value = "";
-                document.getElementById("ligaID").value = "";
-                document.getElementById("regionID").value = "";
-                document.getElementById("saison").value = "";
-                document.getElementById("saisonID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("tfHome").value = "";
-                document.getElementById("HeimID").value = "";
-                document.getElementById("tfAway").value = "";
-                document.getElementById("GastID").value = "";
-
-
-            }
-        }
-
-        function check() {
-            if (!$('#liga').val()) {
-                document.getElementById("ligaID").value = "";
-                document.getElementById("saison").value = "";
-                document.getElementById("saisonID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("tfHome").value = "";
-                document.getElementById("HeimID").value = "";
-                document.getElementById("tfAway").value = "";
-                document.getElementById("GastID").value = "";
-                document.getElementById("saison").disabled = true;
-                document.getElementById("tag").disabled = true;
-                document.getElementById("runde").disabled = true;
-            }
-
-
-
-        }
-
-        function alleLigen() {
-            $("#liga").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('alleLigen2') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#liga').val(ui.item.label);
-                    $('#ligaID').val(ui.item.value);
-                    document.getElementById("saison").disabled = false;
-                    return false;
-                }
-            });
-
-
-        }
-
-        function ligaregion() {
-
-            $("#liga").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('regionLigen') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            region: $("#region").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#liga').val(ui.item.label);
-                    $('#ligaID').val(ui.item.value);
-                    document.getElementById("saison").disabled = false;
-                    return false;
-                }
-            });
-        }
-
-        function saisoncheck() {
-            if (!$('#saison').val()) {
-                document.getElementById("saisonID").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("runde").disabled = true;
-                document.getElementById("tag").disabled = true;
-            }
-        }
-
-        function saison() {
-            $("#saison").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('saison') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            ligaID: $("#ligaID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#saison').val(ui.item.label);
-                    $('#saisonID').val(ui.item.value);
-                    document.getElementById("runde").disabled = false;
-                    return false;
-                }
-            });
-
-        }
-
-        function rundecheck() {
-            if (!$('#runde').val()) {
-
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-
-                document.getElementById("tag").disabled = true;
-
-            }
-        }
-
-        function runde() {
-
-
-            $("#runde").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('runde') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            saisonID: $("#saisonID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#runde').val(ui.item.label);
-                    $('#rundeID').val(ui.item.value);
-                    document.getElementById("tag").disabled = false;
-                    return false;
-                }
-            });
-
-        }
-
-        function tagcheck() {
-            if (!$('#tag').val()) {
-                document.getElementById("tagID").value = "";
-            }
-        }
-
-        function tag() {
-
-
-            $("#tag").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('tag') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            rundeID: $("#rundeID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#tag').val(ui.item.label);
-                    $('#tagID').val(ui.item.value);;
-                    return false;
-                }
-            });
-
-        }
-
-
-        function MannschaftenH() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-            if ($("#liga").val().length > 0) {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('alleMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                liga: $("#liga").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });
-            } else if ($("#region").val().length > 0) {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('regionMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                region: $("#regionID").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-            } else {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('mannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-
-
-            }
-        }
-
-        function MannschaftenG() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-
-            if ($("#liga").val().length > 0) {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('alleMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                liga: $("#liga").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });
-            } else if ($("#region").val().length > 0) {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('regionMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                region: $("#regionID").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-            } else {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('mannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-
-
-            }
-        }
-
-        function NnameH(elem) {
-            var id = document.getElementById(elem);
-            var fNameID = elem.replace("Nname", "Vname");
-            var fName = document.getElementById(fNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerNname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#HeimID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelN);
-                    $(fName).val(ui.item.labelV);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function VnameH(elem) { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-            var id = document.getElementById(elem);
-            var nNameID = elem.replace("Vname", "Nname");
-            console.log(nNameID);
-            var nName = document.getElementById(nNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerVname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#HeimID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelV);
-                    $(nName).val(ui.item.labelN);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function NnameG(elem) {
-            var id = document.getElementById(elem);
-            var fNameID = elem.replace("Nname", "Vname");
-            var fName = document.getElementById(fNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerNname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#GastID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelN);
-                    $(fName).val(ui.item.labelV);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function VnameG(elem) {
-            var id = document.getElementById(elem);
-            var nNameID = elem.replace("Vname", "Nname");
-            var nName = document.getElementById(nNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerVname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#GastID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelV);
-                    $(nName).val(ui.item.labelN);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-    </script>
 @endsection

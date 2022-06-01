@@ -150,7 +150,9 @@ $soloSatz_3_gast4 = '';
 
 if (isset($response['Heimmannschaft'])) {
     $HeimID = $response['Heimmannschaft'];
-    $Heimmannschaft_Prob = $response['Heimmannschaft_Prob'];
+    if (isset($response['Heimmannschaft_Prob'])) {
+        $Heimmannschaft_Prob = $response['Heimmannschaft_Prob'];
+    }
     $Heim = QueryController::getMannschaftName($HeimID);
 }
 if (isset($response['Gastmannschaft'])) {
@@ -535,49 +537,32 @@ if (isset($response['Einzel_4'])) {
 }
 
 @endphp
-
 @section('page-content')
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
 
-    <head>
-
-        <!-- Meta -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script type="text/javascript" src="{{ URL::asset('js/script.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <style>
-            html,
-            body {
-                height: 100%;
+        @media (min-width: 640px) {
+            table {
+                display: inline-table !important;
             }
 
-            @media (min-width: 640px) {
-                table {
-                    display: inline-table !important;
-                }
-
-                thead tr:not(:first-child) {
-                    display: none;
-                }
+            thead tr:not(:first-child) {
+                display: none;
             }
+        }
 
-            td:not(:last-child) {
-                border-bottom: 0;
-            }
+        td:not(:last-child) {
+            border-bottom: 0;
+        }
 
-            th:not(:last-child) {
-                border-bottom: 2px solid rgba(0, 0, 0, .1);
-            }
+        th:not(:last-child) {
+            border-bottom: 2px solid rgba(0, 0, 0, .1);
+        }
 
-        </style>
-
-    </head>
+    </style>
     <section>
         <h3 class="font-bold  text-2xl">Spielberichtsbogen</h3>
     </section>
@@ -594,14 +579,10 @@ if (isset($response['Einzel_4'])) {
                         <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
 
                     </div>
-
                     <div class=" w-1/full bg-green-400 h-12">
-
-
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100   border-gray-700 border-r-2 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100 border-gray-700 border-r-2 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
-
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Saison:</label>
                         <input type="text" oninput="saisoncheck()" onfocus="javascript:$(this).autocomplete('search');" name=" saison" id="saison" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
@@ -614,17 +595,13 @@ if (isset($response['Einzel_4'])) {
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Spieltag:</label>
                         <input type="text" oninput="tagcheck()" onfocus="javascript:$(this).autocomplete('search');" name=" tag" id="tag" class="bg-gray-100 text-gray-900    w-full focus:outline-none border-b-full border-gray-700 border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
-
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-
-                        <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" name=" tfHome" id="tfHome"
-                       class="{{ $Heimmannschaft_Prob ?  'bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3' :  'bg-yellow-300 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3' }}"   value="{{ $Heim[0]->Name ?? '' }}">
+                        <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" name=" tfHome" id="tfHome" class="{{ $Heimmannschaft_Prob ? 'bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3' : 'bg-yellow-300 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3' }}" value="{{ $Heim[0]->Name ?? '' }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" name="tfAway" id="tfAway"
-                      class="{{$Gastmannschaft_Prob ?  'bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3' :  'bg-yellow-300 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3' }}"    value="{{ $Gast[0]->Name ?? '' }}">
+                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" name="tfAway" id="tfAway" class="{{ $Gastmannschaft_Prob ? 'bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3' : 'bg-yellow-300 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3' }}" value="{{ $Gast[0]->Name ?? '' }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Schiedsrichter:</label>
@@ -635,8 +612,6 @@ if (isset($response['Einzel_4'])) {
                         <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
                 </div>
-
-
                 <h1>Doppel</h1>
                 <table class="w-full flex flex-row flex-wrap rounded-lg my-5" id="tabDouble">
                     <thead>
@@ -651,7 +626,6 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" rowspan="2" colspan="2">Summe: Sätze</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid align-middle text-center" rowspan="2" colspan="2">Punkte</th>
                         </tr>
-
                         <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                             <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 align-middle text-center" colspan="2">Spieler 1: Heim</th>
@@ -662,7 +636,6 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
                         </tr>
                         <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                             <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
@@ -674,7 +647,6 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
                         </tr>
                         <tr class="bg-green-400 flex flex-col sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                             <th class="w-28 h-8 sm:h-auto  sm:w-4 border-solid sm:border-r-2 sm:text-center">Art</th>
@@ -686,9 +658,7 @@ if (isset($response['Einzel_4'])) {
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Spielpunkte</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:border-r-2 sm:text-center" rowspan="2" colspan="2">Summe: Sätze</th>
                             <th class="w-28 h-16 sm:h-auto sm:w-4 border-solid sm:text-center" rowspan="2" colspan="2">Punkte</th>
-
                         </tr>
-
                     </thead>
                     <thead>
                         <tr class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
@@ -780,54 +750,46 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType1" id="dualType1" value="GD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"  name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $dualHeim_name_11[0]->Vorname ?? '' }}"
-                                class="{{ $dualHeim_name_11_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}"/>
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" name="dualVnameHeim11" id="dualVnameHeim11" value="{{ $dualHeim_name_11[0]->Vorname ?? '' }}" class="{{ $dualHeim_name_11_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"
-                              class="{{ $dualHeim_name_11_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"   name="dualNnameHeim11" id="dualNnameHeim11" value="{{ $dualHeim_name_11[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_11_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim11" id="dualNnameHeim11" value="{{ $dualHeim_name_11[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualHeim_name_21_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"   name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $dualHeim_name_21[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_21_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameHeim21" id="dualVnameHeim21" value="{{ $dualHeim_name_21[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"
-                                class="{{ $dualHeim_name_21_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_21_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim21" id="dualNnameHeim21" value="{{ $dualHeim_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualGast_name_11_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' :   'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5'}}"   name="dualVnameGast11" id="dualVnameGast11" value="{{ $dualGast_name_11[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_11_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="dualVnameGast11" id="dualVnameGast11" value="{{ $dualGast_name_11[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"
-                               class="{{ $dualGast_name_11_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"   name="dualNnameGast11" id="dualNnameGast11" value="{{ $dualGast_name_11[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_11_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast11" id="dualNnameGast11" value="{{ $dualGast_name_11[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                                class="{{ $dualGast_name_21_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }} name="dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_21_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }} name=" dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"
-                              class="{{ $dualGast_name_21_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"  name="dualNnameGast21" id="dualNnameGast21" value="{{ $dualGast_name_21[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_21_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast21" id="dualNnameGast21" value="{{ $dualGast_name_21[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="{{ $dualSatz_1_heim1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" value="{{ $dualSatz_1_heim1 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_heim1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(1)" name="dualSatz1heim1" id="dualSatz1heim1" value="{{ $dualSatz_1_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="{{ $dualSatz_1_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" value="{{ $dualSatz_1_gast1 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(1)" name="dualSatz1gast1" id="dualSatz1gast1" value="{{ $dualSatz_1_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="{{ $dualSatz_2_heim1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange="changeSetSumD(1)" name="dualSatz2heim1" id="dualSatz2heim1" value="{{ $dualSatz_2_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="{{ $dualSatz_2_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"   onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1" value="{{ $dualSatz_2_gast1 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_2_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(1)" name="dualSatz2gast1" id="dualSatz2gast1" value="{{ $dualSatz_2_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4" class="{{ $dualSatz_3_heim1_Prob  ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1" value="{{ $dualSatz_3_heim1 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_heim1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(1)" name="dualSatz3heim1" id="dualSatz3heim1" value="{{ $dualSatz_3_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" class="{{ $dualSatz_3_gast1_Prob   ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1" value="{{ $dualSatz_3_gast1 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(1)" name="dualSatz3gast1" id="dualSatz3gast1" value="{{ $dualSatz_3_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim1" id="dualSetpointHeim1" />
@@ -855,60 +817,46 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType2" id="dualType2" value="GD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"
-                              class="{{ $dualHeim_name_12_Prob  ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5'  }}"   name="dualVnameHeim12" id="dualVnameHeim12" value="{{ $dualHeim_name_12[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_12_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5 ' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="dualVnameHeim12" id="dualVnameHeim12" value="{{ $dualHeim_name_12[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');"
-                             class="{{ $dualHeim_name_12_Prob  ? ' bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"   name="dualNnameHeim12" id="dualNnameHeim12" value="{{ $dualHeim_name_12[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" class="{{ $dualHeim_name_12_Prob ? ' bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim12" id="dualNnameHeim12" value="{{ $dualHeim_name_12[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"
-                                class="{{ $dualHeim_name_22_Prob  ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $dualHeim_name_22[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_22_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameHeim22" id="dualVnameHeim22" value="{{ $dualHeim_name_22[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"
-                              class="{{ $dualHeim_name_22_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}" name="dualNnameHeim22" id="dualNnameHeim22" value="{{ $dualHeim_name_22[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_22_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim22" id="dualNnameHeim22" value="{{ $dualHeim_name_22[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualGast_name_12_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}"   name="dualVnameGast12" id="dualVnameGast12" value="{{ $dualGast_name_12[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_12_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="dualVnameGast12" id="dualVnameGast12" value="{{ $dualGast_name_12[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');"
-                                 class="{{  $dualGast_name_12_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast12" id="dualNnameGast12" value="{{ $dualGast_name_12[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" class="{{ $dualGast_name_12_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast12" id="dualNnameGast12" value="{{ $dualGast_name_12[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                            class="{{ $dualGast_name_22_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}"    name="dualVnameGast22" id="dualVnameGast22" value="{{ $dualGast_name_22[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_22_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameGast22" id="dualVnameGast22" value="{{ $dualGast_name_22[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"
-                                class="{{ $dualGast_name_22_Prob   ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"  name="dualNnameGast22" id="dualNnameGast22" value="{{ $dualGast_name_22[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_22_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast22" id="dualNnameGast22" value="{{ $dualGast_name_22[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                             class="{{ $dualSatz_1_heim2_Prob  ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}"  onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" value="{{ $dualSatz_1_heim2 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_heim2_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange="changeSetSumD(2)" name="dualSatz1heim2" id="dualSatz1heim2" value="{{ $dualSatz_1_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                             class="{{ $dualSatz_1_gast2_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"    onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2" value="{{ $dualSatz_1_gast2 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_gast2_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(2)" name="dualSatz1gast2" id="dualSatz1gast2" value="{{ $dualSatz_1_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                              class="{{$dualSatz_2_heim2_Prob  ?  ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5': ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}"  onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2" value="{{ $dualSatz_2_heim2 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_2_heim2_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(2)" name="dualSatz2heim2" id="dualSatz2heim2" value="{{ $dualSatz_2_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                               class="{{ $dualSatz_2_gast2_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2" value="{{ $dualSatz_2_gast2 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_2_gast2_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(2)" name="dualSatz2gast2" id="dualSatz2gast2" value="{{ $dualSatz_2_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                             class="{{  $dualSatz_3_heim2_Prob? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' :'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"   onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2" value="{{ $dualSatz_3_heim2 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_heim2_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange="changeSetSumD(2)" name="dualSatz3heim2" id="dualSatz3heim2" value="{{ $dualSatz_3_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                              class="{{ $dualSatz_3_gast2_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"  onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2" value="{{ $dualSatz_3_gast2 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_gast2_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(2)" name="dualSatz3gast2" id="dualSatz3gast2" value="{{ $dualSatz_3_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim2" id="dualSetpointHeim2" />
@@ -936,60 +884,46 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType3" id="dualType3" value="DD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"
-                            class="{{ $dualHeim_name_13_Prob  ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5':' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5'  }}"    name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $dualHeim_name_13[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_13_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="dualVnameHeim13" id="dualVnameHeim13" value="{{ $dualHeim_name_13[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{$dualHeim_name_13_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' :'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $dualHeim_name_13[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_13_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim13" id="dualNnameHeim13" value="{{ $dualHeim_name_13[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"
-                            class="{{ $dualHeim_name_23_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}"     name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $dualHeim_name_23[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_23_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameHeim23" id="dualVnameHeim23" value="{{ $dualHeim_name_23[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualHeim_name_23_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"    name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $dualHeim_name_23[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_23_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim23" id="dualNnameHeim23" value="{{ $dualHeim_name_23[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                            class="{{$dualGast_name_13_Prob  ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5':'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5'  }}"     name="dualVnameGast13" id="dualVnameGast13" value="{{ $dualGast_name_13[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_13_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="dualVnameGast13" id="dualVnameGast13" value="{{ $dualGast_name_13[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualGast_name_13_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"   name="dualNnameGast13" id="dualNnameGast13" value="{{ $dualGast_name_13[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_13_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast13" id="dualNnameGast13" value="{{ $dualGast_name_13[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                               class="{{ $dualGast_name_23_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"  name="dualVnameGast23" id="dualVnameGast23" value="{{ $dualGast_name_23[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_23_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameGast23" id="dualVnameGast23" value="{{ $dualGast_name_23[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"
-                              class="{{ $dualGast_name_23_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"   name="dualNnameGast23" id="dualNnameGast23" value="{{ $dualGast_name_23[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_23_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast23" id="dualNnameGast23" value="{{ $dualGast_name_23[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                              class="{{ $dualSatz_1_heim3_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"   onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value="{{ $dualSatz_1_heim3 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_heim3_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(3)" name="dualSatz1heim3" id="dualSatz1heim3" value="{{ $dualSatz_1_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                            class="{{$dualSatz_1_gast3_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"     onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value="{{ $dualSatz_1_gast3 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_gast3_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(3)" name="dualSatz1gast3" id="dualSatz1gast3" value="{{ $dualSatz_1_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                              class="{{ $dualSatz_2_heim3_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"   onchange="changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" value="{{ $dualSatz_2_heim3 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_2_heim3_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange="changeSetSumD(3)" name="dualSatz2heim3" id="dualSatz2heim3" value="{{ $dualSatz_2_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                              class="{{ $dualSatz_2_gast3_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yeellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"   onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value="{{ $dualSatz_2_gast3 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_2_gast3_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yeellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(3)" name="dualSatz2gast3" id="dualSatz2gast3" value="{{ $dualSatz_2_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                             class="{{  $dualSatz_3_heim3_Prob? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}"   onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" value="{{ $dualSatz_3_heim3 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_heim3_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(3)" name="dualSatz3heim3" id="dualSatz3heim3" value="{{ $dualSatz_3_heim3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                             class="{{ $dualSatz_3_gast3_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"    onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" value="{{ $dualSatz_3_gast3 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_gast3_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(3)" name="dualSatz3gast3" id="dualSatz3gast3" value="{{ $dualSatz_3_gast3 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim3" id="dualSetpointHeim3" />
@@ -1016,60 +950,46 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="dualType4" id="dualType4" value="HD" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualHeim_name_14_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}"    name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $dualHeim_name_14[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_14_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="dualVnameHeim14" id="dualVnameHeim14" value="{{ $dualHeim_name_14[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualHeim_name_14_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}"    name="dualNnameHeim14" id="dualNnameHeim14" value="{{ $dualHeim_name_14[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_14_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim14" id="dualNnameHeim14" value="{{ $dualHeim_name_14[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{$dualHeim_name_24_Prob  ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5':  'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'}}"    name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $dualHeim_name_24[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_24_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameHeim24" id="dualVnameHeim24" value="{{ $dualHeim_name_24[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{$dualHeim_name_24_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5':  'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'}}"     name="dualNnameHeim24" id="dualNnameHeim24" value="{{ $dualHeim_name_24[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualHeim_name_24_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameHeim24" id="dualNnameHeim24" value="{{ $dualHeim_name_24[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualGast_name_14_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5': 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5'  }}"   name="dualVnameGast14" id="dualVnameGast14" value="{{ $dualGast_name_14[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_14_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="dualVnameGast14" id="dualVnameGast14" value="{{ $dualGast_name_14[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"
-                             class="{{ $dualGast_name_14_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"      name="dualNnameGast14" id="dualNnameGast14" value="{{ $dualGast_name_14[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_14_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast14" id="dualNnameGast14" value="{{ $dualGast_name_14[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20"
-                            class="{{ $dualGast_name_24_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5':'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"    name="dualVnameGast24" id="dualVnameGast24" value="{{ $dualGast_name_24[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_24_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameGast24" id="dualVnameGast24" value="{{ $dualGast_name_24[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20"
-                                 class="{{ $dualGast_name_24_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  name="dualNnameGast24" id="dualNnameGast24" value="{{ $dualGast_name_24[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_24_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast24" id="dualNnameGast24" value="{{ $dualGast_name_24[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                               class="{{ $dualSatz_1_heim4_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5': ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}" onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value="{{ $dualSatz_1_heim4 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_heim4_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(4)" name="dualSatz1heim4" id="dualSatz1heim4" value="{{ $dualSatz_1_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                               class="{{ $dualSatz_1_gast4_Prob  ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" value="{{ $dualSatz_1_gast4 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_1_gast4_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(4)" name="dualSatz1gast4" id="dualSatz1gast4" value="{{ $dualSatz_1_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $dualSatz_2_heim4_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5': ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}" onchange="changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4" value="{{ $dualSatz_2_heim4 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_2_heim4_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange="changeSetSumD(4)" name="dualSatz2heim4" id="dualSatz2heim4" value="{{ $dualSatz_2_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $dualSatz_2_gast4_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" value="{{ $dualSatz_2_gast4 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_2_gast4_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(4)" name="dualSatz2gast4" id="dualSatz2gast4" value="{{ $dualSatz_2_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $dualSatz_3_heim4_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}" onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" value="{{ $dualSatz_3_heim4 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_heim4_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(4)" name="dualSatz3heim4" id="dualSatz3heim4" value="{{ $dualSatz_3_heim4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4" 
-                                class="{{ $dualSatz_3_gast4_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5': 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" value="{{ $dualSatz_3_gast4 }}" />
+                                <input type="text" size="4" class="{{ $dualSatz_3_gast4_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumD(4)" name="dualSatz3gast4" id="dualSatz3gast4" value="{{ $dualSatz_3_gast4 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="dualSetpointHeim4" id="dualSetpointHeim4" />
@@ -1191,45 +1111,35 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType1" id="soloType1" value="HE" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20"
-                             class="{{ $soloHeim_name_1_Prob ?  ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5'  }}"  name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloHeim_name_1[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" oninput="VnameH(this.id)" onfocus="VnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="{{ $soloHeim_name_1_Prob ? ' bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' : ' bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 sm:p-1.5' }}" name="soloVnameHeim1" id="soloVnameHeim1" value="{{ $soloHeim_name_1[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20"
-                               class="{{ $soloHeim_name_1_Prob ?  ' bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloHeim_name_1[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" oninput="NnameH(this.id)" onfocus="NnameH(this.id);javascript:$(this).autocomplete('search');" size="20" class="{{ $soloHeim_name_1_Prob ? ' bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="soloNnameHeim1" id="soloNnameHeim1" value="{{ $soloHeim_name_1[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20"
-                                class="{{ $soloGast_name_1_Prob ?  'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"  name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloGast_name_1[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="{{ $soloGast_name_1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="soloVnameGast1" id="soloVnameGast1" value="{{ $soloGast_name_1[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20"
-                                class="{{ $soloGast_name_1_Prob ?  'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloGast_name_1[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="{{ $soloGast_name_1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="soloNnameGast1" id="soloNnameGast1" value="{{ $soloGast_name_1[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                               class="{{ $soloSatz_1_heim1_Prob ?  'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}" onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloSatz_1_heim1 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_1_heim1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(1)" name="soloSatz1heim1" id="soloSatz1heim1" value="{{ $soloSatz_1_heim1 }}" />
 
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $soloSatz_1_gast1_Prob ?  'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumS(1)" name="soloSatz1gast1" id="soloSatz1gast1" value="{{ $soloSatz_1_gast1 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_1_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(1)" name="soloSatz1gast1" id="soloSatz1gast1" value="{{ $soloSatz_1_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $soloSatz_2_gast1_Prob ?  'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"   onchange=" changeSetSumS(1)" name="soloSatz2heim1" id="soloSatz2heim1" value="{{ $soloSatz_2_heim1 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_2_gast1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(1)" name="soloSatz2heim1" id="soloSatz2heim1" value="{{ $soloSatz_2_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                               class="{{ $soloSatz_1_gast1_Prob ?  'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"   onchange=" changeSetSumS(1)" name="soloSatz2gast1" id="soloSatz2gast1" value="{{ $soloSatz_2_gast1 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_1_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(1)" name="soloSatz2gast1" id="soloSatz2gast1" value="{{ $soloSatz_2_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $soloSatz_3_heim1_Prob ?  'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumS(1)" name="soloSatz3heim1" id="soloSatz3heim1" value="{{ $soloSatz_3_heim1 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_3_heim1_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(1)" name="soloSatz3heim1" id="soloSatz3heim1" value="{{ $soloSatz_3_heim1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $soloSatz_3_gast1_Prob ?  'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumS(1)" name="soloSatz3gast1" id="soloSatz3gast1" value="{{ $soloSatz_3_gast1 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_3_gast1_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(1)" name="soloSatz3gast1" id="soloSatz3gast1" value="{{ $soloSatz_3_gast1 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
                                 <input type="text" size="4" class="bg-gray-100 text-black w-full h-full sm:text-right p-1.5" readonly="readonly" tabindex="-1" name="soloSetpointHeim1" id="soloSetpointHeim1" />
@@ -1257,44 +1167,34 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" list="arten" size="4" class="bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300" name="soloType2" id="soloType2" value="DE" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20"
-                               class="{{ $soloHeim_name_2_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5'  }}"  name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloHeim_name_2[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameH(this.id)" onfocus="javascript:VnameH(this.id);$(this).autocomplete('search');" oninput="VnameH(this.id)" size="20" size="20" class="{{ $soloHeim_name_2_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="soloVnameHeim2" id="soloVnameHeim2" value="{{ $soloHeim_name_2[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20"
-                               class="{{ $soloHeim_name_2_Prob ? 'bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : 'bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300'  }}"  name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloHeim_name_2[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameH(this.id)" onfocus="javascript:NnameH(this.id);$(this).autocomplete('search');" oninput="NnameH(this.id)" size="20" class="{{ $soloHeim_name_2_Prob ? 'bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : 'bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' }}" name="soloNnameHeim2" id="soloNnameHeim2" value="{{ $soloHeim_name_2[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20"
-                               class="{{ $soloGast_name_2_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5'  }}"   name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloGast_name_2[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" oninput="VnameG(this.id)" size="20" class="{{ $soloGast_name_2_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right  focus:bg-green-400 transition duration-300 p-1.5' }}" name="soloVnameGast2" id="soloVnameGast2" value="{{ $soloGast_name_2[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20"
-                                class="{{ $soloGast_name_2_Prob ? ' bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : ' bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300'  }}" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloGast_name_2[0]->Nachname ?? '' }}" />
+                                <input type="text" onload="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" oninput="NnameG(this.id)" size="20" class="{{ $soloGast_name_2_Prob ? ' bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : ' bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' }}" name="soloNnameGast2" id="soloNnameGast2" value="{{ $soloGast_name_2[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                               class="{{ $soloSatz_1_heim2_Prob ? 'bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"  onchange=" changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloSatz_1_heim2 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_1_heim2_Prob ? 'bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(2)" name="soloSatz1heim2" id="soloSatz1heim2" value="{{ $soloSatz_1_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                               class="{{ $soloSatz_1_gast2_Prob ? 'bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : 'bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300'  }}"   onchange=" changeSetSumS(2)" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloSatz_1_gast2 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_1_gast2_Prob ? 'bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : 'bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' }}" onchange=" changeSetSumS(2)" name="soloSatz1gast2" id="soloSatz1gast2" value="{{ $soloSatz_1_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $soloSatz_2_heim2_Prob ? 'bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"   onchange=" changeSetSumS(2)" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloSatz_2_heim2 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_2_heim2_Prob ? 'bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(2)" name="soloSatz2heim2" id="soloSatz2heim2" value="{{ $soloSatz_2_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{$soloSatz_2_gast2_Prob  ? 'bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : 'bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300'  }}"  onchange=" changeSetSumS(2)" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloSatz_2_gast2 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_2_gast2_Prob ? 'bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : 'bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' }}" onchange=" changeSetSumS(2)" name="soloSatz2gast2" id="soloSatz2gast2" value="{{ $soloSatz_2_gast2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                 class="{{ $soloSatz_3_heim2_Prob ? 'bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5'  }}"   onchange=" changeSetSumS(2)" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloSatz_3_heim2 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_3_heim2_Prob ? 'bg-gray-100 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 sm:text-right text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" onchange=" changeSetSumS(2)" name="soloSatz3heim2" id="soloSatz3heim2" value="{{ $soloSatz_3_heim2 }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
-                                <input type="text" size="4"
-                                class="{{ $soloSatz_3_gast2_Prob ? ' bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : ' bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300'  }}" onchange=" changeSetSumS(2)" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloSatz_3_gast2 }}" />
+                                <input type="text" size="4" class="{{ $soloSatz_3_gast2_Prob ? ' bg-gray-100 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' : ' bg-yellow-300 p-1.5 text-black w-full focus:bg-green-400 transition duration-300' }}" onchange=" changeSetSumS(2)" name="soloSatz3gast2" id="soloSatz3gast2" value="{{ $soloSatz_3_gast2 }}" />
                             </td>
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
@@ -1375,7 +1275,6 @@ if (isset($response['Einzel_4'])) {
                     </tbody>
                 </table>
                 <div class="mt-3 flex place-content-end">
-
                     <div>
                         <button class="my-2 float-right px-3 py-3 rounded bg-green-500 active:bg-green-700 text-white text-sm   font-bold" type="submit" id="submitBTN" name="submit">Absenden</button>
                     </div>
@@ -1384,765 +1283,4 @@ if (isset($response['Einzel_4'])) {
 
         </div>
     </section>
-    <script type="text/javascript">
-        // CSRF Token
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-
-        $(document).ready(function() {
-            document.getElementById("saison").disabled = true;
-            document.getElementById("runde").disabled = true;
-            document.getElementById("tag").disabled = true;
-            alleLigen();
-            saison();
-            runde();
-            tag();
-            $("#region").autocomplete({
-                minLength: 0,
-                minChars: 0,
-
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('alleRegionen') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-
-                                };
-                            }));
-                        }
-                    });
-                },
-                // focus:function() {if (this.value ==""){
-                //  $(this).autocomplete("search");}}
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#region').val(ui.item.label);
-                    $('#regionID').val(ui.item.value);
-                    document.getElementById("saison").disabled = true;
-                    document.getElementById("tag").disabled = true;
-                    document.getElementById("runde").disabled = true;
-                    ligaregion();
-                    document.getElementById("liga").value = "";
-                    document.getElementById("ligaID").value = "";
-                    document.getElementById("saison").value = "";
-                    document.getElementById("saisonID").value = "";
-                    document.getElementById("runde").value = "";
-                    document.getElementById("rundeID").value = "";
-                    document.getElementById("tag").value = "";
-                    document.getElementById("tagID").value = "";
-                    document.getElementById("tfHome").value = "";
-                    document.getElementById("HeimID").value = "";
-                    document.getElementById("tfAway").value = "";
-                    document.getElementById("GastID").value = "";
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        });
-
-        function regioncheck() {
-            if (!$('#region').val()) {
-
-                alleLigen();
-                document.getElementById("saison").disabled = true;
-                document.getElementById("tag").disabled = true;
-                document.getElementById("runde").disabled = true;
-                document.getElementById("liga").value = "";
-                document.getElementById("ligaID").value = "";
-                document.getElementById("regionID").value = "";
-                document.getElementById("saison").value = "";
-                document.getElementById("saisonID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("tfHome").value = "";
-                document.getElementById("HeimID").value = "";
-                document.getElementById("tfAway").value = "";
-                document.getElementById("GastID").value = "";
-
-
-            }
-        }
-
-        function check() {
-            if (!$('#liga').val()) {
-                document.getElementById("ligaID").value = "";
-                document.getElementById("saison").value = "";
-                document.getElementById("saisonID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("tfHome").value = "";
-                document.getElementById("HeimID").value = "";
-                document.getElementById("tfAway").value = "";
-                document.getElementById("GastID").value = "";
-                document.getElementById("saison").disabled = true;
-                document.getElementById("tag").disabled = true;
-                document.getElementById("runde").disabled = true;
-            }
-
-
-
-        }
-
-        function alleLigen() {
-            $("#liga").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('alleLigen2') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#liga').val(ui.item.label);
-                    $('#ligaID').val(ui.item.value);
-                    document.getElementById("saison").disabled = false;
-                    return false;
-                }
-            });
-
-
-        }
-
-        function ligaregion() {
-
-            $("#liga").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('regionLigen') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            region: $("#region").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#liga').val(ui.item.label);
-                    $('#ligaID').val(ui.item.value);
-                    document.getElementById("saison").disabled = false;
-                    return false;
-                }
-            });
-        }
-
-        function saisoncheck() {
-            if (!$('#saison').val()) {
-                document.getElementById("saisonID").value = "";
-                document.getElementById("rundeID").value = "";
-                document.getElementById("runde").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-                document.getElementById("runde").disabled = true;
-                document.getElementById("tag").disabled = true;
-            }
-        }
-
-        function saison() {
-            $("#saison").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('saison') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            ligaID: $("#ligaID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#saison').val(ui.item.label);
-                    $('#saisonID').val(ui.item.value);
-                    document.getElementById("runde").disabled = false;
-                    return false;
-                }
-            });
-
-        }
-
-        function rundecheck() {
-            if (!$('#runde').val()) {
-
-                document.getElementById("rundeID").value = "";
-                document.getElementById("tag").value = "";
-                document.getElementById("tagID").value = "";
-
-                document.getElementById("tag").disabled = true;
-
-            }
-        }
-
-        function runde() {
-
-
-            $("#runde").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('runde') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            saisonID: $("#saisonID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#runde').val(ui.item.label);
-                    $('#rundeID').val(ui.item.value);
-                    document.getElementById("tag").disabled = false;
-                    return false;
-                }
-            });
-
-        }
-
-        function tagcheck() {
-            if (!$('#tag').val()) {
-                document.getElementById("tagID").value = "";
-            }
-        }
-
-        function tag() {
-
-
-            $("#tag").autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('tag') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            rundeID: $("#rundeID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Name,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $('#tag').val(ui.item.label);
-                    $('#tagID').val(ui.item.value);;
-                    return false;
-                }
-            });
-
-        }
-
-        function MannschaftenH() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-            if ($("#liga").val().length > 0) {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('alleMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                liga: $("#liga").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });
-            } else if ($("#region").val().length > 0) {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('regionMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                region: $("#regionID").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-            } else {
-                $("#tfHome").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('mannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfHome').val(ui.item.label);
-                        $('#HeimID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-
-
-            }
-        }
-
-        function MannschaftenG() { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-            if ($("#liga").val().length > 0) {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('alleMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                liga: $("#liga").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-                        // $("#employee_search").text(ui.item.label); // display the selected text
-                        //$("#liga").text(ui.item.label);
-                        return false;
-                    }
-                });
-            } else if ($("#region").val().length > 0) {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('regionMannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-                                region: $("#regionID").val()
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-            } else {
-                $("#tfAway").autocomplete({
-                    minLength: 0,
-                    source: function(request, response) {
-                        // Fetch data
-                        $.ajax({
-                            url: "{{ route('mannschaften') }}",
-                            type: 'post',
-                            dataType: "json",
-                            data: {
-                                _token: CSRF_TOKEN,
-                                search: request.term,
-
-
-                            },
-                            success: function(data) {
-                                response(data.map(function(value) {
-                                    return {
-                                        'label': value.Name,
-                                        'value': value.ID
-                                    };
-                                }));
-                            }
-                        });
-                    },
-                    select: function(event, ui) {
-                        // Set selection
-                        event.preventDefault();
-                        var label = ui.item.label;
-                        var value = ui.item.value;
-                        $('#tfAway').val(ui.item.label);
-                        $('#GastID').val(ui.item.value);
-
-                        return false;
-                    }
-                });
-
-
-            }
-        }
-
-        function NnameH(elem) {
-            var id = document.getElementById(elem);
-            var fNameID = elem.replace("Nname", "Vname");
-            var fName = document.getElementById(fNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerNname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#HeimID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelN);
-                    $(fName).val(ui.item.labelV);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function VnameH(elem) { // findet Id der Liga raus, dann erstellt datalist mit mannschaften dieser liga
-            var id = document.getElementById(elem);
-            var nNameID = elem.replace("Vname", "Nname");
-            console.log(nNameID);
-            var nName = document.getElementById(nNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerVname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#HeimID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelV);
-                    $(nName).val(ui.item.labelN);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function NnameG(elem) {
-            var id = document.getElementById(elem);
-            var fNameID = elem.replace("Nname", "Vname");
-            var fName = document.getElementById(fNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerNname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#GastID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelN);
-                    $(fName).val(ui.item.labelV);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-
-        function VnameG(elem) {
-            var id = document.getElementById(elem);
-            var nNameID = elem.replace("Vname", "Nname");
-            var nName = document.getElementById(nNameID);
-            $(id).autocomplete({
-                minLength: 0,
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "{{ route('getSpielerVname') }}",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            _token: CSRF_TOKEN,
-                            search: request.term,
-                            team: $("#GastID").val()
-
-                        },
-                        success: function(data) {
-                            response(data.map(function(value) {
-                                return {
-                                    'label': value.Vname + ' ' + value.Nname,
-                                    'labelV': value.Vname,
-                                    'labelN': value.Nname,
-                                    'value': value.ID
-                                };
-                            }));
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    // Set selection
-                    event.preventDefault();
-                    var label = ui.item.label;
-                    var value = ui.item.value;
-                    $(id).val(ui.item.labelV);
-                    $(nName).val(ui.item.labelN);
-
-                    // $("#employee_search").text(ui.item.label); // display the selected text
-                    //$("#liga").text(ui.item.label);
-                    return false;
-                }
-            });
-
-        }
-    </script>
 @endsection

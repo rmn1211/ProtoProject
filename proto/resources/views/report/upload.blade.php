@@ -1,62 +1,46 @@
 @extends('heafoo')
 @section('page-content')
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
 
-    <head>
-
-        <!-- Meta -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <style>
-            html,
-            body {
-                height: 100%;
-            }
-
-            .loader {
-                border: 16px solid #f3f3f3;
-                border-radius: 50%;
-                border-top: 16px solid green;
-                width: 120px;
-                height: 120px;
-                -webkit-animation: spin 2s linear infinite;
-                /* Safari */
-                animation: spin 2s linear infinite;
-                visibility: hidden;
-                margin: auto;
-            }
-
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid green;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
             /* Safari */
-            @-webkit-keyframes spin {
-                0% {
-                    -webkit-transform: rotate(0deg);
-                }
+            animation: spin 2s linear infinite;
+            visibility: hidden;
+            margin: auto;
+        }
 
-                100% {
-                    -webkit-transform: rotate(360deg);
-                }
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
             }
 
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
 
-                100% {
-                    transform: rotate(360deg);
-                }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
 
-        </style>
-    </head>
-    <br>
-    <br>
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
     <section class="flex  justify-center items-center"> <br>
         <h3 class=" font-bold  text-2xl">Spielbericht hochladen</h3>
     </section>
