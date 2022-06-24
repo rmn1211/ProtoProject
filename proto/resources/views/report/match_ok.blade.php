@@ -14,7 +14,6 @@ $spiele = QueryController::getSpieleOk();
             background-color: green;
             color: white;
         }
-
     </style>
     <section class="ml-12">
         <h3 class="font-bold  text-2xl"> Spielberichte</h3>
@@ -47,7 +46,7 @@ $spiele = QueryController::getSpieleOk();
                             $status = 'abgelehnt';
                         }
                         
-                    @endphp ?> ?>
+                    @endphp
 
                     <tr class="cursor-default border-solid border-b-2 border-black alle">
                         <td hidden class="bg-gray-100 text-black border-solid border-r-2 border-black" name="id" id="id">{{ $match->ID }}</td>
@@ -63,7 +62,7 @@ $spiele = QueryController::getSpieleOk();
         <br>
 
         <!-- FORM besteht nur aus Hidden Inputfield, dass die ID enthält, da nur diese benötigt wird.
-                    Vereinfacht austausch zwischen html - php - js    TODO detailansicht see_report-->
+                        Vereinfacht austausch zwischen html - php - js    TODO detailansicht see_report-->
         <form class="" name="idForm" id="idForm" method="GET" action="{{ url('/match_ok/view') }}">
             <input type="hidden" name="selectedID" id="selectedID" value="">
             <input class="bg-green-500 disabled:opacity-90 hover:bg-green-700 text-white font-bold py-2 px-4 border-green-700 rounded" type="submit" value="ansehen">

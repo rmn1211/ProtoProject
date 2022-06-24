@@ -646,6 +646,8 @@ class QueryController extends Controller
             $guestLName1 = $request->dualNnameGast11;
             $guestFName2 = $request->dualVnameGast21;
             $guestLName2 = $request->dualNnameGast21;
+            error_log('test1 ');
+            error_log($guestFName2);
             $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
             $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
             $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
@@ -763,6 +765,8 @@ class QueryController extends Controller
             $guestLName1 = $request->dualNnameGast13;
             $guestFName2 = $request->dualVnameGast23;
             $guestLName2 = $request->dualNnameGast23;
+            error_log('test3 ');
+            error_log($guestFName1);
             $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
             $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
             $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
@@ -906,6 +910,8 @@ class QueryController extends Controller
             $guest = $request->tfAway;
             $guestID = $this->getTeamID($guest);
             $day = $request->tag;
+            error_log('TAG');
+            error_log($day);
             $schiri = $request->schiri;
             error_log($request);
             #$id = $request -> match;

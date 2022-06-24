@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 @extends('heafoo')
 @php
 
@@ -45,11 +46,11 @@ use App\Http\Controllers\QueryController;
             <br>
 
             <!-- FORM besteht nur aus Hidden Inputfield, dass die ID enthält, da nur diese benötigt wird.
-                        Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht
-                        <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}"
-                          <input type="hidden" name="selectedID" id="selectedID" value="">
-                          <input class = "bg-green-500"type="submit" value="Detail">
-                        </form> -->
+                            Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht
+                            <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}"
+                              <input type="hidden" name="selectedID" id="selectedID" value="">
+                              <input class = "bg-green-500"type="submit" value="Detail">
+                            </form> -->
             <script type="text/javascript">
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
 

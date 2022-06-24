@@ -30,7 +30,7 @@ class ImageUploadController extends Controller
             $image = $request->file('image');
             $response = Http::attach(
                 'file', file_get_contents($image), $imageName)
-                ->post('192.168.1.168:8000/upload/1');
+                ->post('192.168.2.101:8000/upload/1');
         }
         //nächste Blade
         $json = json_encode($response, true);

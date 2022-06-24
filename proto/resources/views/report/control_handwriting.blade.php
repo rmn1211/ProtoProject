@@ -561,7 +561,6 @@ if (isset($response['Einzel_4'])) {
         th:not(:last-child) {
             border-bottom: 2px solid rgba(0, 0, 0, .1);
         }
-
     </style>
     <section>
         <h3 class="font-bold  text-2xl">Spielberichtsbogen</h3>
@@ -576,7 +575,7 @@ if (isset($response['Einzel_4'])) {
                 <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
 
                     </div>
                     <div class=" w-1/full bg-green-400 h-12">
@@ -585,15 +584,15 @@ if (isset($response['Einzel_4'])) {
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Saison:</label>
-                        <input type="text" oninput="saisoncheck()" onfocus="javascript:$(this).autocomplete('search');" name=" saison" id="saison" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input type="text" oninput="saisoncheck()" onfocus="javascript:$(this).autocomplete('search');" name="saison" id="saison" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Runde:</label>
-                        <input type="text" oninput="rundecheck()" onfocus="javascript:$(this).autocomplete('search');" name=" runde" id="runde" class="bg-gray-100 text-gray-900  border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input type="text" oninput="rundecheck()" onfocus="javascript:$(this).autocomplete('search');" name="runde" id="runde" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Spieltag:</label>
-                        <input type="text" oninput="tagcheck()" onfocus="javascript:$(this).autocomplete('search');" name=" tag" id="tag" class="bg-gray-100 text-gray-900    w-full focus:outline-none border-b-full border-gray-700 border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input type="text" oninput="tagcheck()" onfocus="javascript:$(this).autocomplete('search');" name="tag" id="tag" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
@@ -768,7 +767,7 @@ if (isset($response['Einzel_4'])) {
                                 <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_11_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast11" id="dualNnameGast11" value="{{ $dualGast_name_11[0]->Nachname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-dashed sm:border-r-2 border-black">
-                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_21_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }} name=" dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}" />
+                                <input type="text" onload="VnameG(this.id)" oninput="VnameG(this.id)" onfocus="javascript:VnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_21_Prob ? 'bg-gray-100 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full sm:text-right focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualVnameGast21" id="dualVnameGast21" value="{{ $dualGast_name_21[0]->Vorname ?? '' }}" />
                             </td>
                             <td class="bg-gray-100 h-8 text-black border-solid sm:border-r-2 border-black">
                                 <input type="text" onload="NnameG(this.id)" oninput="NnameG(this.id)" onfocus="javascript:NnameG(this.id);$(this).autocomplete('search');" size="20" class="{{ $dualGast_name_21_Prob ? 'bg-gray-100 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' : 'bg-yellow-300 text-black w-full h-full focus:bg-green-400 transition duration-300 p-1.5' }}" name="dualNnameGast21" id="dualNnameGast21" value="{{ $dualGast_name_21[0]->Nachname ?? '' }}" />
