@@ -150,6 +150,8 @@ $soloSatz_3_gast4 = '';
 
 if (isset($response['Heimmannschaft'])) {
     $HeimID = $response['Heimmannschaft'];
+    $liga = QueryController::getLiga($matchID);
+$region = QueryController::getRegion($liga->ID);
     if (isset($response['Heimmannschaft_Prob'])) {
         $Heimmannschaft_Prob = $response['Heimmannschaft_Prob'];
     }
@@ -575,12 +577,12 @@ if (isset($response['Einzel_4'])) {
                 <div class="flex mb-4" id="matchRow">
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $region->Name }}">
 
                     </div>
                     <div class=" w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100 border-gray-700 border-r-2 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                        <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100 border-gray-700 border-r-2 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3"value="{{ $liga->Name }}">
                     </div>
                     <div class="w-1/full bg-green-400 h-12">
                         <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Saison:</label>
@@ -1037,8 +1039,8 @@ if (isset($response['Einzel_4'])) {
 
                 <h1 class="pt-5">Einzel</h1>
 
-                <input type="hidden" name="regionID" id="regionID">
-                <input type="hidden" name="ligaID" id="ligaID">
+                <input type="hidden" name="regionID" id="regionID" value="{{ $region->ID }}">
+                <input type="hidden" name="ligaID" id="ligaID" value="{{ $liga->ID }}">
                 <input type="hidden" name="HeimID" id="HeimID" value="{{ $HeimID }}">
                 <input type="hidden" name="GastID" id="GastID" value="{{ $GastID }}">
                 <input type="hidden" name="saisonID" id="saisonID">
