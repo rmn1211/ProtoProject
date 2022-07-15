@@ -563,52 +563,52 @@ if (isset($response['Einzel_4'])) {
         }
     </style>
     <section>
-        <h3 class="font-bold  text-2xl">Spielberichtsbogen</h3>
+        <h3 class="font-bold text-2xl">Spielberichtsbogen</h3>
     </section>
     <section class="mt-10 overflow-auto">
-        <div class="w-full flex flex-row lg:justify-center">
-            <form class="flex flex-col mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
+        <div class="">
+            <form class="mx-3 mb-6" method="POST" onsubmit="return validateInputs();" action="{{ url('/upload') }}">
                 @csrf
                 <input type="hidden" id="matchID" name="matchID">
                 <input type="hidden" id="soloCount" name="soloCount" value="2">
                 <input type="hidden" id="doubleCount" name="doubleCount" value="4">
                 <div class="flex mb-4" id="matchRow">
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Region:</label>
-                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1">Region:</label>
+                        <input onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" type="text" id="region" name="region" class="bg-gray-100 text-gray-900 h-9 w-full border-gray-700 border-r-2 border-t-2 focus:outline-none border-b-full border-gray-700 focus:bg-green-400 transition duration-500 pl-1">
 
                     </div>
-                    <div class=" w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Staffel:</label>
-                        <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100 border-gray-700 border-r-2 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <div class=" w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1">Staffel:</label>
+                        <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="check()" id="liga" name="liga" class="bg-gray-100 text-gray-900 h-9 w-full border-gray-700 border-r-2 border-t-2 focus:outline-none border-b-full border-gray-700 focus:bg-green-400 transition duration-500 pl-1">
                     </div>
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Saison:</label>
-                        <input type="text" oninput="saisoncheck()" onfocus="javascript:$(this).autocomplete('search');" name="saison" id="saison" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1">Saison:</label>
+                        <input type="text" oninput="saisoncheck()" onfocus="javascript:$(this).autocomplete('search');" name="saison" id="saison" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 border-t-2 h-9 w-full focus:outline-none border-b-full border-gray-700 focus:bg-green-400 transition duration-500 pl-1">
                     </div>
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Runde:</label>
-                        <input type="text" oninput="rundecheck()" onfocus="javascript:$(this).autocomplete('search');" name="runde" id="runde" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1">Runde:</label>
+                        <input type="text" oninput="rundecheck()" onfocus="javascript:$(this).autocomplete('search');" name="runde" id="runde" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 border-t-2 h-9 w-full focus:outline-none border-b-full border-gray-700 focus:bg-green-400 transition duration-500 pl-1">
                     </div>
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3">Spieltag:</label>
-                        <input type="text" oninput="tagcheck()" onfocus="javascript:$(this).autocomplete('search');" name="tag" id="tag" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-full border-gray-700 border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1">Spieltag:</label>
+                        <input type="text" oninput="tagcheck()" onfocus="javascript:$(this).autocomplete('search');" name="tag" id="tag" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 border-t-2 h-9 w-full focus:outline-none border-b-full border-gray-700 focus:bg-green-400 transition duration-500 pl-1">
                     </div>
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="home">Heimverein:</label>
-                        <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" name=" tfHome" id="tfHome" class="{{ $Heimmannschaft_Prob ? 'bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3' : 'bg-yellow-300 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3' }}" value="{{ $Heim[0]->Name ?? '' }}">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1" for="home">Heimverein:</label>
+                        <input onload="MannschaftenH();" onfocus="javascript:MannschaftenH();$(this).autocomplete('search');" oninput="MannschaftenH()" type="text" name=" tfHome" id="tfHome" class="{{ $Heimmannschaft_Prob ? 'bg-gray-100' : 'bg-yellow-300' }} text-gray-900 w-full focus:outline-none border-b-full border-gray-700 border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $Heim[0]->Name ?? '' }}">
                     </div>
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Gastverein:</label>
-                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" name="tfAway" id="tfAway" class="{{ $Gastmannschaft_Prob ? 'bg-gray-100 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3' : 'bg-yellow-300 text-gray-900  w-full focus:outlie-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3' }}" value="{{ $Gast[0]->Name ?? '' }}">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1" for="away">Gastverein:</label>
+                        <input onload="MannschaftenG();" onfocus="javascript:MannschaftenG();$(this).autocomplete('search');" type="text" oninput="MannschaftenG()" name="tfAway" id="tfAway" class="{{ $Gastmannschaft_Prob ? 'bg-gray-100' : 'bg-yellow-300' }} text-gray-900 w-full focus:outline-none border-b-full border-gray-700  border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3" value="{{ $Gast[0]->Name ?? '' }}">
                     </div>
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Schiedsrichter:</label>
-                        <input type="text" name="schiri" id="schiri" class="bg-gray-100 text-gray-900  w-full  border-gray-700 border-r-2 focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 border-gray-700 border-r-2 pl-1" for="away">Schiedsrichter:</label>
+                        <input type="text" name="schiri" id="schiri" class="bg-gray-100 text-gray-900 border-gray-700 border-r-2 border-t-2 h-9 w-full focus:outline-none border-b-full border-gray-700 focus:bg-green-400 transition duration-500 pl-1">
                     </div>
-                    <div class="w-1/full bg-green-400 h-12">
-                        <label class="block text-gray-900 text-sm font-bold mb-2 ml-3" for="away">Austragungsort:</label>
-                        <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900  w-full focus:outline-none border-b-full border-gray-700 focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <div class="w-1/full bg-green-400 h-16 min-w-fit">
+                        <label class="block text-gray-900 text-sm font-bold pb-2 pl-1" for="away">Austragungsort:</label>
+                        <input type="text" name="tfPlace" id="tfPlace" class="bg-gray-100 text-gray-900 h-9 w-full focus:outline-none border-b-full border-gray-700 focus:bg-green-400 transition border-t-2 duration-500 pl-1">
                     </div>
                 </div>
                 <h1>Doppel</h1>

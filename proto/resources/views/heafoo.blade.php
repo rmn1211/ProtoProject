@@ -75,10 +75,18 @@
 
 
         $(document).ready(function() {
-            document.getElementById("liga").disabled = true;
-            document.getElementById("saison").disabled = true;
-            document.getElementById("runde").disabled = true;
-            document.getElementById("tag").disabled = true;
+            if (document.getElementById("region").value.trim().length == 0) {
+                document.getElementById("liga").disabled = true;
+            }
+            if (document.getElementById("liga").value.trim().length == 0) {
+                document.getElementById("saison").disabled = true;
+            }
+            if (document.getElementById("saison").value.trim().length == 0) {
+                document.getElementById("runde").disabled = true;
+            }
+            if (document.getElementById("runde").value.trim().length == 0) {
+                document.getElementById("tag").disabled = true;
+            }
 
             saison();
             runde();
