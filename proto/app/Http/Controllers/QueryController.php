@@ -213,7 +213,7 @@ class QueryController extends Controller
             region r, liga l
         WHERE
             l.region = r.id AND l.ID = :id', ['id' => $liga]);
-
+        error_log($region[0]->name);
         return $region[0];
     }
 

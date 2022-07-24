@@ -89,7 +89,6 @@ function validateInputs()
 
 function changeSetSumS(row)
 {
-    console.log("Reihe: " + row + " Solo Change");
     var homeGes = 0;
     var guestGes = 0;
     var home1 = 0;
@@ -178,7 +177,6 @@ function changeSetSumS(row)
         }
         catch (e)
         {
-            console.log("Solo: Row " + i + " missing: Values set to 0.")
             var soloSetPointHeim = 0;
             var soloSetPointGast = 0;
             var soloWonSetHeim = 0;
@@ -208,8 +206,6 @@ function changeSetSumS(row)
 
 function changeSetSumD(row)
 {
-    console.log("Reihe: " + row + " Double Change");
-
     var homeGes = 0;
     var guestGes = 0;
     var home1 = 0;
@@ -298,7 +294,6 @@ function changeSetSumD(row)
         }
         catch (e)
         {
-            console.log("Double: Row " + i + " not initialized: Values set to 0.")
             var dualSetPointHeim = 0;
             var dualSetPointGast = 0;
             var dualWonSetHeim = 0;
@@ -359,7 +354,6 @@ function totalResult()
     document.getElementById("sumWonMatchHomeTotal").value = sumWonMatchHomeTotal;
     var sumWonMatchGuestTotal = sumWonMatchGuestSolo + sumWonMatchGuestDual;
     document.getElementById("sumWonMatchGuestTotal").value = sumWonMatchGuestTotal;
-    console.log(sumWonSetGuestSolo);
 }
 
 function markInput(elem)
@@ -377,6 +371,5 @@ function tabClick()
         ctrlKey: false,  // if you aren't going to use them.
         metaKey: false
     }));
-    console.log(keyEvent.key);
 
 }
