@@ -204,7 +204,7 @@ class QueryController extends Controller
         return $liga[0];
     }
 
-    //see_report, check_report: Region in der Sich die Liga des befindet
+    //see_report, check_report, control_handwriting: Region in der Sich die Liga des befindet
     public static function getRegion($liga)
     {
         $region = DB::connection('mysqlSP')->select('SELECT
@@ -344,6 +344,18 @@ class QueryController extends Controller
 
     //_____________________________________________Texterkennung Korrektur____________________________________________
 
+    //control_handwriting: Rueckgabe der Liga anhand der spielenden Mannschaften
+    public static function getLigaByTeam($name)
+    {
+        $liga = DB::connection('mysqlSP')->select('SELECT
+            *
+        FROM
+            mannschaft m, liga l
+        WHERE
+            m.liga = l.id AND m.id = :mName', ['mName' => $name]);
+
+        return $liga[0];
+    }
     //control_handwriting: Bezeichnung einer Mannschaft anhand der ID
     public static function getMannschaftName($id)
     {
