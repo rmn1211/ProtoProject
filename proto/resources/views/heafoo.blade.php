@@ -52,7 +52,7 @@
             </li>
         </ul>
     </nav>
-    <main>
+    <main class="ml-5">
         @yield('page-content')
     </main>
     <footer>

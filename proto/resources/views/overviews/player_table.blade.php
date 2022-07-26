@@ -52,14 +52,13 @@ if (isset($_GET['selectedID'])) {
         background-color: green;
         color: white;
     }
-
 </style>
 
 <body>
 
     <table class="table-fixed" id="table">
         <thead>
-            <tr class="border-solid border-b-2 border-black bg-green-500 ">
+            <tr class="border-solid border-b-2 border-black bg-green-400 ">
                 <th hidden>ID </th>
                 <th class="px-4 py-2 mx-1">Vorname</th>
                 <th class="px-4 py-2 mx-1">Nachname</th>
