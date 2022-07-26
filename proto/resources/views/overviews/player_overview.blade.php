@@ -13,7 +13,6 @@ use App\Http\Controllers\QueryController;
             background-color: green;
             color: white;
         }
-
     </style>
 
     <body>
@@ -24,7 +23,7 @@ use App\Http\Controllers\QueryController;
             <div class="w-full flex flex-row flex-no-wrap my-5 ">
                 <div class="w-1/4 bg-green-400 h-12 ">
                     <label class="block text-gray-900 text-sm font-bold mb-2 ml-3  ">Region:</label>
-                    <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" id="region" name="region" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 border-r-2  focus:border-green-500 transition duration-500 px-3 pb-3">
+                    <input type="text" onfocus="javascript:$(this).autocomplete('search');" oninput="regioncheck()" id="region" name="region" class="bg-gray-100 text-gray-900 w-full focus:outline-none border-b-4 border-gray-700 border-r-2 focus:border-green-500 transition duration-500 px-3 pb-3">
                 </div>
 
                 <div class="w-1/4 bg-green-400 h-12">
@@ -49,11 +48,11 @@ use App\Http\Controllers\QueryController;
             <br>
             </div>
             <!-- FORM besteht nur aus Hidden Inputfield, dass die ID enthält, da nur diese benötigt wird.
-                    Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht
-                    <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}"
-                      <input type="hidden" name="selectedID" id="selectedID" value="">
-                      <input class = "bg-green-500"type="submit" value="Detail">
-                    </form> -->
+                        Vereinfacht austausch zwischen html - php - js -- TODO: detailansicht
+                        <form class="" name ="idForm" id="idForm" method="GET" action="{{ url('/overview/edit') }}"
+                          <input type="hidden" name="selectedID" id="selectedID" value="">
+                          <input class = "bg-green-500"type="submit" value="Detail">
+                        </form> -->
             <script type="text/javascript">
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content')
 

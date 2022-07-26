@@ -649,7 +649,6 @@ class QueryController extends Controller
         }
         //IDs der Spieler werden benoetigt
         if ($doubleCount >= 1) {
-
             $homeFName1 = $request->dualVnameHeim11;
             $homeLName1 = $request->dualNnameHeim11;
             $homeFName2 = $request->dualVnameHeim21;
@@ -658,8 +657,6 @@ class QueryController extends Controller
             $guestLName1 = $request->dualNnameGast11;
             $guestFName2 = $request->dualVnameGast21;
             $guestLName2 = $request->dualNnameGast21;
-            error_log('test1 ');
-            error_log($guestFName2);
             $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
             $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
             $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
@@ -711,7 +708,6 @@ class QueryController extends Controller
                     'Punkte_Gast' => $satz3G]);
         }
         if ($doubleCount >= 2) {
-
             $homeFName1 = $request->dualVnameHeim12;
             $homeLName1 = $request->dualNnameHeim12;
             $homeFName2 = $request->dualVnameHeim22;
@@ -768,7 +764,6 @@ class QueryController extends Controller
                     'Punkte_Gast' => $satz3G]);
         }
         if ($doubleCount >= 3) {
-
             $homeFName1 = $request->dualVnameHeim13;
             $homeLName1 = $request->dualNnameHeim13;
             $homeFName2 = $request->dualVnameHeim23;
@@ -777,8 +772,6 @@ class QueryController extends Controller
             $guestLName1 = $request->dualNnameGast13;
             $guestFName2 = $request->dualVnameGast23;
             $guestLName2 = $request->dualNnameGast23;
-            error_log('test3 ');
-            error_log($guestFName1);
             $homePID1 = $this->getPlayerID($homeFName1, $homeLName1);
             $homePID2 = $this->getPlayerID($homeFName2, $homeLName2);
             $guestPID1 = $this->getPlayerID($guestFName1, $guestLName1);
@@ -1146,8 +1139,11 @@ class QueryController extends Controller
     {
         //Um keine null-werte einzutragen, wird erst die Anzahl der Reihen benoetigt
         $doubleCount = $request->doubleCount;
+        error_log("COUNTER");
+        error_log($doubleCount);
         //IDs der Spieler werden benoetigt
         if ($doubleCount >= 1) {
+            error_log('dTest1 ');
             $duellID = $request->doppelDuellID1;
             $homeFName1 = $request->dualVnameHeim11;
             $homeLName1 = $request->dualNnameHeim11;
@@ -1197,8 +1193,10 @@ class QueryController extends Controller
                 ->where([['Duell_ID', '=', $duellID], ['Satz_Nr', '=', 3]])
                 ->update(['Punkte_Heim' => $satz3H,
                     'Punkte_Gast' => $satz3G]);
+
         }
         if ($doubleCount >= 2) {
+            error_log('dTest2 ');
             $duellID = $request->doppelDuellID2;
             $homeFName1 = $request->dualVnameHeim12;
             $homeLName1 = $request->dualNnameHeim12;
@@ -1251,6 +1249,8 @@ class QueryController extends Controller
         }
 
         if ($doubleCount >= 3) {
+            error_log('dTest3');
+            $duellID = $request->doppelDuellID3;
             $homeFName1 = $request->dualVnameHeim13;
             $homeLName1 = $request->dualNnameHeim13;
             $homeFName2 = $request->dualVnameHeim23;
@@ -1270,9 +1270,10 @@ class QueryController extends Controller
             $satz3H = $request->dualSatz3heim3;
             $satz3G = $request->dualSatz3gast3;
             $dualType = $request->dualType3;
+            error_log($dualType);
             $art = DB::connection('mysqlSP')->table('art')
                 ->select('ID')->where('Name', $dualType)->value('ID');
-
+            error_log($art);
             DB::connection('mysqlSP')->table('duell')
                 ->where('ID', $duellID)
                 ->update([
@@ -1302,6 +1303,9 @@ class QueryController extends Controller
         }
 
         if ($doubleCount >= 4) {
+            error_log('dTest4');
+            error_log($request->dualSatz1heim4);
+            $duellID = $request->doppelDuellID4;
             $homeFName1 = $request->dualVnameHeim14;
             $homeLName1 = $request->dualNnameHeim14;
             $homeFName2 = $request->dualVnameHeim24;
